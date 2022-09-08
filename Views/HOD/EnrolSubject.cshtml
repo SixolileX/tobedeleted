@@ -1,0 +1,36 @@
+﻿@model Inn_TuneProject.Models.Subjects
+
+@{
+    ViewData["Title"] = "EnrolSubject";
+    Layout = "~/Pages/_LayoutHOD.cshtml";
+}
+
+<h1>EnrolSubject</h1>
+
+<h4>Subjects</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EnrolSubject">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="SubID" class="control-label"></label>
+                <input asp-for="SubID" class="form-control" />
+                <span asp-validation-for="SubID" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Subject" class="control-label"></label>
+                <input asp-for="Subject" class="form-control" />
+                <span asp-validation-for="Subject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

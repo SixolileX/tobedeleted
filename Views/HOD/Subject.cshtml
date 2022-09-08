@@ -1,0 +1,95 @@
+﻿@model Inn_TuneProject.Models.Subjects
+
+@{
+    ViewData["Title"] = "Subject";
+    Layout = "~/Pages/_LayoutHOD.cshtml";
+}
+
+<h1>Subject</h1>
+
+<h4>Subjects</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Subject">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                    <label asp-for="SubID" class="control-label"></label>
+                    <input asp-for="SubID" class="form-control" />
+                    <span asp-validation-for="SubID" class="text-danger"></span>
+                </div>*@
+            <div class="form-group">
+                <label asp-for="Subject" class="control-label"></label>
+                <input asp-for="Subject" class="form-control" />
+                <span asp-validation-for="Subject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Department" class="control-label"></label>
+                <select asp-for="Department" class="form-select">
+                    <option selected> </option>
+                    <option>Sciences</option>
+                    <option>Mathematics</option>
+                    <option>Commerce</option>
+                </select> />
+                <span asp-validation-for="Department" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="row">
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+
+            <!--Section: Live preview-->
+            <section class="container">
+
+                <div class="input-group my-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                    </div>
+                </div>
+
+            </section>
+            <!--Section: Live preview-->
+
+        </div>
+        <!--Grid column-->
+        <!--Grid column-->
+        <div class="col-md-6 mb-md-0 mb-4">
+
+            <p>
+                The file input is the most gnarly of the bunch and requires additional JavaScript if you’d like to hook them up
+                with functional Choose file… and selected file name text.
+            </p>
+            <section class="section-preview">
+
+                <div class="input-group my-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                    </div>
+                </div>
+
+            </section>
+
+        </div>
+
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

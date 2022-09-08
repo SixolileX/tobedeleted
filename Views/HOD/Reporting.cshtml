@@ -1,0 +1,97 @@
+﻿
+@{
+    ViewData["Title"] = "Reporting";
+    Layout = "~/Pages/_LayoutHOD.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <h1>Reporting</h1>
+    <div class="card align-content-right">
+
+        <table class="auto-style3" style="object-position:center">
+            <caption class="calendar-controls">
+                <a class="arrow_link previous"></a><span class="current">Report of Available Departmennts</span>
+            </caption>
+            <thead>
+                <tr>
+                    <th class="auto-style2"><span class="sr-only">Department ID</span></th>
+                    <th class="auto-style1"><span class="sr-only">Department Name</span></th>
+                    <th class="auto-style2"><span class="sr-only">Teacher </span></th>
+                    <th class="auto-style4"><span class="sr-only">Subject </span></th>
+                </tr>
+            </thead>
+            <tr data-region="month-view-week">
+                <td class="depID text-center-justify"><span aria-hidden="true">1</span> </td>
+                <td class="depID text-center-justify"><span aria-hidden="true">Commerce</span> </td>
+                <td class="day text-center"><span aria-hidden="true">Resego Makoloyane</span> </td>
+                <td class="auto-style5"><span aria-hidden="true">Economics</span> </td>
+            </tr>
+            <tr data-region="month-view-week">
+                <td class="depID text-center-justify"><span aria-hidden="true"> </span> </td>
+                <td class="depID text-center-justify"><span aria-hidden="true"> </span> </td>
+                <td class="day text-center"><span aria-hidden="true">Antonette Van de Meiwer</span> </td>
+                <td class="auto-style5"><span aria-hidden="true">Accounting</span> </td>
+            </tr>
+            <tr data-region="month-view-week">
+                <td class="depID text-center-justify"><span aria-hidden="true"> </span> </td>
+                <td class="depID text-center-justify"><span aria-hidden="true"> </span> </td>
+                <td class="day text-center"><span aria-hidden="true">Hope Mogate</span> </td>
+                <td class="auto-style5"><span aria-hidden="true">Business</span> </td>
+            </tr>
+            <tr data-region="month-view-week">
+                <td class="depID text-center-justify"><span aria-hidden="true">2</span> </td>
+                <td class="depID text-center-justify"><span aria-hidden="true">Science</span> </td>
+                <td class="day text-center"><span aria-hidden="true">Jona Utete</span> </td>
+                <td class="auto-style5"><span aria-hidden="true">Phyical Science</span> </td>
+            </tr>
+            <tr data-region="month-view-week">
+                <td class="depID text-center-justify"><span aria-hidden="true"> </span> </td>
+                <td class="depID text-center-justify"><span aria-hidden="true"> </span> </td>
+                <td class="day text-center"><span aria-hidden="true">Edison Khiba</span> </td>
+                <td class="auto-style5"><span aria-hidden="true">Agriculteral Science</span> </td>
+            </tr>
+            <tr data-region="month-view-week">
+                <td class="depID text-center-justify"><span aria-hidden="true"> </span> </td>
+                <td class="depID text-center-justify"><span aria-hidden="true"> </span> </td>
+                <td class="day text-center"><span aria-hidden="true">Aviwe Nzena</span> </td>
+                <td class="auto-style5"><span aria-hidden="true">Life Science</span> </td>
+            </tr>
+            <tr data-region="month-view-week">
+                <td class="depID text-center-justify"><span aria-hidden="true"> </span> </td>
+                <td class="depID text-center-justify"><span aria-hidden="true"> </span> </td>
+                <td class="day text-center"><span aria-hidden="true">Sixolise Ramalepe</span> </td>
+                <td class="auto-style5"><span aria-hidden="true">Technical Science</span> </td>
+            </tr>
+            <tr data-region="month-view-week">
+                <td class="depID text-center-justify"><span aria-hidden="true">3</span> </td>
+                <td class="depID text-center-justify"><span aria-hidden="true">Mathematics</span> </td>
+                <td class="day text-center"><span aria-hidden="true">Louis Potgieter</span> </td>
+                <td class="auto-style5"><span aria-hidden="true">Pure Maths</span> </td>
+            </tr>
+            <tr data-region="month-view-week">
+                <td class="depID text-center-justify"><span aria-hidden="true"> </span> </td>
+                <td class="depID text-center-justify"><span aria-hidden="true"> </span> </td>
+                <td class="day text-center"><span aria-hidden="true">Ato Jones</span> </td>
+                <td class="auto-style5"><span aria-hidden="true">Maths Literacy</span> </td>
+            </tr>
+            <tr data-region="month-view-week">
+                <td class="depID text-center-justify"><span aria-hidden="true"> </span> </td>
+                <td class="depID text-center-justify"><span aria-hidden="true"> </span> </td>
+                <td class="day text-center"><span aria-hidden="true">Nolofatso Pule</span> </td>
+                <td class="auto-style5"><span aria-hidden="true">Technial Maths</span> </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <input type="submit" value="Create" class="btn btn-primary" onclick="window.print()" />
+        <a onclick="window.print()"><ion-icon style="color:#00c2cb" size="large" name="print"></ion-icon></a>
+    </div>
+
+
+    @*//it will print the current view*@
+</body>
+</html>

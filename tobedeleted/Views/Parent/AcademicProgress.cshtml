@@ -1,0 +1,107 @@
+﻿
+@{
+    ViewData["Title"] = "AcademicProgress";
+    Layout = "~/Pages/_LayoutParent.cshtml";
+}
+
+<div class="text-center">
+    <h1 class="display-7">Academic Progress</h1>
+    <hr />
+</div>
+
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-8">
+            <hr>
+            <style>
+                table {
+                    width: auto;
+                }
+
+                table, th, td {
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                }
+
+                th, td {
+                    padding: 5px;
+                    text-align: center;
+                }
+
+                table.names tr:nth-child(even) {
+                    background-color: #eee;
+                }
+
+                table.names tr:nth-child(odd) {
+                    background-color: #fff;
+                }
+
+                table.names th {
+                    background-color: black;
+                    color: white
+                }
+            </style>
+
+
+
+
+
+            <table class="names">
+                <tr>
+                    <th>Subject</th>
+                    <th>Term 1</th>
+                    <th>Term 2</th>
+                    <th>Term 3</th>
+                    <th>Term 4</th>
+                </tr>
+                <tr>
+                    <td>Accounting</td>
+                    <td>34</td>
+                    <td>50</td>
+                    <td>74</td>
+                    <td>80</td>
+                </tr>
+                <tr>
+                    <td>Mathematics</td>
+                    <td>50</td>
+                    <td>53</td>
+                    <td>78</td>
+                    <td>65</td>
+                </tr>
+                <tr>
+                    <td>Economics</td>
+                    <td>34</td>
+                    <td>50</td>
+                    <td>74</td>
+                    <td>80</td>
+                </tr>
+                <tr>
+                    <td>Business Studies</td>
+                    <td>50</td>
+                    <td>53</td>
+                    <td>78</td>
+                    <td>65</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <br />
+    <br />
+</div>
+<input id="Button1" type="submit" value="Print Document" />
+
+
+    @*$("#printButton").click(function () {
+        window.open("@Url.Action("view", "season")", "_blank",
+        "menubar=no, toolbar=no, resizable=no, top=100, left=200, width=500, height=500");
+        });*@

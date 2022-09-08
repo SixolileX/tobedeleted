@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>aspnet-tobedeleted-4A3CA86B-3BFE-4BD9-BD84-490D08A33C6C</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.17" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.17" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.17" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.17" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\js\" />
+    <Folder Include="wwwroot\lib\bootstrap\" />
+    <Folder Include="wwwroot\lib\bootstrap\dist\css\" />
+    <Folder Include="wwwroot\lib\bootstrap\dist\js\" />
+    <Folder Include="wwwroot\lib\jquery-validation-unobtrusive\" />
+    <Folder Include="wwwroot\lib\jquery-validation\" />
+    <Folder Include="wwwroot\lib\jquery-validation\dist\" />
+    <Folder Include="wwwroot\lib\jquery\" />
+    <Folder Include="wwwroot\lib\jquery\dist\" />
+  </ItemGroup>
+
+</Project>

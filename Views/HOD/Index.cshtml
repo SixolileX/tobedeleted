@@ -1,0 +1,465 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/_LayoutHOD.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Head of Department</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .fakeimg {
+            height: 200px;
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    @*<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <div class="container-fluid">
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Create context</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Meetings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Attendance</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Learners</a>
+                    </li>
+                </ul>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                        Feedback
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Head of department</a></li>
+                        <li><a class="dropdown-item" href="#">Learner</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>*@
+    @*<head>
+            <title>Teacher</title>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        </head>*@
+
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-sm-8">
+                <p style="text-align:center;">You are viewing upcoming meetings</p>
+                <hr>
+                <style>
+                    table {
+                        width: 100%;
+                    }
+
+                    table, th, td {
+                        border: 1px solid black;
+                        border-collapse: collapse;
+                    }
+
+                    th, td {
+                        padding: 5px;
+                        text-align: center;
+                    }
+
+                    table.names tr:nth-child(even) {
+                        background-color: #fff;
+                    }
+
+                    table.names tr:nth-child(odd) {
+                        background-color: #fff;
+                    }
+
+                    table.names th {
+                        background-color: black;
+                        color: white
+                    }
+                </style>
+
+                <br>
+
+                <hr>
+                
+                <hr>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" style="align-content:flex-end">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title">Timeline</h6>
+                        @*<div id="content">
+                                <ul class="timeline">
+                                    <li class="event" data-date="12:30 - 1:00pm">
+                                        <h3>Registration</h3>
+                                        <p>Get here on time, it's first come first serve. Be late, get turned away.</p>
+                                    </li>
+                                    <li class="event" data-date="2:30 - 4:00pm">
+                                        <h3>Opening Ceremony</h3>
+                                        <p>Get ready for an exciting event, this will kick off in amazing fashion with MOP &amp; Busta Rhymes as an opening show.</p>
+                                    </li>
+                                    <li class="event" data-date="5:00 - 8:00pm">
+                                        <h3>Main Event</h3>
+                                        <p>This is where it all goes down. You will compete head to head with your friends and rivals. Get ready!</p>
+                                    </li>
+                                    <li class="event" data-date="8:30 - 9:30pm">
+                                        <h3>Closing Ceremony</h3>
+                                        <p>See how is the victor and who are the losers. The big stage is where the winners bask in their own glory.</p>
+                                    </li>
+                                </ul>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <link href="~/css/Images/timeLine.css" rel="stylesheet" />
+    <div id="page" class="container-fluid">
+
+
+
+        <section id="inst347791" class=" block_calendar_month block  card mb-3 align-content-end" role="complementary" data-block="calendar_month" aria-labelledby="instance-347791-header">
+
+            <div class="card-body p-3 align-items-end">
+
+                <h5 id="instance-347791-header" class="card-title d-inline">Calendar</h5>
+
+
+                <div class="card-text content mt-3">
+                    <div id="calendar-month-2022-8-62f5434ea765762f5434e6240b3" data-template="core_calendar/month_mini" data-includenavigation="true" data-mini="true">
+                        <div id="month-mini-2022-8-0" class="calendarwrapper" data-courseid="6254" data-categoryid="24" data-month="8" data-year="2022" data-day="11" data-view="month">
+
+                            <table class="minicalendar calendartable">
+                                <caption class="calendar-controls">
+                                    <a href="#" class="arrow_link previous" title="Previous month" data-year="2022" data-month="7">
+                                        <span class="arrow">◄</span>
+                                    </a>
+                                    <span class="hide"> | </span>
+                                    <span class="current">
+                                        <a href="" title="This month">August 2022</a>
+                                    </span>
+                                    <span class="hide"> | </span>
+                                    <a href="#" class="arrow_link next" title="Next month" data-year="2022" data-month="9">
+                                        <span class="arrow">►</span>
+                                    </a>
+                                </caption>
+                                <thead>
+                                    <tr>
+                                        <th class="header text-xs-center">
+                                            <span class="sr-only">Monday</span>
+                                            <span aria-hidden="true">Mon</span>
+                                        </th>
+                                        <th class="header text-xs-center">
+                                            <span class="sr-only">Tuesday</span>
+                                            <span aria-hidden="true">Tue</span>
+                                        </th>
+                                        <th class="header text-xs-center">
+                                            <span class="sr-only">Wednesday</span>
+                                            <span aria-hidden="true">Wed</span>
+                                        </th>
+                                        <th class="header text-xs-center">
+                                            <span class="sr-only">Thursday</span>
+                                            <span aria-hidden="true">Thu</span>
+                                        </th>
+                                        <th class="header text-xs-center">
+                                            <span class="sr-only">Friday</span>
+                                            <span aria-hidden="true">Fri</span>
+                                        </th>
+                                        <th class="header text-xs-center">
+                                            <span class="sr-only">Saturday</span>
+                                            <span aria-hidden="true">Sat</span>
+                                        </th>
+                                        <th class="header text-xs-center">
+                                            <span class="sr-only">Sunday</span>
+                                            <span aria-hidden="true">Sun</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr data-region="month-view-week">
+                                        <td class="day text-center" data-day-timestamp="1659304800">
+                                            <span class="sr-only">No events, Monday, 1 August</span>
+                                            <span aria-hidden="true">1</span>
+                                        </td>
+                                        <td class="day text-center" data-day-timestamp="1659391200">
+                                            <span class="sr-only">No events, Tuesday, 2 August</span>
+                                            <span aria-hidden="true">2</span>
+                                        </td>
+                                        <td class="day text-center" data-day-timestamp="1659477600">
+                                            <span class="sr-only">No events, Wednesday, 3 August</span>
+                                            <span aria-hidden="true">3</span>
+                                        </td>
+                                        <td class="day text-center" data-day-timestamp="1659564000">
+                                            <span class="sr-only">No events, Thursday, 4 August</span>
+                                            <span aria-hidden="true">4</span>
+                                        </td>
+                                        <td class="day text-center" data-day-timestamp="1659650400">
+                                            <span class="sr-only">No events, Friday, 5 August</span>
+                                            <span aria-hidden="true">5</span>
+                                        </td>
+                                        <td class="day text-center weekend" data-day-timestamp="1659736800">
+                                            <span class="sr-only">No events, Saturday, 6 August</span>
+                                            <span aria-hidden="true">6</span>
+                                        </td>
+                                        <td class="day text-center weekend" data-day-timestamp="1659823200">
+                                            <span class="sr-only">No events, Sunday, 7 August</span>
+                                            <span aria-hidden="true">7</span>
+                                        </td>
+                                    </tr>
+                                    <tr data-region="month-view-week">
+                                        <td class="day text-center hasevent calendar_event_course duration_finish" data-eventtype-course="1" data-day-timestamp="1659909600">
+                                            <span class="sr-only">1 event, Monday, 8 August</span>
+
+
+                                            <a id="calendar-day-popover-link-6254-2022-219-0" href="" data-container="body" data-toggle="popover" data-html="true" data-region="mini-day-link" data-trigger="hover focus" data-placement="top" data-year="2022" data-month="8" data-courseid="6254" data-categoryid="24" data-title="Monday, 8 August events" data-alternate="No events" aria-label="Monday, 8 August events" data-original-title="" title="">8</a>
+
+                                        </td>
+                                        <td class="day text-center" data-day-timestamp="1659996000">
+                                            <span class="sr-only">No events, Tuesday, 9 August</span>
+                                            <span aria-hidden="true">9</span>
+                                        </td>
+                                        <td class="day text-center" data-day-timestamp="1660082400">
+                                            <span class="sr-only">No events, Wednesday, 10 August</span>
+                                            <span aria-hidden="true">10</span>
+                                        </td>
+                                        <td class="day text-center today" data-day-timestamp="1660168800">
+                                            <span class="sr-only">No events, Thursday, 11 August</span>
+
+
+                                            <a id="calendar-day-popover-link-6254-2022-222-0" href="" data-container="body" data-toggle="popover" data-html="true" data-region="mini-day-link" data-trigger="hover focus" data-placement="top" data-year="2022" data-month="8" data-courseid="6254" data-categoryid="24" data-title="Today Thursday, 11 August" data-alternate="No events" aria-label="Today Thursday, 11 August" data-original-title="" title="">11</a>
+                                            <div class="hidden">
+
+                                            </div>
+                                        </td>
+                                        <td class="day text-center" data-day-timestamp="1660255200">
+                                            <span class="sr-only">No events, Friday, 12 August</span>
+                                            <span aria-hidden="true">12</span>
+                                        </td>
+                                        <td class="day text-center weekend" data-day-timestamp="1660341600">
+                                            <span class="sr-only">No events, Saturday, 13 August</span>
+                                            <span aria-hidden="true">13</span>
+                                        </td>
+                                        <td class="day text-center weekend" data-day-timestamp="1660428000">
+                                            <span class="sr-only">No events, Sunday, 14 August</span>
+                                            <span aria-hidden="true">14</span>
+                                        </td>
+                                    </tr>
+                                    <tr data-region="month-view-week">
+                                        <td class="day text-center" data-day-timestamp="1660514400">
+                                            <span class="sr-only">No events, Monday, 15 August</span>
+                                            <span aria-hidden="true">15</span>
+                                        </td>
+                                        <td class="day text-center" data-day-timestamp="1660600800">
+                                            <span class="sr-only">No events, Tuesday, 16 August</span>
+                                            <span aria-hidden="true">16</span>
+                                        </td>
+                                        <td class="day text-center" data-day-timestamp="1660687200">
+                                            <span class="sr-only">No events, Wednesday, 17 August</span>
+                                            <span aria-hidden="true">17</span>
+                                        </td>
+                                        <td class="day text-center" data-day-timestamp="1660773600">
+                                            <span class="sr-only">No events, Thursday, 18 August</span>
+                                            <span aria-hidden="true">18</span>
+                                        </td>
+                                        <td class="day text-center" data-day-timestamp="1660860000">
+                                            <span class="sr-only">No events, Friday, 19 August</span>
+                                            <span aria-hidden="true">19</span>
+                                        </td>
+                                        <td class="day text-center weekend" data-day-timestamp="1660946400">
+                                            <span class="sr-only">No events, Saturday, 20 August</span>
+                                            <span aria-hidden="true">20</span>
+                                        </td>
+                                        <td class="day text-center weekend" data-day-timestamp="1661032800">
+                                            <span class="sr-only">No events, Sunday, 21 August</span>
+                                            <span aria-hidden="true">21</span>
+                                        </td>
+                                    </tr>
+                                    <tr data-region="month-view-week">
+                                        <td class="day text-center" data-day-timestamp="1661119200">
+                                            <span class="sr-only">No events, Monday, 22 August</span>
+                                            <span aria-hidden="true">22</span>
+                                        </td>
+                                        <td class="day text-center" data-day-timestamp="1661205600">
+                                            <span class="sr-only">No events, Tuesday, 23 August</span>
+                                            <span aria-hidden="true">23</span>
+                                        </td>
+                                        <td class="day text-center" data-day-timestamp="1661292000">
+                                            <span class="sr-only">No events, Wednesday, 24 August</span>
+                                            <span aria-hidden="true">24</span>
+                                        </td>
+                                        <td class="day text-center" data-day-timestamp="1661378400">
+                                            <span class="sr-only">No events, Thursday, 25 August</span>
+                                            <span aria-hidden="true">25</span>
+                                        </td>
+                                        <td class="day text-center" data-day-timestamp="1661464800">
+                                            <span class="sr-only">No events, Friday, 26 August</span>
+                                            <span aria-hidden="true">26</span>
+                                        </td>
+                                        <td class="day text-center weekend" data-day-timestamp="1661551200">
+                                            <span class="sr-only">No events, Saturday, 27 August</span>
+                                            <span aria-hidden="true">27</span>
+                                        </td>
+                                        <td class="day text-center weekend" data-day-timestamp="1661637600">
+                                            <span class="sr-only">No events, Sunday, 28 August</span>
+                                            <span aria-hidden="true">28</span>
+                                        </td>
+                                    </tr>
+                                    <tr data-region="month-view-week">
+                                        <td class="day text-center" data-day-timestamp="1661724000">
+                                            <span class="sr-only">No events, Monday, 29 August</span>
+                                            <span aria-hidden="true">29</span>
+                                        </td>
+                                        <td class="day text-center" data-day-timestamp="1661810400">
+                                            <span class="sr-only">No events, Tuesday, 30 August</span>
+                                            <span aria-hidden="true">30</span>
+                                        </td>
+                                        <td class="day text-center" data-day-timestamp="1661896800">
+                                            <span class="sr-only">No events, Wednesday, 31 August</span>
+                                            <span aria-hidden="true">31</span>
+                                        </td>
+                                        <td class="dayblank">&nbsp;</td>
+                                        <td class="dayblank">&nbsp;</td>
+                                        <td class="dayblank">&nbsp;</td>
+                                        <td class="dayblank">&nbsp;</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- End Main Regions -->
+
+        <a href="#top" class="back-to-top" style="display: inline;"><span class="lambda-sr-only">Back</span></a>
+
+    </div>
+    <div class="row">
+        <div class="col-12 col-xl-8">
+
+            <!-- Convertions -->
+            <div class="card ">
+                <div class="card-header">
+
+                    <!-- Title -->
+                    <h4 class="card-header-title">
+                        User Evaluation
+                    </h4>
+
+                    <!-- Caption -->
+                    @*<span class="text-muted me-3">
+                        Last year comparision:
+                    </span>*@
+
+                    <!-- Switch -->
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="cardToggle" data-toggle="chart" data-target="#conversionsChart" data-trigger="change" data-action="add" data-dataset="1">
+                        <label class="form-check-label" for="cardToggle"></label>
+                    </div>
+
+                </div>
+                <div class="card-body">
+
+                    <!-- Chart -->
+                    <div class="chart">
+                        <canvas class="chart-canvas" width="502" height="300" style="display: block; box-sizing: border-box; height: 300px; width: 502px;"></canvas>
+                        <div role="tooltip" class="popover bs-popover-top" style="visibility: hidden; left: 361.443px; top: 80.8316px; transform: translateX(-50%), translateY(-100%), translateY(-1rem);">
+                            <div class="popover-arrow translate-middle-x">
+
+                            </div>
+                        </div>
+                        <div class="popover-content">
+                            <div><h3 class="popover-header text-center text-nowrap">Oct 9</h3></div>
+                            <div>
+                                <div class="popover-body d-flex align-items-center text-nowrap justify-content-center">
+                                    <span class="popover-body-indicator" style="background-color: rgb(44, 123, 229);"></span> 28%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-xl-4">
+
+            <!-- Traffic -->
+            <div class="card">
+                <div class="card-header">
+
+                    <!-- Title -->
+                    <h4 class="card-header-title">
+                        Department Channels
+                    </h4>
+
+                    <!-- Tabs -->
+                    <ul class="nav nav-tabs nav-tabs-sm card-header-tabs">
+                        <li class="nav-item" data-toggle="chart" data-target="#trafficChart" data-trigger="click" data-action="toggle" data-dataset="0">
+                            <a href="#" class="nav-link active" data-bs-toggle="tab">
+                                All
+                            </a>
+                        </li>
+                        <li class="nav-item" data-toggle="chart" data-target="#trafficChart" data-trigger="click" data-action="toggle" data-dataset="1">
+                            <a href="#" class="nav-link" data-bs-toggle="tab">
+                                Direct 
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+                <div class="card-body">
+                     <!-- Chart -->
+                    <div class="chart chart-appended">
+                        <canvas class="chart-canvas" data-toggle="legend" data-target="#trafficChartLegend" width="502" height="240" style="display: block; box-sizing: border-box; height: 240px; width: 502px;"></canvas>
+                        <div role="tooltip" class="popover bs-popover-top" style="visibility: hidden; left: 422.186px; top: 153.365px; transform: translateX(-50%) translateY(-100%) translateY(-1rem);"></div>
+                        <div class="popover-arrow translate-middle-x"></div>
+                        <div class="popover-content">
+                            <div>
+                                <h3 class="popover-header text-center text-nowrap">Direct</h3>
+                            </div>
+                            
+                            <div class="popover-body d-flex align-items-center text-nowrap justify-content-center">
+                                <span class="popover-body-indicator" style="background-color: rgb(44, 123, 229);"></span>60%
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <!-- Legend -->
+            <div class="chart-legend">
+                <div>
+                    <span class="chart-legend-item">
+                    <span class="chart-legend-indicator" style="background-color: #2C7BE5"></span>Direct</span>
+                    <span class="chart-legend-item"><span class="chart-legend-indicator" style="background-color: #A6C5F7"></span>Organic</span>
+                    <span class="chart-legend-item">
+                    <span class="chart-legend-indicator" style="background-color: #D2DDEC"></span>Referral</span>
+                </div>
+            </div>
+    </div>
+</div>
+</body>
+</html>

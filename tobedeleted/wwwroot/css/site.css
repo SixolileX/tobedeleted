@@ -1,0 +1,141 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+.wrapper {
+    display: flex;
+    width: 100%;
+}
+
+#sidebar {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: #7386D5;
+    color: #fff;
+    transition: all 0.3s;
+}
+.card-body {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1rem 1rem;
+}
+
+
+
+
+
+
+.e-schedule .e-timeline-view .e-resource-left-td {
+    vertical-align: bottom;
+}
+
+.e-schedule.e-device .e-timeline-view .e-resource-left-td {
+    width: 75px;
+}
+
+.room-schedule.e-schedule .e-timeline-view .e-resource-left-td {
+    width: 240px;
+}
+
+.e-schedule .e-timeline-view .e-resource-left-td .e-resource-text {
+    display: flex;
+    font-weight: 500;
+    padding: 0;
+    height: 36px;
+}
+
+    .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text > div {
+        border-color: #0000001f;
+        border-style: solid;
+        border-width: 1px 1px 0 0;
+        flex: 0 0 33.3%;
+        font-weight: 500;
+        height: 36px;
+        line-height: 36px;
+        padding-left: 5px;
+    }
+
+        .e-schedule .e-timeline-view .e-resource-left-td .e-resource-text > div:last-child {
+            border-right: 0;
+        }
+
+.e-schedule .e-timeline-view .e-block-appointment {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+
+

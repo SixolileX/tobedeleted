@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "ActivityLog";
+    Layout = "~/Pages/_LayoutParent.cshtml";
+}
+<div class="text-center">
+    <h1 class="display-7">Activity Log</h1>
+    <hr />
+</div>
+<br />
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-8">
+            <hr>
+            <style>
+                table {
+                    width: 100%;
+                }
+
+                table, th, td {
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                }
+
+                th, td {
+                    padding: 5px;
+                    text-align: center;
+                }
+
+                table.names tr:nth-child(even) {
+                    background-color: #eee;
+                }
+
+                table.names tr:nth-child(odd) {
+                    background-color: #fff;
+                }
+
+                table.names th {
+                    background-color: black;
+                    color: white
+                }
+            </style>
+
+
+
+
+
+            <table class="names">
+                <tr>
+                    <th>Name</th>
+                    <th>Activity Date</th>
+                    <th>Time</th>
+                </tr>
+                <tr>
+                    <td>Vuyo Maphosa</td>
+                    <td>2022/09/15</td>
+                    <td>08:00:06</td>
+                </tr>
+                <tr>
+                    <td>Vuyo Maphosa</td>
+                    <td>2022/09/16</td>
+                    <td>10:05:45</td>
+                </tr>
+                <tr>
+                    <td>Vuyo Maphosa</td>
+                    <td>2022/09/17</td>
+                    <td>08:06:35</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <br />
+    <input id="Button1" type="submit" value="Print Document" />
+</div>
+
+
+

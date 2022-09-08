@@ -1,0 +1,164 @@
+﻿
+@{
+    ViewData["Title"] = "CareerStream";
+    Layout = "~/Pages/_LayoutHOD.cshtml";
+}
+@*@{
+    ViewData["Title"] = "Career";
+    Layout = "~/Pages/_LayoutHOD.cshtml";
+}*@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <header>
+        <h1> Depatermental Subjects </h1>
+    </header>
+    <div class="card" style="width:300px">
+
+        <h4 class="card-title">Mathematics</h4>
+        <p class="card-text">learn more</p>
+        <a href="#" class="btn btn-primary">Departmental Subject</a>
+
+        <img class="card-img-top" src="~/css/Images/maths.jpg" alt="Card image">
+    </div>
+
+    <div class="card" style="width:300px">
+
+        <h4 class="card-title">Physical Sciences</h4>
+        <p class="card-text">learn more</p>
+        <a href="#" class="btn btn-primary">View Subject</a>
+
+        <img class="card-img-top" src="~/css/Images/Science Stream.jpg" alt="Card image">
+    </div>
+
+    <div class="card" style="width:300px">
+
+        <h4 class="card-title">Commerce</h4>
+        <p class="card-text">learn more</p>
+        <a asp-area="" asp-controller="HOD" asp-action="Commerce" class="btn btn-primary">View Subjects</a>
+        
+        <img class="card-img-top" src="~/css/Images/Commerce.jpg" alt="Card image">
+    </div>
+
+    <div class="card" style="width:300px">
+
+        <h4 class="card-title">Geography</h4>
+        <p class="card-text">learn more</p>
+        <a href="#" class="btn btn-primary">View Subject</a>
+
+        <img class="card-img-top" src="~/css/Images/Geographyy.jpg" alt="Card image">
+    </div>
+
+    <div class="card" style="width:300px">
+
+        <h4 class="card-title">Sciences Department</h4>
+        <p class="card-text">learn more</p>
+        <a href="#" class="btn btn-primary">View Subjects</a>
+
+        <img class="card-img-top" src="~/css/Images/Life-Science.jpg" alt="Card image">
+    </div>
+
+    <div class="card" style="width:300px">
+
+        <h4 class="card-title">Agricultural Sciences</h4>
+        <p class="card-text">learn more</p>
+        <a href="#" class="btn btn-primary">View Subject</a>
+
+        <img class="card-img-top" src="~/css/Images/Agriculcure.jpg" alt="Card image">
+    </div>
+
+    <style type="text/css">
+
+
+        .card {
+            align-items: center;
+            border: 5px unset #000000;
+            float: left;
+            box-shadow: 0 0 15px #808080;
+            flex-direction: row;
+            /* padding: 10px 20px;*/
+            flex-flow: wrap;
+            align-self: normal;
+            display: flex;
+            height: 250px;
+            width: 100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .card-img-top {
+            max-width: 200px;
+            max-height: 200px;
+        }
+    </style>
+    <div class="container my-4">
+
+        @*<p class="font-weight-bold">An example of bootstrap file upload. Easy to implement and customize. Examples of basic and advanced usage.</p>
+
+            <hr class="mt-5">
+
+            <hr class="mb-5" />
+
+            <p class="font-weight-bold">Basic example</p>
+
+            <p class="note note-info">
+            <strong>Note info:</strong> If you need more advanced functionalities, have a look at our
+            Drag and drop file upload plugin.
+            </p>*@
+
+        <!--<div class="row">-->
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+
+            @*Section: Live preview*@
+            <section class="container">
+
+                <div class="input-group my-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                    </div>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                    </div>
+                </div>
+
+            </section>
+            <!--Section: Live preview-->
+
+        </div>
+        <!--Grid column-->
+        <!--Grid column-->
+        <!--<div class="col-md-6 mb-md-0 mb-4">
+
+                <p>
+                    The file input is the most gnarly of the bunch and requires additional JavaScript if you’d like to hook them up
+                    with functional Choose file… and selected file name text.
+                </p>
+                <section class="section-preview">
+
+                    <div class="input-group my-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
+                    </div>
+
+                </section>
+
+            </div>
+
+
+        </div>-->
+
+    </div>
+</body>
+</html>
+

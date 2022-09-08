@@ -1,0 +1,149 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/_LayoutParent.cshtml";
+}
+
+<div class="text-center">
+    <h1 class="display-7">Welcome back</h1>
+    <hr />
+</div>
+<style>
+    table {
+        width: 100%;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 5px;
+        text-align: center;
+    }
+
+    table.names tr:nth-child(even) {
+        background-color: #eee;
+    }
+
+    table.names tr:nth-child(odd) {
+        background-color: #fff;
+    }
+
+    table.names th {
+        background-color: black;
+        color: white
+    }
+</style>
+<h1></h1>
+<div class="bg-#ECC position-relative">
+    <div class="card-body">
+        <div class="met-profile">
+            <div class="row">
+                <div class="col-lg-4 align-self-center mb-3 mb-lg-0">
+                    <div class="met-profile-main">
+                        <div class="met-profile-main-pic">
+                            <img src="~/images/20220129_131210.jpg" alt="" height="110" class="rounded-circle">
+                            <span class="met-profile_main-pic-change">
+                                <i class="fas fa-camera"></i>
+                            </span>
+                        </div>
+                        <div class="met-profile_user-detail">
+                            <h5 class="met-user-name">Vuyo Maphosa</h5>
+                            <p class="mb-0 met-user-name-post">Parent</p>
+                        </div>
+                    </div>
+                </div><!--end col-->
+
+                <div class="col-lg-4 ms-auto align-self-center">
+                    <ul class="list-unstyled personal-detail mb-0">
+                        <li class=""><i class="las la-phone mr-2 text-secondary font-22 align-middle"></i> <b> phone </b> : +27 74 246 2754</li>
+                        <li class="mt-2"><i class="las la-envelope text-secondary font-22 align-middle mr-2"></i> <b> Email </b> : vuyoelvisamaphosa@gmail.com</li>
+                        <li class="mt-2">
+                            <i class="las la-globe text-secondary font-22 align-middle mr-2"></i>
+                        </li>
+                    </ul>
+
+                </div><!--end col-->
+                <div class="col-lg-4 align-self-center">
+                    <div class="row">
+                        <div class="col-auto text-end border-end">
+                            <button type="button" class="btn btn-soft-primary btn-icon-circle btn-icon-circle-sm mb-2">
+                                <i class="fab fa-facebook-f"></i>
+                            </button>
+
+
+                        </div><!--end col-->
+                        <div class="col-auto">
+                            <button type="button" class="btn btn-soft-info btn-icon-circle btn-icon-circle-sm mb-2">
+                                <i class="fab fa-twitter"></i>
+                            </button>
+                        </div><!--end col-->
+                    </div><!--end row-->
+                </div><!--end col-->
+            </div><!--end row-->
+        </div><!--end f_profile-->
+    </div>
+    <section>
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Timeline</h4>
+            </div><!--end card-header-->
+            <div class="card-body">
+                <div class="main-timeline mt-3">
+                    <div class="timeline">
+                        <span class="timeline-icon"></span>
+                        <span class="year">Aug 2022</span>
+                        <div class="timeline-content">
+                            <span class="post">20 Aug 2022</span>
+                            <p class="description">
+                                Meeting with tutor.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline">
+                        <span class="timeline-icon"></span>
+                        <span class="year">Sept 2022</span>
+                        <div class="timeline-content">
+                            <h5 class="title">Term Report</h5>
+                            <span class="post">26 Sept 2022</span>
+                            <p class="description">
+                                The release of the academic report.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="timeline">
+                        <span class="timeline-icon"></span>
+                        <span class="year">Aug 2022</span>
+                        <div class="timeline-content">
+                            <span class="post">1 Oct 2022</span>
+                            <p class="description">
+                                Meeting with the school staff.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>  <!--end card-body-->
+
+        </div><!--end card-->
+        <br />
+        <div class="js-stacks-validation " align="right">
+            <div class="ps-relative">
+                <textarea id="wmd-input" contextmenu="feedback" name="post-text" class="wmd-input s-input bar0 js-post-body-field processed" data-post-type-id="2" cols="50" rows="5" tabindex="10" data-min-length=""></textarea>
+                <div class="grippie bbr-sm" style="margin-right: 0px;"></div>
+            </div>
+            <div class="s-input-message mt4 d-none js-stacks-validation-message"></div>
+        </div>
+        <br /><input id="Button1" type="button" value="Submit feedback" />
+
+    </div>
+</section>
+</div>
+
+<br />
+
