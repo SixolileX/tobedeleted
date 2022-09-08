@@ -21,7 +21,7 @@ namespace tobedeleted.Areas.Identity.Pages.Account
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<IdentityUser> signInManager, 
+        public LoginModel(SignInManager<IdentityUser> signInManager,
             ILogger<LoginModel> logger,
             UserManager<IdentityUser> userManager)
         {
@@ -70,22 +70,46 @@ namespace tobedeleted.Areas.Identity.Pages.Account
 
             ReturnUrl = returnUrl;
         }
-
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-        
+
             if (ModelState.IsValid)
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {
+
+                    var user = await _userManager.FindByEmailAsync(Input.Email);
+                    var Role = await _userManager.GetRolesAsync(user);
+
+                    if (Role.Contains("Learner"))
+                    {
+                        return RedirectToAction("Index", "Student");
+                    }
+                    else if (Role.Contains("Admin"))
+                    {
+                        return RedirectToAction("Index", "Administration");
+                    }
+                    else if (Role.Contains("Parent"))
+                    {
+                        return RedirectToAction("Index", "Parent");
+                    }
+                    else if (Role.Contains("Teacher"))
+                    {
+                        return RedirectToAction("Index", "Tutor");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, "Couldn't validate Your Role Please try again later.");
+                    }
+
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
+                    //return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
                 {
@@ -105,6 +129,44 @@ namespace tobedeleted.Areas.Identity.Pages.Account
 
             // If we got this far, something failed, redisplay form
             return Page();
+
         }
     }
 }
+//        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+//        {
+//            returnUrl ??= Url.Content("~/");
+
+//            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
+//            if (ModelState.IsValid)
+//            {
+//                // This doesn't count login failures towards account lockout
+//                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
+//                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+//                if (result.Succeeded)
+//                {
+//                    _logger.LogInformation("User logged in.");
+//                    return LocalRedirect(returnUrl);
+//                }
+//                if (result.RequiresTwoFactor)
+//                {
+//                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
+//                }
+//                if (result.IsLockedOut)
+//                {
+//                    _logger.LogWarning("User account locked out.");
+//                    return RedirectToPage("./Lockout");
+//                }
+//                else
+//                {
+//                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+//                    return Page();
+//                }
+//            }
+
+//            // If we got this far, something failed, redisplay form
+//            return Page();
+//        }
+//    }
+//}
