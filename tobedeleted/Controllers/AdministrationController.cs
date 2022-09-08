@@ -81,6 +81,7 @@ namespace tobedeleted.Controllers
             ViewBag.Roles = new SelectList(roles, "Name", "Name");
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> AddUserToRole(UserRole userRole )
         {
