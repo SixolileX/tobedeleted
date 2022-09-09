@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+
+    <h3 style="text-align:left;">Add Assignment</h3>
+
+    <form action="/action_page.php">
+        <fieldset>
+            @*<legend>Personalia:</legend>*@
+            <label for="fname">Enter assignment title:</label><br>
+            <input type="text" id="title" name="title" value="" placeholder="eg. Assignment 1"><br>
+            <label for="lname">Enter assignment type:</label><br>
+            <input type="text" id="type" name="type" value="" placeholder="eg. Individual"><br><br>
+            <div>
+                <h4 style="text-align:left;">Instructions </h4>
+                <textarea name="message" rows="10" cols="30">Write instructions of the assignment here.</textarea>
+            </div>
+
+
+        </fieldset>
+    </form>
+    <br />
+    <form action="/action_page.php">
+        <h4> Attachment</h4>
+        <label for="myfile">Select a file:</label>
+        <input type="file" id="myfile" name="myfile"><br>
+        <p> Note:  Only 1 attachment is allowed.</p>
+        
+    </form>
+
+    <div>
+        @using (Html.BeginForm(FormMethod.Post))
+        {
+            <input type="submit" class="btn btn-primary">
+            <input type="submit" class="btn btn-primary" value="Back" formaction="@Url.Action("Assessments", "Teacher")" />
+
+        }
+    </div>
+    
+
+</body>
+</html>

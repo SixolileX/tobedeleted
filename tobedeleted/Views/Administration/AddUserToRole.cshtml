@@ -18,7 +18,7 @@
         <div class="col-6 offset-3">
             <form asp-action="AddUserToRole" method="post">
                 <div class="form-group">
-                    <label>Select UserName</label>
+                    <label>Select Username</label>
                     <select asp-for="UserId" asp-items="@ViewBag.Users" class="form-control">
                         <option selected disabled>--selected user--</option>
                     </select>
