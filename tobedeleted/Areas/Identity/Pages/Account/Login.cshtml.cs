@@ -89,7 +89,7 @@ namespace tobedeleted.Areas.Identity.Pages.Account
 
                     if (Role.Contains("Learner"))
                     {
-                        return RedirectToAction("IndexHome", "Student");
+                        return RedirectToAction("DashBoards", "Learner");
                     }
                     else if (Role.Contains("Admin"))
                     {

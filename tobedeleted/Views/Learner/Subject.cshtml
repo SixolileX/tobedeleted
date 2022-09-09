@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewData["Title"] = "Subject";
+    Layout = "~/Pages/_LayoutLearner.cshtml";
+}
+
+
+<h1>Subject</h1>
+<br />
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - learner</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<style type="text/css">
+    p{
+        color:black;
+    }
+    .form-select{
+        outline-color:blue;
+        width:300px;
+        border:double;
+       
+    }
+    
+</style>
+
+<div class="mt-4 p-5 bg-white text-black-50 rounded">
+    <h1>Get Started</h1>
+    <p>Select_subject_and_enroll_to_be_Inntune_with_your_studies</p>
+
+    <div class="toast show">
+        <div class="toast-header">
+            Enrollement
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body">
+            Make Sure You Select the right Grade !
+        </div>
+    </div>
+    <div>
+        <select class="form-select" aria-label="Default select example">
+            <option selected>Select Grade</option>
+            <option value="1">Grade 10</option>
+            <option value="2">Grade 11</option>
+            <option value="3">Grade 12</option>
+        </select>
+    </div>
+    <br />
+    <nav class="navbar navbar-light" style="background-color:black;">
+
+        <form class="d-flex">
+            <input class="form-control mc-2" type="search" placeholder="Enter Key" aria-label="search" />
+            <button class="btn btn-outline-primary" type="submit">Enroll</button>
+
+        </form>
+
+    </nav>
+
+</div>
+

@@ -36,4 +36,12 @@
     <Folder Include="wwwroot\lib\jquery\dist\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Views\Learner\DashBoards.cshtml" />
+    <None Include="Views\Learner\Maths.cshtml" />
+    <None Include="Views\Learner\QuestionPA.cshtml" />
+    <None Include="Views\Learner\Report.cshtml" />
+    <None Include="Views\Learner\Subject.cshtml" />
+  </ItemGroup>
+
 </Project>
