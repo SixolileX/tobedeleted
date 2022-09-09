@@ -1,6 +1,8 @@
 ﻿@model List<Microsoft.AspNetCore.Identity.IdentityUser>
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Pages/_LayoutAdmin.cshtml";
+}
 }
 
 <h3 class="text-center">User Role Management</h3>
@@ -31,7 +33,7 @@
                             <tr>
                                 <td>@u.UserName</td>
                                 <td>
-                                    <a class="btn btn-success" 
+                                    <a class="btn btn-success"
                                        asp-route-userId="@u.Id"
                                        asp-action="Details">
                                         View Details

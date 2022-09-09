@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32413.511
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tobedeleted", "tobedeleted\tobedeleted.csproj", "{C16811B0-57FD-4437-BDA1-27A720F4DACF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "tobedeleted", "tobedeleted\tobedeleted.csproj", "{C16811B0-57FD-4437-BDA1-27A720F4DACF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

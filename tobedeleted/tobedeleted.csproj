@@ -23,7 +23,6 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\lib\bootstrap\" />
@@ -42,6 +41,9 @@
     <None Include="Views\Learner\QuestionPA.cshtml" />
     <None Include="Views\Learner\Report.cshtml" />
     <None Include="Views\Learner\Subject.cshtml" />
+    <None Include="wwwroot\css\Images\2020-08-21T030947Z_475628610_MT1USATODAY14786725_RTRMADP_3_MALIK-GORDON-A-SIXTH-GRADER--e1600889058219.webp" />
+    <None Include="wwwroot\css\Images\40af76868e1b40cf82fe18138601b5de %281%29.webp" />
+    <None Include="wwwroot\css\Images\global_us_fl_distance_learning_laptop.webp" />
   </ItemGroup>
 
 </Project>

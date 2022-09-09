@@ -1,6 +1,8 @@
 ﻿@model List<Microsoft.AspNetCore.Identity.IdentityRole>
-@{ 
+@{
     ViewData["Title"] = "All Roles";
+    Layout = "~/Pages/_LayoutAdmin.cshtml";
+}
 }
 <h3 class="text-center">Role Management</h3>
 <hr />
@@ -14,8 +16,8 @@
                 <label>Enter Role Name</label>
                 <input type="text" id="role" name="role" class="form-control" placeholder="enter role name..." />
                 <br />
-                <input type="submit" value="Create"class="btn btn-outline-primary btn-block"/>
-                <a asp-action="Index"class="btn btn-outline-danger btn-block">cancel</a>
+                <input type="submit" value="Create" class="btn btn-outline-primary btn-block" />
+                <a asp-action="Index" class="btn btn-outline-danger btn-block">cancel</a>
             </div>
         </form>
     </div>

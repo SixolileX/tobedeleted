@@ -1,6 +1,8 @@
 ﻿@model List<string>
 @{
     ViewData["Title"] = "Details";
+    Layout = "~/Pages/_LayoutAdmin.cshtml";
+}
 
 }
 <h3 class="text-center">User: <b>@ViewBag.UserName</b></h3>
@@ -24,7 +26,7 @@
                             <th>UserName</th>
                             <th>Action</th>
                         </tr>
-                        
+
                     </thead>
                     <tbody>
                         @foreach (var r in Model)
@@ -34,9 +36,9 @@
                                 <td>
                                     <a class="btn btn-success"
                                        asp-route-userName="@ViewBag.UserName"
-                                       asp-action="RemoveUserRole" 
+                                       asp-action="RemoveUserRole"
                                        onclick="return confirm('Are you sure')">
-                                    
+
                                     </a>
                                 </td>
                             </tr>
