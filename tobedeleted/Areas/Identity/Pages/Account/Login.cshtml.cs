@@ -101,7 +101,7 @@ namespace tobedeleted.Areas.Identity.Pages.Account
                     }
                     else if (Role.Contains("Teacher"))
                     {
-                        return RedirectToAction("Index", "Tutor");
+                        return RedirectToAction("TDash", "Teacher");
                     }
                     else
                     {
