@@ -11,10 +11,12 @@ using tobedeleted.Models;
 namespace tobedeleted.Controllers
 {
    
+    [Authorize(Roles ="Admin")]
     public class AdministrationController : Controller
     {
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly UserManager<IdentityUser> userManager;
+       
 
        
 
