@@ -1,9 +1,106 @@
 ﻿
 @{
-    ViewData["Title"] = "DashBoard";
     Layout = "~/Pages/_LayoutTeacher.cshtml";
 }
 
-<h1>
-    @ViewData["Title"]
-</h1><p>Use this page to detail your site's privacy policy.</p>
+<div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light" style="text-align:center;">Latest news and announcements"</h1>
+        <hr />
+    </div>
+</div>
+
+<div class="container">
+    <div class="container mt-3">
+        <div class="card bg-light text-dark">
+            <div class="card-body">No learners enrolled yet.</div>
+        </div>
+        <br>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-sm-8">
+                <style>
+                    table {
+                        width: 100%;
+                    }
+
+                    table, th, td {
+                        border: 1px solid black;
+                        border-collapse: collapse;
+                    }
+
+                    th, td {
+                        padding: 5px;
+                        text-align: center;
+                    }
+
+                    table.names tr:nth-child(even) {
+                        background-color: #eee;
+                    }
+
+                    table.names tr:nth-child(odd) {
+                        background-color: #fff;
+                    }
+
+                    table.names th {
+                        background-color: black;
+                        color: white
+                    }
+                </style>
+
+                <h3 style="text-align:center;">These are the upcoming events! </h3>
+                <br />
+                <table class="names">
+                    <tr>
+                        <th>Name</th>
+                        <th>Subject</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td>Grade 11 class</td>
+                        <td>Accounting</td>
+                        <td>29/08/2022</td>
+                        <td>09:00 am</td>
+                        <td>Active</td>
+                    </tr>
+                    <tr>
+                        <td>Grade 10 class</td>
+                        <td>Mathematics</td>
+                        <td>31/08/2022</td>
+                        <td>11:15 am</td>
+                        <td>Active</td>
+                    </tr>
+                    <tr>
+                        <td>Grade 10 class</td>
+                        <td>Mathematics</td>
+                        <td>05/09/2022</td>
+                        <td>08:00 am</td>
+                        <td>Active</td>
+                    </tr>
+                    <tr>
+                        <td>Grade 11 class</td>
+                        <td>Accounting</td>
+                        <td>07/09/2022</td>
+                        <td>10:00 am</td>
+                        <td>Active</td>
+                    </tr>
+                    <tr>
+                        <td>Grade 10 class</td>
+                        <td>Mathematics</td>
+                        <td>12/09/2022</td>
+                        <td>11:30 am</td>
+                        <td>Active</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br />
+    <img src="~/css/Images/online-teacher.jpg"  class="card-img-top" height="700" alt="...">
+</div>
+
+

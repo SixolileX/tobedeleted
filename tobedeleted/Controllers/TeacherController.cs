@@ -20,6 +20,10 @@ namespace tobedeleted.Controllers
         {
             return View("Assignment");
         }
+        public IActionResult ViewAssessments()
+        {
+            return View();
+        }
         public IActionResult Announcements()
         {
             return View();
@@ -37,6 +41,11 @@ namespace tobedeleted.Controllers
         {
             return View();
         }
+        public IActionResult Meetings()
+        {
+            return View();
+        }
+
 
     }
 }
