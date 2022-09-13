@@ -12,5 +12,11 @@ namespace tobedeleted.Data
             : base(options)
         {
         }
+        public DbSet<Lies.Models.Department> Departments { get; set; }
+        public DbSet<Lies.Models.Subject> Subjects { get; set; }
+        //public DbSet<Lies.Models.Role> Roles { get; set; }
+        public DbSet<Lies.Models.HOD> HODs { get; set; }
+        //public DbSet<Lies.Models.User> Users { get; set; }
+        public DbSet<Lies.Models.Grade> Grades { get; set; }
     }
 }

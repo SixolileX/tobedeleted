@@ -47,10 +47,10 @@ namespace tobedeleted.Areas.Identity.Pages.Account
         {
          
 
-            [Required]
-            [EmailAddress]
-            [Display(Name = "Address")]
-            public string Address { get; set; }
+            //[Required]
+            //[EmailAddress]
+            //[Display(Name = "Address")]
+            //public string Address { get; set; }
 
             [Required]
             [EmailAddress]

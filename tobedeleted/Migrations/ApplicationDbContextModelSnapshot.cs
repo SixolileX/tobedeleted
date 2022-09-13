@@ -19,6 +19,76 @@ namespace tobedeleted.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Lies.Models.Department", b =>
+                {
+                    b.Property<int>("DepID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("DepDesc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("DepID");
+
+                    b.ToTable("Departments");
+                });
+
+            modelBuilder.Entity("Lies.Models.Grade", b =>
+                {
+                    b.Property<int>("GrID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("GrDesc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("GrID");
+
+                    b.ToTable("Grades");
+                });
+
+            modelBuilder.Entity("Lies.Models.HOD", b =>
+                {
+                    b.Property<int>("HID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("GradeGrID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SubjectSubID")
+                        .HasColumnType("int");
+
+                    b.HasKey("HID");
+
+                    b.HasIndex("GradeGrID");
+
+                    b.HasIndex("SubjectSubID");
+
+                    b.ToTable("HODs");
+                });
+
+            modelBuilder.Entity("Lies.Models.Subject", b =>
+                {
+                    b.Property<int>("SubID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("SubDesc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SubID");
+
+                    b.ToTable("Subjects");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -213,6 +283,21 @@ namespace tobedeleted.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Lies.Models.HOD", b =>
+                {
+                    b.HasOne("Lies.Models.Grade", "Grade")
+                        .WithMany()
+                        .HasForeignKey("GradeGrID");
+
+                    b.HasOne("Lies.Models.Subject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("SubjectSubID");
+
+                    b.Navigation("Grade");
+
+                    b.Navigation("Subject");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

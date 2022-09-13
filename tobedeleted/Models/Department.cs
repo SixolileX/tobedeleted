@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Lies.Models
 {
-    public class Grade
+    public class Department
     {
         [Key]
-        public int GrID { get; set; }
+        public int DepID { get; set; }
         [Required]
-        public string GrDesc { get; set; }
+        public string DepDesc { get; set; }
+        //public Subject Subject { get; set; }
     }
 }

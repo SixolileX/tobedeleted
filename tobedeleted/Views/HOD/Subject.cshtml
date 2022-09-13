@@ -1,0 +1,33 @@
+﻿@model Lies.Models.Subject
+
+@{
+    ViewData["Title"] = "Subject";
+    Layout = "~/Pages/_LayoutHOD.cshtml";
+}
+
+<h1>Subject</h1>
+
+<h4>Subject</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Subject">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SubDesc" class="control-label">Subject Name</label>
+                <input asp-for="SubDesc" class="form-control" />
+                <span asp-validation-for="SubDesc" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary " />
+                <a asp-area="" asp-controller="HOD" asp-action="GetSubject" class="btn btn-primary">View Subjects</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

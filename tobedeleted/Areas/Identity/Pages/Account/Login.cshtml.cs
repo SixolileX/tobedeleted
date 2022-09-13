@@ -105,7 +105,7 @@ namespace tobedeleted.Areas.Identity.Pages.Account
                     }
                     else if (Role.Contains("HOD"))
                     {
-                        return RedirectToAction("Index", "HOD");
+                        return RedirectToAction("Dashboard", "HOD");
                     }
                     else
                     {
