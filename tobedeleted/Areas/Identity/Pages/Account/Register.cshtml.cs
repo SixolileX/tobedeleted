@@ -45,35 +45,10 @@ namespace tobedeleted.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
-            [EmailAddress]
-            [Display(Name = "Name")]
-            public string Name { get; set; }
-
-            [Required]
-            [EmailAddress]
-            [Display(Name = "Surname")]
-            public string Surname { get; set; }
-
-            [Required]
-            [EmailAddress]
-            [Display(Name = "Date of Birth")]
-            public string DateOfBirth { get; set; }
-
-            [Required]
-            [EmailAddress]
-            [Display(Name = "Phone number")]
-            public string PhoneNo { get; set; }
-
-            [Required]
-            [EmailAddress]
-            [Display(Name = "Gender")]
-            public string Gender { get; set; }
-
-            [Required]
-            [EmailAddress]
-            [Display(Name = "Address")]
-            public string Address { get; set; }
+         
+        
+ 
+          
 
             [Required]
             [EmailAddress]

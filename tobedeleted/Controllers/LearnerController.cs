@@ -10,25 +10,17 @@ namespace Inn_TuneProject.Controllers
 {
     public class LearnerController : Controller
     {
-        private readonly conection _db;
-
-        public LearnerController(conection db)
-        {
-            _db = db;
-        }
-        public IEnumerable<Grade> Displaydata { get; set; }
-        // GET: LearnerController
-
-        
+       
         public ActionResult DashBoards()
         {
             return View();
         }
-        public async Task Subject()
+        public IActionResult Subject()
         {
 
-            Displaydata = await _db.Grade.ToList()
-          
+       
+            return View();
+
         }
 
 
