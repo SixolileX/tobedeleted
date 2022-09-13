@@ -46,9 +46,11 @@ namespace tobedeleted.Areas.Identity.Pages.Account
         public class InputModel
         {
          
-        
- 
-          
+
+            [Required]
+            [EmailAddress]
+            [Display(Name = "Address")]
+            public string Address { get; set; }
 
             [Required]
             [EmailAddress]

@@ -15,12 +15,10 @@ namespace Inn_TuneProject.Controllers
         {
             return View();
         }
-        public IActionResult Subject()
+
+        public ActionResult Subject()
         {
-
-       
             return View();
-
         }
 
 

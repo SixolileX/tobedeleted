@@ -24,7 +24,7 @@ namespace tobedeleted
         {
 
 
-            services.AddDbContext<conection>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+           
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
