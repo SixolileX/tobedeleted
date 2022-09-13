@@ -16,7 +16,8 @@ namespace Inn_TuneProject.Controllers
         }
         public ActionResult Subject()
         {
-            return View();
+            
+          return View();
         }
 
 
