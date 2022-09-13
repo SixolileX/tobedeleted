@@ -13,6 +13,7 @@
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
 
                 <div class="container">
+                    <img src="~/css/Images/lol.png" width="120" height="60" class="align-content-md-start" />
                     <a class="navbar-brand" asp-area="" asp-controller="Teacher" asp-action="TDash">Home</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -20,14 +21,17 @@
                     </button>
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                         <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="TDash">DashBoard</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="Assignment">Assignment</a>
-                            </li>
+                            @*<li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="TDash">Dashboard</a>
+                            </li>*@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="Assessments">Assessments</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="Meetings">Meetings</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="Reports">Reports</a>
                             </li>
 
                         </ul>

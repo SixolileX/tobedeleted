@@ -2,9 +2,7 @@
     ViewData["Title"] = "Assessments";
     Layout = "~/Pages/_LayoutTeacher.cshtml";
 }
-
-<!DOCTYPE html>
-
+@*<!DOCTYPE html>*@
 <div class="row py-lg-5">
     <div class="col-lg-6 col-md-8 mx-auto">
         <h1 class="fw-light" style="text-align:center;">Assessments</h1>
@@ -153,7 +151,10 @@
 
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="col">
-                        <input type="submit" class="btn btn-primary" value="Add new project" />
+                        @using (Html.BeginForm(FormMethod.Post))
+                        {
+                            <input type="submit" class="btn btn-primary" value="Add New" formaction="@Url.Action("Project", "Teacher")" />
+                        }
                     </div>
                     <div class="btn-group">
                         <button type="button" class="btn btn-secondary">View</button>
