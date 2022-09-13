@@ -9,97 +9,16 @@
         <hr />
     </div>
 </div>
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+@*<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
     <div class="container-fluid">
         <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Type here..." aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
     </div>
-</nav>
+</nav>*@
 
-@*<div class="container mt-5">
-        <div class="row">
-            <div class="col-sm-8">
-                <style>
-                    table {
-                        width: 100%;
-                    }
 
-                    table, th, td {
-                        border: 1px solid black;
-                        border-collapse: collapse;
-                    }
-
-                    th, td {
-                        padding: 5px;
-                        text-align: center;
-                    }
-
-                    table.names tr:nth-child(even) {
-                        background-color: #eee;
-                    }
-
-                    table.names tr:nth-child(odd) {
-                        background-color: #fff;
-                    }
-
-                    table.names th {
-                        background-color: black;
-                        color: white
-                    }
-                </style>
-
-                <strong style="text-align:center;">These are the upcoming classes with learners </strong>
-                <br />
-                <table class="names">
-                    <tr>
-                        <th>Name</th>
-                        <th>Subject</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Status</th>
-                    </tr>
-                    <tr>
-                        <td>Grade 11 class</td>
-                        <td>Accounting</td>
-                        <td>29/08/2022</td>
-                        <td>09:00 am</td>
-                        <td>Active</td>
-                    </tr>
-                    <tr>
-                        <td>Grade 11 class</td>
-                        <td>Mathematics</td>
-                        <td>31/08/2022</td>
-                        <td>11:15 am</td>
-                        <td>Active</td>
-                    </tr>
-                    <tr>
-                        <td>Grade 10 class</td>
-                        <td>Mathematics</td>
-                        <td>05/09/2022</td>
-                        <td>08:00 am</td>
-                        <td>Active</td>
-                    </tr>
-                    <tr>
-                        <td>Grade 10 class</td>
-                        <td>Accounting</td>
-                        <td>07/09/2022</td>
-                        <td>10:00 am</td>
-                        <td>Active</td>
-                    </tr>
-                    <tr>
-                        <td>Grade 11 class</td>
-                        <td>Mathematics</td>
-                        <td>12/09/2022</td>
-                        <td>11:30 am</td>
-                        <td>Active</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
-    <br />*@
 <br />
 <h4 style="text-align:center;"> You can create,edit and view assessments. </h4>
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -116,7 +35,11 @@
                            }
                     </div>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-secondary">View</button>
+                        @using (Html.BeginForm(FormMethod.Post))
+                        {
+                            <input type="submit" class="btn btn-primary" value="View" formaction="@Url.Action("ViewAssessments", "Teacher")" />
+                        }
+                        
                     </div>
                 </div>
             </div>
@@ -214,6 +137,4 @@
 
 
 </body>
-<div>
-    <input id="Button1" type="button" value="Back" />
-</div>
+

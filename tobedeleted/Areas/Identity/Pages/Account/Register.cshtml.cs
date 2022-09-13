@@ -62,7 +62,7 @@ namespace tobedeleted.Areas.Identity.Pages.Account
 
             [Required]
             [EmailAddress]
-            [Display(Name = "PhoneNo")]
+            [Display(Name = "Phone number")]
             public string PhoneNo { get; set; }
 
             [Required]

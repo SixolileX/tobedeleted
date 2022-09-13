@@ -1,8 +1,9 @@
-﻿@*@model IEnumerable<tobedeleted.Models.Student>
+﻿@model IEnumerable<tobedeleted.Models.Assignments>
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Pages/_LayoutTeacher.cshtml";
+
 }
 
 <h2>Index</h2>
@@ -13,10 +14,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.StudentName)
+            @Html.DisplayNameFor(model => model.AssignTitle)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Age)
+            @Html.DisplayNameFor(model => model.AssignType)
         </th>
         <th></th>
     </tr>
@@ -25,17 +26,17 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.StudentName)
+                @Html.DisplayFor(modelItem => item.AssignTitle)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Age)
+                @Html.DisplayFor(modelItem => item.AssignType)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.StudentId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.StudentId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.StudentId })
+                @Html.ActionLink("Edit", "Edit", new { id = item.AssignID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.AssignID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.AssignID })
             </td>
         </tr>
     }
 
-</table>*@
+</table>
