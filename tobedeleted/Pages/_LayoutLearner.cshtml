@@ -18,6 +18,7 @@
 
             <nav class="navbar navbar-expand-lg bg-light">
                 <div class="container-fluid">
+                    <img src="~/css/Images/lol.png" width="120" height="60" class="align-content-md-start" />
                     <a class="navbar-brand" asp-area="" asp-controller="Learner" asp-action="DashBoards">InnTune</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -27,9 +28,9 @@
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" asp-area="" asp-controller="Learner" asp-action="DashBoards">DashBoard</a>
                             </li>
-                            
+
                             <li class="nav-item dropdown">
-                                <a class= nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                <a class=nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="true">
                                     Subject
                                 </a>
                                 <ul class="dropdown-menu">
@@ -45,7 +46,9 @@
                                     <li> <a class="dropdown-item" asp-area="" asp-controller="Learner" asp-action="Report">Get Report</a></li>
                                 </ul>
                             </li>
-
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" asp-area="" asp-controller="Learner" asp-action="Subject">Find-IT</a>
+                            </li>
                         </ul>
 
                     </div>
