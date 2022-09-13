@@ -1,53 +1,49 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <UserSecretsId>aspnet-tobedeleted-4A3CA86B-3BFE-4BD9-BD84-490D08A33C6C</UserSecretsId>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<UserSecretsId>aspnet-tobedeleted-4A3CA86B-3BFE-4BD9-BD84-490D08A33C6C</UserSecretsId>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="ViewModels\**" />
-    <Content Remove="ViewModels\**" />
-    <EmbeddedResource Remove="ViewModels\**" />
-    <None Remove="ViewModels\**" />
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Remove="ViewModels\**" />
+		<Content Remove="ViewModels\**" />
+		<EmbeddedResource Remove="ViewModels\**" />
+		<None Remove="ViewModels\**" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.17" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.17" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.17" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.17" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.17" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.17" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.17" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.17" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.17" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.17" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Data\" />
-	  <HEAD></HEAD>
-=======
-    <Folder Include="wwwroot\images\" />
->>>>>>> 9da4267567186ff8f412fd45532ebc6454d4362c
-    <Folder Include="wwwroot\js\" />
-    <Folder Include="wwwroot\lib\bootstrap\" />
-    <Folder Include="wwwroot\lib\bootstrap\dist\css\" />
-    <Folder Include="wwwroot\lib\bootstrap\dist\js\" />
-    <Folder Include="wwwroot\lib\jquery-validation-unobtrusive\" />
-    <Folder Include="wwwroot\lib\jquery-validation\" />
-    <Folder Include="wwwroot\lib\jquery-validation\dist\" />
-    <Folder Include="wwwroot\lib\jquery\" />
-    <Folder Include="wwwroot\lib\jquery\dist\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="Controllers\" />
+		<Folder Include="Data\" />
+		<Folder Include="wwwroot\js\" />
+		<Folder Include="wwwroot\lib\bootstrap\" />
+		<Folder Include="wwwroot\lib\bootstrap\dist\css\" />
+		<Folder Include="wwwroot\lib\bootstrap\dist\js\" />
+		<Folder Include="wwwroot\lib\jquery-validation-unobtrusive\" />
+		<Folder Include="wwwroot\lib\jquery-validation\" />
+		<Folder Include="wwwroot\lib\jquery-validation\dist\" />
+		<Folder Include="wwwroot\lib\jquery\" />
+		<Folder Include="wwwroot\lib\jquery\dist\" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Include="Views\Learner\DashBoards.cshtml" />
-    <None Include="Views\Learner\Maths.cshtml" />
-    <None Include="Views\Learner\QuestionPA.cshtml" />
-    <None Include="Views\Learner\Report.cshtml" />
-    <None Include="Views\Learner\Subject.cshtml" />
-    <None Include="wwwroot\css\Images\2020-08-21T030947Z_475628610_MT1USATODAY14786725_RTRMADP_3_MALIK-GORDON-A-SIXTH-GRADER--e1600889058219.webp" />
-    <None Include="wwwroot\css\Images\40af76868e1b40cf82fe18138601b5de %281%29.webp" />
-    <None Include="wwwroot\css\Images\global_us_fl_distance_learning_laptop.webp" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="Views\Learner\DashBoards.cshtml" />
+		<None Include="Views\Learner\Maths.cshtml" />
+		<None Include="Views\Learner\QuestionPA.cshtml" />
+		<None Include="Views\Learner\Report.cshtml" />
+		<None Include="Views\Learner\Subject.cshtml" />
+		<None Include="wwwroot\css\Images\2020-08-21T030947Z_475628610_MT1USATODAY14786725_RTRMADP_3_MALIK-GORDON-A-SIXTH-GRADER--e1600889058219.webp" />
+		<None Include="wwwroot\css\Images\40af76868e1b40cf82fe18138601b5de %281%29.webp" />
+		<None Include="wwwroot\css\Images\global_us_fl_distance_learning_laptop.webp" />
+	</ItemGroup>
 
 </Project>
