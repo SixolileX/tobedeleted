@@ -4,20 +4,31 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using tobedeleted.Models;
 
 namespace Inn_TuneProject.Controllers
 {
     public class LearnerController : Controller
     {
+        private readonly conection _db;
+
+        public LearnerController(conection db)
+        {
+            _db = db;
+        }
+        public IEnumerable<Grade> Displaydata { get; set; }
         // GET: LearnerController
+
+        
         public ActionResult DashBoards()
         {
             return View();
         }
-        public ActionResult Subject()
+        public async Task Subject()
         {
-            
-          return View();
+
+            Displaydata = await _db.Grade.ToList()
+          
         }
 
 
