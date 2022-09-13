@@ -24,7 +24,7 @@
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Data\" />
-<<<<<<< HEAD
+	  <HEAD></HEAD>
 =======
     <Folder Include="wwwroot\images\" />
 >>>>>>> 9da4267567186ff8f412fd45532ebc6454d4362c
