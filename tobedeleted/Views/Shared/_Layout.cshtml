@@ -25,10 +25,10 @@
                                 <a class="nav-link text-dark btn-outline-primary" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark btn-outline-primary" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                                <a class="nav-link text-dark btn-outline-primary" asp-area="" asp-controller="Home" asp-action="Contact">Contact-us</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark btn-outline-primary" asp-area="" asp-controller="Home" asp-action="Index">About</a>
+                                <a class="nav-link text-dark btn-outline-primary" asp-area="" asp-controller="Home" asp-action="About">About</a>
                             </li>
 
                         </ul>
@@ -42,15 +42,43 @@
                 @RenderBody()
             </main>
         </div>
-        </div>
-        <footer class="border-top footer text-muted">
-            <div class="container">
-                &copy; 2022 - tobedeleted - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>
+    </div>
+   
+    <div>
+        <footer class="border-top footer text-muted p-3 mb-2 bg-dark text-white">
+           
+            @*<div class="row pt-md">
+                <div class="col-lg-3 col-sm-4 ml-lg-auto mb-5 mb-lg-0">
+                    <h6 class="heading mb-3">Work with us</h6>
+                    <ul class="list-unstyled">
+                        <li><a>Become a tutor</a></li>
+                        <li><a>become a student</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-sm-4 mb-5 mb-lg-0">
+                    <h6 class="heading mb-3">Get to know us</h6>
+                    <ul class="list-unstyled">
+                        <li><a>Contact us</a></li>
+                        <li><a>About us</a></li>
+                        <li><a>Past Exam Papers</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-sm-4 mb-5 mb-lg-0">
+                    <h6 class="heading mb-3">Learn with us</h6>
+                    <ul class="list-unstyled text-small">
+                        <li><a>Online Tutoring</a></li>
+                        <li><a>Areas We Cover</a></li>
+                        <li><a>Subjects We Offer</a></li>
+                    </ul>
+                </div>
+              
+            </div>*@
+            <p class="text-center">Developed By #INNOVA-TECHS</p>
         </footer>
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-        @await RenderSectionAsync("Scripts", required: false)
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

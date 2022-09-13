@@ -103,6 +103,10 @@ namespace tobedeleted.Areas.Identity.Pages.Account
                     {
                         return RedirectToAction("TDash", "Teacher");
                     }
+                    else if (Role.Contains("HOD"))
+                    {
+                        return RedirectToAction("Index", "HOD");
+                    }
                     else
                     {
                         ModelState.AddModelError(string.Empty, "Couldn't validate Your Role Please try again later.");
