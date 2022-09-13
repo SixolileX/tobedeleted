@@ -24,6 +24,10 @@
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Data\" />
+<<<<<<< HEAD
+=======
+    <Folder Include="wwwroot\images\" />
+>>>>>>> 9da4267567186ff8f412fd45532ebc6454d4362c
     <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\lib\bootstrap\" />
     <Folder Include="wwwroot\lib\bootstrap\dist\css\" />
