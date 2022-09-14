@@ -30,7 +30,7 @@
         <div class="container mt-3">
             <div class="card bg-light text-dark">
                 <form action="/action_page.php">
-                    <label for="lname">Question 3: (Type your question and answer options below and click the correct answer)</label><br>
+                    <label for="lname">Question 1: (Type your question and answer options below and click the correct answer)</label><br>
                     <input type="text" id="type" name="type" value="" placeholder="type question herre.." col="100"><br><br>
                     <label for="lname">(Type your answer options below and click the correct answer)</label>
                     <div class="form-check form-switch">
@@ -79,7 +79,7 @@
             <div>
                 @using (Html.BeginForm(FormMethod.Post))
                 {
-                    <input type="submit" class="btn btn-primary">
+                    <input type="submit" class="btn btn-primary" value="submit" formaction="@Url.Action("Assessments", "Teacher")" />
                     <input type="submit" class="btn btn-primary" value="Back" formaction="@Url.Action("Assessments", "Teacher")" />}
             </div>
 
