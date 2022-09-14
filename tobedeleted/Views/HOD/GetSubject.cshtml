@@ -1,14 +1,15 @@
-﻿@model IEnumerable<Lies.Models.Subject>
+﻿@model IEnumerable<tobedeleted.Models.Subject>
 
 @{
     ViewData["Title"] = "GetSubject";
     Layout = "~/Pages/_LayoutHOD.cshtml";
 }
 
-<h1>GetSubject</h1>
+<h1>Get Subject</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-controller="HOD" asp-action="Subject">Create New</a>
+
 </p>
 <table class="table">
     <thead>
@@ -20,17 +21,28 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SubDesc)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.SubID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.SubID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.SubID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SubDesc)
+                </td>
+                <td>
+                    <a asp-controller="HOD" asp-action="UpdateSubject" asp-route-id="@item.SubID">Edit</a> |
+                    <a asp-controller="HOD" asp-action="Maths" asp-route-id="@item.SubID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.SubID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+<div>
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+        
+        <input type="submit" class="btn btn-primary" value="Back" formaction="@Url.Action("Dashboard", "HOD")" />
+
+    }
+    <button onclick="window.print()">Print this page</button>
+</div>
+

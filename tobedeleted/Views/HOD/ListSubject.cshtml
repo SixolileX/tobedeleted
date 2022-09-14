@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Lies.Models.Subject>
+﻿@model IEnumerable<tobedeleted.Models.Subject>
 
 @{
     ViewData["Title"] = "ListSubject";
@@ -26,7 +26,7 @@
                 @Html.DisplayFor(modelItem => item.SubDesc)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.SubID">Edit</a> |
+                <a asp-action="UpdateSubject" asp-route-id="@item.SubID">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.SubID">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.SubID">Delete</a>
             </td>

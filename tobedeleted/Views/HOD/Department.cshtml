@@ -1,22 +1,22 @@
-﻿@model tobedeleted.Models.Grade
+﻿@model tobedeleted.Models.Department
 
 @{
-    ViewData["Title"] = "Grade";
+    ViewData["Title"] = "Department";
     Layout = "~/Pages/_LayoutHOD.cshtml";
 }
 
-<h1>Grade</h1>
+<h1>Department</h1>
 
-<h4>Grade</h4>
+<h4>Department</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Grade">
+        <form asp-action="Department">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="GrDesc" class="control-label"></label>
-                <input asp-for="GrDesc" class="form-control" />
-                <span asp-validation-for="GrDesc" class="text-danger"></span>
+                <label asp-for="DepDesc" class="control-label"></label>
+                <input asp-for="DepDesc" class="form-control" />
+                <span asp-validation-for="DepDesc" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

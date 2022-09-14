@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewData["Title"] = "ActivityLog";
+    Layout = "~/Pages/_LayoutHOD.cshtml";
+}
+
+<h1>ActivityLog</h1>
+<br />
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm-8">
+            <hr>
+            <style>
+                table {
+                    width: 100%;
+                }
+
+                table, th, td {
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                }
+
+                th, td {
+                    padding: 5px;
+                    text-align: center;
+                }
+
+                table.names tr:nth-child(even) {
+                    background-color: #eee;
+                }
+
+                table.names tr:nth-child(odd) {
+                    background-color: #fff;
+                }
+
+                table.names th {
+                    background-color: black;
+                    color: white
+                }
+            </style>
+
+
+            <table class="names">
+                <tr>
+                    <th>Name</th>
+                    <th>Staff Role</th>
+                    <th>Activity Date</th>
+                    <th>Time</th>
+                </tr>
+                <tr>
+                    <td>Aviwe Nzena</td>
+                    <td>Teacher</td>
+                    <td>2022/09/01</td>
+                    <td>08:00:06</td>
+                </tr>
+                <tr>
+                    <td>Nikita Maqambayi</td>
+                    <td>Subject Coordinator</td>
+                    <td>2022/09/05</td>
+                    <td>08:05:45</td>
+                </tr>
+                <tr>
+                    <td>Aviwe Nzena</td>
+                    <td>Teacher</td>
+                    <td>2022/09/05</td>
+                    <td>10:06:35</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <br />
+    
+    <button onclick="window.print()">Print this page</button>
+</div>
+
+

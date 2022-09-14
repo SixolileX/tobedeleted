@@ -12,12 +12,11 @@ namespace tobedeleted.Data
             : base(options)
         {
         }
-        public DbSet<Lies.Models.Department> Departments { get; set; }
-        public DbSet<Lies.Models.Subject> Subjects { get; set; }
-        //public DbSet<Lies.Models.Role> Roles { get; set; }
-        public DbSet<Lies.Models.HOD> HODs { get; set; }
-        //public DbSet<Lies.Models.User> Users { get; set; }
-        public DbSet<Lies.Models.Grade> Grades { get; set; }
-        public DbSet<tobedeleted.Models.Assignment> Assignments { get; set; }
+        public DbSet<tobedeleted.Models.Department> Departments { get; set; }
+        public DbSet<tobedeleted.Models.Subject> Subjects { get; set; }
+        public DbSet<tobedeleted.Models.Meeting> Meetings { get; set; }
+        public DbSet<tobedeleted.Models.HOD> HODs { get; set; }
+        public DbSet<tobedeleted.Models.SubDep> SubDep { get; set; }
+        public DbSet<tobedeleted.Models.Grade> Grades { get; set; }
     }
 }

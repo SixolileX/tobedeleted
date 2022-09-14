@@ -1,0 +1,36 @@
+﻿@model IEnumerable<tobedeleted.Models.Department>
+
+@{
+    ViewData["Title"] = "GetDepartment";
+    Layout = "~/Pages/_LayoutHOD.cshtml";
+}
+
+<h1>List Enrolled Departments</h1>
+
+<p>
+    <a asp-action="Department">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DepDesc)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepDesc)
+            </td>
+            <td>
+                <a asp-action="UpdateDepartment" asp-route-id="@item.DepID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.DepID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.DepID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace tobedeleted.Models
 {
-    public class Department
+    public class Meeting
     {
         [Key]
-        public int DepID { get; set; }
+        public int MettingID { get; set; }
+        [DataType(DataType.DateTime)]
         [Required]
-        public string DepDesc { get; set; }
-        //public Subject Subject { get; set; }
+        public DateTime Date { get; set; }
     }
 }

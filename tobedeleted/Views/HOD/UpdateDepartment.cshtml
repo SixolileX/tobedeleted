@@ -1,31 +1,32 @@
-﻿@model Lies.Models.Department
+﻿@model tobedeleted.Models.Department
 
 @{
-    ViewData["Title"] = "EnrolDepartment";
+    ViewData["Title"] = "UpdateDepartment";
     Layout = "~/Pages/_LayoutHOD.cshtml";
 }
 
-<h1>EnrolDepartment</h1>
+<h1>Update Department</h1>
 
 <h4>Department</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="EnrolDepartment">
+        <form asp-action="UpdateDepartment">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="DepID" />
             <div class="form-group">
-                <label asp-for="DepDesc" class="control-label">Department Name</label>
+                <label asp-for="DepDesc" class="control-label"></label>
                 <input asp-for="DepDesc" class="form-control" />
                 <span asp-validation-for="DepDesc" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="GetDepartment">Back to List</a>
 </div>
 

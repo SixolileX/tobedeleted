@@ -3,91 +3,23 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using tobedeleted.Data;
 
 namespace tobedeleted.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220914150751_AddSubDep")]
+    partial class AddSubDep
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("Lies.Models.Department", b =>
-                {
-                    b.Property<int>("DepID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("DepDesc")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("DepID");
-
-                    b.ToTable("Departments");
-                });
-
-            modelBuilder.Entity("Lies.Models.Grade", b =>
-                {
-                    b.Property<int>("GrID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("GrDesc")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("GrID");
-
-                    b.ToTable("Grades");
-                });
-
-            modelBuilder.Entity("Lies.Models.HOD", b =>
-                {
-                    b.Property<int>("HID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("GradeGrID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SubjectSubID")
-                        .HasColumnType("int");
-
-                    b.HasKey("HID");
-
-                    b.HasIndex("GradeGrID");
-
-                    b.HasIndex("SubjectSubID");
-
-                    b.ToTable("HODs");
-                });
-
-            modelBuilder.Entity("Lies.Models.Subject", b =>
-                {
-                    b.Property<int>("SubID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("SubDesc")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("SubID");
-
-                    b.ToTable("Subjects");
-                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -285,43 +217,107 @@ namespace tobedeleted.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("tobedeleted.Models.Assignment", b =>
+            modelBuilder.Entity("tobedeleted.Models.Department", b =>
                 {
-                    b.Property<int>("AssignID")
+                    b.Property<int>("DepID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AssignInstructions")
+                    b.Property<string>("DepDesc")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("AssignTitle")
-                        .HasColumnType("nvarchar(max)");
+                    b.HasKey("DepID");
 
-                    b.Property<string>("AssignType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DueDate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("AssignID");
-
-                    b.ToTable("Assignments");
+                    b.ToTable("Departments");
                 });
 
-            modelBuilder.Entity("Lies.Models.HOD", b =>
+            modelBuilder.Entity("tobedeleted.Models.Grade", b =>
                 {
-                    b.HasOne("Lies.Models.Grade", "Grade")
-                        .WithMany()
-                        .HasForeignKey("GradeGrID");
+                    b.Property<int>("GrID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.HasOne("Lies.Models.Subject", "Subject")
-                        .WithMany()
-                        .HasForeignKey("SubjectSubID");
+                    b.Property<string>("GrDesc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Navigation("Grade");
+                    b.HasKey("GrID");
 
-                    b.Navigation("Subject");
+                    b.ToTable("Grades");
+                });
+
+            modelBuilder.Entity("tobedeleted.Models.HOD", b =>
+                {
+                    b.Property<int>("HID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("GradeGrID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SubjectSubID")
+                        .HasColumnType("int");
+
+                    b.HasKey("HID");
+
+                    b.HasIndex("GradeGrID");
+
+                    b.HasIndex("SubjectSubID");
+
+                    b.ToTable("HODs");
+                });
+
+            modelBuilder.Entity("tobedeleted.Models.Meeting", b =>
+                {
+                    b.Property<int>("MettingID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("MettingID");
+
+                    b.ToTable("Meetings");
+                });
+
+            modelBuilder.Entity("tobedeleted.Models.SubDep", b =>
+                {
+                    b.Property<int>("SubDepID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("DepDesc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SubDesc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SubDepID");
+
+                    b.ToTable("SubDep");
+                });
+
+            modelBuilder.Entity("tobedeleted.Models.Subject", b =>
+                {
+                    b.Property<int>("SubID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("SubDesc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SubID");
+
+                    b.ToTable("Subjects");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -373,6 +369,21 @@ namespace tobedeleted.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("tobedeleted.Models.HOD", b =>
+                {
+                    b.HasOne("tobedeleted.Models.Grade", "Grade")
+                        .WithMany()
+                        .HasForeignKey("GradeGrID");
+
+                    b.HasOne("tobedeleted.Models.Subject", "Subject")
+                        .WithMany()
+                        .HasForeignKey("SubjectSubID");
+
+                    b.Navigation("Grade");
+
+                    b.Navigation("Subject");
                 });
 #pragma warning restore 612, 618
         }

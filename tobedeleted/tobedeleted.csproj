@@ -22,7 +22,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Data\" />
 		<Folder Include="wwwroot\js\" />
 		<Folder Include="wwwroot\lib\bootstrap\" />
 		<Folder Include="wwwroot\lib\bootstrap\dist\css\" />
@@ -38,7 +37,6 @@
 		<None Include="Views\HOD\CareerStream.cshtml" />
 		<None Include="Views\HOD\Commerce.cshtml" />
 		<None Include="Views\HOD\Dashboard.cshtml" />
-		<None Include="Views\HOD\EnrolDepartment.cshtml" />
 		<None Include="Views\HOD\GetGrade.cshtml" />
 		<None Include="Views\HOD\GetSubject.cshtml" />
 		<None Include="Views\HOD\Grade.cshtml" />

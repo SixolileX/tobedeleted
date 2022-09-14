@@ -1,31 +1,32 @@
 ﻿@model tobedeleted.Models.Grade
 
 @{
-    ViewData["Title"] = "Grade";
+    ViewData["Title"] = "UpdateGrade";
     Layout = "~/Pages/_LayoutHOD.cshtml";
 }
 
-<h1>Grade</h1>
+<h1>Update Grade</h1>
 
 <h4>Grade</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Grade">
+        <form asp-action="UpdateGrade">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="GrID" />
             <div class="form-group">
                 <label asp-for="GrDesc" class="control-label"></label>
                 <input asp-for="GrDesc" class="form-control" />
                 <span asp-validation-for="GrDesc" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="GetGrade">Back to List</a>
 </div>
 

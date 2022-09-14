@@ -12,90 +12,96 @@
     <div contenteditable="false" class="p-3 mb-2 bg-white text-black-50">
         <header>
 
-            @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div contenteditable="false" class="p-3 mb-2 bg-white text-black-50">
+                <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
 
-            <div class="container">
+                    <div class="container">
+                        <img src="~/css/Images/lol.png" width="120" height="60" class="align-content-md-start" />
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
 
-                <a class="navbar-brand" asp-area="" asp-controller="HOD" asp-action="Index">InnTune</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="HOD" asp-action="Index">Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="HOD" asp-action="EnrolUser">Enrol Staff</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="HOD" asp-action="Grade">Grade</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="HOD" asp-action="Department">Department</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="HOD" asp-action="EnrolSubject">Enrol Subject</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="HOD" asp-action="UploadFile">Upload File</a>
-                        </li>
-                    </ul>
-                    <partial name="_LoginPartial" />
-
-                </div>
-
-
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" asp-area="" asp-controller="HOD" asp-action="Dashboard">Home</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" asp-area="" asp-controller="HOD" asp-action="Dashboard" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Dashboard
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        @*<li><a >Departement</a></li>*@
+                                        @*<li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="EnrolStaff">Enrol Staff</a></li>*@
+                                        <a class="nav-link text-dark btn-outline-primary" asp-area="Identity" asp-page="/Account/Register">Enrol Staff</a>
+                                        <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Grade">Enrol Grade</a></li>
+                                        <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Department">Enrol Department</a></li>
+                                        <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Subject">Enrol Subject</a></li>
+                                        <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Meeting">Schedule Meetings</a></li>
+                                        <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Profile">Profile</a></li>
+                                        <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Reporting">Departmental Report</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        @*<li><a class="dropdown-item" href="#">Something else here</a></li>*@
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="HOD" asp-action="ActivityLog">Activity Log</a>
+                                </li>
+                            </ul>
+                            <partial name="_LoginPartial" />
+                            <form class="d-flex">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>
+                        </div>
+                      <
+                </nav>
             </div>
+            @*<nav class="navbar navbar-expand-lg navbar-light bg-light">*@
+                <!--<div class="container-fluid">
 
-        </nav>*@
-     
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                    <a class="nav-link active" aria-current="page" asp-area="" asp-controller="HOD" asp-action="Dashboard">Inn-Tune</a>
-                    
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <img src="~/css/Images/lol.png" width="120" height="60" class="align-content-md-start" />
+                    <a class="navbar-brand" asp-area="" asp-controller="HOD" asp-action="DashBoard">InnTune</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" asp-area="" asp-controller="HOD" asp-action="Dashboard">Home</a>
                             </li>
-                            @*<li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>*@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" asp-area="" asp-controller="HOD" asp-action="Dashboard" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Dashboard
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
                                     @*<li><a >Departement</a></li>*@
                                     @*<li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="EnrolStaff">Enrol Staff</a></li>*@
-                                    <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Grade">Enrol Grade</a></li>
+                                    <!--<li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Grade">Enrol Grade</a></li>
                                     <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="EnrolDepartment">Enrol Department</a></li>
                                     <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Subject">Enrol Subject</a></li>
-                                    @*<li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Role">Enrol Role</a></li>*@
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Meeting">Schedule Meetings</a></li>
                                     <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Profile">Profile</a></li>
                                     <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Reporting">Departmental Report</a></li>
-                                    <li><hr class="dropdown-divider"></li>
+                                    <li><hr class="dropdown-divider"></li>-->
                                     @*<li><a class="dropdown-item" href="#">Something else here</a></li>*@
-                                </ul>
+                                <!--</ul>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="" asp-controller="HOD" asp-action="CareerStream">Career Streams</a>
                             </li>
                         </ul>
-                        @*<partial name="_LoginPartial" />*@
+                        <partial name="_LoginPartial" />
                         <form class="d-flex">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
                     </div>
-                </div>
-            </nav>
+                </div>-->
+            @*</nav>*@
 
         </header>
 
