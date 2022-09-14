@@ -1,16 +1,28 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Lies.Models;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using tobedeleted.Data;
 using tobedeleted.Models;
 
 namespace Inn_TuneProject.Controllers
 {
     public class LearnerController : Controller
     {
-       
+        private readonly IWebHostEnvironment _webHostEnv;
+        //public Reports reports = new Reports();
+        private readonly ApplicationDbContext _db;
+
+        public LearnerController(IWebHostEnvironment webHostEnv, ApplicationDbContext db)
+        {
+            this._webHostEnv = webHostEnv;
+            _db = db;
+        }
+
         public ActionResult DashBoards()
         {
             return View();
@@ -20,7 +32,24 @@ namespace Inn_TuneProject.Controllers
         {
             return View();
         }
+        public IActionResult GetSubject()
+        {
+            IEnumerable<Subject> objList = _db.Subjects;//Coming from our database
+            return View(objList);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Subject(Subject obj)
+        {
+            if (ModelState.IsValid)//Checks to see if all the required fields have been met.
+            {
+                _db.Subjects.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("GetSubject");
+            }
+            return View(obj);
 
+        }
 
         // GET: LearnerController/Details/5
         public ActionResult Details(int id)
