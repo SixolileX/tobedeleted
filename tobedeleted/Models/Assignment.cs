@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace tobedeleted.Models
 {
-    public class Assignments
+    public class Assignment
     {
         [Key]
         public int AssignID { get; set; }

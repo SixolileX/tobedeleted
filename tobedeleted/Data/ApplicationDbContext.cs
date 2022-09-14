@@ -18,5 +18,6 @@ namespace tobedeleted.Data
         public DbSet<Lies.Models.HOD> HODs { get; set; }
         //public DbSet<Lies.Models.User> Users { get; set; }
         public DbSet<Lies.Models.Grade> Grades { get; set; }
+        public DbSet<tobedeleted.Models.Assignment> Assignments { get; set; }
     }
 }
