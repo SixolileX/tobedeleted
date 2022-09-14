@@ -18,25 +18,65 @@
             <input type="text" id="type" name="type" value="" placeholder="eg. Chapter 2 unit 1"><br><br>
             <div>
                 <h4 style="text-align:left;">Instructions </h4>
-                <textarea name="message" rows="10" cols="100"> Write instructions of the quizz here.</textarea>
+                <textarea name="message" rows="10" cols="100"> </textarea>
             </div>
 
 
         </fieldset>
     </form>
     <br />
-    <form action="/action_page.php">
-        <label for="lname">Question:</label><br>
-        <input type="text" id="type" name="type" value="" placeholder="What is mass" col="100"><br><br>
+    <h4>Questions</h4>
+    <div class="container p-5 my-5 border">
+        <div class="container mt-3">
+            <div class="card bg-light text-dark">
+                <form action="/action_page.php">
+                    <label for="lname">Question 1:</label><br>
+                    <input type="text" id="type" name="type" value="" placeholder="What is mass?" col="100"><br><br>
 
-    </form>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">same as weight</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                        <label class="form-check-label" for="flexSwitchCheckChecked">totally different from weight.</label>
+                    </div>
+                </form>
 
-    <div>
-        @using (Html.BeginForm(FormMethod.Post))
-        {
-            <input type="submit" class="btn btn-primary">
-            <input type="submit" class="btn btn-primary" value="Back" formaction="@Url.Action("Assessments", "Teacher")" />}
+            </div>
+            <br>
+            <div class="card bg-light text-dark">
+                <form action="/action_page.php">
+                    <label for="lname">Question 1:</label><br>
+                    <input type="text" id="type" name="type" value="" placeholder="What is mass?" col="100"><br><br>
+
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                        <label class="form-check-label" for="flexSwitchCheckDefault">same as weight</label>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                        <label class="form-check-label" for="flexSwitchCheckChecked">totally different from weight.</label>
+                    </div>
+                </form>
+            </div>
+            <br>
+            <form action="/action_page.php">
+                <label for="Duedate">Due date (date and time):</label>
+                <input type="datetime-local" id="Duedate" name="Duedate">
+                
+            </form>
+        </div>
+      
     </div>
+
+
+            <div>
+                @using (Html.BeginForm(FormMethod.Post))
+                {
+                    <input type="submit" class="btn btn-primary">
+                    <input type="submit" class="btn btn-primary" value="Back" formaction="@Url.Action("Assessments", "Teacher")" />}
+            </div>
 
 
 </body>

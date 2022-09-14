@@ -37,7 +37,7 @@
                     <div class="btn-group">
                         @using (Html.BeginForm(FormMethod.Post))
                         {
-                            <input type="submit" class="btn btn-primary" value="View" formaction="@Url.Action("ViewAssessments", "Teacher")" />
+                            <input type="submit" class="btn btn-outline-secondary" value="View" formaction="@Url.Action("ViewAssessments", "Teacher")" />
                         }
                         
                     </div>
@@ -60,7 +60,10 @@
                         }
                     </div>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-secondary">View</button>
+                        @using (Html.BeginForm(FormMethod.Post))
+                        {
+                            <input type="submit" class="btn btn-outline-secondary" value="View" formaction="@Url.Action("ViewQuizz", "Teacher")" />
+                        }
                     </div>
                 </div>
             </div>
@@ -73,18 +76,23 @@
             <div class="card-body">
 
                 <div class="d-flex justify-content-between align-items-center">
-                    <div class="col">
-                        @using (Html.BeginForm(FormMethod.Post))
-                        {
-                            <input type="submit" class="btn btn-primary" value="Add New" formaction="@Url.Action("Project", "Teacher")" />
-                        }
-                    </div>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-secondary">View</button>
-                    </div>
+                        <div class="col">
+                            @using (Html.BeginForm(FormMethod.Post))
+                            {
+                                <input type="submit" class="btn btn-primary" value="Add New" formaction="@Url.Action("Project", "Teacher")" />
+                            }
+                        </div>
+                        <div class="btn-group">
+                            @using (Html.BeginForm(FormMethod.Post))
+                            {
+                                <input type="submit" class="btn btn-outline-secondary" value="View" formaction="@Url.Action("ViewProject", "Teacher")" />
+                            }
+                        </div>
+                        </div>
 
+                    </div>
                 </div>
-            </div>
         </div>
     </div>
 
@@ -97,10 +105,16 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                         <div class="col">
-                            <input type="submit" class="btn btn-primary" value="Add new homework" />
+                            @using (Html.BeginForm(FormMethod.Post))
+                            {
+                                <input type="submit" class="btn btn-primary" value="Add New" formaction="@Url.Action("Homework", "Teacher")" />
+                            }
                         </div>
                         <div>
-                            <button type="button" class="btn btn-secondary">View</button>
+                            @using (Html.BeginForm(FormMethod.Post))
+                            {
+                                <input type="submit" class="btn btn-outline-secondary" value="View" formaction="@Url.Action("ViewHomework", "Teacher")" />
+                            }
                         </div>
                         
                     </div>
@@ -116,10 +130,16 @@
 
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="col">
-                        <input type="submit" class="btn btn-primary" value="Add New" />
+                        @using (Html.BeginForm(FormMethod.Post))
+                        {
+                            <input type="submit" class="btn btn-primary" value="Add New" formaction="@Url.Action("Notes", "Teacher")" />
+                        }
                     </div>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-secondary">View</button>
+                        @using (Html.BeginForm(FormMethod.Post))
+                        {
+                            <input type="submit" class="btn btn-outline-secondary" value="View" formaction="@Url.Action("ViewNotes", "Teacher")" />
+                        }
                     </div>
                 </div>
             </div>

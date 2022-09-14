@@ -32,24 +32,24 @@ namespace tobedeleted.Controllers
         {
             return View("Assignment");
         }
-        public IActionResult GetAssignment()
-        {
-            IEnumerable<Assignment> objList = _db.Assignments;//Coming from our database
-            return View(objList);
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Assignment(Assignment obj)
-        {
-            if (ModelState.IsValid)//Checks to see if all the required fields have been met.
-            {
-                _db.Assignments.Add(obj);
-                _db.SaveChanges();
-                return RedirectToAction("GetSubject");
-            }
-            return View(obj);
+        //public IActionResult GetAssignment()
+        //{
+        //    IEnumerable<Assignment> objList = _db.Assignments;//Coming from our database
+        //    return View(objList);
+        //}
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult Assignment(Assignment obj)
+        //{
+        //    if (ModelState.IsValid)//Checks to see if all the required fields have been met.
+        //    {
+        //        _db.Assignments.Add(obj);
+        //        _db.SaveChanges();
+        //        return RedirectToAction("GetSubject");
+        //    }
+        //    return View(obj);
 
-        }
+        //}
         public IActionResult ViewAssessments()
         {
             return View();
