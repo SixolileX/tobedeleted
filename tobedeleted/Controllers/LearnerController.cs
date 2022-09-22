@@ -118,8 +118,10 @@ namespace Inn_TuneProject.Controllers
                 return View();
             }
         }
-        public ActionResult Maths()
+        public ActionResult EnrollInSubject()
         {
+
+
             return View();
         }
         public ActionResult QUestionPA()
