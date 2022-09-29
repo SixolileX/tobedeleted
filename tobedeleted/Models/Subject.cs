@@ -8,6 +8,13 @@ namespace tobedeleted.Models
 {
     public class Subject
     {
+        public class Dropdownlist
+
+        {
+
+            public List<SubDep> subDeps { get; set; }
+
+        }
         [Key]
         public int SubID { get; set; }
         //[Required]
@@ -16,5 +23,6 @@ namespace tobedeleted.Models
         [Required]
         public string SubDesc { get; set; }
 
+
     }
-}
+}  
