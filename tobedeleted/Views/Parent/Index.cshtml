@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Pages/_LayoutParent.cshtml";
+    @model IEnumerable<tobedeleted.Models.MeetingScheduler>
 }
 
 <div class="text-center">
@@ -94,17 +95,54 @@
                 <div class="card-body">
                     <div class="main-timeline mt-3">
                         <div class="timeline">
-                            <span class="timeline-icon"></span>
-                            <span class="year">Aug 2022</span>
-                            <div class="timeline-content">
-                                <span class="post">20 Aug 2022</span>
+                           
                                 <p class="description">
-                                    Meeting with tutor.
+                                   
+                                    @if (Model.Count() > 1)
+                                    {
+                                        <table class="table table-bordered table-striped" style="width:100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        Meeting description.
+                                                    </th>
+                                                    <th>
+                                                        Date
+                                                    </th>
+                                                </tr>
+                                            </thead>
+
+                                            <tbody>
+                                                @foreach (var meeting in Model)
+                                                {
+                                                    <tr>
+                                                        <td w-auto>@meeting.Desc</td>
+                                                        <td w-auto>@meeting.Date</td>
+                                                        <td w-auto>
+                                                            @*<div class="w-100 btn-group" role="group">
+                                                                <a asp-controller="Parent" asp-action="Update" asp-route-ID="@meeting.MeetingID" class="btn btn-primary w-auto mx-1">Update</a>
+                                                                <a asp-controller="Parent" asp-action="Delete" asp-route-ID="@meeting.MeetingID" class="btn btn-danger mx-1 w-auto">Delete</a>
+                                                            </di*@>
+                                                        </td>
+
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                        <div class="col-6 text-left">
+                                            <a asp-controller="Parent" asp-action="Create" class="btn btn-primary">Create New Character</a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                    <p>No Appointments yet!!</p>
+                                }
+                                </div>
                                 </p>
                             </div>
                         </div>
 
-                        <div class="timeline">
+                        @*<div class="timeline">
                             <span class="timeline-icon"></span>
                             <span class="year">Sept 2022</span>
                             <div class="timeline-content">
@@ -114,9 +152,9 @@
                                     The release of the academic report.
                                 </p>
                             </div>
-                        </div>
+                        </div>*@
 
-                        <div class="timeline">
+                        @*<div class="timeline">
                             <span class="timeline-icon"></span>
                             <span class="year">Aug 2022</span>
                             <div class="timeline-content">
@@ -125,7 +163,7 @@
                                     Meeting with the school staff.
                                 </p>
                             </div>
-                        </div>
+                        </div>*@
 
                     </div>
                 </div>  <!--end card-body-->
@@ -148,231 +186,23 @@
 <br />
 
 
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-    }
 
-    html {
-        scroll-behavior: smooth;
-    }
-
-    body {
-        background: #3ea0e2;
-    }
-
-    ::selection {
-        color: #fff;
-        background: #3ea0e2;
-    }
-
-    .wrapper {
-        max-width: 1080px;
-        margin: 50px auto;
-        padding: 0 20px;
-        position: relative;
-    }
-
-        .wrapper .center-line {
-            position: absolute;
-            height: 100%;
-            width: 4px;
-            background: #fff;
-            left: 50%;
-            top: 20px;
-            transform: translateX(-50%);
-        }
-
-        .wrapper .row {
-            display: flex;
-        }
-
-        .wrapper .row-1 {
-            justify-content: flex-start;
-        }
-
-        .wrapper .row-2 {
-            justify-content: flex-end;
-        }
-
-        .wrapper .row section {
-            background: #fff;
-            border-radius: 5px;
-            width: calc(50% - 40px);
-            padding: 20px;
-            position: relative;
-        }
-
-            .wrapper .row section::before {
-                position: absolute;
-                content: "";
-                height: 15px;
-                width: 15px;
-                background: #fff;
-                top: 28px;
-                z-index: -1;
-                transform: rotate(45deg);
-            }
-
-    .row-1 section::before {
-        right: -7px;
-    }
-
-    .row-2 section::before {
-        left: -7px;
-    }
-
-    .row section .icon,
-    .center-line .scroll-icon {
-        position: absolute;
-        background: #f2f2f2;
-        height: 40px;
-        width: 40px;
-        text-align: center;
-        line-height: 40px;
-        border-radius: 50%;
-        color: #3ea0e2;
-        font-size: 17px;
-        box-shadow: 0 0 0 4px #fff, inset 0 2px 0 rgba(0,0,0,0.08), 0 3px 0 4px rgba(0,0,0,0.05);
-    }
-
-    .center-line .scroll-icon {
-        bottom: 0px;
-        left: 50%;
-        font-size: 25px;
-        transform: translateX(-50%);
-    }
-
-    .row-1 section .icon {
-        top: 15px;
-        right: -60px;
-    }
-
-    .row-2 section .icon {
-        top: 15px;
-        left: -60px;
-    }
-
-    .row section .details,
-    .row section .bottom {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-        .row section .details .title {
-            font-size: 22px;
-            font-weight: 600;
-        }
-
-    .row section p {
-        margin: 10px 0 17px 0;
-    }
-
-    .row section .bottom a {
-        text-decoration: none;
-        background: #3ea0e2;
-        color: #fff;
-        padding: 7px 15px;
-        border-radius: 5px;
-        /* font-size: 17px; */
-        font-weight: 400;
-        transition: all 0.3s ease;
-    }
-
-        .row section .bottom a:hover {
-            transform: scale(0.97);
-        }
-
-    .media(max-width: 790px) {
-        .wrapper .center-line
-
-    {
-        left: 40px;
-    }
-
-    .wrapper .row {
-        margin: 30px 0 3px 60px;
-    }
-
-        .wrapper .row section {
-            width: 100%;
-        }
-
-    .row-1 section::before {
-        left: -7px;
-    }
-
-    .row-1 section .icon {
-        left: -60px;
-    }
-
-    }
-
-    media(max-width: 440px) {
-        .wrapper .center-line, .row section::before, .row section .icon
-
-    {
-        display: none;
-    }
-
-    .wrapper .row {
-        margin: 10px 0;
-    }
-    }
-</style>
 <body>
     <div class="wrapper">
         <div class="center-line">
             <a href="#" class="scroll-icon"><i class="fas fa-caret-up"></i></a>
         </div>
+
         <div class="row row-1">
-            <section>
-                <i class="icon fas fa-home"></i>
-                <div class="details">
-                    <span class="title">Title of Section 1</span>
-                    <span>1st Jan 2021</span>
-                </div>
-                <p>Lorem ipsum dolor sit ameters consectetur adipisicing elit. Sed qui veroes praesentium maiores, sint eos vero sapiente voluptas debitis dicta dolore.</p>
-                <div class="bottom">
-                    <a href="#">Read more</a>
-                    <i>- Someone famous</i>
-                </div>
-            </section>
+        
         </div>
 
         <div class="row row-1">
-            <section>
-                <i class="icon fas fa-rocket"></i>
-                <div class="details">
-                    <span class="title">Title of Section 3</span>
-                    <span>3rd Jan 2021</span>
-                </div>
-                <p>Lorem ipsum dolor sit ameters consectetur adipisicing elit. Sed qui veroes praesentium maiores, sint eos vero sapiente voluptas debitis dicta dolore.</p>
-                <div class="bottom">
-                    <a href="#">Read more</a>
-                    <i>- Someone famous</i>
-                </div>
-            </section>
+           
         </div>
         <div class="row row-2">
-            <section>
-                <i class="icon fas fa-globe"></i>
-                <div class="details">
-                    <span class="title">Title of Section 4</span>
-                    <span>4th Jan 2021</span>
-                </div>
-                <p>Lorem ipsum dolor sit ameters consectetur adipisicing elit. Sed qui veroes praesentium maiores, sint eos vero sapiente voluptas debitis dicta dolore.</p>
-                <div class="bottom">
-                    <a href="#">Read more</a>
-                    <i>- Someone famous</i>
-                </div>
-            </section>
+          
         </div>
-
 
     </div>
 

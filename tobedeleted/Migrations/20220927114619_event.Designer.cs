@@ -10,8 +10,8 @@ using tobedeleted.Data;
 namespace tobedeleted.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220913210759_AddMeetingsToDB")]
-    partial class AddMeetingsToDB
+    [Migration("20220927114619_event")]
+    partial class @event
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -249,31 +249,9 @@ namespace tobedeleted.Migrations
                     b.ToTable("Grades");
                 });
 
-            modelBuilder.Entity("tobedeleted.Models.HOD", b =>
+            modelBuilder.Entity("tobedeleted.Models.MeetingScheduler", b =>
                 {
-                    b.Property<int>("HID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("GradeGrID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SubjectSubID")
-                        .HasColumnType("int");
-
-                    b.HasKey("HID");
-
-                    b.HasIndex("GradeGrID");
-
-                    b.HasIndex("SubjectSubID");
-
-                    b.ToTable("HODs");
-                });
-
-            modelBuilder.Entity("tobedeleted.Models.Meeting", b =>
-                {
-                    b.Property<int>("MettingID")
+                    b.Property<int>("MeetingID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -281,9 +259,30 @@ namespace tobedeleted.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("MettingID");
+                    b.Property<string>("Desc")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("Meetings");
+                    b.HasKey("MeetingID");
+
+                    b.ToTable("MeetingScheduler");
+                });
+
+            modelBuilder.Entity("tobedeleted.Models.SubDep", b =>
+                {
+                    b.Property<int>("SubDepID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("DepDesc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SubDesc")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SubDepID");
+
+                    b.ToTable("SubDep");
                 });
 
             modelBuilder.Entity("tobedeleted.Models.Subject", b =>
@@ -351,21 +350,6 @@ namespace tobedeleted.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("tobedeleted.Models.HOD", b =>
-                {
-                    b.HasOne("tobedeleted.Models.Grade", "Grade")
-                        .WithMany()
-                        .HasForeignKey("GradeGrID");
-
-                    b.HasOne("tobedeleted.Models.Subject", "Subject")
-                        .WithMany()
-                        .HasForeignKey("SubjectSubID");
-
-                    b.Navigation("Grade");
-
-                    b.Navigation("Subject");
                 });
 #pragma warning restore 612, 618
         }

@@ -2,7 +2,7 @@
 
 namespace tobedeleted.Migrations
 {
-    public partial class Grades : Migration
+    public partial class meeting : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

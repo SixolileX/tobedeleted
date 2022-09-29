@@ -14,7 +14,9 @@ using Microsoft.Extensions.Logging;
 
 namespace tobedeleted.Areas.Identity.Pages.Account
 {
+
     [AllowAnonymous]
+   
     public class LoginModel : PageModel
     {
         private readonly UserManager<IdentityUser> _userManager;
