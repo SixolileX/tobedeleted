@@ -3,7 +3,7 @@
     ViewData["Title"] = "Meeting";
     Layout = "~/Pages/_LayoutParent.cshtml";
     ViewData["Title"] = "Real-Time Binding";
-
+    @model tobedeleted.Models.MeetingScheduler
 
 }
 <div class="text-center">
@@ -11,15 +11,49 @@
     <hr />
 </div>
 
-<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-    <div class="container-fluid">
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-    </div>
-</nav>
+<form method="post" asp-action="Create">
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row text-center">
 
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label asp-for="Desc"></label>@*These names come from our properties in the model *@
+                        <input asp-for="Desc" class="form-control" />
+                        <span asp-validation-for="Desc" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <label asp-for="Date"></label>
+                        <input asp-for="Date" class="form-control" />
+                        <span asp-validation-for="Date" class="text-danger"></span>
+                    </div>
+
+
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="col-8 offset-2 row">
+                        <div class="col">
+                            <input type="submit" class="btn btn-info w-auto" value="Schedule meeting" />
+                        </div>
+                        <div class="col">
+                            <a asp-action="Meeting" class="btn btn-danger w-auto">Back</a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</form>
+<br />
+<br />
+<br />
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,7 +75,7 @@
 
         (function ($, undefined) {
 
-            
+
             ;;
 
             var defaults = {
@@ -7099,7 +7133,7 @@
 </html>
 
 
-<div class="container mt-5">
+@*<div class="container mt-5">
     <div class="row">
         <div class="col-sm-8">
             <p style="text-align:center;">You are viewing upcoming meetings</p>
@@ -7162,4 +7196,4 @@
             <input id="Button1" type="button" value="Schedule a meeting" />
         </div>
     </div>
-</div>
+</div>*@

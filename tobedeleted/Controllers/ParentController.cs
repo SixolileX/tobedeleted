@@ -27,6 +27,20 @@ namespace tobedeleted.Controllers
 
             return View();
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(MeetingScheduler obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.MeetingScheduler.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Meeting");
+            }
+            return View(obj);
+
+
+        }
 
         public IActionResult AcademicProgress()
         {
