@@ -7,18 +7,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using tobedeleted.Data;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace Inn_TuneProject.Controllers
 {
     public class LearnerController : Controller
     {
-        private readonly IWebHostEnvironment _webHostEnv;
-        //public Reports reports = new Reports();
+      
         private readonly ApplicationDbContext _db;
 
-        public LearnerController(IWebHostEnvironment webHostEnv, ApplicationDbContext db)
+        public LearnerController( ApplicationDbContext db)
         {
-            this._webHostEnv = webHostEnv;
+            
             _db = db;
         }
 
@@ -120,7 +121,10 @@ namespace Inn_TuneProject.Controllers
         }
         public ActionResult EnrollInSubject()
         {
-
+            List<AssignSubject> assig = new List<AssignSubject>();
+            assig = (from c in _db.assignSubjects select c).ToList();
+            assig.Insert(0, new AssignSubject { SubID = 0, SubDesc = "Select Subject" });
+            ViewBag.message = assig;
 
             return View();
         }

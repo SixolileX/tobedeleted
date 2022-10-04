@@ -1,4 +1,5 @@
-﻿@{
+﻿@model AssignSubject
+@{
     ViewData["Title"] = "Enroll to Subject";
     Layout = "~/Pages/_LayoutLearner.cshtml";
 }
@@ -35,14 +36,13 @@
     <br />
 
     <nav class="navbar navbar-light" style="background-color:black;">
+        <div class="form-group">
 
-        <form class="d-flex">
-            <label>Subject</label>
-            <select class="form-control mc-2" type="search" placeholder="Enter Key" aria-label="search">Choose subject</select>
-            
-
-        </form>
-
+            <label>Select Role name</label>
+            <select asp-for="SubDesc" asp-items="@(new SelectList( @ViewBag.message,"SubID","SubDesc"))" class="form-control">
+                <option selected disabled>--selected Role--</option>
+            </select>
+        </div>
     </nav>
     <br />
     <nav class="navbar navbar-light" style="background-color:black;">
