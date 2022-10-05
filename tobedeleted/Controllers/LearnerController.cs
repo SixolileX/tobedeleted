@@ -119,14 +119,12 @@ namespace Inn_TuneProject.Controllers
                 return View();
             }
         }
-        public ActionResult EnrollInSubject()
-        {
-            List<AssignSubject> assig = new List<AssignSubject>();
-            assig = (from c in _db.assignSubjects select c).ToList();
-            assig.Insert(0, new AssignSubject { SubID = 0, SubDesc = "Select Subject" });
-            ViewBag.message = assig;
 
-            return View();
+        public IEnumerable<AssignSubject> Assign { get; set; }
+        public async Task EnrollInSubject()
+        {
+            Assign = await _db.AssignSubject.ToListAsync();
+            
         }
         public ActionResult QUestionPA()
         {
