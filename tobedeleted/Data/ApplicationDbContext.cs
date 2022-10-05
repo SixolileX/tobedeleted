@@ -25,6 +25,7 @@ namespace tobedeleted.Data
         public DbSet<tobedeleted.Models.MeetingScheduler> MeetingScheduler { get; set; }
         public DbSet<tobedeleted.Models.Attendance> Attendance { get; set; }
         public DbSet<tobedeleted.Models.AssignSubject> AssignSubject { get; set; }
+        public DbSet<tobedeleted.Models.Category> Categories { get; set; }
 
     }
 }
