@@ -7,7 +7,7 @@
 
 
 
-<div class="card" style="width:50rem;">
+<div class="card align-content-md-end" style="width:50rem;">
     <img src="~/css/Images/istockphoto-1346272956-612x612.jpg" class="card-img-top" height="400" alt="...">
     <div class="card-body">
 
@@ -17,8 +17,27 @@
                     <h4>Create a new account.</h4>
                     <hr />
                     <div asp-validation-summary="All" class="text-danger"></div>
-                
-                  
+
+                    <div class="form-group">
+                        <label asp-for="Input.Name"></label>
+                        <input asp-for="Input.Name" class="form-control" />
+                        <span asp-validation-for="Input.Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.Surname"></label>
+                        <input asp-for="Input.Surname" class="form-control" />
+                        <span asp-validation-for="Input.Surname" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.PhoneNumber"></label>
+                        <input asp-for="Input.PhoneNumber" class="form-control" />
+                        <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.Address"></label>
+                        <input asp-for="Input.Address" class="form-control" />
+                        <span asp-validation-for="Input.Address" class="text-danger"></span>
+                    </div>
                     <div class="form-group">
                         <label asp-for="Input.Email"></label>
                         <input asp-for="Input.Email" class="form-control" />
