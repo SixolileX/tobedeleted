@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace tobedeleted.Migrations
 {
-    public partial class db : Migration
+    public partial class tables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,6 +47,49 @@ namespace tobedeleted.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AssignSubject",
+                columns: table => new
+                {
+                    SubID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SubDesc = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SubCode = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AssignSubject", x => x.SubID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Attendance",
+                columns: table => new
+                {
+                    AttendanceID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Desc = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Attendance", x => x.AttendanceID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Categories",
+                columns: table => new
+                {
+                    CategoryId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    QuestionName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    OptionName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categories", x => x.CategoryId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Departments",
                 columns: table => new
                 {
@@ -60,7 +103,7 @@ namespace tobedeleted.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Grade",
+                name: "Grades",
                 columns: table => new
                 {
                     GrID = table.Column<int>(type: "int", nullable: false)
@@ -69,7 +112,21 @@ namespace tobedeleted.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Grade", x => x.GrID);
+                    table.PrimaryKey("PK_Grades", x => x.GrID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MeetingScheduler",
+                columns: table => new
+                {
+                    MeetingID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Desc = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MeetingScheduler", x => x.MeetingID);
                 });
 
             migrationBuilder.CreateTable(
@@ -263,10 +320,22 @@ namespace tobedeleted.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "AssignSubject");
+
+            migrationBuilder.DropTable(
+                name: "Attendance");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
+
+            migrationBuilder.DropTable(
                 name: "Departments");
 
             migrationBuilder.DropTable(
-                name: "Grade");
+                name: "Grades");
+
+            migrationBuilder.DropTable(
+                name: "MeetingScheduler");
 
             migrationBuilder.DropTable(
                 name: "SubDep");
