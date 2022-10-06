@@ -14,6 +14,12 @@ namespace tobedeleted.Controllers
         private readonly IWebHostEnvironment _webHostEnv;
         //public Reports reports = new Reports();
         private readonly ApplicationDbContext _db;
+        //private ApplicationDbContext applicationDbContext;
+
+        //public TeacherController()
+        //{
+        //    applicationDbContext = new ApplicationDbContext();
+        //}
 
         public TeacherController(IWebHostEnvironment webHostEnv, ApplicationDbContext db)
         {
@@ -69,6 +75,14 @@ namespace tobedeleted.Controllers
         }
         public IActionResult Quizz()
         {
+            //Category category = new Category();
+            //category.ListofCategory = (from Cat in ApplicationDbContext.Categories
+            //                           select new SelectListItem()
+            //                           {
+
+            //                               Value = Cat.CategoryId.ToString(),
+            //                               Text = Cat.CategoryName
+            //                           }).ToList();
             return View();
         }
         public IActionResult Meetings()

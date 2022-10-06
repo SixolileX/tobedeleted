@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace tobedeleted.Models
 {
-    public class connection:DbContext
-    {
+    //public class connection:DbContext
+    //{
     
-        public connection(DbContextOptions<connection> options) : base(options)
-        {
+    //    public connection(DbContextOptions<connection> options) : base(options)
+    //    {
 
-        }
-        public DbSet<AssignSubject> AssignSubject { get; set; }
-    }
+    //    }
+    //    public DbSet<AssignSubject> AssignSubject { get; set; }
+    //}
 }

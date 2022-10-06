@@ -63,7 +63,7 @@
 
 
 
-@using (Html.BeginForm(actionName: "Quiz", controllerName: "Teacher", FormMethod.Post))
+@using (Html.BeginForm(actionName: "Quizz", controllerName: "Teacher", FormMethod.Post))
 {
     <div class="container">
         <div class="form-group">
@@ -73,7 +73,7 @@
         </div>
         <div class="form-group">
             @Html.LabelFor(expression: model => model.OptionName)
-            @Html.TextAreaFor(expression: model => model.OptionName, new { @class = "form-control", @id = "txOptionName" })
+            @Html.TextBoxFor(expression: model => model.OptionName, new { @class = "form-control", @id = "txOptionName" })
         </div>
         <div class="form-group">
             <input id="btnAddOption" type="button" class="btn btn-primary" name="Option" value="Add option" />
