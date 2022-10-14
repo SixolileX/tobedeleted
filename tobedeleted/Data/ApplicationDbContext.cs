@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using tobedeleted.Models;
 
 namespace tobedeleted.Data
 {
@@ -24,7 +25,7 @@ namespace tobedeleted.Data
         public DbSet<tobedeleted.Models.Grade> Grades { get; set; }
         public DbSet<tobedeleted.Models.MeetingScheduler> MeetingScheduler { get; set; }
         public DbSet<tobedeleted.Models.Attendance> Attendance { get; set; }
-        public DbSet<tobedeleted.Models.AssignSubject> AssignSubject { get; set; }
+        public DbSet<AssignSubject> AssignSubject { get; set; }
         public DbSet<tobedeleted.Models.Category> Categories { get; set; }
 
     }

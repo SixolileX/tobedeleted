@@ -1,61 +1,42 @@
 ﻿@model AssignSubject
 
 @{
-    ViewData["Title"] = "Enroll to Subject";
+    ViewData["Title"] = "Enroll Learner";
     Layout = "~/Pages/_LayoutLearner.cshtml";
 }
 
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - learner</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-</head>
 
-<style type="text/css">
-    p {
-        color: black;
-    }
+<h4>Enroll on a new subject</h4>
+<hr />
 
-    .form-select {
-        outline-color: blue;
-        width: 300px;
-        border: double;
-    }
-</style>
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <form asp-action="EnrollInSubject" >
+                <div class="form-group">
+                    <label>Select Subject</label>
+                    <select asp-for="SubDesc"   asp-items="@(new SelectList(ViewBag.listofSubjects,"SubID","SubDesc"))" class="form-control">
+                        <option selected disabled>--selected Subject--</option>
+                    </select>
 
-<div class="mt-4 p-5 bg-white text-black-50 rounded">
-    <img src="~/css/Images/number1.jpg"
-         alt="null" data-class-id="content-631b2f9e1d8335-47888018" class="ult-modal-img overlay-show m-lg-1 text-lg-left ult-modal-image-"
-         data-overlay-class="overlay-zoomin" style="width: 100px; height: 100px;">
-    <h1>Enroll on a new subject </h1>
+                </div>
+                <div class="form-group">
 
-    <br />
-    <br />
+                    <label>Enter Subject Code</label>
+                    <input asp-for="SubCode" asp-items="@ViewBag.Users" class="form-control" />
+                </div>
+                <div>
+                    <input type="submit" class="btn btn-outline-primary btn-block" value="Enroll" />
+                    <a asp-action="DashBoard" class="btn btn-outline-danger btn-block">Cancel</a>
+                </div>
+            </form>
 
-    <nav class="navbar navbar-light" style="background-color:black;">
-        @*<div class="form-group">
+        </div>
 
-            <label>Select Role name</label>
-            <select asp-for="SubDesc" asp-items="@(new SelectList( Model.Assign,"SubID","SubDesc"))" class="form-control">
-                <option selected disabled>--selected Role--</option>
-            </select>
-        </div>*@
-    </nav>
-    <br />
-    <nav class="navbar navbar-light" style="background-color:black;">
-
-        <form class="d-flex">
-            <label>Enrolment key</label>
-            <input class="form-control mc-2" type="search" placeholder="Enter Key" aria-label="search" />
-            <button class="btn btn-outline-primary" type="submit">Enroll</button>
-
-        </form>
-
-    </nav>
+    </div>
 
 </div>
+
+
 

@@ -8,21 +8,37 @@ using System.Linq;
 using System.Threading.Tasks;
 using tobedeleted.Data;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Inn_TuneProject.Controllers
 {
     public class LearnerController : Controller
     {
-      
-        private readonly ApplicationDbContext _db;
+        
 
+        private readonly ApplicationDbContext _db;
+     
         public LearnerController( ApplicationDbContext db)
         {
             
             _db = db;
+       
         }
 
+        public IActionResult EnrollInSubjectAsync()
+        {
+
+            List<AssignSubject> assigns = new List<AssignSubject>();
+            assigns = _db.AssignSubject.ToList();
+            ViewBag.listofSubjects = assigns;
+            return View();
+
+           
+            
+        }
+        
         public ActionResult DashBoards()
         {
             return View();
@@ -98,34 +114,7 @@ namespace Inn_TuneProject.Controllers
                 return View();
             }
         }
-
-        // GET: LearnerController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: LearnerController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        public IEnumerable<AssignSubject> Assign { get; set; }
-        public async Task EnrollInSubject()
-        {
-            Assign = await _db.AssignSubject.ToListAsync();
-            
-        }
+  
         public ActionResult QUestionPA()
         {
             return View();
