@@ -71,12 +71,14 @@
             text-decoration: none;
             display: block;
             text-align: left;
+            flood-color:Highlight;
+
         }
 
                 /* Add a grey background color to dropdown links on hover */
-        .my_dropdown-content a:hover {
-            background-color: white;
-        }
+            .my_dropdown-content a:hover {
+                background-color: Highlight;
+            }
 
         /* Show the dropdown menu on hover */
         .my_dropdown:hover .my_dropdown-content {
@@ -110,6 +112,7 @@
                                     <i class="fa fa-caret-down"></i>
                                 </button>
                                 <div class="my_dropdown-content">
+                                    <a class="nav-link active">@ViewBag.listofsubjects</a>
                                     <a class="nav-link active"  asp-area="" asp-controller="Learner" asp-action="Maths"> Maths </a>
                                     <a class="nav-link active"  asp-area="" asp-controller="Learner" asp-action="QuestionPA"> Question Papers </a>
                                     <a class="nav-link active" asp-area="" asp-controller="Learner" asp-action="Report"> Report </a>
