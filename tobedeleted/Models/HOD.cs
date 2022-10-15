@@ -9,11 +9,18 @@ namespace tobedeleted.Models
     public class HOD
     {
         [Key]
-        public int HID { get; set; }
+        public int HoDId { get; set; }
         [Required]
-        public Subject Subject { get; set; }
+        public int SubID { get; set; }
         [Required]
-        public Grade Grade { get; set; }
+        public int DepID { get; set; }
+        [Required]
+        public string RoleName { get; set; }
+        [Required]
+        public string UserId { get; set; }
+        public List<Subject> Subjects { get; set; }
+        public List<Department> Departments { get; set; }
+
         //[Required]
         //public UploadStaff Content { get; set; }
         //[Required]

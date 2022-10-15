@@ -1,0 +1,154 @@
+﻿@model tobedeleted.Models.HOD
+
+@{
+    ViewData["Title"] = "AddHODToSpecificDep";
+    Layout = "~/Pages/_LayoutHOD.cshtml";
+}
+<script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+<h1>Add HOD To Specific Department</h1>
+<br/>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddHODToSpecificDep">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label>Select Username</label>
+                <select asp-for="UserId" asp-items="@ViewBag.Users" class="form-control">
+                    <option selected disabled>--select user--</option>
+                    @*@foreach (UserRole U in ViewBag.Users)
+                {
+                    <option value="@U.UserId">@U.RoleName</option>
+                }*@
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Select Role Name</label>
+                <select asp-for="RoleName" asp-items="@ViewBag.Roles" class="form-control">
+                    <option selected disabled>--select Role--</option>
+                    @*@foreach (UserRole r in ViewBag.Roles)
+                    {
+                        <option value="@r.UserId">@r.RoleName</option>
+                    }*@
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Select Department Name</label>
+                <select asp-for="DepID" asp-items="@ViewBag.Department" class="form-control">
+                    <option selected disabled>--select Department--</option>
+                </select>
+            </div>
+            @*<div class="form-group">
+            <label asp-for="DepId" class="control-label"> Select Department</label>
+            <input asp-for="DepId" class="form-control" />
+            <span asp-validation-for="DepId" class="text-danger"></span>
+            </div>*@
+            @*div class="row">
+                <div class="col-4">
+                    <label>Department Name: </label>
+                </div>
+                <div class="dropdown">
+                    <select id="txtDep" asp-for="DepID" class="form-control">
+
+                        @foreach (Department D in ViewBag.Department)
+                        {
+                            <option value="@D.DepID">@D.DepDesc</option>
+                        }
+                    </select>
+                </div>
+            </div**@
+            @*<div class="form-group">
+            <label asp-for="SubId" class="control-label"> Select Subject</label>
+            <input asp-for="SubId" class="form-control" />
+            <span asp-validation-for="SubId" class="text-danger"></span>
+            </div>*@
+            @*<div class="form-group">
+            <label asp-for="RoleId" class="control-label"> Select Role name</label>
+            <input asp-for="RoleId" class="form-control" />
+            <span asp-validation-for="RoleId" class="text-danger"></span>
+            </div>*@
+            @*<div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+            </div>*@
+
+        <div>
+            <input id="btnSave" type="submit" class="btn btn-outline-primary btn-block" value="Assign" />
+            @*<button id="btnRead" class="btn btn-primary" style="width:100%;margin-top:100%;"> Read</button>*@
+        </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Dashboad">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script type="text/javascript">
+    $(document).ready(function () { });
+    //$("#txtFile").change(function (event) {
+    //    var files = event.target.files;
+    //    $("#imgViewer").attr("src", window.URL.createObjectURL(files[0]));
+    //});
+    $("#btnSave").click(function () {
+        //var files = $("#txtFile").prop("files");
+        var formData = new FormData();
+        for (var i = 0; i < files.length; i++) {
+            formData.append("file", files[i]);
+        }
+        var oHOD = {
+            UserId: $("#txtUserId").val(),
+            RoleName: $("#txtRoleName").val(),
+            DepID: $("#txtDep").val()
+
+        };
+        formData.append("HOD", JSON.stringify(oHOD));
+        $.ajax({
+            type: "POST",
+            url: "/HOD/AddHODToSpecificDep",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                ResetFields();
+                alert(data);
+            },
+            error: function (data) {
+                console.log('Error:', data);
+            }
+        });
+    });
+    $("#btnRead").click(function () {
+        var files = $("#txtFile").prop("files");
+        var formData = new FormData();
+        for (var i = 0; i < files.length; i++) {
+            formData.append("file", files[i]);
+        }
+        var oSubject = {
+
+        }
+        formData.append("Subject", JSON.stringify(o));
+        $.ajax({
+            type: "GET",
+            url: "/HOD/AddHODToSpecificDep",
+            success: function (data) {
+                $("#txtUserId").val(data.UserId);
+                $("txtRoleName").val(data.RoleName);
+                $("txtDep").val(data.DepID)
+                /*$('#imgViewer').attr('src', "data:image/jpg;base64," + data.Photo + "");*/
+            },
+            error: function (data) {
+                console.log('Error:', data);
+            }
+        });
+    });
+    function ResetFields() {
+        $("#txtName").val("");
+        $("txtDep").val("");
+        $("#imgViewer").attr("src", "");
+    }
+</script>

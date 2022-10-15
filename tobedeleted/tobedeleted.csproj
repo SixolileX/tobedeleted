@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
@@ -19,11 +19,12 @@
 	<ItemGroup>
 	  <Compile Include="Migrations\20221006211855_tables.cs" />
 	  <Compile Include="Migrations\20221006211855_tables.Designer.cs" />
+	  <Compile Include="Migrations\20221015001640_assignHOD.cs" />
+	  <Compile Include="Migrations\20221015001640_assignHOD.Designer.cs" />
 	  <Compile Include="Migrations\ApplicationDbContextModelSnapshot.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNet.Mvc" Version="5.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.17" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.17" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.17" />
@@ -45,14 +46,23 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Include="Views\HOD\ActivityLog.cshtml" />
 		<None Include="Views\HOD\CareerStream.cshtml" />
 		<None Include="Views\HOD\Commerce.cshtml" />
 		<None Include="Views\HOD\Dashboard.cshtml" />
+		<None Include="Views\HOD\Department.cshtml" />
+		<None Include="Views\HOD\GetDepartment.cshtml" />
 		<None Include="Views\HOD\GetGrade.cshtml" />
 		<None Include="Views\HOD\GetSubject.cshtml" />
 		<None Include="Views\HOD\Grade.cshtml" />
 		<None Include="Views\HOD\ListSubject.cshtml" />
+		<None Include="Views\HOD\Maths.cshtml" />
+		<None Include="Views\HOD\Meeting.cshtml" />
 		<None Include="Views\HOD\Subject.cshtml" />
+		<None Include="Views\HOD\SubjectDetails.cshtml" />
+		<None Include="Views\HOD\UpdateDepartment.cshtml" />
+		<None Include="Views\HOD\UpdateGrade.cshtml" />
+		<None Include="Views\HOD\UpdateSubject.cshtml" />
 		<None Include="Views\Learner\DashBoards.cshtml" />
 		<None Include="Views\Learner\Maths.cshtml" />
 		<None Include="Views\Learner\QuestionPA.cshtml" />

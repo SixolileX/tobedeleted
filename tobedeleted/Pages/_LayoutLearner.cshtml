@@ -110,6 +110,22 @@
                                 <button class="my_dropbtn">
                                     My Subjects
                                     <i class="fa fa-caret-down"></i>
+
+
+                                    @try
+                                    {
+                                        @foreach (mySubject m in ViewBag.Subjects)
+                                        {
+
+                                            <div class="border text-center p-5">
+                                                <a asp-controller="Learner" asp-action="EnrollInSubject" asp-route-Id="@m.AssignSubjectsVM.AssignedIdD" title="@m.SubjectsVM.SubjectName">@m.SubjectsVM.M </a>
+                                            </div>
+                                        }
+                                    }
+                                    catch
+                                    {
+                                    }
+
                                 </button>
                                 <div class="my_dropdown-content">
                                     <a class="nav-link active">@ViewBag.listofsubjects</a>

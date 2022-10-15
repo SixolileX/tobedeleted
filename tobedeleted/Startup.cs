@@ -7,7 +7,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using tobedeleted.Data;
+using tobedeleted.IService;
 using tobedeleted.Models;
+using tobedeleted.Service;
 
 namespace tobedeleted
 {
@@ -31,6 +33,15 @@ namespace tobedeleted
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<ISubjectService, SubjectService>();
+            services.AddScoped<IDepartmentService, DepartmentService>();
+            services.AddScoped<IAssignHOD, AssignHoDService>();
+            services.AddControllersWithViews()
+                .AddJsonOptions(o =>
+                {
+                    o.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+                    o.JsonSerializerOptions.PropertyNamingPolicy = null;
+                });
             //services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddIdentity<IdentityUser,IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)

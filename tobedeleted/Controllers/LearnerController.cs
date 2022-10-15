@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Security.Claims;
 
 namespace Inn_TuneProject.Controllers
 {
@@ -26,7 +27,7 @@ namespace Inn_TuneProject.Controllers
             _db = db;
        
         }
-
+        [HttpGet]
         public IActionResult EnrollInSubjectAsync()
         {
 
@@ -38,7 +39,29 @@ namespace Inn_TuneProject.Controllers
            
             
         }
-        
+        [HttpPost]
+        public IActionResult EnrollInSubject(AssignSubject assignSubject, int ID)
+        {
+
+
+            var user = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            ViewBag.Subjects = (from m in _db.Subjects
+                                join A in _db.AssignSubject on m.SubID equals A.SubID
+                                from E in _db.AssignSubject
+                                join U in _db.Users on E.StudentID equals U.Id
+                                where A.AssignedIdD == E.SujectID && E.StudentId == user
+                                select new mySubject { AssignSubjectsVM = A, SubjectsVM = m, EnrollVM = E }).ToList();
+            assignSubject.StudentID = user;
+            assignSubject.SujectID = ID;
+            _db.AssignSubject.Add(assignSubject);
+            _db.SaveChanges();
+
+
+            return RedirectToAction(nameof(DashBoards));
+
+        }
+
         public ActionResult DashBoards()
         {
             return View();
