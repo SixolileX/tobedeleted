@@ -9,13 +9,13 @@ namespace tobedeleted.Models
 {
     public class UploadContent
     {
-        [Key]
+        //[Key]
         public int Id { get; set; }
-        [Required]
-        [MaxLength(50, ErrorMessage = "Subject Name can not exceed 50 characters")]
+        //[Required]
+        //[MaxLength(50, ErrorMessage = "Subject Name can not exceed 50 characters")]
         public string Subject { get; set; }
-        [Required]
-        public IFormFile Content { get; set; }
-
+        //[Required]
+        public IFormFile file { get; set; }
+        public string Department { get; set; }
     }
 }
