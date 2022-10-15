@@ -33,7 +33,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="wwwroot\js\" />
+		<Folder Include="script\" />
 		<Folder Include="wwwroot\lib\bootstrap\" />
 		<Folder Include="wwwroot\lib\bootstrap\dist\css\" />
 		<Folder Include="wwwroot\lib\bootstrap\dist\js\" />
@@ -61,6 +61,7 @@
 		<None Include="wwwroot\css\Images\2020-08-21T030947Z_475628610_MT1USATODAY14786725_RTRMADP_3_MALIK-GORDON-A-SIXTH-GRADER--e1600889058219.webp" />
 		<None Include="wwwroot\css\Images\40af76868e1b40cf82fe18138601b5de %281%29.webp" />
 		<None Include="wwwroot\css\Images\global_us_fl_distance_learning_laptop.webp" />
+		<None Include="wwwroot\js\jquery-1.10.2.min.js" />
 	</ItemGroup>
 
 </Project>

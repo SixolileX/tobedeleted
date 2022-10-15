@@ -2,9 +2,10 @@
 @{ ViewBag.Title = "Quiz";
 
 }
-<script src="C:\Users\s221509836\Documents\Quiz2\tobedeleted\script\jquery-1.10.2.min.js"></script> 
+<script src="~/js/jquery-1.10.2.min.js"></script>
+
 <script type="text/javascript">
-    $(document).raedy(function () {
+    $(document).ready(function () {
         $("#btnAddOption").click(function () {
             AddOptionIntoList();
         });
@@ -68,12 +69,12 @@
     <div class="container">
         <div class="form-group">
             @Html.LabelFor(expression: model => model.QuestionName)
-            @Html.TextAreaFor(expression: model => model.QuestionName, new { @class = "form-control", @id = "txtQuestionName" })
+            @Html.TextAreaFor(expression: model => model.QuestionName, htmlAttributes:new { @class = "form-control", @id = "txtQuestionName" })
 
         </div>
         <div class="form-group">
             @Html.LabelFor(expression: model => model.OptionName)
-            @Html.TextBoxFor(expression: model => model.OptionName, new { @class = "form-control", @id = "txOptionName" })
+            @Html.TextBoxFor(expression: model => model.OptionName, htmlAttributes:new { @class = "form-control", @id = "txOptionName" })
         </div>
         <div class="form-group">
             <input id="btnAddOption" type="button" class="btn btn-primary" name="Option" value="Add option" />
