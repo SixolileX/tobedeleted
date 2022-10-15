@@ -9,10 +9,10 @@ namespace tobedeleted.Models
     public class Assignment
     {
         [Key]
-        public int AssignID { get; set; }
-        public string AssignTitle { get; set; }
-        public string AssignType { get; set; }
-        public string AssignInstructions { get; set; }
-        public string DueDate { get; set; }
+        public int AssignmentID { get; set; }
+        public string AssignmentTitle { get; set; }
+        public string AssignmentType { get; set; }
+        public string AssignmentInstructions { get; set; }
+        public string AssignmentDueDate { get; set; }
     }
 }

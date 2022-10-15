@@ -19,14 +19,21 @@ namespace tobedeleted.Data
         }
         public DbSet<tobedeleted.Models.Department> Departments { get; set; }
         public DbSet<tobedeleted.Models.Subject> Subjects { get; set; }
+
         //public DbSet<tobedeleted.Models.Meeting> Meetings { get; set; }
+
         public DbSet<tobedeleted.Models.HOD> HOD { get; set; }
         public DbSet<tobedeleted.Models.SubDep> SubDep { get; set; }
+
         public DbSet<tobedeleted.Models.Grade> Grades { get; set; }
+
         public DbSet<tobedeleted.Models.MeetingScheduler> MeetingScheduler { get; set; }
+
         public DbSet<tobedeleted.Models.Attendance> Attendance { get; set; }
+
         public DbSet<AssignSubject> AssignSubject { get; set; }
-        public DbSet<tobedeleted.Models.Category> Categories { get; set; }
+
+        public DbSet<tobedeleted.Models.Assignment> Assignment { get; set; }
 
     }
 }

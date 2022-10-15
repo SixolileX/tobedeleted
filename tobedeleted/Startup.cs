@@ -13,7 +13,7 @@ using tobedeleted.Service;
 
 namespace tobedeleted
 {
-    [Authorize]
+    //[Authorize]
     public class Startup
     {
       

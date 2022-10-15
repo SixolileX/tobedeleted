@@ -10,8 +10,8 @@ using tobedeleted.Data;
 namespace tobedeleted.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221006211855_tables")]
-    partial class tables
+    [Migration("20221015230959_UserRole")]
+    partial class UserRole
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -287,7 +287,16 @@ namespace tobedeleted.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<byte[]>("DepPhoto")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int?>("HoDId")
+                        .HasColumnType("int");
+
                     b.HasKey("DepID");
+
+                    b.HasIndex("HoDId");
 
                     b.ToTable("Departments");
                 });
@@ -306,6 +315,32 @@ namespace tobedeleted.Migrations
                     b.HasKey("GrID");
 
                     b.ToTable("Grades");
+                });
+
+            modelBuilder.Entity("tobedeleted.Models.HOD", b =>
+                {
+                    b.Property<int>("HoDId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("DepID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RoleName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SubID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("HoDId");
+
+                    b.ToTable("HOD");
                 });
 
             modelBuilder.Entity("tobedeleted.Models.MeetingScheduler", b =>
@@ -351,11 +386,31 @@ namespace tobedeleted.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("DepID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DepartmentDepID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("HoDId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SubCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SubDesc")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<byte[]>("SubImage")
+                        .HasColumnType("varbinary(max)");
+
                     b.HasKey("SubID");
+
+                    b.HasIndex("DepartmentDepID");
+
+                    b.HasIndex("HoDId");
 
                     b.ToTable("Subjects");
                 });
@@ -409,6 +464,36 @@ namespace tobedeleted.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("tobedeleted.Models.Department", b =>
+                {
+                    b.HasOne("tobedeleted.Models.HOD", null)
+                        .WithMany("Departments")
+                        .HasForeignKey("HoDId");
+                });
+
+            modelBuilder.Entity("tobedeleted.Models.Subject", b =>
+                {
+                    b.HasOne("tobedeleted.Models.Department", null)
+                        .WithMany("Subjects")
+                        .HasForeignKey("DepartmentDepID");
+
+                    b.HasOne("tobedeleted.Models.HOD", null)
+                        .WithMany("Subjects")
+                        .HasForeignKey("HoDId");
+                });
+
+            modelBuilder.Entity("tobedeleted.Models.Department", b =>
+                {
+                    b.Navigation("Subjects");
+                });
+
+            modelBuilder.Entity("tobedeleted.Models.HOD", b =>
+                {
+                    b.Navigation("Departments");
+
+                    b.Navigation("Subjects");
                 });
 #pragma warning restore 612, 618
         }

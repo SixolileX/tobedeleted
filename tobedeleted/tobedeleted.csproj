@@ -6,22 +6,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Compile Remove="Migrations\**" />
 		<Compile Remove="ViewModels\**" />
-		<Content Remove="Migrations\**" />
 		<Content Remove="ViewModels\**" />
-		<EmbeddedResource Remove="Migrations\**" />
 		<EmbeddedResource Remove="ViewModels\**" />
-		<None Remove="Migrations\**" />
 		<None Remove="ViewModels\**" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Include="Migrations\20221006211855_tables.cs" />
-	  <Compile Include="Migrations\20221006211855_tables.Designer.cs" />
-	  <Compile Include="Migrations\20221015001640_assignHOD.cs" />
-	  <Compile Include="Migrations\20221015001640_assignHOD.Designer.cs" />
-	  <Compile Include="Migrations\ApplicationDbContextModelSnapshot.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
