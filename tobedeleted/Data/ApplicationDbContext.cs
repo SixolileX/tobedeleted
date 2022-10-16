@@ -7,7 +7,7 @@ using tobedeleted.Models;
 
 namespace tobedeleted.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
         {
