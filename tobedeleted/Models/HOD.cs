@@ -11,13 +11,13 @@ namespace tobedeleted.Models
         [Key]
         public int HoDId { get; set; }
         [Required]
-        public int SubID { get; set; }
+        public string userHoDId { get; set; }
         [Required]
         public int DepID { get; set; }
-        [Required]
-        public string RoleName { get; set; }
-        [Required]
-        public string UserId { get; set; }
+        //[Required]
+        //public string RoleName { get; set; }
+        //[Required]
+        //public string UserId { get; set; }
         public List<Subject> Subjects { get; set; }
         public List<Department> Departments { get; set; }
 

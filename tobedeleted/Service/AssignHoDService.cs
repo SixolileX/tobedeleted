@@ -17,38 +17,18 @@ namespace tobedeleted.Service
             _context = context;
         }
 
-        //public Department Department { get; }
 
-        //public Department SavedDepartment => _context.Departments.SingleOrDefault();
-
-        //public Department Save(Department oDepartment)
-        //{
-        //    _context.Departments.Add(oDepartment);
-        //    _context.SaveChanges();
-        //    return oDepartment;
-        //}
-
-        public HOD AddToHodAsync(HOD HoD, int subID, int depID, string RoleName, string userId)
+        public HOD AddToHodAsync(HOD HoD, string userHoDId, int depID)
         {
             HoD = new HOD();
-            HoD.SubID = subID;
+            HoD.userHoDId = userHoDId;
             HoD.DepID = depID;
-            HoD.RoleName = RoleName;
-            HoD.UserId = userId;
 
             _context.HOD.Add(HoD);
             _context.SaveChangesAsync();
             return HoD;
         }
         
-
-        //Task<Department> IAssignHOD.FindByIdAsync(int depId)
-        //{
-        //    HOD HoD = new HOD();
-        //    HoD.DepID = depId;
-        //    throw new NotImplementedException();
-        //}
-
         public HOD SavedHOD => _context.HOD.SingleOrDefault();
 
         public HOD Save(HOD oHOD)

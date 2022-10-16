@@ -405,15 +405,23 @@ namespace tobedeleted.Controllers
         {
             var users = _userManager.Users.ToList();
             var roles = _roleManager.Roles.ToList();
+            var ur = _db.UserRoles.ToList();
             var deps = _db.Departments.ToList();//assuming that enrolled departments will be add to List
 
-            ViewBag.Users = new SelectList(users, "Id", "UserName");
-            ViewBag.Roles = new SelectList(roles, "Name", "Name");
-           
+            //ViewBag.Users = new SelectList(users, "Id", "UserName");
+            //ViewBag.Roles = new SelectList(roles, "Name", "Name");
+            //ViewBag.UserRoles =;
             ViewBag.Department = new SelectList(deps, "DepID", "DepDesc");
-            //ViewBag.Users = _userManager.Users.OrderBy(users => users.UserName).ToList();
-            //ViewBag.Roles = _roleManager.Roles.Where(roles => roles.Name == "HOD").ToList();
-            //ViewBag.Department = _db.Departments.OrderBy(x => x.DepDesc).ToList();
+            //ViewBag.HoDdisplay = (from R in _db.Roles
+            //                      join Ur in _db.UserRoles on R.Id equals Ur.RoleId
+            //                      join U in _db.Users on Ur.UserId equals U.Id
+            //                      where Ur.RoleId==R.Id && R.Name== "HOD" && Ur.UserId == U.Id
+            //                      select new UserRole { UserId = U.Id, RoleName=R.Name}).ToList();
+            ViewBag.Users = (from Ur in _db.UserRoles
+                             join U in _db.Users on Ur.UserId equals U.Id
+                             join R in _db.Roles on Ur.RoleId equals R.Id
+                             where Ur.UserId == U.Id && Ur.RoleId == R.Id && R.Name == "HOD"
+                             select new UserRole { UserId = U.Id, RoleName = R.Name }).ToList();
             return View();
         }
 
@@ -423,7 +431,7 @@ namespace tobedeleted.Controllers
             var user = await _userManager.FindByIdAsync(userRole.UserId);
             //var dep = await _assignHOD.FindByIdAsync(department.DepID);
             await _userManager.AddToRoleAsync(user, userRole.RoleName);
-             _assignHOD.AddToHodAsync(HoD, HoD.SubID, HoD.DepID, HoD.RoleName, HoD.UserId);
+             _assignHOD.AddToHodAsync(HoD, HoD.userHoDId, HoD.DepID);
             //if (HoD.HoDId > 0)
             //{
             //    return "Saved";

@@ -8,11 +8,11 @@ namespace tobedeleted.Models
 {
     public class UserHOD
     {
-        [Key]
+        //[Key]
         public int uHoDId { get; set; }
-        [Required]
+        //[Required]
         public string userID { get; set; }
-        [Required]
+        //[Required]
         public int depID { get; set; }
     }
 }
