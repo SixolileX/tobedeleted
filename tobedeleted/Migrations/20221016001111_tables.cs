@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace tobedeleted.Migrations
 {
-    public partial class UserRole : Migration
+    public partial class tables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,6 +47,22 @@ namespace tobedeleted.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Assignment",
+                columns: table => new
+                {
+                    AssignmentID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AssignmentTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AssignmentType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AssignmentInstructions = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AssignmentDueDate = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Assignment", x => x.AssignmentID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AssignSubject",
                 columns: table => new
                 {
@@ -72,21 +88,6 @@ namespace tobedeleted.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Attendance", x => x.AttendanceID);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Categories",
-                columns: table => new
-                {
-                    CategoryId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    QuestionName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    OptionName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Categories", x => x.CategoryId);
                 });
 
             migrationBuilder.CreateTable(
@@ -376,13 +377,13 @@ namespace tobedeleted.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Assignment");
+
+            migrationBuilder.DropTable(
                 name: "AssignSubject");
 
             migrationBuilder.DropTable(
                 name: "Attendance");
-
-            migrationBuilder.DropTable(
-                name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "Grades");

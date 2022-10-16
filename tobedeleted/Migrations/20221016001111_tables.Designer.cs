@@ -10,8 +10,8 @@ using tobedeleted.Data;
 namespace tobedeleted.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221015230959_UserRole")]
-    partial class UserRole
+    [Migration("20221016001111_tables")]
+    partial class tables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -235,6 +235,30 @@ namespace tobedeleted.Migrations
                     b.ToTable("AssignSubject");
                 });
 
+            modelBuilder.Entity("tobedeleted.Models.Assignment", b =>
+                {
+                    b.Property<int>("AssignmentID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AssignmentDueDate")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AssignmentInstructions")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AssignmentTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("AssignmentType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AssignmentID");
+
+                    b.ToTable("Assignment");
+                });
+
             modelBuilder.Entity("tobedeleted.Models.Attendance", b =>
                 {
                     b.Property<int>("AttendanceID")
@@ -252,28 +276,6 @@ namespace tobedeleted.Migrations
                     b.HasKey("AttendanceID");
 
                     b.ToTable("Attendance");
-                });
-
-            modelBuilder.Entity("tobedeleted.Models.Category", b =>
-                {
-                    b.Property<int>("CategoryId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CategoryName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("OptionName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("QuestionName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("CategoryId");
-
-                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("tobedeleted.Models.Department", b =>
