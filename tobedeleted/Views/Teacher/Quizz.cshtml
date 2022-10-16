@@ -1,91 +1,4 @@
-﻿@model tobedeleted.Models.Category
-@{ ViewBag.Title = "Quiz";
-
-}
-<script src="~/js/jquery-1.10.2.min.js"></script>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#btnAddOption").click(function () {
-            AddOptionIntoList();
-        });
-    });
-
-    function AddOptionIntoList() {
-        if ($("#txtQuestionName").val() === "") {
-            alert("Question name should not be empty.");
-            $("#txtQuestionName").focus();
-            return false;
-        }
-
-        if ($("#txtOptionName").val() === "") {
-            alert("Option name should not be empty.");
-            $("#txtOptionName").focus();
-            return false;
-        }
-
-        if ($("#tblOption tr").length === 5) {
-            $("#txtOptionName").focus();
-            $("#txtOptionName").val("");
-            alert("Option  should not be more than 5.");
-            return false;
-        }
-
-        var isSuccess = false;
-        $.each($("#tblOption tr"),
-            function () {
-                var listedValue = $(this).find("td:eq(0) input[type=radio]").val();
-                if (listedValue === $("#txtOptionName").val()) {
-                    $("#txtOptionName").focus();
-                    $("#txtOptionName").val("");
-                    alert("It's already listed listed");
-                    isSuccess = true;
-                }
-            });
-
-        if (isSuccess === true) {
-            return false;
-        }
-
-        var OptionName = $("#txtOptionName").val();
-        var rowAdded = "<tr><td> <input type='radio' value= " +
-            OptionName +
-            " name='OptionName'/> " +
-            OptionName +
-            " </td></tr> ";
-
-        $("#tblOption").append(rowAdded);
-        $("#txtOptionName").focus();
-        $("#txtOptionName").val('');
-
-
-    }
-</script>
-
-
-
-@using (Html.BeginForm(actionName: "Quizz", controllerName: "Teacher", FormMethod.Post))
-{
-    <div class="container">
-        <div class="form-group">
-            @Html.LabelFor(expression: model => model.QuestionName)
-            @Html.TextAreaFor(expression: model => model.QuestionName, htmlAttributes:new { @class = "form-control", @id = "txtQuestionName" })
-
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(expression: model => model.OptionName)
-            @Html.TextBoxFor(expression: model => model.OptionName, htmlAttributes:new { @class = "form-control", @id = "txOptionName" })
-        </div>
-        <div class="form-group">
-            <input id="btnAddOption" type="button" class="btn btn-primary" name="Option" value="Add option" />
-        </div>
-    </div>
-
-
-}
-
-<table id="tbloption" class="table table-condensed" style="width: 100%">
-</table>
+﻿
 
 
 
@@ -110,7 +23,7 @@
 
 
 
-@*@{
+@{
         ViewData["Title"] = "DashBoards";
         Layout = "~/Pages/_LayoutTeacher.cshtml";
     }
@@ -196,7 +109,7 @@
 
 
     </body>
-    </html>*@
+    </html>
 
 
 

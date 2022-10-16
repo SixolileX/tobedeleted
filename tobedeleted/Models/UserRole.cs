@@ -18,6 +18,7 @@ namespace tobedeleted.Models
     {
         [Required]
         public string UserId { get; set; }
+
         public string RoleName { get; set; }
 
     }

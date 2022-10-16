@@ -28,11 +28,14 @@
 
                     <label>Select Role name</label>
                     <select asp-for="RoleName" asp-items="@ViewBag.Roles" class="form-control">
-                        <option selected disabled>--selected Role--</option>
+
+                        <option asp-validation-for="Input.Surname" selected disabled>--selected Role--</option>
                     </select>
+                    <span asp-validation-for="RoleName" class="text-danger"></span>
                 </div>
                 <div>
-                    <input  type="submit" class="btn btn-outline-primary btn-block" value="Assign"/>
+                    <input type="submit" class="btn btn-outline-primary btn-block" value="Assign" />
+                    
                     <a asp-action="Index" class="btn btn-outline-danger btn-block">Cancel</a>
                 </div>
             </form>
