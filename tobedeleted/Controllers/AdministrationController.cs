@@ -15,13 +15,13 @@ namespace tobedeleted.Controllers
     public class AdministrationController : Controller
     {
         private readonly RoleManager<IdentityRole> roleManager;
-        private readonly UserManager<IdentityUser> userManager;
+        private readonly UserManager<ApplicationUser> userManager;
        
 
        
 
         public AdministrationController(RoleManager<IdentityRole> roleManager,
-                                         UserManager<IdentityUser>userManager) 
+                                         UserManager<ApplicationUser> userManager) 
         {
             this.roleManager = roleManager;
             this.userManager = userManager;
