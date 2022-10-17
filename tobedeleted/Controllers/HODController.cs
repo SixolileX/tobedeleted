@@ -421,7 +421,7 @@ namespace tobedeleted.Controllers
                              join U in _db.Users on Ur.UserId equals U.Id
                              join R in _db.Roles on Ur.RoleId equals R.Id
                              where Ur.UserId == U.Id && Ur.RoleId == R.Id && R.Name == "HOD"
-                             select new UserRole { UserId = U.Id, RoleName = R.Name }).ToList();
+                             select new ApplicationUser { Id = U.Id, firstName = U.firstName, lastName=U.lastName }).ToList();
             return View();
         }
 
@@ -430,7 +430,7 @@ namespace tobedeleted.Controllers
         {
             var user = await _userManager.FindByIdAsync(userRole.UserId);
             //var dep = await _assignHOD.FindByIdAsync(department.DepID);
-            await _userManager.AddToRoleAsync(user, userRole.RoleName);
+            //await _userManager.AddToRoleAsync(user, userRole.RoleName);
              _assignHOD.AddToHodAsync(HoD, HoD.userHoDId, HoD.DepID);
             //if (HoD.HoDId > 0)
             //{
