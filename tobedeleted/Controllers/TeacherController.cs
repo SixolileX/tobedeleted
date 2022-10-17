@@ -38,6 +38,27 @@ namespace tobedeleted.Controllers
         {
             return View("Assignment");
         }
+        public IActionResult AddAssignment()
+        {
+            return View();
+        }
+        public IActionResult ViewAssignment()
+        {
+            IEnumerable<Assignment> objList = _db.Assignment;
+            return View(objList);
+        }
+        public IActionResult Create(Assignment obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Assignment.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Assessments");
+            }
+            return View(obj);
+
+
+        }
         //public IActionResult GetAssignment()
         //{
         //    IEnumerable<Assignment> objList = _db.Assignments;//Coming from our database
@@ -66,10 +87,6 @@ namespace tobedeleted.Controllers
 
         }
         public IActionResult Reports()
-        {
-            return View();
-        }
-        public IActionResult Create()
         {
             return View();
         }
