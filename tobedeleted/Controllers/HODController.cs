@@ -28,9 +28,9 @@ namespace tobedeleted.Controllers
         IDepartmentService _departmentService=null;
         IAssignHOD _assignHOD;
         private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public HODController(IWebHostEnvironment webHostEnv, ApplicationDbContext db, ISubjectService subjectService, IDepartmentService departmentService, RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager, IAssignHOD assignHOD)
+        public HODController(IWebHostEnvironment webHostEnv, ApplicationDbContext db, ISubjectService subjectService, IDepartmentService departmentService, RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager, IAssignHOD assignHOD)
         {
             this._webHostEnv = webHostEnv;
             _db = db;
