@@ -17,15 +17,22 @@ namespace Inn_TuneProject.Controllers
 {
     public class LearnerController : Controller
     {
-        
 
+        IAddLearnerTosub _IaddLearnerTosub;
         private readonly ApplicationDbContext _db;
-     
-        public LearnerController( ApplicationDbContext db)
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+
+      
+
+        public LearnerController( ApplicationDbContext db, IAddLearnerTosub addLearner, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             
             _db = db;
-       
+            _IaddLearnerTosub = addLearner;
+            this._roleManager = roleManager;
+            this._userManager = userManager;
+
         }
         [HttpGet]
         public IActionResult EnrollInSubjectAsync()
@@ -34,31 +41,50 @@ namespace Inn_TuneProject.Controllers
             List<Subject> assigns = new List<Subject>();
             assigns = _db.Subjects.ToList();
             ViewBag.listofSubjects = assigns;
-            return View();
-
-           
             
+
+
+            var users = _userManager.Users.ToList();
+            var roles = _roleManager.Roles.ToList();
+            var ur = _db.UserRoles.ToList();
+            var Sub = _db.Subjects.ToList();
+            //ViewBag.Subjects = new SelectList(Sub, "SubID", "SubDesc");
+       
+            //ViewBag.listofSubjects = (from Ur in _db.UserRoles
+            //                 join U in _db.Users on Ur.UserId equals U.Id
+            //                 join R in _db.Roles on Ur.RoleId equals R.Id
+            //                 where Ur.UserId == U.Id && Ur.RoleId == R.Id && R.Name == "Learner"
+            //                 select new ApplicationUser { Id = U.Id, firstName = U.firstName, lastName = U.lastName }).ToList();
+            return View();
         }
         //[HttpPost]
-        //public IActionResult EnrollInSubject(AssignSubject assignSubject, int ID)
+        //public async Task< IActionResult> EnrollInSubject(UserRole userRole, Subject subject,learners learners)
         //{
 
 
-        //    var user = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //var user = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-        //    ViewBag.Subjects = (from m in _db.Subjects
-        //                        join A in _db.AssignSubject on m.SubID equals A.SubID
-        //                        from E in _db.AssignSubject
-        //                        join U in _db.Users on E.StudentID equals U.Id
-        //                        where A.AssignedIdD == E.SujectID && E.StudentId == user
-        //                        select new mySubject { AssignSubjectsVM = A, SubjectsVM = m, EnrollVM = E }).ToList();
-        //    assignSubject.StudentID = user;
-        //    assignSubject.SujectID = ID;
-        //    _db.AssignSubject.Add(assignSubject);
-        //    _db.SaveChanges();
+            //ViewBag.Subjects = (from m in _db.learners
+            //                    join A in _db.Subjects on m.UserlearnerId equals A.SubID
+            //                    from E in _db.AssignSubject
+            //                    join U in _db.Users on E.StudentID equals U.Id
+            //                    where A.AssignedIdD == E.SujectID && E.StudentId == user
+            //                    select new mySubject { AssignSubjectsVM = A, SubjectsVM = m, EnrollVM = E }).ToList();
+            //assignSubject.StudentID = user;
+            //assignSubject.SujectID = ID;
+            //_db.AssignSubject.Add(assignSubject);
+            //_db.SaveChanges();
 
+            //var user = await _userManager.FindByIdAsync(userRole.UserId);
 
-        //    return RedirectToAction(nameof(DashBoards));
+            //_IaddLearnerTosub.AddToLeanerAsync(learners, learners.SubjectName, learners.UserlearnerId);
+
+            ////learners.SubjectName = user;
+            ////learners.UserlearnerId = user;
+            //_db.learners.Add(learners);
+            //_db.SaveChanges();
+
+            //return RedirectToAction(nameof(DashBoards));
 
         //}
 
@@ -144,8 +170,19 @@ namespace Inn_TuneProject.Controllers
         }
         public ActionResult Report()
         {
+
+            //Studentmaster studentmaster = new Studentmaster();
+            //studentmaster.ListOfExams=( from obj in studentmaster.s)
+
             return View();
         }
+        public ActionResult MarksCal()
+        {
+
+
+            return View();
+        }
+
 
     }
 }
