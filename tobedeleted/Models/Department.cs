@@ -12,7 +12,7 @@ namespace tobedeleted.Models
         public int DepID { get; set; }
         [Required]
         public string DepDesc { get; set; }
-        [Required]
+        //[Required]
         public byte[] DepPhoto { get; set; }
         //public Subject Subject { get; set; }
         public List<Subject> Subjects { get; set; } 
