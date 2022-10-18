@@ -6,6 +6,7 @@
 }
 
 
+<br />
 
 <h4>Enroll on a new subject</h4>
 <hr />
@@ -13,10 +14,10 @@
 <div class="container">
     <div class="row">
         <div class="col-6 offset-3">
-            <form asp-action="EnrollInSubject" method="post" >
+            <form asp-action="EnrollInSubject" method="post">
                 <div class="form-group">
                     <label>Select Subject</label>
-                    <select asp-for="SubDesc"   asp-items="@(new SelectList(ViewBag.listofSubjects,"SubID","SubDesc"))" class="form-control">
+                    <select asp-for="SubDesc" asp-items="@(new SelectList(ViewBag.listofSubjects,"SubID","SubDesc"))" class="form-control">
                         <option selected disabled>--selected Subject--</option>
                     </select>
 
@@ -24,7 +25,7 @@
                 <div class="form-group">
 
                     @*<label>Enter Subject Code</label>
-                    <input asp-for="SubCode" asp-items="@ViewBag.Users" class="form-control" />*@
+                        <input asp-for="SubCode" asp-items="@ViewBag.Users" class="form-control" />*@
                 </div>
                 <div>
                     <input type="submit" class="btn btn-outline-primary btn-block" value="Enroll" />

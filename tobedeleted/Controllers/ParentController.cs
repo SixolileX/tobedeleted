@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using tobedeleted.Data;
+using tobedeleted.IService;
 using tobedeleted.Models;
 
 namespace tobedeleted.Controllers
@@ -13,9 +16,15 @@ namespace tobedeleted.Controllers
     public class ParentController : Controller
     {
         private readonly ApplicationDbContext _db;
-        public ParentController(ApplicationDbContext db)
+
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        IAssignPTL assignPTL;
+        public ParentController(ApplicationDbContext db, RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager)
         {
             _db = db;
+            this._roleManager = roleManager;
+            this._userManager = userManager;
         }
         public IActionResult Index()
         {
@@ -62,5 +71,53 @@ namespace tobedeleted.Controllers
 
             return View();
         }
+        [HttpGet]
+        public IActionResult AssignParentToLearner()
+        {
+            var users = _userManager.Users.ToList();
+            var roles = _roleManager.Roles.ToList();
+            var ur = _db.UserRoles.ToList();
+
+
+
+
+            ViewBag.Users = (from Ur in _db.UserRoles
+                             join U in _db.Users on Ur.UserId equals U.Id
+                             join R in _db.Roles on Ur.RoleId equals R.Id
+                             where Ur.UserId == U.Id && Ur.RoleId == R.Id && R.Name == "Parent"
+                             select new ApplicationUser { Id = U.Id, firstName = U.firstName, lastName = U.lastName }).ToList();
+
+            ViewBag.Userss = (from Ur in _db.UserRoles
+                              join U in _db.Users on Ur.UserId equals U.Id
+                              join R in _db.Roles on Ur.RoleId equals R.Id
+                              where Ur.UserId == U.Id && Ur.RoleId == R.Id && R.Name == "Learner"
+                              select new ApplicationUser { Id = U.Id, firstName = U.firstName, lastName = U.lastName }).ToList();
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> AssignParentToLearner(Parent parent, Learner learner, UserRole userRole)
+        {
+            var user = await _userManager.FindByIdAsync(parent.userParentId);
+
+            //await _userManager.AddToRoleAsync(user, users.lastName);
+            assignPTL.AddToParentAsync(parent, parent.userParentId, parent.userLearnerId);
+
+            return RedirectToAction(nameof(Index));
+
+        }
+        //[HttpPost]
+        //public async Task<IActionResult> AssignParentToLearner(UserRole userRole, Parent parent, Learner learner)
+        //{
+        //    var user = await _userManager.FindByIdAsync(userRole.UserId);
+        //    //var dep = await _assignHOD.FindByIdAsync(department.DepID);
+        //    //await _userManager.AddToRoleAsync(user, userRole.RoleName);
+        //    assignPTL.AddToParentAsync(parent, parent.userParentId, parent.userLearnerId);
+        //    //if (HoD.HoDId > 0)
+        //    //{
+        //    //    return "Saved";
+        //    //}
+        //    return RedirectToAction(nameof(Index));
+
+        //}
     }
 }
