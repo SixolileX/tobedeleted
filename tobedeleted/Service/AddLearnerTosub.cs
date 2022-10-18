@@ -20,7 +20,7 @@ namespace tobedeleted.Service
             }
 
 
-            public learners AddToLeaner(learners Learn, string UserlearnerId, string SubjectName)
+            public learners AddToLeanerAsync(learners Learn, string UserlearnerId, string SubjectName)
             {
                 Learn = new learners();
                 Learn.UserlearnerId = UserlearnerId;
@@ -33,11 +33,11 @@ namespace tobedeleted.Service
 
             public learners SavedLearner => _context.learners.SingleOrDefault();
 
-            public HOD SaveLearner(HOD oHOD)
+            public learners SaveLearner(learners learn)
             {
-                _context.HOD.Add(oHOD);
+                _context.learners.Add(learn);
                 _context.SaveChanges();
-                return oHOD;
+                return learn;
             }
 
         

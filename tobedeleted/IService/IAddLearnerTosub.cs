@@ -5,13 +5,12 @@ using System.Threading.Tasks;
 
 namespace tobedeleted.Models
 {
-    public class IAddLearnerTosub
+    public interface IAddLearnerTosub
     {
 
-        //learners AddToLeaner(learners Learn, string UserlearnerId, string SubjectName);
-        //learners SaveLearner(learners Learn);
+        learners AddToLeanerAsync(learners Learn, string UserlearnerId, string SubjectName);
+        learners SaveLearner(learners Learn);
 
-        HOD SavedLearner { get; }
-
+        learners SavedLearner { get; }
     }
 }
