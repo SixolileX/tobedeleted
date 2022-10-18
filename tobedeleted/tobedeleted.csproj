@@ -35,6 +35,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Include="Areas\Identity\Pages\Account\Login.cshtml" />
+		<None Include="Areas\Identity\Pages\Account\Register.cshtml" />
+		<None Include="Areas\Identity\Pages\_ValidationScriptsPartial.cshtml" />
+		<None Include="Areas\Identity\Pages\_ViewImports.cshtml" />
+		<None Include="Areas\Identity\Pages\_ViewStart.cshtml" />
 		<None Include="Views\HOD\ActivityLog.cshtml" />
 		<None Include="Views\HOD\CareerStream.cshtml" />
 		<None Include="Views\HOD\Commerce.cshtml" />
