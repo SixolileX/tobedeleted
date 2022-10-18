@@ -19,6 +19,7 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.17" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.17" />
 		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+		<PackageReference Include="QuickMailer" Version="1.0.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -34,6 +35,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Include="Areas\Identity\Pages\Account\Login.cshtml" />
+		<None Include="Areas\Identity\Pages\Account\Register.cshtml" />
+		<None Include="Areas\Identity\Pages\_ValidationScriptsPartial.cshtml" />
+		<None Include="Areas\Identity\Pages\_ViewImports.cshtml" />
+		<None Include="Areas\Identity\Pages\_ViewStart.cshtml" />
 		<None Include="Views\HOD\ActivityLog.cshtml" />
 		<None Include="Views\HOD\CareerStream.cshtml" />
 		<None Include="Views\HOD\Commerce.cshtml" />

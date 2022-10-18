@@ -26,6 +26,8 @@ namespace tobedeleted.Data
         public DbSet<tobedeleted.Models.SubDep> SubDep { get; set; }
 
         public DbSet<tobedeleted.Models.Grade> Grades { get; set; }
+        //public DbSet<tobedeleted.Models.MailMessage> MailMessages { get; set; }
+        public DbSet<tobedeleted.Models.TimeTable> TimeTables { get; set; }
 
         public DbSet<tobedeleted.Models.MeetingScheduler> MeetingScheduler { get; set; }
 
