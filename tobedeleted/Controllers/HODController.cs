@@ -14,7 +14,6 @@ using tobedeleted.IService;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.Claims;
-using QuickMailer;
 
 namespace tobedeleted.Controllers
 {
@@ -61,86 +60,66 @@ namespace tobedeleted.Controllers
         //                           where d.DepID == H.DepID && H.UserId == user && UR.UserId == U.Id
         //                           select new )
         //}
-        public IActionResult SendEmail()
-        {
-            //IEnumerable<User> objList = _db.Users;//Coming from our database
-            //return View(objList);
-            return View();
-        }
-        [HttpPost]
-        public IActionResult SendEmail(MailMessage mailMessage, IdentityUser users)
-        {
-            //try
-            //{
-            //    Email email = new Email();
-            //    Credentials cred = new Credentials();
-            //    cred.Password = users.PasswordHash;
-            //    cred.Email = users.Email;
-            //    email.SendEmail(mailMessage.To, mailMessage.Title, mailMessage.Body);
-            //    return View();
-            //}
-            //catch(Exception e)
-            //{
-            //    Console.WriteLine(e);
-            //    throw;
-            //}
-            return View();
-            
-        }
-    //[HttpPost("Upload Content")]
+        //public IActionResult EnrolStaff()xsz
+        //{
+        //    //IEnumerable<User> objList = _db.Users;//Coming from our database
+        //    //return View(objList);
+        //    return View();
+        //}
+        //[HttpPost("Upload Content")]
 
 
-    //[HttpPost("FileUpload")]
-    //public async Task<IActionResult> FileUpload(List<IFormFile> files)
-    //{
-    //    var size = files.Sum(f => f.Length);
-    //    var filePaths = new List<string>();
-    //    foreach (var formFile in files)
-    //    {
-    //        if (formFile.Length > 0)
-    //        {
-    //            var filePath = Path.Combine(Directory.GetCurrentDirectory(), formFile.FileName);
-    //            filePaths.Add(filePath);
-    //            using (var stream = new FileStream(filePath, FileMode.Create))
-    //            {
-    //                await formFile.CopyToAsync(stream);
-    //            }
-    //        }
-    //    }
-    //    return Ok(new { files.Count, size, filePaths });
-    //}
+        //[HttpPost("FileUpload")]
+        //public async Task<IActionResult> FileUpload(List<IFormFile> files)
+        //{
+        //    var size = files.Sum(f => f.Length);
+        //    var filePaths = new List<string>();
+        //    foreach (var formFile in files)
+        //    {
+        //        if (formFile.Length > 0)
+        //        {
+        //            var filePath = Path.Combine(Directory.GetCurrentDirectory(), formFile.FileName);
+        //            filePaths.Add(filePath);
+        //            using (var stream = new FileStream(filePath, FileMode.Create))
+        //            {
+        //                await formFile.CopyToAsync(stream);
+        //            }
+        //        }
+        //    }
+        //    return Ok(new { files.Count, size, filePaths });
+        //}
 
-    //POST-Create
-    //[HttpPost]
-    //[ValidateAntiForgeryToken]
-    //public IActionResult EnrolStaff(User obj)
-    //{
-    //    if (ModelState.IsValid)//Checks to see if all the required fields have been met.
-    //    {
-    //        _db.Users.Add(obj);
-    //        _db.SaveChanges();
-    //        return RedirectToAction("Dashboard");
-    //    }
-    //    return View(obj);
+        //POST-Create
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult EnrolStaff(User obj)
+        //{
+        //    if (ModelState.IsValid)//Checks to see if all the required fields have been met.
+        //    {
+        //        _db.Users.Add(obj);
+        //        _db.SaveChanges();
+        //        return RedirectToAction("Dashboard");
+        //    }
+        //    return View(obj);
 
-    //}
-    //public Reports reports = new Reports();
+        //}
+        //public Reports reports = new Reports();
 
-    //public IActionResult EnrolUser()
-    //{
-    //    return View();
-    //}
-    //[HttpPost]
-    //public async Task<IActionResult> AddSubDep(Subject sub, Department dep, SubDep subDep)
-    //{
-    //    var suDe = await SubDep.Equals(subDep)
+        //public IActionResult EnrolUser()
+        //{
+        //    return View();
+        //}
+        //[HttpPost]
+        //public async Task<IActionResult> AddSubDep(Subject sub, Department dep, SubDep subDep)
+        //{
+        //    var suDe = await SubDep.Equals(subDep)
 
-    //    await userManager.AddToRoleAsync(user, userRole.RoleName);
+        //    await userManager.AddToRoleAsync(user, userRole.RoleName);
 
-    //    return RedirectToAction(nameof(Index));
+        //    return RedirectToAction(nameof(Index));
 
-    //}
-    public IActionResult Grade()
+        //}
+        public IActionResult Grade()
         {
             //IEnumerable<Grade> objList = _db.Grades;//Coming from our database
             //return View(objList);
@@ -527,20 +506,12 @@ namespace tobedeleted.Controllers
             var user = await _userManager.FindByIdAsync(userRole.UserId);
             //var dep = await _assignHOD.FindByIdAsync(department.DepID);
             //await _userManager.AddToRoleAsync(user, userRole.RoleName);
-
-            _assignHOD.AddToHodAsync(HoD, HoD.userHoDId, HoD.DepID);
-            //if (HoD.HoDId > 0)
-            //{
-            //    return "Saved";
-            //}
-
             HoD= _assignHOD.AddToHodAsync(HoD, HoD.userHoDId, HoD.DepID);
             
             if (HoD.HoDId > 0)
             {
                 return Ok("Saved");
             }
-
             return RedirectToAction(nameof(Dashboard));
 
         }
