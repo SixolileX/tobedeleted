@@ -1,0 +1,78 @@
+﻿@model tobedeleted.Models.UploadContent
+
+<h2> Upload Assignmnent</h2>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div class="col-md-10">
+                <p> Upload file</p>
+                @*<input type="hidden" asp-for="@Model.ID" value="@Model.myID"/>*@
+                <input asp-for="file" class="form-control" accept=".pdf" type="file" />
+
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input class="btn btn-primary" type="submit" value="Upload" />
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<div>
+    <a asp-page="ViewAssignment">Back to ssignment view</a>
+</div>
+
+   @*public class UploadModel : PageModel
+    {
+        private readonly ApplicationDbContext _db;
+        private ApplicationDbContext db;
+
+        public UploadModel(ApplicationDbContext _db)
+        {
+            _db = db;
+        }
+
+        public int? myID { get; set; }
+        [BindProperty]
+        public IFormFile file { get; set; }
+        public int? ID { get; set; }
+        public void OnGet(int? id)
+        {
+            myID = id;
+        }
+
+        public async Task<IActionResult>
+    OnPostAsync()
+    {
+    if (file != null)
+    {
+    if (file.Length > 0 && file.Length < 300000)
+    {
+    var myAss = _db.Assignment.FirstOrDefault(x => x.AssignmentID == ID);
+
+    using (var target = new MemoryStream())
+    {
+    file.CopyTo(target);
+    myAss.Attachment = target.ToArray();
+    }
+
+    _db.Assignment.Update(myAss);
+    await _db.SaveChangesAsync();
+    }
+    }
+
+    return RedirectToAction("ViewAssignment");
+    }
+
+    }
+
+    }*@
+

@@ -1,0 +1,122 @@
+﻿@model IEnumerable<tobedeleted.Models.Assignment>
+
+@{
+    ViewData["Title"] = "ViewAssignment";
+}
+
+<div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light" style="text-align:center;">Assignments</h1>
+        <hr />
+    </div>
+</div>
+<p>
+    <a asp-action="AddAssignment" class="btn btn-sm btn-outline-primary">Create new assignment</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AssignmentTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssignmentType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssignmentInstructions)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Attachment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssignmentDueDate)
+            </th>
+            <th>
+                Upload file
+            </th>
+            @*<th> Download </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssignmentTitle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssignmentType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssignmentInstructions)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Attachment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssignmentDueDate)
+                </td>
+                @*<td>
+                    @if (item.Attachment != null)
+                     {
+                        <form asp-page-handler="Download" method="post" asp-route-id="@item.AssignmentID">
+                            <input type="submit" class="btn btn-outline-primary" value="Download">
+
+                        </form>
+                     }
+                    </td>*@
+
+                <td>
+                    <a asp-action="EditAssignment" asp-route-id="@item.AssignmentID" class="btn btn-sm btn-outline-primary">Edit</a> |
+                    <a asp-action="DeleteAssignment" asp-route-id="@item.AssignmentID" class="btn btn-sm btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+ @*public class ViewAssignmentModel : PageModel
+    {
+        private readonly ILogger<ViewAssignmentModel>
+    _logger;
+    private readonly ApplicationDbContext _db;
+    private ApplicationDbContext db;
+
+    public ViewAssignmentModel(ILogger<ViewAssignmentModel>
+        logger, ApplicationDbContext _db)
+        {
+        _logger = logger;
+        _db = db;
+        }
+
+        public IList<Assignment>
+            Assignment { get; set; }
+            public void OnGet()
+            {
+            Assignment = _db.Assignment.ToList();
+            }
+
+            public async Task<IActionResult>
+                OnPostDownloadAsync(int? id)
+                {
+                var myAss = _db.Assignment.FirstOrDefault(x => x.AssignmentID == id);
+                if (myAss == null)
+                {
+                return NotFound();
+                }
+                if (myAss.Attachment == null)
+                {
+                return Page();
+                }
+                else
+                {
+                byte[] byteArr = myAss.Attachment;
+                string mimeType = "application/pdf";
+                return new FileContentResult(byteArr, mimeType)
+                {
+                FileDownloadName = $"Assignment {myAss.AssignmentTitle}.pdf"
+                };
+                }
+                }
+                }*@

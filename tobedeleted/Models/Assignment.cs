@@ -17,6 +17,8 @@ namespace tobedeleted.Models
         public string AssignmentType { get; set; }
         [Required]
         public string AssignmentInstructions { get; set; }
+        //[Required]
+        public byte[] Attachment { get; set; }
         public DateTime AssignmentDueDate { get; set; }
     }
 }
