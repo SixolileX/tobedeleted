@@ -277,7 +277,36 @@ namespace tobedeleted.Controllers
         {
             return View();
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult SaveDepartment(UploadContent fileObj)
+        {
 
+            Department oDepartment = JsonConvert.DeserializeObject<Department>(fileObj.Department);
+            //UploadContent upload = new UploadContent();
+            //IFormFile file = Request.Form.Files.FirstOrDefault();
+            using (var ms = new MemoryStream())
+            {
+                fileObj.file.CopyTo(ms);
+                var fileBytes = ms.ToArray();
+                oDepartment.DepPhoto = fileBytes;//Here is the Subject photo in byte[] format
+
+                oDepartment = _departmentService.Save(oDepartment);
+                if (oDepartment.DepID > 0)
+                {
+                    return View(oDepartment);
+                }
+            }
+            //obj.SubImage = this.GetImage(Convert.ToBase64String(obj.SubImage));
+            if (ModelState.IsValid)//Checks to see if all the required fields have been met.
+            {
+                _db.Departments.Add(oDepartment);
+                _db.SaveChanges();
+                return RedirectToAction("GetSubject");
+            }
+            return View(oDepartment);
+
+        }
         [HttpPost]
         public string SaveFile(UploadContent fileObj, Department dep)
         {
@@ -421,7 +450,7 @@ namespace tobedeleted.Controllers
                              join U in _db.Users on Ur.UserId equals U.Id
                              join R in _db.Roles on Ur.RoleId equals R.Id
                              where Ur.UserId == U.Id && Ur.RoleId == R.Id && R.Name == "HOD"
-                             select new UserRole { UserId = U.Id, RoleName = R.Name }).ToList();
+                             select new ApplicationUser { Id = U.Id, firstName = U.firstName, lastName=U.lastName }).ToList();
             return View();
         }
 
@@ -430,7 +459,7 @@ namespace tobedeleted.Controllers
         {
             var user = await _userManager.FindByIdAsync(userRole.UserId);
             //var dep = await _assignHOD.FindByIdAsync(department.DepID);
-            await _userManager.AddToRoleAsync(user, userRole.RoleName);
+            //await _userManager.AddToRoleAsync(user, userRole.RoleName);
              _assignHOD.AddToHodAsync(HoD, HoD.userHoDId, HoD.DepID);
             //if (HoD.HoDId > 0)
             //{

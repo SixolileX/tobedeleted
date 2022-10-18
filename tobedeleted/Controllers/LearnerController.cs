@@ -31,8 +31,8 @@ namespace Inn_TuneProject.Controllers
         public IActionResult EnrollInSubjectAsync()
         {
 
-            List<AssignSubject> assigns = new List<AssignSubject>();
-            assigns = _db.AssignSubject.ToList();
+            List<Subject> assigns = new List<Subject>();
+            assigns = _db.Subjects.ToList();
             ViewBag.listofSubjects = assigns;
             return View();
 

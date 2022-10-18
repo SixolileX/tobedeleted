@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using tobedeleted.Data;
+using tobedeleted.Hubs;
 using tobedeleted.IService;
 using tobedeleted.Models;
 using tobedeleted.Service;
@@ -36,6 +37,9 @@ namespace tobedeleted
             services.AddScoped<ISubjectService, SubjectService>();
             services.AddScoped<IDepartmentService, DepartmentService>();
             services.AddScoped<IAssignHOD, AssignHoDService>();
+
+            services.AddScoped<IAddLearnerTosub, AddLearnerTosub>();
+            services.AddSignalR();
             services.AddControllersWithViews()
                 .AddJsonOptions(o =>
                 {
@@ -80,6 +84,7 @@ namespace tobedeleted
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+                endpoints.MapHub<ChatHub>("/chathub");
             });
         }
     }

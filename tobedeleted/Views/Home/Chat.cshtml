@@ -1,0 +1,133 @@
+﻿@{
+    ViewData["Tittle"]="Help";
+}
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/signalr/dist/browser/signalr.min.js"></script>
+<div data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <div id="dash-con" class="dash-con rounded d-flex align-items-center justify-content-between p-4">
+        <img src="~/css/Images/Help.jpg" style="width: 60px" />
+
+        <h6 class="mb-2">Help<span class="badge bg-primary rounded-pill text-white"> Chats </span></h6>
+    </div>
+</div>
+
+<!--<div class="container">-->
+    @*<div id="userinfo" class="row">
+        <label for="username">Please input your User Name</label>
+        <input type="text" class="form-control" id="username" name="username" autocomplete="off" />
+        <button></button>
+    </div>*@
+    <!--<div class="custom-control modal-header" style="background: rgba(6, 73, 181,0.5)">
+        <h5 class="text-black text-center">How Can We Help?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">Leave Chat</button>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div id="userinfo" class="row">
+                <label for="username">Please enter Username</label>
+                <input type="text" class="form-control" id="username" autocomplete="off" />
+                <button type="button" class="btn btn-block" onclick="SetUsername();">Join</button>
+            </div>
+            <div id="messagearea" class="row" style="display: none;">
+                <div>Joined as : <b><span id="username1">Not Set</span></b></div>
+                <hr />
+                <div class="row">
+                    <div class="col-6">
+                        <ul id="messagesList"></ul>
+                    </div>
+                </div>
+                <hr />
+                <input type="text" id="message" autocomplete="off" />
+                <input type="button" id="sendButton" value="Send Message" />
+            </div>
+        </div>
+    </div>
+</div>-->
+    <!-----------------------------------------------------Modal Body--------------------------------------------------------->
+<div class="container" id="exampleModal" tabindex="=-1" aria-labelledby="exempleModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+        <div class="modal-content">
+                <div class="custom-control modal-header" style="background: rgba(6, 73, 181,0.5)">
+                    <h5 class="text-black text-center">How Can We Help?</h5>
+                    <button type="submit" class="btn-close" data-bs-dismiss="modal" aria-label="Close">Leave Chat</button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div id="userinfo" class="row">
+                            <label for="username">Please enter Username</label>
+                            <input type="text" class="form-control" id="username" autocomplete="off" />
+                            <button type="button" class="btn btn-block" onclick="SetUsername();">Join</button>
+                        </div>
+                        <div id="messagearea" class="row" style="display: none;">
+                            <div>Joined as : <b><span id="username1">Not Set</span></b></div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-6">
+                                    <ul id="messagesList"></ul>
+                                </div>
+                            </div>
+                            <hr />
+                            <input type="text" id="message" autocomplete="off" />
+                            <input type="button" id="sendButton" value="Send Message" />
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+   </div>
+</div>
+
+
+
+<script>
+
+    "use strict";
+
+    var connection = new signalR.HubConnectionBuilder().withUrl("/chathub").build();
+    var username = "";
+
+    //Disable send button until connection is established.
+    document.getElementById("sendButton").disabled = true;
+
+    connection.on("ReceiveMessage", function(user, message) {
+        var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        var encodeMsg = user + " says: " + msg;
+        var li = document.createElement("li");
+        li.textContent = encodeMsg;
+        document.getElementById("messagesList").appendChild(li);
+    });
+
+    connection.start().then(function () {
+        document.getElementById("sendButton").disabled = false;
+    }).catch(function (err) {
+        return console.error(err.toString());
+    })
+
+    document.getElementById("sendButton").addEventListener("click", function (event) {
+        var message = document.getElementById("message").value;
+        connection.invoke("SendMessage", username, message).then(function () {
+            document.getElementById("message").value = "";
+        }).catch(function (err) {
+            return console.error(err.toString());
+        });
+        event.preventDefault();
+    });
+
+
+    function SetUsername(){
+        //Check the username
+        var usernameinput = document.getElementById("username").value;
+        if (usernameinput === "") {
+            alert("Please enter your username");
+            return;
+        }
+        username = usernameinput;
+
+        //hide username div and show message panel.
+        document.getElementById("userinfo").style.display = 'none';
+        document.getElementById("messagearea").style.display = 'block';
+        document.getElementById("username1").innerText = usernameinput;
+    }
+
+
+</script>

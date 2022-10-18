@@ -89,11 +89,15 @@ namespace tobedeleted.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                
+<<<<<<< HEAD
                 var user = new ApplicationUser 
                 { 
                     UserName = Input.Email,
                     Email = Input.Email,  
                 };
+=======
+                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email,  };
+>>>>>>> e7df5cd0015ab06d9dcff475678c9ccd277bbd0f
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {

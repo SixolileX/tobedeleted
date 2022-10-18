@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using tobedeleted.Data;
 
 namespace tobedeleted.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221017212520_Assignment")]
+    partial class Assignment
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -265,15 +267,12 @@ namespace tobedeleted.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("AssignmentInstructions")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AssignmentTitle")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AssignmentType")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("AssignmentID");
@@ -360,27 +359,6 @@ namespace tobedeleted.Migrations
                     b.ToTable("HOD");
                 });
 
-            modelBuilder.Entity("tobedeleted.Models.Learner", b =>
-                {
-                    b.Property<int>("learnerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("GradeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Parentid")
-                        .HasColumnType("int");
-
-                    b.Property<string>("userLearnerId")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("learnerId");
-
-                    b.ToTable("Learner");
-                });
-
             modelBuilder.Entity("tobedeleted.Models.MeetingScheduler", b =>
                 {
                     b.Property<int>("MeetingID")
@@ -397,26 +375,6 @@ namespace tobedeleted.Migrations
                     b.HasKey("MeetingID");
 
                     b.ToTable("MeetingScheduler");
-                });
-
-            modelBuilder.Entity("tobedeleted.Models.Parent", b =>
-                {
-                    b.Property<int>("Parentid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("userLearnerId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("userParentId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Parentid");
-
-                    b.ToTable("Parent");
                 });
 
             modelBuilder.Entity("tobedeleted.Models.SubDep", b =>
@@ -464,9 +422,6 @@ namespace tobedeleted.Migrations
                     b.Property<byte[]>("SubImage")
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<int>("learnerId")
-                        .HasColumnType("int");
-
                     b.HasKey("SubID");
 
                     b.HasIndex("DepartmentDepID");
@@ -474,26 +429,6 @@ namespace tobedeleted.Migrations
                     b.HasIndex("HoDId");
 
                     b.ToTable("Subjects");
-                });
-
-            modelBuilder.Entity("tobedeleted.Models.learners", b =>
-                {
-                    b.Property<int>("LeanerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("SubjectName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserlearnerId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("LeanerId");
-
-                    b.ToTable("learners");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
