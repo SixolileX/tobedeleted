@@ -48,18 +48,18 @@ namespace Inn_TuneProject.Controllers
             var roles = _roleManager.Roles.ToList();
             var ur = _db.UserRoles.ToList();
             var Sub = _db.Subjects.ToList();
-            //ViewBag.Subjects = new SelectList(Sub, "SubID", "SubDesc");
-       
-            //ViewBag.listofSubjects = (from Ur in _db.UserRoles
-            //                 join U in _db.Users on Ur.UserId equals U.Id
-            //                 join R in _db.Roles on Ur.RoleId equals R.Id
-            //                 where Ur.UserId == U.Id && Ur.RoleId == R.Id && R.Name == "Learner"
-            //                 select new ApplicationUser { Id = U.Id, firstName = U.firstName, lastName = U.lastName }).ToList();
+            ViewBag.Subjects = new SelectList(Sub, "SubID", "SubDesc");
+
+            ViewBag.users = (from Ur in _db.UserRoles
+                                      join U in _db.Users on Ur.UserId equals U.Id
+                                      join R in _db.Roles on Ur.RoleId equals R.Id
+                                      where Ur.UserId == U.Id && Ur.RoleId == R.Id && R.Name == "Learner"
+                                      select new ApplicationUser { Id = U.Id, firstName = U.firstName, lastName = U.lastName }).ToList();
             return View();
         }
-        //[HttpPost]
-        //public async Task< IActionResult> EnrollInSubject(UserRole userRole, Subject subject,learners learners)
-        //{
+        [HttpPost]
+        public IActionResult EnrollInSubject(UserRole userRole, Subject subject, learners learners)
+        {
 
 
             //var user = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -75,18 +75,24 @@ namespace Inn_TuneProject.Controllers
             //_db.AssignSubject.Add(assignSubject);
             //_db.SaveChanges();
 
-            //var user = await _userManager.FindByIdAsync(userRole.UserId);
+            var user =  _userManager.FindByIdAsync(userRole.UserId);
 
-            //_IaddLearnerTosub.AddToLeanerAsync(learners, learners.SubjectName, learners.UserlearnerId);
+            _IaddLearnerTosub.AddToLeanerAsync(learners, learners.SubjectName, learners.UserlearnerId);
 
-            ////learners.SubjectName = user;
-            ////learners.UserlearnerId = user;
-            //_db.learners.Add(learners);
-            //_db.SaveChanges();
+            if (learners.LeanerId > 0)
+            {
+                _db.learners.Add(learners);
+                _db.SaveChanges();
 
-            //return RedirectToAction(nameof(DashBoards));
+            }
 
-        //}
+            //learners.SubjectName = user;
+            //learners.UserlearnerId = user;
+          
+
+            return RedirectToAction(nameof(DashBoards));
+
+        }
 
         public ActionResult DashBoards()
         {
