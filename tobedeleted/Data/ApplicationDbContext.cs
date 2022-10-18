@@ -39,12 +39,12 @@ namespace tobedeleted.Data
         public DbSet<tobedeleted.Models.Learner> Learner { get; set; }
 
         public DbSet<tobedeleted.Models.learners> learners { get; set; }
-<<<<<<< HEAD
+
         //public DbSet<tobedeleted.Models.AssignLearnerToParent> AssignLearnerToParent { get; set; }
-=======
+
         public DbSet<tobedeleted.Models.EnrollStudent> EnrollStudents { get; set; }
 
->>>>>>> bbb25dfad5c95447853d7827bb364d2bdd8c6405
+
 
 
 

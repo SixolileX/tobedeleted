@@ -506,20 +506,20 @@ namespace tobedeleted.Controllers
             var user = await _userManager.FindByIdAsync(userRole.UserId);
             //var dep = await _assignHOD.FindByIdAsync(department.DepID);
             //await _userManager.AddToRoleAsync(user, userRole.RoleName);
-<<<<<<< HEAD
+
             _assignHOD.AddToHodAsync(HoD, HoD.userHoDId, HoD.DepID);
             //if (HoD.HoDId > 0)
             //{
             //    return "Saved";
             //}
-=======
+
             HoD= _assignHOD.AddToHodAsync(HoD, HoD.userHoDId, HoD.DepID);
             
             if (HoD.HoDId > 0)
             {
                 return Ok("Saved");
             }
->>>>>>> bbb25dfad5c95447853d7827bb364d2bdd8c6405
+
             return RedirectToAction(nameof(Dashboard));
 
         }

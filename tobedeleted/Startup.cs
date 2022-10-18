@@ -37,13 +37,13 @@ namespace tobedeleted
             services.AddScoped<ISubjectService, SubjectService>();
             services.AddScoped<IDepartmentService, DepartmentService>();
             services.AddScoped<IAssignHOD, AssignHoDService>();
-<<<<<<< HEAD
+
 
             services.AddScoped<IAssignPTL, AssignPTLService>();
 
-=======
+
             services.AddScoped<IAssignSubGrade, AssignSubGrade>();
->>>>>>> bbb25dfad5c95447853d7827bb364d2bdd8c6405
+
             services.AddScoped<IAddLearnerTosub, AddLearnerTosub>();
             services.AddSignalR();
             services.AddControllersWithViews()
