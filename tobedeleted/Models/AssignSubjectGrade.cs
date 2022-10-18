@@ -14,5 +14,7 @@ namespace tobedeleted.Models
         public int GrID { get; set; }
         [Required]
         public int SubId { get; set; }
+        [Required]
+        public string userTeacher { get; set; }
     }
 }

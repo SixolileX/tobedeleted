@@ -19,6 +19,7 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.17" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.17" />
 		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+		<PackageReference Include="QuickMailer" Version="1.0.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>
