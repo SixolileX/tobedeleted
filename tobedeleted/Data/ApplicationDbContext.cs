@@ -34,13 +34,13 @@ namespace tobedeleted.Data
         public DbSet<AssignSubject> AssignSubject { get; set; }
 
         public DbSet<tobedeleted.Models.Assignment> Assignment { get; set; }
-<<<<<<< HEAD
+
         public DbSet<tobedeleted.Models.Parent> Parent { get; set; }
         public DbSet<tobedeleted.Models.Learner> Learner { get; set; }
-=======
+
         public DbSet<tobedeleted.Models.learners> learners { get; set; }
 
 
->>>>>>> e7df5cd0015ab06d9dcff475678c9ccd277bbd0f
+
     }
 }

@@ -52,13 +52,13 @@ namespace tobedeleted.Controllers
         }
         public IActionResult Report()
         {
-            var Info = from P in _db.Parent
-                       join l in _db.Learner on P.Parentid equals l.Parentid
+            //var Info = from P in _db.Parent
+            //           join l in _db.Learner on P.Parentid equals l.Parentid
 
 
-                       where P.Parentid == l.Parentid
+            //           where P.Parentid == l.Parentid
 
-                       select new DisplayLearnerInfo { }
+            //           select new DisplayLearnerInfo { }
 
             return View();
         }
