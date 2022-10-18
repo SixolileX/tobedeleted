@@ -23,7 +23,8 @@ namespace tobedeleted.Models
         public byte[] SubImage { get; set; }
         [Required]
         public string SubCode { get; set; }
-        
+        public int learnerId { get; set; }
+
         //public virtual Department Departments { get; set; }
     }
 }
