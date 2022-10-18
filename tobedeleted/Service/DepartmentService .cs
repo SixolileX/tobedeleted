@@ -17,7 +17,7 @@ namespace tobedeleted.Service
             _context = context;
         }
 
-        public Department SavedDepartment => _context.Departments.SingleOrDefault();
+        public Department SavedDepartment => _context.Departments.OrderBy(o => o.DepID).LastOrDefault();
 
         public Department Save(Department oDepartment)
         {

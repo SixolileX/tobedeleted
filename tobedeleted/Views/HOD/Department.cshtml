@@ -10,38 +10,34 @@
 <div class="col-12">
     <div class="row">
         <div class="col-6">
-            <div class="row">
+            <div class="row col-12">
                 <div class="col-4">
                     <label>Department Name: </label>
                 </div>
                 <div class="col-6">
-                    <input id="txtName" type="text" placeholder="Department Name" style="width:100%;" />
+                    <input id="txtName" type="text" placeholder="Department Name"  autocomplete="off" style="width:100%;" />
                 </div>
             </div>
-            @*<div class="dropdown">
-                    <select asp-for="DepID" class="form-control">
-
-                        @foreach (Department D in ViewBag.Department)
-                        {
-                            <option value="@D.DepID">@D.DepDesc</option>
-                        }
-                    </select>
-                </div>*@
-            <div class="row">
-                <div class="col-10">
+            <div class="row col-12">
+                <div class="col-4">
                     <label>Photo :</label>
                 </div>
-                <div class="col-md-10">
+                <div class="col-6">
                     <input id="txtFile" type="file" value="Upload File" style="width: 100%;" />
                 </div>
             </div>
             <div class="row col-12">
                 <div class="col-6">
-                    <img id="imgViewer" width="200" height="200" style="border: 1px solid #ffffff" />
+                    <img id="imgViewer" width="400" height="400" style="border: 1px solid #ffffff" />
                 </div>
-                <div class="form-group col-6">
-                    <button id="btnSave" class="btn btn-primary" style="width:100%;margin-top:100%;"> Save Department</button>
-                    <button id="btnRead" class="btn btn-primary" style="width:100%;margin-top:100%;"> Read Department</button>
+                
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <button id="btnSave" class="btn btn-primary" style="width:100%;margin-top:2px;">Save Department</button>
+                </div>
+                <div class="col-6">
+                    <button id="btnRead" class="btn btn-primary" style="width:100%;margin-top:2px;">Read Department</button>
                 </div>
             </div>
         </div>
@@ -63,6 +59,8 @@
         var oDepartment = {
             DepDesc: $("#txtName").val()
         };
+        //var isSuccess = false;
+        //$.each($)
         formData.append("Department", JSON.stringify(oDepartment));
         $.ajax({
             type: "POST",
@@ -86,15 +84,15 @@
             formData.append("file", files[i]);
         }
         var oDepartment = {
-
+            DepDesc: $("#txtName").val()
         }
-        formData.append("Department", JSON.stringify(o));
+        formData.append("Department", JSON.stringify(oDepartment));
         $.ajax({
             type: "GET",
             url: "/HOD/GetSavedDepartment",
             success: function (data) {
-                $("#txtName").val(data.Dep);
-                $('#imgViewer').attr('src', "data:image/jpg;base64," + data.Photo + "");
+                $("#txtName").val(data.DepDesc);
+                $("#imgViewer").attr('src', "data:image/jpg;base64," + data.Photo + "");
             },
             error: function (data) {
                 console.log('Error:', data);

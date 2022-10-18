@@ -93,9 +93,10 @@
             formData.append("file", files[i]);
         }
         var oSubject = {
-
+            SubDesc: $("#txtName").val(),
+            DepID: $("#txtDep").val()
         }
-        formData.append("Subject", JSON.stringify(o));
+        formData.append("Subject", JSON.stringify(oSubject));
         $.ajax({
             type: "GET",
             url: "/HOD/GetSavedSubject",
