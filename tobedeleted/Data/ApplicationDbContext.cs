@@ -39,6 +39,7 @@ namespace tobedeleted.Data
         public DbSet<tobedeleted.Models.Learner> Learner { get; set; }
 
         public DbSet<tobedeleted.Models.learners> learners { get; set; }
+        //public DbSet<tobedeleted.Models.AssignLearnerToParent> AssignLearnerToParent { get; set; }
 
 
 

@@ -38,6 +38,8 @@ namespace tobedeleted
             services.AddScoped<IDepartmentService, DepartmentService>();
             services.AddScoped<IAssignHOD, AssignHoDService>();
 
+            services.AddScoped<IAssignPTL, AssignPTLService>();
+
             services.AddScoped<IAddLearnerTosub, AddLearnerTosub>();
             services.AddSignalR();
             services.AddControllersWithViews()

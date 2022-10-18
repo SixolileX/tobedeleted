@@ -1,0 +1,68 @@
+﻿@model tobedeleted.Models.Parent
+@{
+    ViewData["Title"] = "AssignParentToLearner";
+    Layout = "~/Pages/_LayoutParent.cshtml";
+}
+
+<h1>AssignParentToLearner</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AssignParentToLearner">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label>Select Username</label>
+                <select asp-for="userParentId" class="form-control">
+                    <option selected disabled>--select user--</option>
+                    @foreach (ApplicationUser U in ViewBag.Users)
+                    {
+                        <option value="@U.Id">@U.firstName , @U.lastName</option>
+                    }
+                </select>
+            </div>
+
+            @*<div class="form-group">
+            <label>Select Role Name</label>
+            <select asp-for="RoleName" asp-items="@ViewBag.Roles" class="form-control">
+                <option selected disabled>--select Role--</option>
+                @foreach (UserRole r in ViewBag.Roles)
+                {
+                    <option value="@r.UserId">@r.RoleName</option>
+                }
+            </select>
+        </div>*@
+
+
+            @*<div class="form-group">
+            <label>Select Department Name</label>
+            <select asp-for="userLearner" asp-items="@ViewBag.Userss" class="form-control">
+                <option selected disabled>--select Department--</option>
+            </select>
+        </div>*@
+
+            <div class="form-group">
+                <label>Select Username</label>
+                <select asp-for="userLearnerId" class="form-control">
+                    <option selected disabled>--select user--</option>
+                    @foreach (ApplicationUser U in ViewBag.Userss)
+                    {
+                        <option value="@U.Id">@U.firstName , @U.lastName</option>
+                    }
+                </select>
+            </div>
+
+            <div>
+                <input id="btnSave" type="submit" class="btn btn-outline-primary btn-block" value="Assign" />
+                @*<button id="btnRead" class="btn btn-primary" style="width:100%;margin-top:100%;"> Read</button>*@
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Dashboad">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
