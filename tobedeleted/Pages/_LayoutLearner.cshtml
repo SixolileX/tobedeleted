@@ -85,12 +85,12 @@
             display: block;
         }
     </style>
-    <div contenteditable="false" class="p-3 mb-2 bg-dark text-white">
+    <div contenteditable="false" class="p-3 mb-2 bg-dark text-white ">
         <header>
 
            
 
-            <nav class="navbar navbar-expand-lg bg-light fixed-top">
+            <nav class="navbar navbar-expand-lg bg-light">
                 <div class="container-fluid">
                     <img src="~/css/Images/lol.png" width="120" height="60" class="align-content-md-start" />
                     
@@ -104,6 +104,8 @@
 
                             <a class="navbar-brand" asp-area="" asp-controller="Learner" asp-action="DashBoards">Dashboard</a>
 
+                            <a class="navbar-brand" asp-area="" asp-controller="Learner" asp-action="Resultss">Results</a>
+
                             <a class="navbar-brand" asp-area="" asp-controller="Learner" asp-action="EnrollInSubject">Enroll</a>
 
                             <div class="my_dropdown">
@@ -113,26 +115,27 @@
 
 
                                     @*@try
-                                    {
-                                        @foreach (mySubject m in ViewBag.Subjects)
-                                        {
+                {
+                    @foreach (mySubject m in ViewBag.Subjects)
+                    {
 
-                                            <div class="border text-center p-5">
-                                                <a asp-controller="Learner" asp-action="EnrollInSubject" asp-route-Id="@m.AssignSubjectsVM.AssignedIdD" title="@m.SubjectsVM.SubjectName">@m.SubjectsVM.M </a>
-                                            </div>
-                                        }
-                                    }
-                                    catch
-                                    {
-                                    }*@
+                        <div class="border text-center p-5">
+                            <a asp-controller="Learner" asp-action="EnrollInSubject" asp-route-Id="@m.AssignSubjectsVM.AssignedIdD" title="@m.SubjectsVM.SubjectName">@m.SubjectsVM.M </a>
+                        </div>
+                    }
+                }
+                catch
+                {
+                }*@
 
                                 </button>
                                 <div class="my_dropdown-content">
                                     <a class="nav-link active">@ViewBag.listofsubjects</a>
-                                    <a class="nav-link active"  asp-area="" asp-controller="Learner" asp-action="Maths"> Maths </a>
-                                    <a class="nav-link active"  asp-area="" asp-controller="Learner" asp-action="QuestionPA"> Question Papers </a>
+                                    <a class="nav-link active" asp-area="" asp-controller="Learner" asp-action="Maths"> Maths </a>
+                                    <a class="nav-link active" asp-area="" asp-controller="Learner" asp-action="QuestionPA"> Question Papers </a>
                                     <a class="nav-link active" asp-area="" asp-controller="Learner" asp-action="Report"> Report </a>
                                 </div>
+
                             </div>
                         </div>
 

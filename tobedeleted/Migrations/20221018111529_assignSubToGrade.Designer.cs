@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using tobedeleted.Data;
 
 namespace tobedeleted.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221018111529_assignSubToGrade")]
+    partial class assignSubToGrade
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -294,9 +296,6 @@ namespace tobedeleted.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte[]>("Attachment")
-                        .HasColumnType("varbinary(max)");
-
                     b.HasKey("AssignmentID");
 
                     b.ToTable("Assignment");
@@ -343,27 +342,6 @@ namespace tobedeleted.Migrations
                     b.HasIndex("HoDId");
 
                     b.ToTable("Departments");
-                });
-
-            modelBuilder.Entity("tobedeleted.Models.EnrollStudent", b =>
-                {
-                    b.Property<int>("EnrollID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("EnrollDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("StudentID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("SubjectID")
-                        .HasColumnType("int");
-
-                    b.HasKey("EnrollID");
-
-                    b.ToTable("EnrollStudents");
                 });
 
             modelBuilder.Entity("tobedeleted.Models.Grade", b =>

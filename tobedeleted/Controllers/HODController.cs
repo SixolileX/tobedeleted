@@ -27,10 +27,11 @@ namespace tobedeleted.Controllers
         ISubjectService _subjectService=null;
         IDepartmentService _departmentService=null;
         IAssignHOD _assignHOD;
+        IAssignSubGrade _assignSubGrade;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public HODController(IWebHostEnvironment webHostEnv, ApplicationDbContext db, ISubjectService subjectService, IDepartmentService departmentService, RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager, IAssignHOD assignHOD)
+        public HODController(IWebHostEnvironment webHostEnv, ApplicationDbContext db, ISubjectService subjectService, IDepartmentService departmentService, RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager, IAssignHOD assignHOD, IAssignSubGrade assignSubGrade)
         {
             this._webHostEnv = webHostEnv;
             _db = db;
@@ -39,6 +40,7 @@ namespace tobedeleted.Controllers
             this._roleManager = roleManager;
             this._userManager = userManager;
             _assignHOD = assignHOD;
+            _assignSubGrade = assignSubGrade;
         }
 
         public IActionResult Dashboard()
@@ -156,7 +158,32 @@ namespace tobedeleted.Controllers
 
             return View(obj);
         }
+        [HttpGet]
+        public IActionResult AssignSubGr()
+        {
+            var grade = _db.Grades.ToList();
+            var subs = _db.Subjects.ToList();
+            ViewBag.Grades = new SelectList(grade, "GrID", "GrDesc");
+            ViewBag.Subjects = new SelectList(subs, "SubID", "SubDesc");
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AssignSubGr(AssignSubjectGrade subGrade, Subject sub, Grade gr)
+        {
+            subGrade = _assignSubGrade.AssignSubjectGradeAsync(subGrade, subGrade.GrID, subGrade.SubId);
+            
+            if (subGrade.SubGrID > 0)
+            {
+                return Ok("Saved!");
+            }
+            else
+            {
+                Ok("Failed!"); 
+                return RedirectToAction(nameof(AssignSubGr));
+            }
+            
 
+        }
         //POST-Update updating the current data we have 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -275,6 +302,8 @@ namespace tobedeleted.Controllers
         }
         public IActionResult Department()
         {
+            var grade = _db.Grades.ToList();
+            var subs = _db.Subjects.ToList();
             ViewBag.Department = _db.Departments;
             return View();
         }
@@ -477,11 +506,20 @@ namespace tobedeleted.Controllers
             var user = await _userManager.FindByIdAsync(userRole.UserId);
             //var dep = await _assignHOD.FindByIdAsync(department.DepID);
             //await _userManager.AddToRoleAsync(user, userRole.RoleName);
+<<<<<<< HEAD
             _assignHOD.AddToHodAsync(HoD, HoD.userHoDId, HoD.DepID);
             //if (HoD.HoDId > 0)
             //{
             //    return "Saved";
             //}
+=======
+            HoD= _assignHOD.AddToHodAsync(HoD, HoD.userHoDId, HoD.DepID);
+            
+            if (HoD.HoDId > 0)
+            {
+                return Ok("Saved");
+            }
+>>>>>>> bbb25dfad5c95447853d7827bb364d2bdd8c6405
             return RedirectToAction(nameof(Dashboard));
 
         }

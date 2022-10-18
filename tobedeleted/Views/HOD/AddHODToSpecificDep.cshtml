@@ -14,11 +14,11 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label>Select Username</label>
-                <select asp-for="userHoDId" class="form-control">
+                <select id="txtUserId" asp-for="userHoDId" class="form-control">
                     <option selected disabled>--select user--</option>
                     @foreach (ApplicationUser U in ViewBag.Users)
                 {
-                    <option value="@U.Id">@U.firstName && @U.lastName</option>
+                    <option value="@U.Id">@U.firstName @U.lastName</option>
                 }
                 </select>
             </div>
@@ -35,7 +35,7 @@
             </div>*@
             <div class="form-group">
                 <label>Select Department Name</label>
-                <select asp-for="DepID" asp-items="@ViewBag.Department" class="form-control">
+                <select id="txtDep" asp-for="DepID" asp-items="@ViewBag.Department" class="form-control">
                     <option selected disabled>--select Department--</option>
                 </select>
             </div>
@@ -88,7 +88,7 @@
         }
         var oHOD = {
             UserId: $("#txtUserId").val(),
-            RoleName: $("#txtRoleName").val(),
+            //RoleName: $("#txtRoleName").val(),
             DepID: $("#txtDep").val()
 
         };
@@ -114,16 +114,19 @@
         for (var i = 0; i < files.length; i++) {
             formData.append("file", files[i]);
         }
-        var oSubject = {
+        var oHOD = {
+            UserId: $("#txtUserId").val(),
+            //RoleName: $("#txtRoleName").val(),
+            DepID: $("#txtDep").val()
 
-        }
-        formData.append("Subject", JSON.stringify(o));
+        };
+        formData.append("HOD", JSON.stringify(oHOD));
         $.ajax({
             type: "GET",
             url: "/HOD/AddHODToSpecificDep",
             success: function (data) {
                 $("#txtUserId").val(data.UserId);
-                $("txtRoleName").val(data.RoleName);
+                //$("txtRoleName").val(data.RoleName);
                 $("txtDep").val(data.DepID)
                 /*$('#imgViewer').attr('src', "data:image/jpg;base64," + data.Photo + "");*/
             },
@@ -135,6 +138,6 @@
     function ResetFields() {
         $("#txtName").val("");
         $("txtDep").val("");
-        $("#imgViewer").attr("src", "");
+        //$("#imgViewer").attr("src", "");
     }
 </script>

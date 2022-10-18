@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewData["Title"] = "Results";
+    Layout = "~/Pages/_LayoutLearner.cshtml";
+}
+
+<!DOCTYPE html>
+<br />
+<br />
+<h4>Subject results</h4>
+<hr />
+<br />
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Inn_TuneProject</title>
+
+    <link rel="stylesheet" href="~/css/site.css" type="text/css" />
+</head>
+
+<body>
+
+    <div id="accordion">
+
+        <div class="card">
+            <div class="card-header">
+                <a class="btn" data-bs-toggle="collapse" href="#collapseOne">
+                    Mathematics
+                </a>
+            </div>
+            <div id="collapseOne" class="collapse " data-bs-parent="#accordion">
+                <div class="card-body">
+                    <a>TM1:  </a>
+                    <a>TM2:  </a>
+                    <a>TM3:  </a>
+                    <a>TM4:  </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseTwo">
+                    life Sciences
+                </a>
+            </div>
+            <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
+                <div class="card-body">
+                    <a>TM1:  </a>
+                    <a>TM2:  </a>
+                    <a>TM3:  </a>
+                    <a>TM4:  </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseThree">
+                    Physical sciences
+                </a>
+            </div>
+            <div id="collapseThree" class="collapse" data-bs-parent="#accordion">
+                <div class="card-body">
+                    <a>TM1:  </a>
+                    <a>TM2:  </a>
+                    <a>TM3:  </a>
+                    <a>TM4:  </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseFour">
+                    Geography
+                </a>
+            </div>
+            <div id="collapseFour" class="collapse" data-bs-parent="#accordion">
+                <div class="card-body">
+                    <a>TM1:  </a>
+                    <a>TM2:  </a>
+                    <a>TM3:  </a>
+                    <a>TM4:  </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseFive">
+                    Agricultural Sciences
+                </a>
+            </div>
+            <div id="collapseFive" class="collapse" data-bs-parent="#accordion">
+                <div class="card-body">
+                    <a>TM1:  </a>
+                    <a>TM2:  </a>
+                    <a>TM3:  </a>
+                    <a>TM4:  </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
