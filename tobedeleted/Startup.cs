@@ -37,6 +37,8 @@ namespace tobedeleted
             services.AddScoped<ISubjectService, SubjectService>();
             services.AddScoped<IDepartmentService, DepartmentService>();
             services.AddScoped<IAssignHOD, AssignHoDService>();
+
+            services.AddScoped<IAddLearnerTosub, AddLearnerTosub>();
             services.AddSignalR();
             services.AddControllersWithViews()
                 .AddJsonOptions(o =>

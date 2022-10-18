@@ -34,6 +34,8 @@ namespace tobedeleted.Data
         public DbSet<AssignSubject> AssignSubject { get; set; }
 
         public DbSet<tobedeleted.Models.Assignment> Assignment { get; set; }
+        public DbSet<tobedeleted.Models.learners> learners { get; set; }
+
 
     }
 }

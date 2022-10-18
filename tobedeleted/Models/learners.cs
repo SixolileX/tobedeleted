@@ -11,7 +11,7 @@ namespace tobedeleted.Models
         [Key]
          public int LeanerId { get; set; }
         [Required] 
-        public string UserlearnerId { get;set }
+        public string UserlearnerId { get; set; }
         [Required]
         public string SubjectName { get; set; }
     }
