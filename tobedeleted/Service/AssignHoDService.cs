@@ -29,11 +29,23 @@ namespace tobedeleted.Service
             return HoD;
         }
         
-        public HOD SavedHOD => _context.HOD.SingleOrDefault();
+        public HOD SavedHOD => _context.HOD.OrderBy(o => o.HoDId).LastOrDefault();
 
         public HOD Save(HOD oHOD)
         {
             _context.HOD.Add(oHOD);
+            _context.SaveChanges();
+            return oHOD;
+        }
+        public HOD Update(HOD oHOD)
+        {
+            _context.HOD.Update(oHOD);
+            _context.SaveChanges();
+            return oHOD;
+        }
+        public HOD Delete(HOD oHOD)
+        {
+            _context.HOD.Remove(oHOD);
             _context.SaveChanges();
             return oHOD;
         }

@@ -41,6 +41,41 @@
                 </div>
             </div>
         </div>
+        <div class="col-6">
+            <form method="post" asp-controller="HOD" asp-action="GetSavedDepartment">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.DepID)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model=>model.DepDesc)
+                            </th>
+                            <th/>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.Department)
+                        {
+                        <tr>
+                            <td>
+                                @item.DepID
+                            </td>
+                            <td>
+                                @item.DepDesc
+                            </td>
+                            <td>
+                                <a asp-action="UpdateDepartment" asp-route-id="@item.DepID">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.DepID">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.DepID">Delete</a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </form>
+        </div>
     </div>
 </div>
 
@@ -56,11 +91,28 @@
         for (var i = 0; i < files.length; i++) {
             formData.append("file", files[i]);
         }
+        
         var oDepartment = {
             DepDesc: $("#txtName").val()
         };
         //var isSuccess = false;
-        //$.each($)
+        //$.each($("#txtName"),
+        //    function (data) {
+        //        DepNames = $(this).find("#txtName").val();
+        //        if (DepNames === $("#txtName").val()) {
+        //            $("#txtName").focus();
+        //            $("#txtName").val("");
+        //            alert($("#txtName").val(data.DepDesc) + " already exists!");
+        //            isSuccess = true;
+        //        }
+        //        //else {
+                    
+        //        //}
+        //    }
+        //);
+        //if (isSuccess === true) {
+        //    return false;
+        //}
         formData.append("Department", JSON.stringify(oDepartment));
         $.ajax({
             type: "POST",
@@ -92,7 +144,7 @@
             url: "/HOD/GetSavedDepartment",
             success: function (data) {
                 $("#txtName").val(data.DepDesc);
-                $("#imgViewer").attr('src', "data:image/jpg;base64," + data.Photo + "");
+                $("#imgViewer").attr("src", "data:image/jpg;base64," + data.Photo + "");
             },
             error: function (data) {
                 console.log('Error:', data);

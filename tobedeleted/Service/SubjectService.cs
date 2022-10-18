@@ -17,12 +17,26 @@ namespace tobedeleted.Service
         }
         public Subject GetSavedSubject()
         {
-            return _context.Subjects.SingleOrDefault();
+            return _context.Subjects.OrderBy(o => o.SubID).LastOrDefault();
+
         }
 
         public Subject Save(Subject oSubject)
         {
             _context.Subjects.Add(oSubject);
+            _context.SaveChanges();
+            return oSubject;
+        }
+
+        public Subject Update(Subject oSubject)
+        {
+            _context.Subjects.Update(oSubject);
+            _context.SaveChanges();
+            return oSubject;
+        }
+        public Subject Delete(Subject oSubject)
+        {
+            _context.Subjects.Remove(oSubject);
             _context.SaveChanges();
             return oSubject;
         }

@@ -9,7 +9,8 @@ namespace tobedeleted.Models
     {
         HOD AddToHodAsync(HOD hod, string userHoDId ,int depID);
         HOD Save(HOD oHOD);
-        
+        HOD Update(HOD oHOD);
+        HOD Delete(HOD oHOD);
         HOD SavedHOD { get; }
     }
 }

@@ -25,5 +25,17 @@ namespace tobedeleted.Service
             _context.SaveChanges();
             return oDepartment;
         }
+        public Department Update(Department oDepartment)
+        {
+            _context.Departments.Update(oDepartment);
+            _context.SaveChanges();
+            return oDepartment;
+        }
+        public Department Delete(Department oDepartment)
+        {
+            _context.Departments.Remove(oDepartment);
+            _context.SaveChanges();
+            return oDepartment;
+        }
     }
 }

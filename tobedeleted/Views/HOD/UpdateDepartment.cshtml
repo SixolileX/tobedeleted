@@ -4,29 +4,134 @@
     ViewData["Title"] = "UpdateDepartment";
     Layout = "~/Pages/_LayoutHOD.cshtml";
 }
-
+<script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
 <h1>Update Department</h1>
 
-<h4>Department</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="UpdateDepartment">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="DepID" />
+            <input id="txtDepID" type="hidden" asp-for="DepID" />
             <div class="form-group">
-                <label asp-for="DepDesc" class="control-label"></label>
-                <input asp-for="DepDesc" class="form-control" />
+                <label asp-for="DepDesc" class="control-label">Department Name</label>
+                <input id="txtName" asp-for="DepDesc" class="form-control" />
                 <span asp-validation-for="DepDesc" class="text-danger"></span>
             </div>
+            @*<div class="form-group">
+                <label asp-for="DepPhoto">Photo :</label>
+                <input id="txtFile" asp-for="DepPhoto" type="file" value="Upload File" style="width: 100%;" />
+
+            </div>*@
+            <!--<div class="col-6">
+                <img id="imgViewer" width="400" height="400" hidden style="border: 1px solid #ffffff" />
+            </div>-->
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <label asp-for="DepPhoto" class="control-label">Photo: </label>
+                <input id="txtFile" type="file" value="Upload File" style="width: 100%;" />
             </div>
+            <div class="form-group">
+                <img id="imgViewer" width="400" height="400" style="border: 1px solid #ffffff" />
+            </div>
+            <div class="form-group">
+                <button id="btnSave" class="btn btn-primary" style="width:100%;margin-top:2px;">Save Department</button>
+                <button id="btnRead" class="btn btn-primary" style="width:100%;margin-top:2px;">Read Department</button>
+            </div>
+            @*<div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>*@
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="GetDepartment">Back to List</a>
+    <a asp-action="Department">Back to List</a>
 </div>
 
+<script type="text/javascript">
+    $(document).ready(function () { });
+    $("#txtFile").change(function (event) {
+        var files = event.target.files;
+        $("#imgViewer").attr("src", window.URL.createObjectURL(files[0]));
+    });
+    $("#btnSave").click(function () {
+        var files = $("#txtFile").prop("files");
+        var formData = new FormData();
+        //for (var i = 0; i < files.length; i++) {
+        //    formData.set("file",blob, files[i]);
+        //}
+        var ins = document.getElementById('#txtFile').files.length;
+        for (var x = 0; x < ins; x++) {
+            formData.set("file", document.getElementById('#txtFile').files[x]);
+        }
+        
+//        var data = new FormData();
+
+//$.each($("input[type='file']")[0].files, function(i, file) {
+//    data.append('file', file);
+//});
+        var oDepartment = {
+            DepID: $("#txtDepID").val(),
+            DepDesc: $("#txtName").val()
+        };
+        //var isSuccess = false;
+        //$.each($("#txtName"),
+        //    function (data) {
+        //        DepNames = $(this).find("#txtName").val();
+        //        if (DepNames === $("#txtName").val()) {
+        //            $("#txtName").focus();
+        //            $("#txtName").val("");
+        //            alert($("#txtName").val(data.DepDesc) + " already exists!");
+        //            isSuccess = true;
+        //        }
+        //        //else {
+
+        //        //}
+        //    }
+        //);
+        //if (isSuccess === true) {
+        //    return false;
+        //}
+        formData.append("Department", JSON.stringify(oDepartment));
+        $.ajax({
+            type: "POST",
+            url: "/HOD/UpdateDepartment",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                ResetFields();
+                alert(data);
+            },
+            error: function (data) {
+                console.log('Error:', data);
+            }
+        });
+    });
+    $("#btnRead").click(function () {
+        var files = $("#txtFile").prop("files");
+        var formData = new FormData();
+        for (var i = 0; i < files.length; i++) {
+            formData.append("file", files[i]);
+        }
+        var oDepartment = {
+            DepDesc: $("#txtName").val()
+        }
+        formData.append("Department", JSON.stringify(oDepartment));
+        $.ajax({
+            type: "GET",
+            url: "/HOD/GetSavedDepartment",
+            success: function (data) {
+                $("#txtName").val(data.DepDesc);
+                $("#imgViewer").attr("src", "data:image/jpg;base64," + data.Photo + "");
+            },
+            error: function (data) {
+                console.log('Error:', data);
+            }
+        });
+    });
+    function ResetFields() {
+        $("#txtName").val("");
+        $("#imgViewer").attr("src", "");
+    }
+</script>

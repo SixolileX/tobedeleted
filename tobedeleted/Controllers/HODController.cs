@@ -275,6 +275,7 @@ namespace tobedeleted.Controllers
         }
         public IActionResult Department()
         {
+            ViewBag.Department = _db.Departments;
             return View();
         }
         [HttpPost]
@@ -311,6 +312,7 @@ namespace tobedeleted.Controllers
         public string SaveFile(UploadContent fileObj, Department dep)
         {
             Department oDepartment = JsonConvert.DeserializeObject<Department>(fileObj.Department);
+            ViewBag.Departments = oDepartment;
             if (fileObj.file.Length > 0)
             {
 
@@ -376,10 +378,25 @@ namespace tobedeleted.Controllers
         //POST-Update updating the current data we have 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult UpdateDepartment(Department obj)
+        public IActionResult UpdateDepartment(UploadContent fileObj, Department obj)
         {
-            _db.Departments.Update(obj);
-            _db.SaveChanges();
+            obj = JsonConvert.DeserializeObject<Department>(fileObj.Department);
+            if (fileObj.file.Length > 0)
+            {
+
+                using (var ms = new MemoryStream())
+                {
+                    fileObj.file.CopyTo(ms);
+                    var fileBytes = ms.ToArray();
+                    obj.DepPhoto = fileBytes;//Here is the Subject photo in byte[] format
+
+                    obj = _departmentService.Update(obj);
+                }
+                if (obj.DepID > 0)
+                {
+                    return Ok("Saved");
+                }
+            }
             return RedirectToAction("GetDepartment");
         }
         public IActionResult Role()
