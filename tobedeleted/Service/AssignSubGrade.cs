@@ -19,6 +19,17 @@ namespace tobedeleted.Service
 
         public AssignSubjectGrade AssignedSubGrades => _context.SubsToGrade.OrderBy(o => o.SubGrID).LastOrDefault();
 
+        public AssignSubjectGrade AssignSubjectGradeAsync(AssignSubjectGrade oSubGr, int grID, int subID)
+        {
+            oSubGr = new AssignSubjectGrade();
+            oSubGr.GrID = grID;
+            oSubGr.SubId = subID;
+
+            _context.SubsToGrade.Add(oSubGr);
+            _context.SaveChangesAsync();
+            return oSubGr;
+        }
+
         public AssignSubjectGrade Save(AssignSubjectGrade oSubGr)
         {
             _context.SubsToGrade.Add(oSubGr);

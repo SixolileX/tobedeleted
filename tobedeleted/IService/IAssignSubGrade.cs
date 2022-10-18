@@ -8,6 +8,7 @@ namespace tobedeleted.IService
 {
     public interface IAssignSubGrade
     {
+        AssignSubjectGrade AssignSubjectGradeAsync(AssignSubjectGrade oSubGr, int grID, int subID);
         AssignSubjectGrade Save(AssignSubjectGrade oSubGr);
         AssignSubjectGrade Update(AssignSubjectGrade oSubGr);
         AssignSubjectGrade Delete(AssignSubjectGrade oSubGr);
