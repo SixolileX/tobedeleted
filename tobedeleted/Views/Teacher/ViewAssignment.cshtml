@@ -39,8 +39,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
-        {
+        @foreach (var item in Model) {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.AssignmentTitle)
@@ -57,6 +56,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.AssignmentDueDate)
                 </td>
+                <td>
+                    <a asp-page="/Upload" asp-route-id="@item.AssignmentID">Click to upload</a>
+               </td>
                 @*<td>
                     @if (item.Attachment != null)
                      {
@@ -76,7 +78,13 @@
     </tbody>
 </table>
 
- @*public class ViewAssignmentModel : PageModel
+
+
+
+
+
+
+@*public class ViewAssignmentModel : PageModel
     {
         private readonly ILogger<ViewAssignmentModel>
     _logger;
