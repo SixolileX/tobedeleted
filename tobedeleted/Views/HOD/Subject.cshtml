@@ -5,13 +5,16 @@
     Layout = "~/Pages/_LayoutHOD.cshtml";
 }
 
-<h1>Enrol Subjects</h1>
-<br/>
+
 <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
 <div class="col-12">
-    <div class="row">
+    <div class="row col-12 justify-content-center">
+        <h1>Enrol Subjects</h1>
+        <br />
+    </div>
+    <div class="row col-12">
         <div class="col-6">
-            <div class="row">
+            <div class="row col-12">
                 <div class="col-4">
                     <label>Subject Name: </label>
                 </div>
@@ -19,39 +22,80 @@
                     <input id="txtName" type="text" placeholder="Subject Name" style="width:100%;" />
                 </div>
             </div>
-            <div class="row">
+            <div class="row col-12">
                 <div class="col-4">
                     <label>Department Name: </label>
                 </div>
-                <div  class="dropdown">
+                <div class="dropdown col-6">
                     <select id="txtDep" asp-for="DepID" class="form-control">
 
                         @foreach (Department D in ViewBag.Department)
                         {
-                            <option  value="@D.DepID">@D.DepDesc</option>
+                            <option value="@D.DepID">@D.DepDesc</option>
                         }
                     </select>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-10">
+            <div class="row col-12">
+                <div class="col-4">
                     <label>Photo :</label>
                 </div>
-                <div class="col-md-10">
+                <div class="col-6">
                     <input id="txtFile" type="file" value="Upload File" style="width: 100%;" />
                 </div>
             </div>
             <div class="row col-12">
                 <div class="col-6">
-                    <img id="imgViewer" width="200" height="200" style="border: 1px solid #ffffff" />
+                    <img id="imgViewer" width="500" height="350" style="border: 1px solid #ffffff" />
                 </div>
-                <div class="form-group">
-                    <button id="btnSave" class="btn btn-primary" style="width:100%;margin-top:100%;"> Save Subject</button>
-                    <button id="btnRead" class="btn btn-primary" style="width:100%;margin-top:100%;"> Read Subject</button>
+
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <button id="btnSave" class="btn btn-primary" style="width:100%;margin-top:2px;">Save Department</button>
+                </div>
+                <div class="col-6">
+                    <button id="btnRead" class="btn btn-primary" style="width:100%;margin-top:2px;">Read Department</button>
                 </div>
             </div>
         </div>
+        <div class="col-6">
+            <form method="post" asp-controller="HOD" asp-action="GetSavedSubject">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Subject Name
+                            </th>
+                            <th>
+                                Department Name
+                            </th>
+                            <th />
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (SubDep item in ViewBag.Subject)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Subject.SubDesc
+                                </td>
+                                <td>
+                                    @item.Deptment.DepDesc
+                                </td>
+                                <td>
+                                    @*<a asp-action="UpdateDepartment" asp-route-id="@item.DepID">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.DepID">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.DepID">Delete</a>*@
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </form>
+        </div>
     </div>
+    
 </div>
 
 <script type="text/javascript">
@@ -94,7 +138,8 @@
         }
         var oSubject = {
             SubDesc: $("#txtName").val(),
-            DepID: $("#txtDep").val()
+            DepID: $("#txtDep").val(),
+
         }
         formData.append("Subject", JSON.stringify(oSubject));
         $.ajax({
@@ -103,7 +148,7 @@
             success: function (data) {
                 $("#txtName").val(data.SubDesc);
                 $("txtDep").val(data.DepID);
-                $('#imgViewer').attr('src', "data:image/jpg;base64," + data.Photo + "");
+                $("#imgViewer").attr("src", "data:image/jpg;base64," + data.Photo + "");
             },
             error: function (data) {
                 console.log('Error:', data);

@@ -23,7 +23,7 @@ namespace tobedeleted.Data
         public DbSet<tobedeleted.Models.AssignSubjectGrade> SubsToGrade { get; set; }
 
         public DbSet<tobedeleted.Models.HOD> HOD { get; set; }
-        public DbSet<tobedeleted.Models.SubDep> SubDep { get; set; }
+        
 
         public DbSet<tobedeleted.Models.Grade> Grades { get; set; }
         //public DbSet<tobedeleted.Models.MailMessage> MailMessages { get; set; }
@@ -44,7 +44,7 @@ namespace tobedeleted.Data
 
         public DbSet<tobedeleted.Models.AssignLearnerToParent> AssignLearnerToParent { get; set; }
 
-        public DbSet<tobedeleted.Models.EnrollStudent> EnrollStudents { get; set; }
+        //public DbSet<tobedeleted.Models.EnrollStudent> EnrollStudents { get; set; }
         public DbSet<tobedeleted.Models.studentMeeting> studentMeetings { get; set; }
 
         public DbSet<tobedeleted.Models.Announcements> Announcements { get; set; }

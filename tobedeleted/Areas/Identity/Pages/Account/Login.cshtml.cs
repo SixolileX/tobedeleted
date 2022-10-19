@@ -117,7 +117,7 @@ namespace tobedeleted.Areas.Identity.Pages.Account
                     }
 
                     _logger.LogInformation("User logged in.");
-                    //return LocalRedirect(returnUrl);
+                    return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
                 {

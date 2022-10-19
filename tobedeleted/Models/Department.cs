@@ -15,7 +15,7 @@ namespace tobedeleted.Models
         //[Required]
         public byte[] DepPhoto { get; set; }
         //public Subject Subject { get; set; }
-        public List<Subject> Subjects { get; set; } 
+        public List<Subject> Subjects { get; set; }
 
     }
 }

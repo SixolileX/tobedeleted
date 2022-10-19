@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace tobedeleted.Models
 {
-    public class SubDep
+    public class DepartmentHOD
     {
-        public Subject Subject { get; set; }
-        public Department Deptment { get; set; }
+        public HOD HOD { get; set; }
+        public Department Department {get;set;}
     }
 }

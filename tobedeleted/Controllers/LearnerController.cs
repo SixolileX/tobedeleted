@@ -83,7 +83,7 @@ namespace Inn_TuneProject.Controllers
             //enroll.StudentID = user;
 
 
-            _db.EnrollStudents.Add(enroll);
+            //_db.EnrollStudents.Add(enroll);
            
             _db.SaveChanges();
 
