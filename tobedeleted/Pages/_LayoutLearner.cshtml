@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using tobedeleted.Models;
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -114,7 +116,18 @@
                                     <i class="fa fa-caret-down"></i>
                                 </button>
                                 <div class="my_dropdown-content">
-                                    <a class="nav-link active">@ViewBag.listofsubjects</a>
+                                  @try{
+@*
+                                        @foreach (ApplicationUser U in ViewBag.users)
+                                        {
+                                            <a asp-controller="Leaner" asp-action="EnrollInSubjectAsync">@ViewBag.SubDesc</a>
+                                        }*@
+                                  }
+                                  catch
+                                  {
+                                      <a>No subjects Enrolled</a>
+                                  }
+
                                     <a class="nav-link active" asp-area="" asp-controller="Learner" asp-action="Maths"> Maths </a>
                                     <a class="nav-link active" asp-area="" asp-controller="Learner" asp-action="QuestionPA"> Question Papers </a>
                                     <a class="nav-link active" asp-area="" asp-controller="Learner" asp-action="Report"> Report </a>

@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.Claims;
+using Microsoft.AspNetCore.SignalR;
 
 namespace Inn_TuneProject.Controllers
 {
@@ -41,21 +42,26 @@ namespace Inn_TuneProject.Controllers
             List<Subject> assigns = new List<Subject>();
             assigns = _db.Subjects.ToList();
             ViewBag.listofSubjects = assigns;
+
+
+
+            var users = _userManager.Users.ToList();
+            var roles = _roleManager.Roles.ToList();
+            var ur = _db.UserRoles.ToList();
+            var Sub = _db.Subjects.ToList();
             
 
+               
 
-            //var users = _userManager.Users.ToList();
-            //var roles = _roleManager.Roles.ToList();
-            //var ur = _db.UserRoles.ToList();
-            //var Sub = _db.Subjects.ToList();
-            //ViewBag.Subjects = new SelectList(Sub, "SubID", "SubDesc");
 
             //ViewBag.users = (from Ur in _db.UserRoles
-            //                          join U in _db.Users on Ur.UserId equals U.Id
-            //                          join R in _db.Roles on Ur.RoleId equals R.Id
-            //                          where Ur.UserId == U.Id && Ur.RoleId == R.Id && R.Name == "Learner"
-            //                          select new ApplicationUser { Id = U.Id, firstName = U.firstName, lastName = U.lastName }).ToList();
+            //                 join U in _db.Users on Ur.UserId equals U.Id
+            //                 join R in _db.Roles on Ur.RoleId equals R.Id
+            //                 where Ur.UserId == U.Id && Ur.RoleId == R.Id && R.Name == "Learner"
+            //                 select new ApplicationUser { Id = U.Id, firstName = U.firstName, lastName = U.lastName }).ToList();
+
             return View();
+
         }
         [HttpPost]
         public IActionResult EnrollInSubject(EnrollStudent enroll,int ID)
@@ -63,18 +69,29 @@ namespace Inn_TuneProject.Controllers
 
 
 
-            var user = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //var user = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //ViewBag.Subjects = (from m in _db.Subjects
+            //                    join U in _db.EnrollStudents on m.SubDesc equals U.SubjectID
+            //                    from E in _db.EnrollStudents 
+            //                    join W in _db.Users on E.StudentID equals W.Id
+                                //where U.SubjectID==E.StudentID&&E.StudentID==user
+                                //select new Mysubjects{ EnrollStu=U,SubjectM=m, EnrollS =}).ToList();
 
-            enroll.EnrollDate = DateTime.Today;
-            enroll.SubjectID = ID;
-            enroll.StudentID = user;
+
+            //enroll.EnrollDate = DateTime.Today;
+            //enroll.SubjectID =user;
+            //enroll.StudentID = user;
 
 
             _db.EnrollStudents.Add(enroll);
+           
             _db.SaveChanges();
+
+
+           
             //learners.SubjectName = user;
             //learners.UserlearnerId = user;
-          
+
 
             return RedirectToAction(nameof(DashBoards));
 
