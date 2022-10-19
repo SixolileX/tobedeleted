@@ -163,18 +163,37 @@ namespace tobedeleted.Controllers
         {
             var grade = _db.Grades.ToList();
             var subs = _db.Subjects.ToList();
+            var users = _userManager.Users.ToList();
+            var roles = _roleManager.Roles.ToList();
+            var ur = _db.UserRoles.ToList();
+            ViewBag.Users = (from Ur in _db.UserRoles
+                             join U in _db.Users on Ur.UserId equals U.Id
+                             join R in _db.Roles on Ur.RoleId equals R.Id
+                             where Ur.UserId == U.Id && Ur.RoleId == R.Id && R.Name == "Teacher"
+                             select new ApplicationUser { Id = U.Id, firstName = U.firstName, lastName = U.lastName }).ToList();
             ViewBag.Grades = new SelectList(grade, "GrID", "GrDesc");
             ViewBag.Subjects = new SelectList(subs, "SubID", "SubDesc");
             return View();
         }
         [HttpPost]
-        public IActionResult AssignSubGr(AssignSubjectGrade subGrade, Subject sub, Grade gr)
+        public async Task<IActionResult> AssignSubGr(AssignSubjectGrade subGrade, UserRole userRole)
         {
-            subGrade = _assignSubGrade.AssignSubjectGradeAsync(subGrade, subGrade.GrID, subGrade.SubId);
-            
+            var user = await _userManager.FindByIdAsync(userRole.UserId);
+            subGrade = _assignSubGrade.AssignSubjectGradeAsync(subGrade, subGrade.GrID, subGrade.SubId, subGrade.userTeacher);
+            ViewBag.TeacherGrade = (from R in _db.Roles
+                                    join UR in _db.UserRoles on R.Id equals UR.RoleId
+                                    from S in _db.Subjects
+                                    join SG in _db.SubsToGrade on S.SubID equals SG.SubId
+                                    from G in _db.Grades
+                                    join sg in _db.SubsToGrade on G.GrID equals sg.GrID
+                                    from U in _db.Users
+                                    join ur in _db.UserRoles on U.Id equals ur.UserId
+                                    where U.Id == sg.userTeacher
+                                    select new AssignTeachersToGradeSubDisplay { Subject = S, Grade = G, applicationUser = U }).ToList();
             if (subGrade.SubGrID > 0)
             {
-                return Ok("Saved!");
+                OkResult result = Ok();
+                return result;
             }
             else
             {
@@ -184,6 +203,29 @@ namespace tobedeleted.Controllers
             
 
         }
+        [HttpGet]
+        public JsonResult GetAssignedSubGr()
+        {
+            var grade = _db.Grades.ToList();
+            var subs = _db.Subjects.ToList();
+            var users = _userManager.Users.ToList();
+            var roles = _roleManager.Roles.ToList();
+            var uR = _db.UserRoles.ToList();
+            var ug = _assignSubGrade.AssignedSubGrades;
+            ViewBag.TeacherGrade = (from R in _db.Roles
+                                    join UR in _db.UserRoles on R.Id equals UR.RoleId
+                                    from S in _db.Subjects 
+                                    join SG in _db.SubsToGrade on S.SubID equals SG.SubId
+                                    from G in _db.Grades
+                                    join sg in _db.SubsToGrade on G.GrID equals sg.GrID
+                                    from U in _db.Users 
+                                    join ur in _db.UserRoles on U.Id equals ur.UserId
+                                    where U.Id == sg.userTeacher 
+                                    select new AssignTeachersToGradeSubDisplay { Subject = S, Grade = G, applicationUser = U }).ToList();//Coming from our database
+            ViewBag.TeachersGr = _assignSubGrade.AssignedSubGrades;
+            return Json(ug);
+        }
+
         //POST-Update updating the current data we have 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -239,42 +281,7 @@ namespace tobedeleted.Controllers
             }
             return bytes;
         }
-        //public IActionResult GetSubject()
-        //{
-        //    IEnumerable<Subject> objList = _db.Subjects;//Coming from our database
-        //    return View(objList);
-        //}
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult Subject(UploadContent fileObj, Subject obj)
-        //{
-
-        //    obj = JsonConvert.DeserializeObject<Subject>(fileObj.Subject);
-        //    UploadContent upload = new UploadContent();
-        //    IFormFile file = Request.Form.Files.FirstOrDefault();
-        //    using (var ms = new MemoryStream())
-        //    {
-        //        fileObj.Content.CopyTo(ms);
-        //        var fileBytes = ms.ToArray();
-        //        obj.SubImage = fileBytes;//Here is the Subject photo in byte[] format
-
-        //        obj = _subjectService.Save(obj);
-        //        if (obj.SubID > 0)
-        //        {
-        //            return RedirectToAction("GetSubject");
-        //        }
-        //    }
-        //        //obj.SubImage = this.GetImage(Convert.ToBase64String(obj.SubImage));
-        //        if (ModelState.IsValid)//Checks to see if all the required fields have been met.
-        //    {
-        //        _db.Subjects.Add(obj);
-        //        _db.SaveChanges();
-        //        return RedirectToAction("GetSubject");
-        //    }
-        //    return View(obj);
-
-        //}
+        
         public IActionResult UpdateSubject(int? id)
         {
             if (id == null || id == 0)
@@ -436,19 +443,19 @@ namespace tobedeleted.Controllers
         {
             return View();
         }
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult Meeting(Meeting obj)
-        //{
-        //    if (ModelState.IsValid)//Checks to see if all the required fields have been met.
-        //    {
-        //        _db.Meetings.Add(obj);
-        //        _db.SaveChanges();
-        //        return RedirectToAction("Meeting");
-        //    }
-        //    return View(obj);
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Meeting(MeetingScheduler meeting)
+        {
+            if (ModelState.IsValid)//Checks to see if all the required fields have been met.
+            {
+                _db.MeetingScheduler.Add(meeting);
+                _db.SaveChanges();
+                return RedirectToAction("Meeting");
+            }
+            return View(meeting);
 
-        //}
+        }
         //public ActionResult Maths()
         //{
         //    return View();
@@ -483,15 +490,8 @@ namespace tobedeleted.Controllers
             var ur = _db.UserRoles.ToList();
             var deps = _db.Departments.ToList();//assuming that enrolled departments will be add to List
 
-            //ViewBag.Users = new SelectList(users, "Id", "UserName");
-            //ViewBag.Roles = new SelectList(roles, "Name", "Name");
-            //ViewBag.UserRoles =;
             ViewBag.Department = new SelectList(deps, "DepID", "DepDesc");
-            //ViewBag.HoDdisplay = (from R in _db.Roles
-            //                      join Ur in _db.UserRoles on R.Id equals Ur.RoleId
-            //                      join U in _db.Users on Ur.UserId equals U.Id
-            //                      where Ur.RoleId==R.Id && R.Name== "HOD" && Ur.UserId == U.Id
-            //                      select new UserRole { UserId = U.Id, RoleName=R.Name}).ToList();
+           
             ViewBag.Users = (from Ur in _db.UserRoles
                              join U in _db.Users on Ur.UserId equals U.Id
                              join R in _db.Roles on Ur.RoleId equals R.Id

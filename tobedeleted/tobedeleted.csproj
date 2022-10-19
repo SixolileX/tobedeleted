@@ -51,7 +51,6 @@
 		<None Include="Views\HOD\Grade.cshtml" />
 		<None Include="Views\HOD\ListSubject.cshtml" />
 		<None Include="Views\HOD\Maths.cshtml" />
-		<None Include="Views\HOD\Meeting.cshtml" />
 		<None Include="Views\HOD\Subject.cshtml" />
 		<None Include="Views\HOD\SubjectDetails.cshtml" />
 		<None Include="Views\HOD\UpdateDepartment.cshtml" />

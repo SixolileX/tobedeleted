@@ -1,0 +1,48 @@
+﻿@model IEnumerable<tobedeleted.Models.AssignSubjectGrade>
+
+@{
+    ViewData["Title"] = "GetAssignedSubGr";
+    Layout = "~/Pages/_LayoutHOD.cshtml";
+}
+
+<h1>GetAssignedSubGr</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Grade ID
+            </th>
+            <th>
+                Subject Name
+            </th>
+            <th>
+                Teacher
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in ViewBag.TeacherGrade) {
+        <tr>
+            <td>
+                @item.GrID
+            </td>
+            <td>
+                @item.SubId
+            </td>
+            <td>
+                @item.userTeacher
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SubGrID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SubGrID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SubGrID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

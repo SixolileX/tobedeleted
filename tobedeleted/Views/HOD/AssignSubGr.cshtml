@@ -8,27 +8,39 @@
 <h4 class="justify-content-center">Assign Subjects To Grade</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-6">
         <form asp-action="AssignSubGr">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <div class="form-group">
+                    <label>Select Grade</label>
+                    <select id="txtUserTeacher" asp-for="userTeacher" class="form-control">
+                        <option selected disabled>--select grade--</option>
+                        @foreach (ApplicationUser U in ViewBag.Users)
+                        {
+                            <option value="@U.Id">@U.firstName @U.lastName</option>
+                        }
+                    </select>
+                </div>
+            </div>
             <div class="form-group">
                 <label>Select Grade</label>
                 <select id="txtGradeID" asp-for="GrID" asp-items="@ViewBag.Grades" class="form-control">
                     <option selected disabled>--select grade--</option>
                     @*@foreach (Grade U in ViewBag.Grades)
-                    {
-                        <option value="@U.GrID">@U.GrDesc</option>
-                    }*@
+                        {
+                            <option value="@U.GrID">@U.GrDesc</option>
+                        }*@
                 </select>
             </div>
 
             <div class="form-group">
-                    <label>Select Subject Name</label>
-                    <select id="txtSubID" asp-for="SubId" asp-items="@ViewBag.Subjects" class="form-control">
-                        <option selected disabled>--select subject--</option>
-                    </select>>
+                <label>Select Subject Name</label>
+                <select id="txtSubID" asp-for="SubId" asp-items="@ViewBag.Subjects" class="form-control">
+                    <option selected disabled>--select subject--</option>
+                </select>
             </div>
-            
+
             @*<div class="form-group">
                 <label asp-for="DepId" class="control-label"> Select Department</label>
                 <input asp-for="DepId" class="form-control" />
@@ -54,11 +66,51 @@
             </div>
         </form>
     </div>
+    <div class="col-6">
+        <form method="post" asp-controller="HOD" asp-action="GetAssignedSubGr">
+            <table class="table">
+                <thead>
+                    <tr>
+                        
+                        <th>
+                            Teacher Name
+                        </th>
+                        <th>
+                            Grade
+                        </th>
+                        <th>
+                            Subject Name
+                        </th>
+                        <th />
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.TeacherGrade)
+                    {
+                    <tr>
+                        
+                        <td>
+                            @item.GrID
+                        </td>
+                        <td>
+                            @item.SubID
+                        </td>
+                        <td>
+                            @item.userTeacher
+                        </td>
+                        <td>
+                            <a asp-action="UpdateDepartment" asp-route-id="@item.SubGrID">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.SubGrID">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.SubGrID">Delete</a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </form>
+    </div>
 </div>
 
-<div>
-    <a asp-action="Dashboad">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
@@ -78,7 +130,8 @@
         }
         var oSubGr = {
             GrID: $("#txtGradeID").val(),
-            SubID: $("#txtSubID").val()
+            SubID: $("#txtSubID").val(),
+            userTeacher: $("#txtUserTeacher").val()
 
         };
         formData.append("AssignSubjectGrade", JSON.stringify(oSubGr));
@@ -105,7 +158,8 @@
         }
         var oSubGr = {
             GrID: $("#txtGradeID").val(),
-            SubID: $("#txtSubID").val()
+            SubID: $("#txtSubID").val(),
+            userTeacher: $("#txtUserTeacher").val()
 
         };
         formData.append("AssignSubjectGrade", JSON.stringify(oSubGr));
@@ -114,7 +168,8 @@
             url: "/HOD/AssignSubGr",
             success: function (data) {
                 $("#txtGradeID").val(data.GrID);
-                $("txtSubID").val(data.SubID)
+                $("txtSubID").val(data.SubID);
+                $("#txtUserTeacher").val(data.userTeacher);
                 /*$('#imgViewer').attr('src', "data:image/jpg;base64," + data.Photo + "");*/
             },
             error: function (data) {
@@ -125,6 +180,7 @@
     function ResetFields() {
         $("#txtName").val("");
         $("txtDep").val("");
+        $("#txtUserTeacher").val("");
         //$("#imgViewer").attr("src", "");
     }
 </script>

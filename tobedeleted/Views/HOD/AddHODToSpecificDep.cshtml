@@ -9,7 +9,7 @@
 <br/>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-4">
         <form asp-action="AddHODToSpecificDep">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -17,22 +17,22 @@
                 <select id="txtUserId" asp-for="userHoDId" class="form-control">
                     <option selected disabled>--select user--</option>
                     @foreach (ApplicationUser U in ViewBag.Users)
-                {
-                    <option value="@U.Id">@U.firstName @U.lastName</option>
-                }
+                    {
+                        <option value="@U.Id">@U.firstName @U.lastName</option>
+                    }
                 </select>
             </div>
 
             @*<div class="form-group">
-                <label>Select Role Name</label>
-                <select asp-for="RoleName" asp-items="@ViewBag.Roles" class="form-control">
-                    <option selected disabled>--select Role--</option>
-                    @foreach (UserRole r in ViewBag.Roles)
-                    {
-                        <option value="@r.UserId">@r.RoleName</option>
-                    }
-                </select>
-            </div>*@
+                    <label>Select Role Name</label>
+                    <select asp-for="RoleName" asp-items="@ViewBag.Roles" class="form-control">
+                        <option selected disabled>--select Role--</option>
+                        @foreach (UserRole r in ViewBag.Roles)
+                        {
+                            <option value="@r.UserId">@r.RoleName</option>
+                        }
+                    </select>
+                </div>*@
             <div class="form-group">
                 <label>Select Department Name</label>
                 <select id="txtDep" asp-for="DepID" asp-items="@ViewBag.Department" class="form-control">
@@ -40,28 +40,69 @@
                 </select>
             </div>
             @*<div class="form-group">
-            <label asp-for="DepId" class="control-label"> Select Department</label>
-            <input asp-for="DepId" class="form-control" />
-            <span asp-validation-for="DepId" class="text-danger"></span>
-            </div>*@
+                <label asp-for="DepId" class="control-label"> Select Department</label>
+                <input asp-for="DepId" class="form-control" />
+                <span asp-validation-for="DepId" class="text-danger"></span>
+                </div>*@
             @*div class="row">
-                <div class="col-4">
-                    <label>Department Name: </label>
-                </div>
-                <div class="dropdown">
-                    <select id="txtDep" asp-for="DepID" class="form-control">
+                    <div class="col-4">
+                        <label>Department Name: </label>
+                    </div>
+                    <div class="dropdown">
+                        <select id="txtDep" asp-for="DepID" class="form-control">
 
-                        @foreach (Department D in ViewBag.Department)
-                        {
-                            <option value="@D.DepID">@D.DepDesc</option>
-                        }
-                    </select>
-                </div>
-            </div**@
+                            @foreach (Department D in ViewBag.Department)
+                            {
+                                <option value="@D.DepID">@D.DepDesc</option>
+                            }
+                        </select>
+                    </div>
+                </div**@
             <div>
                 <input id="btnSave" type="submit" class="btn btn-outline-primary btn-block" value="Assign" />
-            @*<button id="btnRead" class="btn btn-primary" style="width:100%;margin-top:100%;"> Read</button>*@
+                @*<button id="btnRead" class="btn btn-primary" style="width:100%;margin-top:100%;"> Read</button>*@
             </div>
+        </form>
+    </div>
+    <div class="col-8">
+        <form method="post" asp-controller="HOD" asp-action="GetAssignedSubGr">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.HoDId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DepID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.userHoDId)
+                        </th>
+                        <th />
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in ViewBag.TeacherGrade)
+                    {
+                    <tr>
+                        <td>
+                            @item.HoDId
+                        </td>
+                        <td>
+                            @item.DepID
+                        </td>
+                        <td>
+                            @item.userHodId
+                        </td>
+                        <td>
+                            <a asp-action="UpdateDepartment" asp-route-id="@item.DepID">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.DepID">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.DepID">Delete</a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
         </form>
     </div>
 </div>
