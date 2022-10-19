@@ -174,6 +174,34 @@ namespace Inn_TuneProject.Controllers
 
             return View();
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Meetting(studentMeeting meet)
+        {
+           
+
+            if (ModelState.IsValid)
+            {
+                _db.studentMeetings.Add(meet);
+                _db.SaveChanges();
+                return RedirectToAction("MeetingView");
+            }
+
+
+           
+            
+            return View(meet);
+            
+        }
+        public ActionResult MeetingView()
+        {
+
+            IEnumerable<studentMeeting> Meets = _db.studentMeetings;
+            return View(Meets);
+
+
+        }
+
 
 
 

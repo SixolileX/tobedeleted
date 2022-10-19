@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Schedule Meeting";
+    Layout = "~/Pages/_LayoutLearner.cshtml";
+    @model IEnumerable<tobedeleted.Models.studentMeeting>
+
+}
+
+<br />
+<h2>Existing Meetings</h2>
+<body>
+    <form>
+        <div class="timeline">
+
+            <p class="description">
+
+                @if (Model.Count() > 1)
+                {
+                    <table class="table table-bordered table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Meeting description
+                                </th>
+                                <th>
+                                    Date
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var meetting in Model)
+                            {
+                                <tr>
+                                    <td w-auto>@meetting.Meetingdesc</td>
+                                    <td w-auto>@meetting.setdate</td>
+                                    <td w-auto>
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                }
+                else
+                {
+                <p>No Appointments yet!!</p>
+            }
+            </div>
+
+
+        </form>
+    </body>

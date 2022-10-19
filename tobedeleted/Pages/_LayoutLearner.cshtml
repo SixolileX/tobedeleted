@@ -100,7 +100,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         
                         <div class="my_navbar">
-                            <a class="navbar-brand" asp-area="" asp-controller="Learner" asp-action="DashBoards">HOME</a>
+                            @*<a class="navbar-brand" asp-area="" asp-controller="Learner" asp-action="DashBoards">HOME</a>*@
 
                             <a class="navbar-brand" asp-area="" asp-controller="Learner" asp-action="DashBoards">Dashboard</a>
 
@@ -112,22 +112,6 @@
                                 <button class="my_dropbtn">
                                     My Subjects
                                     <i class="fa fa-caret-down"></i>
-
-
-                                    @*@try
-                {
-                    @foreach (mySubject m in ViewBag.Subjects)
-                    {
-
-                        <div class="border text-center p-5">
-                            <a asp-controller="Learner" asp-action="EnrollInSubject" asp-route-Id="@m.AssignSubjectsVM.AssignedIdD" title="@m.SubjectsVM.SubjectName">@m.SubjectsVM.M </a>
-                        </div>
-                    }
-                }
-                catch
-                {
-                }*@
-
                                 </button>
                                 <div class="my_dropdown-content">
                                     <a class="nav-link active">@ViewBag.listofsubjects</a>
@@ -137,11 +121,21 @@
                                 </div>
 
                             </div>
+                            <div class="my_dropdown">
+                                <button class="my_dropbtn">
+                                    Meeting
+                                    <i class="fa fa-caret-down"></i>
+                                </button>
+                                <div class="my_dropdown-content">
+                                    <a class="nav-link active" asp-area="" asp-controller="Learner" asp-action="Meetting"> Make Meeting</a>
+                                    <a class="nav-link active" asp-area="" asp-controller="Learner" asp-action="MeetingView"> View Meeting </a>
+                                </div>
+
+                            </div>
                         </div>
 
-                       
 
-                    </div>
+                        </div>
                     @*<form class="d-flex">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
@@ -161,7 +155,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - learner - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2022 - learner - <a asp-area="" asp-controller="Home" asp-action="Index">Privacy</a>
         </div>
        
 
