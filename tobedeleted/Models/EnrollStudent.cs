@@ -13,7 +13,7 @@ namespace tobedeleted.Models
         [Key]
         public int EnrollID { get; set; }
         public DateTime EnrollDate { get; set; }
-        public int SubjectID { get; set; }
+        public string SubjectID { get; set; }
         public string StudentID { get; set; }
 
         List<SelectList> Subjects { get; set; }
