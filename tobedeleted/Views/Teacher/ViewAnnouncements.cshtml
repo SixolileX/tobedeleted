@@ -1,0 +1,51 @@
+﻿@model IEnumerable<tobedeleted.Models.Announcements>
+
+@{
+    ViewData["Title"] = "ViewAnnouncements";
+}
+
+<br />
+<br />
+
+<h1>ViewAnnouncements</h1>
+
+<p>
+    <a asp-action="AddAnouncements">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnouncementName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnouncementDescr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnounceDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnnouncementName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnnouncementDescr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnnounceDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.AnnounceID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.AnnounceID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.AnnounceID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

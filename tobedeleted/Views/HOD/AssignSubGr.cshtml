@@ -1,13 +1,13 @@
 ﻿@model tobedeleted.Models.AssignSubjectGrade
-
+@using tobedeleted.Models 
 @{
     ViewData["Title"] = "AssignSubGr";
     Layout = "~/Pages/_LayoutHOD.cshtml";
 }
 <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
-<h4 class="justify-content-center">Assign Subjects To Grade</h4>
+<h4 class="justify-content-center">Assign Teacher To Subjects Per Grade</h4>
 <hr />
-<div class="row">
+<div class="row justify-content-center">
     <div class="col-6">
         <form asp-action="AssignSubGr">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -40,81 +40,16 @@
                     <option selected disabled>--select subject--</option>
                 </select>
             </div>
-
-            @*<div class="form-group">
-                <label asp-for="DepId" class="control-label"> Select Department</label>
-                <input asp-for="DepId" class="form-control" />
-                <span asp-validation-for="DepId" class="text-danger"></span>
-                </div>*@
-            @*div class="row">
-                    <div class="col-4">
-                        <label>Department Name: </label>
-                    </div>
-                    <div class="dropdown">
-                        <select id="txtDep" asp-for="DepID" class="form-control">
-
-                            @foreach (Department D in ViewBag.Department)
-                            {
-                                <option value="@D.DepID">@D.DepDesc</option>
-                            }
-                        </select>
-                    </div>
-                </div**@
             <div>
                 <input id="btnSave" type="submit" class="btn btn-outline-primary btn-block" value="Assign" />
+                <input asp-controller="HOD" asp-action="GetAssignedSubGr" type="submit" class="btn btn-outline-primary btn-block" value="Get"/>
                 @*<button id="btnRead" class="btn btn-primary" style="width:100%;margin-top:100%;"> Read</button>*@
             </div>
-        </form>
-    </div>
-    <div class="col-6">
-        <form method="post" asp-controller="HOD" asp-action="GetAssignedSubGr">
-            <table class="table">
-                <thead>
-                    <tr>
-                        
-                        <th>
-                            Teacher Name
-                        </th>
-                        <th>
-                            Grade
-                        </th>
-                        <th>
-                            Subject Name
-                        </th>
-                        <th />
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in ViewBag.TeacherGrade)
-                    {
-                    <tr>
-                        
-                        <td>
-                            @item.GrID
-                        </td>
-                        <td>
-                            @item.SubID
-                        </td>
-                        <td>
-                            @item.userTeacher
-                        </td>
-                        <td>
-                            <a asp-action="UpdateDepartment" asp-route-id="@item.SubGrID">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.SubGrID">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.SubGrID">Delete</a>
-                        </td>
-                    </tr>
-                    }
-                </tbody>
-            </table>
         </form>
     </div>
 </div>
 
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
 
 <script type="text/javascript">
     $(document).ready(function () { });

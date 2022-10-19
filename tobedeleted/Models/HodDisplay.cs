@@ -10,5 +10,9 @@ namespace tobedeleted.Models
         public HOD HOD { get; set; }
         public Department Department {get;set;}
         public Subject Subject { get; set; }
+        public Grade Grade { get; set; }
+        public AssignTeachersToGradeSubDisplay assignTeachers { get; set; }
+        public AssignSubjectGrade AssignSubjectGrade { get; set; }
+        public ApplicationUser user { get; set; }
     }
 }

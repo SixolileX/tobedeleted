@@ -11,12 +11,18 @@ namespace tobedeleted.Models
     {
         [Key]
         public int MeetingID { get; set; }
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
         [Required]
         [DisplayName("Set Date")]
-        public DateTime Date { get; set; }
+        public DateTime SetDate { get; set; }
+        [DataType(DataType.DateTime)]
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:dd MMM yyyy}")]
+        public DateTime MeetingDate { get; set; }
+        [Required]
         [DisplayName("Meeting Description")]
         public string Desc { get; set; }
+        public string userID { get; set; }
         
     }
 }

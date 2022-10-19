@@ -1,9 +1,12 @@
 ﻿
+@model tobedeleted.Models.MeetingScheduler
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserM
 @{
     ViewData["Title"] = "Meeting";
     Layout = "~/Pages/_LayoutParent.cshtml";
     ViewData["Title"] = "Real-Time Binding";
-    @model tobedeleted.Models.MeetingScheduler
 
 }
 <div class="text-center">
@@ -18,17 +21,27 @@
 
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="form-group col-12">
                 <div class="form-group row">
                     <div class="col-6">
                         <label asp-for="Desc"></label>@*These names come from our properties in the model *@
                         <input asp-for="Desc" class="form-control" />
                         <span asp-validation-for="Desc" class="text-danger"></span>
                     </div>
+                    <div>
+                        <label asp-for="SetDate"> Today </label>
+                        <input asp-for="SetDate" class="form-control" />
+                        <span asp-validation-for="SetDate" class="text-danger" />
+                    </div>
                     <div class="col-6">
-                        <label asp-for="Date"></label>
-                        <input asp-for="Date" class="form-control" />
-                        <span asp-validation-for="Date" class="text-danger"></span>
+                        <label asp-for="MeetingDate"> Meeting Date:</label>
+                        <input asp-for="MeetingDate" class="form-control" />
+                        <span asp-validation-for="MeetingDate" class="text-danger"></span>
+                    </div>
+                    <div>
+                        <label asp-for="userID"> User Id: </label>
+                        <input asp-for="userID" class="form-control" />
+                        <span asp-validation-for="userID" class="text-danger" />
                     </div>
 
 

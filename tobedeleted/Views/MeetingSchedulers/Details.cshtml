@@ -1,0 +1,43 @@
+﻿@model tobedeleted.Models.MeetingScheduler
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/_LayoutHOD.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>MeetingScheduler</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SetDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SetDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MeetingDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MeetingDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Desc)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Desc)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.userID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.userID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.MeetingID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

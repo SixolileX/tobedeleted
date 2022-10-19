@@ -1,5 +1,5 @@
 ﻿@model tobedeleted.Models.HOD
-
+@using tobedeleted.Models
 @{
     ViewData["Title"] = "AddHODToSpecificDep";
     Layout = "~/Pages/_LayoutHOD.cshtml";
@@ -64,47 +64,7 @@
             </div>
         </form>
     </div>
-    <div class="col-8">
-        <form method="post" asp-controller="HOD" asp-action="GetAssignedSubGr">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.HoDId)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.DepID)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.userHoDId)
-                        </th>
-                        <th />
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in ViewBag.TeacherGrade)
-                    {
-                    <tr>
-                        <td>
-                            @item.HoDId
-                        </td>
-                        <td>
-                            @item.DepID
-                        </td>
-                        <td>
-                            @item.userHodId
-                        </td>
-                        <td>
-                            <a asp-action="UpdateDepartment" asp-route-id="@item.DepID">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.DepID">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.DepID">Delete</a>
-                        </td>
-                    </tr>
-                    }
-                </tbody>
-            </table>
-        </form>
-    </div>
+ 
 </div>
 
 <div>

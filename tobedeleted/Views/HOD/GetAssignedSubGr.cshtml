@@ -1,48 +1,55 @@
-﻿@model IEnumerable<tobedeleted.Models.AssignSubjectGrade>
+﻿@using tobedeleted.Models
 
 @{
     ViewData["Title"] = "GetAssignedSubGr";
     Layout = "~/Pages/_LayoutHOD.cshtml";
 }
 
-<h1>GetAssignedSubGr</h1>
+<h1 class="justify-content-center">Teacher Assigned To Subject Grades</h1>
 
-<p>
+@*<p>
     <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Grade ID
-            </th>
-            <th>
-                Subject Name
-            </th>
-            <th>
-                Teacher
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in ViewBag.TeacherGrade) {
-        <tr>
-            <td>
-                @item.GrID
-            </td>
-            <td>
-                @item.SubId
-            </td>
-            <td>
-                @item.userTeacher
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.SubGrID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.SubGrID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.SubGrID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+</p>*@
+<div class="col-6 justify-content-center">
+    <form asp-controller="HOD" asp-action="GetAssignedSubGr">
+        <table class="table">
+            <thead>
+                <tr>
+
+                    <th>
+                        Grade Name
+                    </th>
+                    <th>
+                        Subject Name
+                    </th>
+                    <th>
+                        Teacher Name
+                    </th>
+                    <th />
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (AssignTeachersToGradeSubDisplay item in ViewBag.TeacherGrade)
+                {
+                    <tr>
+
+                        <td>
+                            @item.Grade.GrDesc
+                        </td>
+                        <td>
+                            @item.Subject.SubDesc
+                        </td>
+                        <td>
+                            @item.applicationUser.firstName @item.applicationUser.lastName
+                        </td>
+                        <td>
+                            @*<a asp-action="UpdateDepartment" asp-route-id="@item.SubGrID">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.SubGrID">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.SubGrID">Delete</a>*@
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+</div>
