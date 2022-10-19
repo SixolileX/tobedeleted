@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using tobedeleted.Data;
 using tobedeleted.IService;
@@ -95,13 +96,14 @@ namespace tobedeleted.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> AssignParentToLearner(Parent parent, Learner learner, UserRole userRole)
+        public async Task<IActionResult> AssignParentToLearner(AssignLearnerToParent assign)
         {
-            var user = await _userManager.FindByIdAsync(parent.userParentId);
+            //var user = await _userManager.FindByIdAsync(assign.userLearnerId);
+            var user = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            assign.userParent = user;
 
-            //await _userManager.AddToRoleAsync(user, users.lastName);
-            assignPTL.AddToParentAsync(parent, parent.userParentId, parent.userLearnerId);
-
+            _db.AssignLearnerToParent.Add(assign);
+            _db.SaveChanges();
             return RedirectToAction(nameof(Index));
 
         }

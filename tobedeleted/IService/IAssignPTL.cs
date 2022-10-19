@@ -8,9 +8,9 @@ namespace tobedeleted.IService
 {
     public interface IAssignPTL
     {
-        Parent AddToParentAsync(Parent parent, string userParentId, string userLearnerId);
-        Parent Save(Parent parent);
+        AssignLearnerToParent AddToParentAsync(AssignLearnerToParent assign, string userParent, string userLearnerId);
+        AssignLearnerToParent Save(AssignLearnerToParent assign);
 
-        Parent savedParent { get; }
+        AssignLearnerToParent savedParent { get; }
     }
 }

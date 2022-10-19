@@ -18,24 +18,23 @@ namespace tobedeleted.Service
         }
 
 
-        public Parent AddToParentAsync(Parent parent, string userParentId, string userLearnerId)
+        public AssignLearnerToParent AddToParentAsync(AssignLearnerToParent assign, string userParent, string userLearnerId)
         {
-            parent = new Parent();
-            parent.userParentId = userParentId;
-            parent.userLearnerId = userLearnerId;
+            assign = new AssignLearnerToParent();
+            assign.userParent = userParent;
+            assign.userLearnerId = userLearnerId;
 
-            _context.Parent.Add(parent);
+            _context.AssignLearnerToParent.Add(assign);
             _context.SaveChangesAsync();
-            return parent;
+            return assign;
         }
-        //public Parent savedParent => _context.Parent.OrderBy(o => o.Parentid).LastOrDefault();
-        public Parent savedParent => _context.Parent.SingleOrDefault();
+        public AssignLearnerToParent savedParent => _context.AssignLearnerToParent.SingleOrDefault();
 
-        public Parent Save(Parent parent)
+        public AssignLearnerToParent Save(AssignLearnerToParent assign)
         {
-            _context.Parent.Add(parent);
+            _context.AssignLearnerToParent.Add(assign);
             _context.SaveChanges();
-            return parent;
+            return assign;
         }
     }
 }
