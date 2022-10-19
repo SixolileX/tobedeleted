@@ -17,6 +17,8 @@ namespace tobedeleted.Data
             : base(options)
         {
         }
+
+        public static object Categories { get; internal set; }
         public DbSet<tobedeleted.Models.Department> Departments { get; set; }
         public DbSet<tobedeleted.Models.Subject> Subjects { get; set; }
 
@@ -48,8 +50,7 @@ namespace tobedeleted.Data
         public DbSet<tobedeleted.Models.studentMeeting> studentMeetings { get; set; }
 
         public DbSet<tobedeleted.Models.Announcements> Announcements { get; set; }
-
-
+       
 
     }
 }
