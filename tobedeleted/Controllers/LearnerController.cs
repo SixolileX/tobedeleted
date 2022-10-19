@@ -174,6 +174,11 @@ namespace Inn_TuneProject.Controllers
 
             return View();
         }
+        public IActionResult Meetting()
+        {
+
+            return View();
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Meetting(studentMeeting meet)
