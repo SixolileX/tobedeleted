@@ -89,7 +89,7 @@ namespace tobedeleted.Controllers
 
             _db.SaveChanges();
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(ViewAssignment));
         }
 
         public async Task<IActionResult> DeleteAssignment(int? id)
@@ -103,6 +103,58 @@ namespace tobedeleted.Controllers
                 return NotFound();
 
             _db.Assignment.Remove(AssignInDb);
+
+            _db.SaveChanges();
+
+            return RedirectToAction(nameof(ViewAssignment));
+        }
+
+        
+        public IActionResult AddAnouncements()
+        {
+            return View();
+
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Announcements obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Announcements.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("ViewAnnouncements");
+            }
+            return View(obj);
+
+        }
+        public IActionResult ViewAnnouncements()
+        {
+            IEnumerable<Announcements> objList = _db.Announcements;
+            return View(objList);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditAnnouncements(int? id)
+        {
+            if (id == null || id <= 0)
+                return BadRequest();
+
+            var AnnounceinDb = _db.Announcements.FirstOrDefault(x => x.AnnounceID == id);
+            if (AnnounceinDb == null)
+                return NotFound();
+
+            return View(AnnounceinDb);
+        }
+
+
+        public async Task<IActionResult> EditAnnouncements(Announcements announcements)
+        {
+            if (!ModelState.IsValid)
+                return View(announcements);
+
+            _db.Announcements.Update(announcements);
 
             _db.SaveChanges();
 
