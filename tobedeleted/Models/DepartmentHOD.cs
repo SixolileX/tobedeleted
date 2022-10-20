@@ -7,7 +7,7 @@ namespace tobedeleted.Models
 {
     public class DepartmentHOD
     {
-        public HOD HOD { get; set; }
+        public HODs HOD { get; set; }
         public Department Department {get;set;}
     }
 }

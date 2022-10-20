@@ -7,10 +7,10 @@ namespace tobedeleted.Models
 {
     public interface IAssignHOD
     {
-        HOD AddToHodAsync(HOD hod, string userHoDId ,int depID);
-        HOD Save(HOD oHOD);
-        HOD Update(HOD oHOD);
-        HOD Delete(HOD oHOD);
-        HOD SavedHOD { get; }
+        HODs AddToHodAsync(HODs hod, string userHoDId ,int depID);
+        HODs Save(HODs oHOD);
+        HODs Update(HODs oHOD);
+        HODs Delete(HODs oHOD);
+        HODs SavedHOD { get; }
     }
 }

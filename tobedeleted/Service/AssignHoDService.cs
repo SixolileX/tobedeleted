@@ -18,34 +18,34 @@ namespace tobedeleted.Service
         }
 
 
-        public HOD AddToHodAsync(HOD HoD, string userHoDId, int depID)
+        public HODs AddToHodAsync(HODs HoD, string userHoDId, int depID)
         {
-            HoD = new HOD();
+            HoD = new HODs();
             HoD.userHoDId = userHoDId;
             HoD.DepID = depID;
 
-            _context.HOD.Add(HoD);
+            _context.HODs.Add(HoD);
             _context.SaveChangesAsync();
             return HoD;
         }
         
-        public HOD SavedHOD => _context.HOD.OrderBy(o => o.HoDId).LastOrDefault();
+        public HODs SavedHOD => _context.HODs.OrderBy(o => o.HoDId).LastOrDefault();
 
-        public HOD Save(HOD oHOD)
+        public HODs Save(HODs oHOD)
         {
-            _context.HOD.Add(oHOD);
+            _context.HODs.Add(oHOD);
             _context.SaveChanges();
             return oHOD;
         }
-        public HOD Update(HOD oHOD)
+        public HODs Update(HODs oHOD)
         {
-            _context.HOD.Update(oHOD);
+            _context.HODs.Update(oHOD);
             _context.SaveChanges();
             return oHOD;
         }
-        public HOD Delete(HOD oHOD)
+        public HODs Delete(HODs oHOD)
         {
-            _context.HOD.Remove(oHOD);
+            _context.HODs.Remove(oHOD);
             _context.SaveChanges();
             return oHOD;
         }

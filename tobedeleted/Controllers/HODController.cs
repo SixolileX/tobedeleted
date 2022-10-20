@@ -503,7 +503,7 @@ namespace tobedeleted.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddHODToSpecificDep(UserRole userRole, HOD HoD)
+        public async Task<IActionResult> AddHODToSpecificDep(UserRole userRole, HODs HoD)
         {
             var user = await _userManager.FindByIdAsync(userRole.UserId);
             //var dep = await _assignHOD.FindByIdAsync(department.DepID);

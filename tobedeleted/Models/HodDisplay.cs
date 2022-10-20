@@ -7,7 +7,7 @@ namespace tobedeleted.Models
 {
     public class HodDisplay
     {
-        public HOD HOD { get; set; }
+        public HODs HOD { get; set; }
         public Department Department {get;set;}
         public Subject Subject { get; set; }
         public Grade Grade { get; set; }
