@@ -103,10 +103,11 @@
                      }
                     </td>*@
 
-                <td>
-                    <a asp-action="EditAssignment" asp-route-id="@item.AssignmentID" class="btn btn-sm btn-outline-primary">Edit</a> |
-                    <a asp-action="DeleteAssignment" asp-route-id="@item.AssignmentID" class="btn btn-sm btn-outline-danger">Delete</a>
-                </td>
+            <td>
+                <a asp-action="EditAssignment" asp-route-id="@item.AssignmentID" class="btn btn-sm btn-outline-primary">Edit</a> |
+                <a asp-action="DeleteAssignment" asp-route-id="@item.AssignmentID" class="btn btn-sm btn-outline-danger">Delete</a> |
+                <a asp-action="UploadFile" asp-controller="Teacher" asp-route-id="@item.AssignmentID" class="btn btn-sm btn-outline-info">Upload</a>
+            </td>
             </tr>
         }
     </tbody>
@@ -117,52 +118,3 @@
 </div>
 
 
-
-
-
-
-
-@*public class ViewAssignmentModel : PageModel
-    {
-        private readonly ILogger<ViewAssignmentModel>
-    _logger;
-    private readonly ApplicationDbContext _db;
-    private ApplicationDbContext db;
-
-    public ViewAssignmentModel(ILogger<ViewAssignmentModel>
-        logger, ApplicationDbContext _db)
-        {
-        _logger = logger;
-        _db = db;
-        }
-
-        public IList<Assignment>
-            Assignment { get; set; }
-            public void OnGet()
-            {
-            Assignment = _db.Assignment.ToList();
-            }
-
-            public async Task<IActionResult>
-                OnPostDownloadAsync(int? id)
-                {
-                var myAss = _db.Assignment.FirstOrDefault(x => x.AssignmentID == id);
-                if (myAss == null)
-                {
-                return NotFound();
-                }
-                if (myAss.Attachment == null)
-                {
-                return Page();
-                }
-                else
-                {
-                byte[] byteArr = myAss.Attachment;
-                string mimeType = "application/pdf";
-                return new FileContentResult(byteArr, mimeType)
-                {
-                FileDownloadName = $"Assignment {myAss.AssignmentTitle}.pdf"
-                };
-                }
-                }
-                }*@

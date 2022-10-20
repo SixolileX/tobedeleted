@@ -19,13 +19,6 @@ namespace tobedeleted.Models
         public IFormFile file { get; set; }
         public string Department { get; set; }
 
-        public int? myID { get; set; }
 
-        [BindProperty]
-        public int? ID { get; set; }
-        public void OnGet(int? id)
-        {
-            myID = id;
-        }
     }
 }
