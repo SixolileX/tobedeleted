@@ -29,7 +29,7 @@ namespace tobedeleted.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var users = userManager.Users.ToList();
+            var users = userManager.Users.Distinct().ToList();
             return View(users);
         }
         [HttpGet]
@@ -37,6 +37,7 @@ namespace tobedeleted.Controllers
         {
             var user = await userManager.FindByIdAsync(userId);
 
+            
             ViewBag.UserName = user.UserName;
 
             var userRoles = await userManager.GetRolesAsync(user);
@@ -70,17 +71,17 @@ namespace tobedeleted.Controllers
         [HttpGet]
         public IActionResult DisplayRoles()
         {
-            var roles = roleManager.Roles.ToList();
+            var roles = roleManager.Roles.Distinct().ToList();
             return View(roles);
         }
         [HttpGet]
         public IActionResult AddUserToRole()
         {
-            var users = userManager.Users.ToList();
-            var roles = roleManager.Roles.ToList();
+            var users = userManager.Users.Distinct().ToList();
+            var roles = roleManager.Roles.Distinct().ToList();
 
-            ViewBag.Users = new SelectList(users, "Id", "UserName");
-            ViewBag.Roles = new SelectList(roles, "Name", "Name");
+            ViewBag.Users = new SelectList(users, "Id", "UserName").Distinct();
+            ViewBag.Roles = new SelectList(roles, "Name", "Name").Distinct();
             return View();
         }
 
