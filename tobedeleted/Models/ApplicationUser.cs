@@ -16,6 +16,6 @@ namespace tobedeleted.Models
         public string Addressline1 { get; set; }
         public string Addressline2 { get; set; }
         public string contactNo { get; set; }
-
+        //public byte[] ProfilePicture { get;  set; }
     }
 }

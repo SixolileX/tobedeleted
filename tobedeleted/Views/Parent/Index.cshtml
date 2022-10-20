@@ -98,7 +98,7 @@
                            
                                 <p class="description">
                                    
-                                    @if (Model.Count() > 1)
+                                    @if (Model.Count() > 0)
                                     {
                                         <table class="table table-bordered table-striped" style="width:100%">
                                             <thead>
@@ -113,19 +113,21 @@
                                             </thead>
 
                                             <tbody>
+
                                                 @foreach (var meeting in Model)
                                                 {
-                                                    <tr>
-                                                        <td w-auto>@meeting.Desc</td>
-                                                        <td w-auto>@meeting.SetDate</td>
-                                                        <td w-auto>
-                                                            @*<div class="w-100 btn-group" role="group">
-                                                                <a asp-controller="Parent" asp-action="Update" asp-route-ID="@meeting.MeetingID" class="btn btn-primary w-auto mx-1">Update</a>
-                                                                <a asp-controller="Parent" asp-action="Delete" asp-route-ID="@meeting.MeetingID" class="btn btn-danger mx-1 w-auto">Delete</a>
-                                                            </di*@>
-                                                        </td>
+                                                <tr>
+                                                    <td w-auto>@meeting.Desc</td>
+                                                    <td w-auto>@meeting.MeetingDate</td>
+                                                    <td w-auto>@meeting.userID</td>
+                                                    <td w-auto>
+                                                        @*<div class="w-100 btn-group" role="group">
+                <a asp-controller="Parent" asp-action="Update" asp-route-ID="@meeting.MeetingID" class="btn btn-primary w-auto mx-1">Update</a>
+                <a asp-controller="Parent" asp-action="Delete" asp-route-ID="@meeting.MeetingID" class="btn btn-danger mx-1 w-auto">Delete</a>
+            </di*@>
+                                                    </td>
 
-                                                    </tr>
+                                                </tr>
                                                 }
                                             </tbody>
                                         </table>
@@ -140,43 +142,14 @@
                             </div>
                         </div>
 
-                        @*<div class="timeline">
-                            <span class="timeline-icon"></span>
-                            <span class="year">Sept 2022</span>
-                            <div class="timeline-content">
-                                <h5 class="title">Term Report</h5>
-                                <span class="post">26 Sept 2022</span>
-                                <p class="description">
-                                    The release of the academic report.
-                                </p>
-                            </div>
-                        </div>*@
-
-                        @*<div class="timeline">
-                            <span class="timeline-icon"></span>
-                            <span class="year">Aug 2022</span>
-                            <div class="timeline-content">
-                                <span class="post">1 Oct 2022</span>
-                                <p class="description">
-                                    Meeting with the school staff.
-                                </p>
-                            </div>
-                        </div>*@
+                     
 
                     </div>
                 </div>  <!--end card-body-->
 
             </div><!--end card-->
             <br />
-            <div class="js-stacks-validation " align="right">
-                <div class="ps-relative">
-                    <textarea id="wmd-input" contextmenu="feedback" name="post-text" class="wmd-input s-input bar0 js-post-body-field processed" data-post-type-id="2" cols="50" rows="5" tabindex="10" data-min-length=""></textarea>
-                    <div class="grippie bbr-sm" style="margin-right: 0px;"></div>
-                </div>
-                <div class="s-input-message mt4 d-none js-stacks-validation-message"></div>
-            </div>
-            <br /><input id="Button1" type="button" value="Submit feedback" />
-
+        
 <br />
 
 

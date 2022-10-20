@@ -32,10 +32,28 @@ namespace tobedeleted.Controllers
             IEnumerable<MeetingScheduler> objList = _db.MeetingScheduler;
             return View(objList);
         }
+        [HttpGet]
         public IActionResult Meeting()
         {
-
+            ViewBag.Userss = (from Ur in _db.UserRoles
+                              join U in _db.Users on Ur.UserId equals U.Id
+                              join R in _db.Roles on Ur.RoleId equals R.Id
+                              where Ur.UserId == U.Id && Ur.RoleId == R.Id && R.Name == "Teacher"
+                              select new ApplicationUser { Id = U.Id, firstName = U.firstName, lastName = U.lastName }).ToList();
             return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Meetings(MeetingUser meetingUser)
+        {
+            
+            //var user = await _userManager.FindByIdAsync(assign.userLearnerId);
+            var user = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            meetingUser.userParent = user;
+
+            _db.MeetingUser.Add(meetingUser);
+            _db.SaveChanges();
+            return RedirectToAction(nameof(Index));
+
         }
         [HttpPost]
         [ValidateAntiForgeryToken]

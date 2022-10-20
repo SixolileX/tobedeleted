@@ -38,12 +38,16 @@
                         <input asp-for="MeetingDate" class="form-control" />
                         <span asp-validation-for="MeetingDate" class="text-danger"></span>
                     </div>
-                    <div>
-                        <label asp-for="userID"> User Id: </label>
-                        <input asp-for="userID" class="form-control" />
-                        <span asp-validation-for="userID" class="text-danger" />
+                    <div class="form-group">
+                        <label>Select Username</label>
+                        <select asp-for="userID" class="form-control">
+                            <option selected disabled>--select user--</option>
+                            @foreach (ApplicationUser U in ViewBag.Userss)
+                            {
+                                <option asp-for="userTeacher" value="@U.Id">@U.firstName , @U.lastName</option>
+                            }
+                        </select>
                     </div>
-
 
                 </div>
 
