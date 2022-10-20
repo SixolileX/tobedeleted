@@ -46,6 +46,7 @@ namespace tobedeleted.Controllers
         // GET: TimeTables/Create
         public IActionResult Create()
         {
+
             return View();
         }
 

@@ -54,5 +54,6 @@ namespace tobedeleted.Data
         public DbSet<tobedeleted.Models.MeetingUser> MeetingUser { get; set; }
 
         public DbSet<tobedeleted.Models.EnrollStudent> EnrollStudents { get; set; }
+        public DbSet<FileOnDatabaseModel> FilesOnDatabase { get; set; }
     }
 }
