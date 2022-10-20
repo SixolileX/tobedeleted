@@ -98,3 +98,8 @@ body {
     width:350px;
     object-fit:cover;
 }
+.avatar{
+    height:40px;
+    width:40px;
+    object-fit:cover;
+}

@@ -51,7 +51,8 @@ namespace tobedeleted.Areas.Identity.Pages.Account.Manage
 
             Input = new InputModel
             {
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+                ProfilePicture = user.ProfilePicture
             };
         }
 
@@ -98,9 +99,10 @@ namespace tobedeleted.Areas.Identity.Pages.Account.Manage
                 using(var dataStream = new MemoryStream())
                 {
                     await file.CopyToAsync(dataStream);
-                    //user.ProfilePicture = dataStream.ToArray();
+                    user.ProfilePicture = dataStream.ToArray();
 
                 }
+                await _userManager.UpdateAsync(user);
             }
 
             await _signInManager.RefreshSignInAsync(user);

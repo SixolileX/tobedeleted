@@ -50,12 +50,9 @@ namespace tobedeleted.Data
         public DbSet<tobedeleted.Models.studentMeeting> studentMeetings { get; set; }
 
         public DbSet<tobedeleted.Models.Announcements> Announcements { get; set; }
-<<<<<<< HEAD
+
         public DbSet<tobedeleted.Models.MeetingUser> MeetingUser { get; set; }
 
-=======
-       
->>>>>>> 779ba00a54b94e20191363adc5d38b34fa0fa286
 
     }
 }

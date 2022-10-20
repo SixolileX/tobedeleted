@@ -11,7 +11,12 @@
             width: 200px;
             object-fit: cover;
         }
-
+        img {
+            height: 150px;
+            width: 150px;
+            vertical-align: middle;
+            border-style: none;
+        }
     </style>
 </head>
 
@@ -34,23 +39,23 @@
             <button id="update-profile-button" type="submit" class="btn btn-primary">Save</button>
        </div>
 
-            <div class="col-md-4">
+            <div class="col-md-6">
 
                 <div class="form-group">
                     <label asp-for="Input.ProfilePicture" class="w-100"></label>
                     @if(Model.Input.ProfilePicture != null)
                      {
-                        <img id."profilePicture" alt="profile" src="data:Image/*;base64,@(Convert.ToBase64String(Model.Input.ProfilePicture))"/>
+                        <img id="profilePicture" alt="profile" class="profile-picture" src="data:Image/*;base64,@(Convert.ToBase64String(Model.Input.ProfilePicture))"/>
 
                      }
                      else
                      {
-                         <img id."profilePicture" alt="profile" class="profile-profile" src="/images/istockphoto-1300845620-612x612.jpg" />
+                         <img id="profilePicture" alt="profile" class="profile-picture" src="/images/istockphoto-1300845620-612x612.jpg" />
 
                      }
                      <div class="custom-file mt-2">
-                          <input type="File"
-                           accept="Image/*"
+                          <input type="file"
+                           accept="image/*"
                            asp-for="Input.ProfilePicture"
                            class="custom-file-input" 
                                  onchange="document.getElementById('profilePicture').src = window.URL.createObjectURL(this.files[0])"/>
