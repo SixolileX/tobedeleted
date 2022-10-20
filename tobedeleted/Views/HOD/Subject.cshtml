@@ -59,7 +59,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-6">
+        @*<div class="col-6">
             <form method="post" asp-controller="HOD" asp-action="GetSavedSubject">
                 <table class="table">
                     <thead>
@@ -78,22 +78,22 @@
                         {
                             <tr>
                                 <td>
-                                    @item.Subject.SubDesc
+                                    item.Subject.SubDesc
                                 </td>
                                 <td>
-                                    @item.Deptment.DepDesc
+                                    item.Deptment.DepDesc
                                 </td>
                                 <td>
-                                    @*<a asp-action="UpdateDepartment" asp-route-id="@item.DepID">Edit</a> |
-                                <a asp-action="Details" asp-route-id="@item.DepID">Details</a> |
-                                <a asp-action="Delete" asp-route-id="@item.DepID">Delete</a>*@
+                                    --<a asp-action="UpdateDepartment" asp-route-id="item.DepID">Edit</a> |
+                                <a asp-action="Details" asp-route-id="item.DepID">Details</a> |
+                                <a asp-action="Delete" asp-route-id="item.DepID">Delete</a>*>
                                 </td>
                             </tr>
                         }
                     </tbody>
                 </table>
             </form>
-        </div>
+        </div>*@
     </div>
     
 </div>

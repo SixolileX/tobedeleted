@@ -222,10 +222,10 @@ namespace tobedeleted.Controllers
             //                       where d.DepID == H.DepID && H.userHoDId == user && UR.UserId == U.Id
             //                       select new HodDisplay { }).ToList();
             ViewBag.Department = _db.Departments.OrderBy(x => x.DepDesc).ToList();
-            ViewBag.Subject = (from S in _db.Subjects
-                               join D in _db.Departments on S.DepID equals D.DepID
-                               where S.DepID == D.DepID
-                               select new SubDep { Subject=S, Deptment = D}).ToList();
+            //ViewBag.Subject = (from S in _db.Subjects
+            //                   join D in _db.Departments on S.DepID equals D.DepID
+            //                   where S.DepID == D.DepID
+            //                   select new SubDep { Subject=S, Deptment = D}).ToList();
             return View();
         }
         [HttpPost]
@@ -298,8 +298,8 @@ namespace tobedeleted.Controllers
         public IActionResult Department()
         {
             var grade = _db.Grades.ToList();
-            var subs = _db.Subjects.ToList();
-            ViewBag.Department = _db.Departments;
+            //var subs = _db.Subjects.ToList();
+            ViewBag.Department = _db.Departments.Distinct();
             return View();
         }
         [HttpPost]
@@ -333,24 +333,32 @@ namespace tobedeleted.Controllers
 
         }
         [HttpPost]
-        public string SaveFile(UploadContent fileObj, Department dep)
+        public string SaveFile(UploadContent fileObj, string deps)
         {
             Department oDepartment = JsonConvert.DeserializeObject<Department>(fileObj.Department);
             ViewBag.Departments = oDepartment;
+            deps = oDepartment.DepDesc;
             if (fileObj.file.Length > 0)
             {
 
                 using (var ms = new MemoryStream())
                 {
+                    var dep = from m in _db.Departments
+                              select m;
                     fileObj.file.CopyTo(ms);
                     var fileBytes = ms.ToArray();
                     oDepartment.DepPhoto = fileBytes;//Here is the Subject photo in byte[] format
-
-                    oDepartment = _departmentService.Save(oDepartment);
-                    if (oDepartment.DepID > 0)
+                    if (!String.IsNullOrEmpty(oDepartment.DepDesc))
                     {
-                        return "Saved";
+                        dep = dep.Where(s => s.DepDesc.Contains(oDepartment.DepDesc));
+                        oDepartment = _departmentService.Save(oDepartment);
+
+                        if (oDepartment.DepID > 0)
+                        {
+                            return "Saved";
+                        }
                     }
+                    
                 }
             }
             return "Failed";
@@ -453,7 +461,7 @@ namespace tobedeleted.Controllers
             //                       where d.DepID == H.DepID && H.userHoDId == user && UR.UserId == U.Id
             //                       select new HodDisplay { }).ToList();
             meetingScheduler.userID = user;
-            ViewBag.User = meetingScheduler.userID;
+            ViewBag.User = meetingScheduler.userID.Distinct();
             if (ModelState.IsValid)
             {
                 _db.Add(meetingScheduler);
@@ -487,13 +495,13 @@ namespace tobedeleted.Controllers
             var ur = _db.UserRoles.ToList();
             var deps = _db.Departments.ToList();//assuming that enrolled departments will be add to List
 
-            ViewBag.Department = new SelectList(deps, "DepID", "DepDesc");
+            ViewBag.Department = new SelectList(deps, "DepID", "DepDesc").Distinct();
            
             ViewBag.Users = (from Ur in _db.UserRoles
                              join U in _db.Users on Ur.UserId equals U.Id
                              join R in _db.Roles on Ur.RoleId equals R.Id
                              where Ur.UserId == U.Id && Ur.RoleId == R.Id && R.Name == "HOD"
-                             select new ApplicationUser { Id = U.Id, firstName = U.firstName, lastName=U.lastName }).ToList();
+                             select new ApplicationUser { Id = U.Id, firstName = U.firstName, lastName=U.lastName }).Distinct().ToList();
             return View();
         }
 

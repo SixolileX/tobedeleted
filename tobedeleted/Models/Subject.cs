@@ -21,7 +21,7 @@ namespace tobedeleted.Models
         [Display(Name = "Department ")]
         public int DepID { get; set; }
         public byte[] SubImage { get; set; }
-        [Required]
+        //[Required]
         public string SubCode { get; set; }
         public int learnerId { get; set; }
 
