@@ -195,8 +195,8 @@ namespace tobedeleted.Controllers
                                     join sg in _db.SubsToGrade on G.GrID equals sg.GrID
                                     from U in _db.Users
                                     join ur in _db.UserRoles on U.Id equals ur.UserId
-                                    where U.Id == sg.userTeacher && ur.RoleId == R.Id && R.Name == "Teacher"
-                                    select new AssignTeachersToGradeSubDisplay { Subject = S, Grade = G, applicationUser = U }).ToList();//Coming from our database
+                                    where U.Id == sg.userTeacher && ur.RoleId == R.Id && R.Name == "Teacher" 
+                                    select new AssignTeachersToGradeSubDisplay { Subject = S, Grade = G, applicationUser = U }).Distinct().ToList();//Coming from our database
 
             return View(ug);
         }
@@ -333,31 +333,28 @@ namespace tobedeleted.Controllers
 
         }
         [HttpPost]
-        public string SaveFile(UploadContent fileObj, string deps)
+        public string SaveFile(UploadContent fileObj)
         {
             Department oDepartment = JsonConvert.DeserializeObject<Department>(fileObj.Department);
             ViewBag.Departments = oDepartment;
-            deps = oDepartment.DepDesc;
             if (fileObj.file.Length > 0)
             {
 
                 using (var ms = new MemoryStream())
                 {
-                    var dep = from m in _db.Departments
-                              select m;
                     fileObj.file.CopyTo(ms);
                     var fileBytes = ms.ToArray();
                     oDepartment.DepPhoto = fileBytes;//Here is the Subject photo in byte[] format
-                    if (!String.IsNullOrEmpty(oDepartment.DepDesc))
-                    {
-                        dep = dep.Where(s => s.DepDesc.Contains(oDepartment.DepDesc));
-                        oDepartment = _departmentService.Save(oDepartment);
-
-                        if (oDepartment.DepID > 0)
+                    
+                        if (ModelState.IsValid)
                         {
-                            return "Saved";
+                            oDepartment = _departmentService.Save(oDepartment);
+
+                            if (oDepartment.DepID > 0)
+                            {
+                                return "Saved";
+                            }
                         }
-                    }
                     
                 }
             }
@@ -506,18 +503,17 @@ namespace tobedeleted.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddHODToSpecificDep(UserRole userRole, Department department, HOD HoD)
+        public async Task<IActionResult> AddHODToSpecificDep(UserRole userRole, HOD HoD)
         {
             var user = await _userManager.FindByIdAsync(userRole.UserId);
             //var dep = await _assignHOD.FindByIdAsync(department.DepID);
             //await _userManager.AddToRoleAsync(user, userRole.RoleName);
             HoD= _assignHOD.AddToHodAsync(HoD, HoD.userHoDId, HoD.DepID);
-            ViewBag.HoD = HoD;
             if (HoD.HoDId > 0)
             {
-                return Ok("Saved");
+                return Ok();
             }
-            return RedirectToAction(nameof(Dashboard));
+            return RedirectToAction(nameof(AddHODToSpecificDep));
 
         }
         public IActionResult TimeTable()

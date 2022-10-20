@@ -104,22 +104,6 @@ namespace tobedeleted.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "HOD",
-                columns: table => new
-                {
-                    HoDId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    SubID = table.Column<int>(type: "int", nullable: false),
-                    DepID = table.Column<int>(type: "int", nullable: false),
-                    RoleName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_HOD", x => x.HoDId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "MeetingScheduler",
                 columns: table => new
                 {

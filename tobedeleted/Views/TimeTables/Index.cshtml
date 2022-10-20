@@ -1,0 +1,66 @@
+﻿@model IEnumerable<tobedeleted.Models.TimeTable>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/_LayoutHOD.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ExamDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Exam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GradeID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExamDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Exam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GradeID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TtID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.TtID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.TtID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
