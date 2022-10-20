@@ -1,5 +1,7 @@
-﻿@{
+﻿@*@model IEnumerable<tobedeleted.Models.Announcements>*@
+@{
     Layout = "~/Pages/_LayoutTeacher.cshtml";
+    //ViewData["Title"] = "ViewAnnouncements";
 }
 
 <div class="row py-lg-5">
@@ -16,6 +18,50 @@
         </div>
         <br>
     </div>
+
+
+    @*<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnouncementName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnouncementDescr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnounceDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnnouncementName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnnouncementDescr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnnounceDate)
+                </td>
+                <td>
+                    <a asp-action="EditAnnouncements" asp-route-id="@item.AnnounceID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.AnnounceID">Details</a> |
+                    <a asp-action="DeleteAnnouncements" asp-route-id="@item.AnnounceID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>*@
+
+
+
+
+
 
     <div class="container mt-5">
         <div class="row">

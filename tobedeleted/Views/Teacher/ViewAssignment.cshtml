@@ -14,13 +14,13 @@
 <div class="container-fluid">
     <div class="row">
 
-        @using(Html.BeginForm("Teacher","TDash",FormMethod.Post))
+        @using(Html.BeginForm("ViewAssignment","Teacher",FormMethod.Post))
             {
                 <div class="form-horizontal">
                     <div class="form-group">
 
                         <label class="col-md-2 custom-control-label">Search</label>
-                        @*@Html.Label("Search", new { @class= "ol-md-2 custom-control-label" })*@
+                       @* @Html.Label("Search", new { @class= "ol-md-2 custom-control-label" })*@
 
                         <div class="col-md-6">
                             @Html.TextBox("seacrchText", null, new { @class = "form-group", @placeholder = "Search your text here", @style = "max-width:100%" })
@@ -91,7 +91,7 @@
                     @Html.DisplayFor(modelItem => item.AssignmentDueDate)
                 </td>
                 <td>
-                    <a asp-page="/Upload" asp-route-id="@item.AssignmentID">Click to upload</a>
+                    <a asp-action="/Upload" asp-route-id="@item.AssignmentID">Click to upload</a>
                </td>
                 @*<td>
                     @if (item.Attachment != null)
@@ -110,7 +110,11 @@
             </tr>
         }
     </tbody>
+
 </table>
+<div>
+    <a asp-action="Assessments">Assessments</a>
+</div>
 
 
 

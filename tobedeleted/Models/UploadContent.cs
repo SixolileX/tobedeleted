@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -17,5 +18,14 @@ namespace tobedeleted.Models
         //[Required]
         public IFormFile file { get; set; }
         public string Department { get; set; }
+
+        public int? myID { get; set; }
+
+        [BindProperty]
+        public int? ID { get; set; }
+        public void OnGet(int? id)
+        {
+            myID = id;
+        }
     }
 }

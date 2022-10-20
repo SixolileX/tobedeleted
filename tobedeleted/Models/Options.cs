@@ -7,8 +7,8 @@ namespace tobedeleted.Models
 {
     public class Options
     {
-        public int OptionId { get; set; }
-        public int QuestionId { get; set; }
-        public string OptionName { get; set; }
+        //public int OptionId { get; set; }
+        //public int QuestionId { get; set; }
+        //public string OptionName { get; set; }
     }
 }

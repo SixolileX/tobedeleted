@@ -8,12 +8,12 @@ namespace tobedeleted.Models
 {
     public class Questions
     {
-        [Key]
-        public int QuestionId { get; set; }
-        public int CategoryId { get; set; }
-        public string QuestionName { get; set; }
-        public Boolean isMultiple { get; set; }
-        public Boolean isActive { get; set; }
+        //[Key]
+        //public int QuestionId { get; set; }
+        //public int CategoryId { get; set; }
+        //public string QuestionName { get; set; }
+        //public Boolean isMultiple { get; set; }
+        //public Boolean isActive { get; set; }
         
     }
 }

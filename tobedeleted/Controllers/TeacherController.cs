@@ -5,12 +5,15 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using tobedeleted.Data;
+using tobedeleted.IService;
 using tobedeleted.Models;
 
 namespace tobedeleted.Controllers
 {
+    //[Authorize(Roles = "Teacher")]
     public class TeacherController : Controller
     {
         private readonly IWebHostEnvironment _webHostEnv;
@@ -184,7 +187,22 @@ namespace tobedeleted.Controllers
 
             return View(AnnounceinDb);
         }
+        public async Task<IActionResult> DeleteAnnouncements(int? id)
+        {
+            if (id == null || id <= 0)
+                return BadRequest();
 
+            var AnnounceInDb = _db.Announcements.FirstOrDefault(x => x.AnnounceID == id);
+
+            if (AnnounceInDb == null)
+                return NotFound();
+
+            _db.Announcements.Remove(AnnounceInDb);
+
+            _db.SaveChanges();
+
+            return RedirectToAction(nameof(ViewAnnouncements));
+        }
 
         public IActionResult ViewAssessments()
         {
