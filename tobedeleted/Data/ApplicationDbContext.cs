@@ -46,13 +46,13 @@ namespace tobedeleted.Data
 
         public DbSet<tobedeleted.Models.AssignLearnerToParent> AssignLearnerToParent { get; set; }
 
-        //public DbSet<tobedeleted.Models.EnrollStudent> EnrollStudents { get; set; }
+       
         public DbSet<tobedeleted.Models.studentMeeting> studentMeetings { get; set; }
 
         public DbSet<tobedeleted.Models.Announcements> Announcements { get; set; }
 
         public DbSet<tobedeleted.Models.MeetingUser> MeetingUser { get; set; }
 
-
+        public DbSet<tobedeleted.Models.EnrollStudent> EnrollStudents { get; set; }
     }
 }
