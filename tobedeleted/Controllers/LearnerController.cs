@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.Claims;
 using Microsoft.AspNetCore.SignalR;
 
+
 namespace Inn_TuneProject.Controllers
 {
     public class LearnerController : Controller
@@ -23,12 +24,12 @@ namespace Inn_TuneProject.Controllers
         private readonly ApplicationDbContext _db;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
-
+    
       
 
         public LearnerController( ApplicationDbContext db, IAddLearnerTosub addLearner, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
-            
+               
             _db = db;
             _IaddLearnerTosub = addLearner;
             this._roleManager = roleManager;
@@ -45,20 +46,20 @@ namespace Inn_TuneProject.Controllers
 
 
 
-            var users = _userManager.Users.ToList();
-            var roles = _roleManager.Roles.ToList();
-            var ur = _db.UserRoles.ToList();
-            var Sub = _db.Subjects.ToList();
+            //var users = _userManager.Users.ToList();
+            //var roles = _roleManager.Roles.ToList();
+            //var ur = _db.UserRoles.ToList();
+            //var Sub = _db.Subjects.ToList();
 
 
 
 
 
-            ViewBag.users = (from Ur in _db.UserRoles
-                             join U in _db.Users on Ur.UserId equals U.Id
-                             join R in _db.Roles on Ur.RoleId equals R.Id
-                             where Ur.UserId == U.Id && Ur.RoleId == R.Id && R.Name == "Learner"
-                             select new ApplicationUser { Id = U.Id, firstName = U.firstName, lastName = U.lastName }).ToList();
+            //ViewBag.users = (from Ur in _db.UserRoles
+            //                 join U in _db.Users on Ur.UserId equals U.Id
+            //                 join R in _db.Roles on Ur.RoleId equals R.Id
+            //                 where Ur.UserId == U.Id && Ur.RoleId == R.Id && R.Name == "Learner"
+            //                 select new ApplicationUser { Id = U.Id, firstName = U.firstName, lastName = U.lastName }).ToList();
 
             return View();
 
@@ -69,18 +70,11 @@ namespace Inn_TuneProject.Controllers
 
 
 
-            var user = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            ////ViewBag.Subjects = (from m in _db.Subjects
-            ////                    join U in _db.EnrollStudents on m.SubDesc equals U.SubjectID
-            ////                    from E in _db.EnrollStudents 
-            ////                    join W in _db.Users on E.StudentID equals W.Id
-            //                    //where U.SubjectID==E.StudentID&&E.StudentID==user
-            //                    //select new Mysubjects{ EnrollStu=U,SubjectM=m, EnrollS =}).ToList();
 
 
             enroll.EnrollDate = DateTime.Today;
-            enroll.SubjectID = user;
-            enroll.StudentID = user;
+            enroll.SubjectID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            enroll.StudentID = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
 
             _db.EnrollStudents.Add(enroll);
@@ -93,7 +87,7 @@ namespace Inn_TuneProject.Controllers
             //learners.UserlearnerId = user;
 
 
-            return RedirectToAction(nameof(DashBoards));
+            return RedirectToAction(nameof(popUpEnroll));
 
         }
 
@@ -223,8 +217,23 @@ namespace Inn_TuneProject.Controllers
 
 
         }
+        [HttpGet]
+        public ActionResult popUpEnroll()
+        {
+            
+            return View();
 
 
+        }
+        [HttpPost]
+        public ActionResult popUpEnroll(Subject subject)
+        {
+            TempData["SucessMessage"] = "you have Sucessfully enrolled on " + subject.SubDesc;
+
+            return View(nameof(EnrollInSubject));
+
+
+        }
 
 
     }
