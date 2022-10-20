@@ -10,7 +10,7 @@ namespace tobedeleted.Models
     {
         public string firstName { get; set; }
         public string lastName { get; set; }
-        public string email { get; set; }
+        //public string email { get; set; }
         public DateTime DateOfBirth { get; set; }
         public Boolean Gender { get; set; }
         public string Addressline1 { get; set; }

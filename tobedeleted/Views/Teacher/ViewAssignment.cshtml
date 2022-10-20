@@ -10,6 +10,40 @@
         <hr />
     </div>
 </div>
+
+<div class="container-fluid">
+    <div class="row">
+
+        @using(Html.BeginForm("Teacher","TDash",FormMethod.Post))
+            {
+                <div class="form-horizontal">
+                    <div class="form-group">
+
+                        <label class="col-md-2 custom-control-label">Search</label>
+                        @*@Html.Label("Search", new { @class= "ol-md-2 custom-control-label" })*@
+
+                        <div class="col-md-6">
+                            @Html.TextBox("seacrchText", null, new { @class = "form-group", @placeholder = "Search your text here", @style = "max-width:100%" })
+                        </div>
+
+                        <div>
+                            <button class="btn-outline-primary" type="submit">Search</button>
+                        </div>
+                    </div>
+                    @*<label class="col-md-2 custom-control-label">Search</label>
+
+                    <div class="col-md-6">
+                        <input type="text" name="name" class="form-control" pl
+                    </div>*@
+
+                </div>
+            }
+
+    </div>
+
+</div>
+
+
 <p>
     <a asp-action="AddAssignment" class="btn btn-sm btn-outline-primary">Create new assignment</a>
 </p>

@@ -17,13 +17,15 @@ namespace tobedeleted.Data
             : base(options)
         {
         }
+
+        public static object Categories { get; internal set; }
         public DbSet<tobedeleted.Models.Department> Departments { get; set; }
         public DbSet<tobedeleted.Models.Subject> Subjects { get; set; }
 
         public DbSet<tobedeleted.Models.AssignSubjectGrade> SubsToGrade { get; set; }
 
         public DbSet<tobedeleted.Models.HOD> HOD { get; set; }
-        public DbSet<tobedeleted.Models.SubDep> SubDep { get; set; }
+        
 
         public DbSet<tobedeleted.Models.Grade> Grades { get; set; }
         //public DbSet<tobedeleted.Models.MailMessage> MailMessages { get; set; }
@@ -44,12 +46,16 @@ namespace tobedeleted.Data
 
         public DbSet<tobedeleted.Models.AssignLearnerToParent> AssignLearnerToParent { get; set; }
 
-        public DbSet<tobedeleted.Models.EnrollStudent> EnrollStudents { get; set; }
+        //public DbSet<tobedeleted.Models.EnrollStudent> EnrollStudents { get; set; }
         public DbSet<tobedeleted.Models.studentMeeting> studentMeetings { get; set; }
 
         public DbSet<tobedeleted.Models.Announcements> Announcements { get; set; }
+<<<<<<< HEAD
         public DbSet<tobedeleted.Models.MeetingUser> MeetingUser { get; set; }
 
+=======
+       
+>>>>>>> 779ba00a54b94e20191363adc5d38b34fa0fa286
 
     }
 }

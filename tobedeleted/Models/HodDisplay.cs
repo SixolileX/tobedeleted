@@ -14,5 +14,6 @@ namespace tobedeleted.Models
         public AssignTeachersToGradeSubDisplay assignTeachers { get; set; }
         public AssignSubjectGrade AssignSubjectGrade { get; set; }
         public ApplicationUser user { get; set; }
+        public DepartmentHOD DepartmentHOD { get; set; }
     }
 }

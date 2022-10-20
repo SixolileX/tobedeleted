@@ -6,12 +6,7 @@ namespace tobedeleted.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "learnerId",
-                table: "Subjects",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
+           
 
             migrationBuilder.CreateTable(
                 name: "Learner",
@@ -50,9 +45,6 @@ namespace tobedeleted.Migrations
             migrationBuilder.DropTable(
                 name: "Parent");
 
-            migrationBuilder.DropColumn(
-                name: "learnerId",
-                table: "Subjects");
         }
     }
 }

@@ -283,7 +283,7 @@ namespace tobedeleted.Migrations
                     SubDesc = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DepID = table.Column<int>(type: "int", nullable: false),
                     SubImage = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
-                    SubCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SubCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DepartmentDepID = table.Column<int>(type: "int", nullable: true),
                     HoDId = table.Column<int>(type: "int", nullable: true)
                 },
