@@ -16,7 +16,7 @@ namespace tobedeleted.Controllers
         private readonly IWebHostEnvironment _webHostEnv;
         //public Reports reports = new Reports();
         private readonly ApplicationDbContext _db;
-        //private ApplicationDbContext applicationDbContext;
+        private ApplicationDbContext applicationDbContext;
 
         //public TeacherController()
         //{
@@ -30,7 +30,21 @@ namespace tobedeleted.Controllers
         }
         public IActionResult TDash()
         {
-            return View();
+            var Assigns = _db.Assignment.ToList();
+            return View(Assigns);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult TDash(string seacrchText)
+        {
+            var Assigns = _db.Assignment.ToList();
+
+            if(seacrchText != null)
+            {
+                Assigns = _db.Assignment.Where(x => x.AssignmentTitle.Contains(seacrchText)).ToList();
+            }
+            return View(Assigns);
         }
         public IActionResult Assessments()
         {
@@ -44,6 +58,12 @@ namespace tobedeleted.Controllers
         {
             return View();
         }
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(Assignment obj)
         {
             if (ModelState.IsValid)
@@ -115,9 +135,14 @@ namespace tobedeleted.Controllers
             return View();
 
         }
+        public IActionResult CreateAnnouncement()
+        {
+            return View();
+
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Announcements obj)
+        public IActionResult CreateAnnouncement(Announcements obj)
         {
             if (ModelState.IsValid)
             {
@@ -134,8 +159,20 @@ namespace tobedeleted.Controllers
             return View(objList);
         }
 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditAnnouncements(Announcements announcements)
+        {
+            if (!ModelState.IsValid)
+                return View(announcements);
+
+            _db.Announcements.Update(announcements);
+
+            _db.SaveChanges();
+
+            return RedirectToAction(nameof(ViewAnnouncements));
+        }
         public async Task<IActionResult> EditAnnouncements(int? id)
         {
             if (id == null || id <= 0)
@@ -149,35 +186,6 @@ namespace tobedeleted.Controllers
         }
 
 
-        public async Task<IActionResult> EditAnnouncements(Announcements announcements)
-        {
-            if (!ModelState.IsValid)
-                return View(announcements);
-
-            _db.Announcements.Update(announcements);
-
-            _db.SaveChanges();
-
-            return RedirectToAction(nameof(Index));
-        }
-        //public IActionResult GetAssignment()
-        //{
-        //    IEnumerable<Assignment> objList = _db.Assignments;//Coming from our database
-        //    return View(objList);
-        //}
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult Assignment(Assignment obj)
-        //{
-        //    if (ModelState.IsValid)//Checks to see if all the required fields have been met.
-        //    {
-        //        _db.Assignments.Add(obj);
-        //        _db.SaveChanges();
-        //        return RedirectToAction("GetSubject");
-        //    }
-        //    return View(obj);
-
-        //}
         public IActionResult ViewAssessments()
         {
             return View();
@@ -193,8 +201,8 @@ namespace tobedeleted.Controllers
         }
         public IActionResult Quizz()
         {
-            //Category category = new Category();
-            //category.ListofCategory = (from Cat in ApplicationDbContext.Categories
+            //Categories category = new Categories();
+            //category.ListOfCategory = (from Cat in ApplicationDbContext.Categories
             //                           select new SelectListItem()
             //                           {
 
