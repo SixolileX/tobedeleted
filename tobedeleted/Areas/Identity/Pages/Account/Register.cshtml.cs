@@ -94,7 +94,7 @@ namespace tobedeleted.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
 
-                    _userManager.AddToRoleAsync(user, "Admin").Wait();
+                    //_userManager.AddToRoleAsync(user, "Admin").Wait();
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
