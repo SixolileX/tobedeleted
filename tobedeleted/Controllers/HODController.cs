@@ -566,6 +566,10 @@ namespace tobedeleted.Controllers
 
         public IActionResult Reporting()
         {
+            var deps = _db.Departments.Distinct().ToList();
+            var subs = _db.Subjects.Distinct().ToList();
+            var gr = _db.Grades.Distinct().ToList();
+            var a = _db.Assignment.Distinct().ToList();
             var users = User.FindFirstValue(ClaimTypes.NameIdentifier);
             ViewBag.Department = (from H in _db.HODs
                                   join D in _db.Departments on H.DepID equals D.DepID
@@ -579,6 +583,23 @@ namespace tobedeleted.Controllers
                                   join UR in _db.UserRoles on R.Id equals UR.RoleId
                                   where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
                                   select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
+            ViewBag.Report = (from H in _db.HODs
+                              join D in _db.Departments on H.DepID equals D.DepID
+                              join U in _db.Users on H.userHoDId equals U.Id
+                              from S in _db.Subjects
+                              join d in _db.Departments on S.DepID equals d.DepID
+                              join z in _db.SubsToGrade on S.SubID equals z.SubGrID
+                              from SG in _db.SubsToGrade
+                              join G in _db.Grades on SG.GrID equals G.GrID
+                              from M in _db.Marks
+                              join s in _db.Subjects on M.SubID equals s.SubID
+                              join A in _db.Assignment on M.AssignmentID equals A.AssignmentID
+                              from R in _db.Roles
+                              join UR in _db.UserRoles on R.Id equals UR.RoleId
+                              where D.DepID == H.DepID && S.DepID == H.DepID
+                                    && SG.SubId == S.SubID && s.SubID == S.SubID && S.SubID == M.SubID && SG.GrID == G.GrID
+                                    && H.userHoDId == U.Id && UR.UserId == U.Id && A.AssignmentID == M.AssignmentID
+                              select new MyHODReport { Marks = M, Department = D, Subject = S, HODs = H, User = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
             return View();
         }
         

@@ -57,18 +57,18 @@ namespace tobedeleted.Data
 
         public DbSet<tobedeleted.Models.EnrollStudent> EnrollStudents { get; set; }
         public DbSet<FileOnDatabaseModel> FilesOnDatabase { get; set; }
-<<<<<<< HEAD
+
 
         public DbSet<Exams> Exams { get; set; }
 
         public DbSet<StuMark> StuMarks { get; set; }
-=======
+
         public DbSet<Category> Category { get; set; }
         public DbSet<CategoryItem> CategoryItem { get; set; }
         public DbSet<MediaType> MediaType { get; set; }
         public DbSet<UserCategory> UserCategory { get; set; }
         public DbSet<Content> Content { get; set; }
->>>>>>> 66e66e26b602da9fc25fc317c09b58e6ff1aecc4
+
     }
 
 }
