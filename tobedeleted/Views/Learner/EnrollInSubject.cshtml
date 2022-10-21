@@ -1,5 +1,6 @@
-﻿@model AssignSubject
+﻿
 
+@model Subject
 @{
     ViewData["Title"] = "Enroll Learner";
     Layout = "~/Pages/_LayoutLearner.cshtml";
@@ -22,6 +23,7 @@
 <hr />
 
 <div id="PlaceHolder" class="container">
+    @*<partial name="_StatusMessage" model="Model.StatusMessage" />*@
     <div class="row">
         <div class="col-6 offset-3">
             <form asp-action="EnrollInSubject" method="post">
@@ -38,7 +40,7 @@
                         <input asp-for="SubCode" asp-items="@ViewBag.Users" class="form-control" />*@
                 </div>
                 <div>
-                    <input type="submit" class="btn btn-outline-primary btn-block" value="Enroll" data-toggle="modal" data-target="#myModal" />
+                    <input type="submit" class="btn btn-outline-primary btn-block" value="Enroll" data-toggle="modal_2" data-target="#myModal" />
                     <a asp-action="DashBoards" class="btn btn-outline-danger btn-block">Cancel</a>
                 </div>
             </form>
