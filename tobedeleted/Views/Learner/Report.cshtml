@@ -1,9 +1,290 @@
 ﻿
 @{
-    ViewData["Title"] = "QuestionPA";
+    ViewData["Title"] = "progress Report";
     Layout = "~/Pages/_LayoutLearner.cshtml";
 }
+
+<head>
+    <script src="myscripts.js"></script>
+    <script>
+        document.getElementById("demo").innerHTML = "My First JavaScript";
+    </script>
+    <script type="text/javascript" src="path-to-javascript-file.js"></script>
+</head>
 <br />
 <br />
 <br />
-<h4>Report</h4>
+
+
+
+<form class="d-print-table-row">
+    <button class="alert-primary img-fluid">Print</button>
+    <div id="parentdiv">
+        <div class="container">
+            <div class="main-body">
+                <h4 class="text-center ">Report for </h4>
+
+
+
+                <div class="row gutters-sm">
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex flex-column align-items-center text-center">
+                                    <img src="~/css/Images/guy-working-at-computer-vector-18227823.jpg" alt="Admin" class="rounded-circle" width="150">
+                                    <div class="mt-3">
+                                        <h4>Sixolile</h4>
+                                        <p class="text-secondary mb-1">2022/10/21</p>
+                                        <p class="text-secondary mb-1">Learner</p>
+                                        <p class="text-muted font-size-sm">Grade 12</p>
+                                        <button class="btn btn-primary"></button>
+                                        <button class="btn btn-outline-primary">Go to Profile</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Full Name</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        Sixolile Sobetwa
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Email</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        si@gmail.com
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Phone</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        555555
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Address</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        Mthatha
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Address 2</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        PE
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <a class="btn btn-info " asp-action="">Edit</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-box">
+                            <h4 class="header-title mb-3">My Subjects</h4>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Subject Name</th>
+                                            <th>Enroll date</th>
+                                            <th>Start date</th>
+                                            <th>Review</th>
+                                            <th>Finish</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Mathematics</td>
+                                            <td>02/02/2022</td>
+                                            <td>02/02/2022</td>
+                                            <td><span class="label label-info">Work in Progress</span></td>
+                                            <td>November</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Physical Sciences</td>
+                                            <td>02/02/2022</td>
+                                            <td>02/02/2022</td>
+                                            <td><span class="label label-success">Pending</span></td>
+                                            <td>October</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Acounting</td>
+                                            <td>02/02/2022</td>
+                                            <td>02/02/2022</td>
+                                            <td><span class="label label-pink">Done</span></td>
+                                            <td>November</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>Life Sciences</td>
+                                            <td>02/02/2022</td>
+                                            <td>02/02/2022</td>
+                                            <td><span class="label label-purple">Work in Progress</span></td>
+                                            <td>July</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>Geography</td>
+                                            <td>02/02/2022</td>
+                                            <td>02/02/2022</td>
+                                            <td><span class="label label-warning">Coming soon</span></td>
+                                            <td>November</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <br />
+                                <div class="row gutters-sm">
+                                    <div class="col-sm-6 mb-5">
+                                        <div class="card h-100">
+                                            <div class="card-body">
+                                                <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Subject</i>progress</h6>
+                                                <small>Mathematics</small>
+                                                <div class="progress mb-3" style="height: 5px">
+                                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <small>Physical Sciences</small>
+                                                <div class="progress mb-3" style="height: 5px">
+                                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <small>Life Sciences</small>
+                                                <div class="progress mb-3" style="height: 5px">
+                                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <small>Geography</small>
+                                                <div class="progress mb-3" style="height: 5px">
+                                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <small>Accounting</small>
+                                                <div class="progress mb-3" style="height: 5px">
+                                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+                </div>
+
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+
+</form>
+
+
+@*@section scripts{
+
+    <script>
+        $("printPDF").click(function () {
+            var element = document.getElementById('parentdiv');
+            html2pdf().from(element).set({
+                margin: [30, 10, 5, 10],
+                pagebreak: { avoid: 'tr' },
+                jsPDF: { orientation: 'landscape', unit: 'pt', format: 'letter', compressPDF: true }
+            }).save()
+        })
+    </script>*@
+}
+<style>
+
+    body {
+        margin-top: 20px;
+        color: #1a202c;
+        text-align: left;
+        background-color: white;
+    }
+
+    .main-body {
+        padding: 15px;
+    }
+
+    .card {
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+    }
+
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 0 solid rgba(0,0,0,.125);
+        border-radius: .25rem;
+    }
+
+    .card-body {
+        flex: 1 1 auto;
+        min-height: 1px;
+        padding: 1rem;
+    }
+
+    .gutters-sm {
+        margin-right: -8px;
+        margin-left: -8px;
+    }
+
+        .gutters-sm > .col, .gutters-sm > [class*=col-] {
+            padding-right: 8px;
+            padding-left: 8px;
+        }
+
+    .mb-3, .my-3 {
+        margin-bottom: 1rem !important;
+    }
+
+    .bg-gray-300 {
+        background-color: #e2e8f0;
+    }
+
+    .h-100 {
+        height: 100% !important;
+    }
+
+    .shadow-none {
+        box-shadow: none !important;
+    }
+
+    .card-box {
+        padding: 20px;
+        border-radius: 3px;
+        margin-bottom: 30px;
+        background-color: #fff;
+    }
+</style>

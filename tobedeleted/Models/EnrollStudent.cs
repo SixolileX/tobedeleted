@@ -12,8 +12,11 @@ namespace tobedeleted.Models
 
         [Key]
         public int EnrollID { get; set; }
+        [Required]
         public DateTime EnrollDate { get; set; }
-        public string SubjectID { get; set; }
+        [Required]
+        public int SubjectID { get; set; }
+        [Required]
         public string StudentID { get; set; }
 
      

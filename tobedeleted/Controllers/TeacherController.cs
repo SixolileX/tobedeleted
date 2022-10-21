@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,14 +15,12 @@ using tobedeleted.Models;
 
 namespace tobedeleted.Controllers
 {
-    //[Authorize(Roles = "Teacher")]
+    [Authorize(Roles = "Teacher")]
     public class TeacherController : Controller
     {
         private readonly IWebHostEnvironment _webHostEnv;
         //public Reports reports = new Reports();
         private readonly ApplicationDbContext _db;
-        private ApplicationDbContext applicationDbContext;
-
         //public TeacherController()
         //{
         //    applicationDbContext = new ApplicationDbContext();

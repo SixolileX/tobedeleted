@@ -438,7 +438,7 @@ namespace tobedeleted.Migrations
                     DepID = table.Column<int>(type: "int", nullable: false),
                     SubImage = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     SubCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    learnerId = table.Column<int>(type: "int", nullable: false),
+                    learnerId = table.Column<int>(type: "int", nullable: true),
                     DepartmentDepID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>

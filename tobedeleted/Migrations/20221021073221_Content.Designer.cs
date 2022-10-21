@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using tobedeleted.Data;
 
 namespace tobedeleted.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221021073221_Content")]
+    partial class Content
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -532,21 +534,6 @@ namespace tobedeleted.Migrations
                     b.ToTable("EnrollStudents");
                 });
 
-            modelBuilder.Entity("tobedeleted.Models.Exams", b =>
-                {
-                    b.Property<int>("ExamId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("ExamName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ExamId");
-
-                    b.ToTable("Exams");
-                });
-
             modelBuilder.Entity("tobedeleted.Models.FileOnDatabaseModel", b =>
                 {
                     b.Property<int>("Id")
@@ -730,36 +717,6 @@ namespace tobedeleted.Migrations
                     b.HasKey("Parentid");
 
                     b.ToTable("Parent");
-                });
-
-            modelBuilder.Entity("tobedeleted.Models.StuMark", b =>
-                {
-                    b.Property<int>("MarkId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("LearnerIdUser")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SubjectName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Term1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Term2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Term3")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Term4")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("MarkId");
-
-                    b.ToTable("StuMarks");
                 });
 
             modelBuilder.Entity("tobedeleted.Models.Subject", b =>

@@ -1,0 +1,48 @@
+﻿@model tobedeleted.Entities.Category
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/_LayoutTeacher.cshtml";
+    ViewData["Title"] = "Real-Time Binding";
+}
+<br />
+<br />
+
+<h1>Edit</h1>
+
+<h4>Category</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ThumbnailmagePath" class="control-label"></label>
+                <input asp-for="ThumbnailmagePath" class="form-control" />
+                <span asp-validation-for="ThumbnailmagePath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
