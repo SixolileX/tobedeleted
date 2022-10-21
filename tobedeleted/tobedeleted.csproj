@@ -14,6 +14,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="bootstrap" Version="5.2.2" />
+		<PackageReference Include="MailKit" Version="3.4.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.17" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.17" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.17" />

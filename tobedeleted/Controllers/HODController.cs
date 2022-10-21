@@ -20,9 +20,7 @@ namespace tobedeleted.Controllers
     [Authorize(Roles = "HOD")]
     public class HODController : Controller
     {
-        //private const string V = "Save";
         private readonly IWebHostEnvironment _webHostEnv;
-        //public Reports reports = new Reports();
         private readonly ApplicationDbContext _db;
         ISubjectService _subjectService=null;
         IDepartmentService _departmentService=null;
@@ -66,8 +64,7 @@ namespace tobedeleted.Controllers
         
         public IActionResult Grade()
         {
-            //IEnumerable<Grade> objList = _db.Grades;//Coming from our database
-            //return View(objList);
+            
             var users = User.FindFirstValue(ClaimTypes.NameIdentifier);
             ViewBag.Department = (from H in _db.HODs
                                   join D in _db.Departments on H.DepID equals D.DepID
@@ -169,18 +166,7 @@ namespace tobedeleted.Controllers
             var user = await _userManager.FindByIdAsync(userRole.UserId);
             subGrade = _assignSubGrade.AssignSubjectGradeAsync(subGrade, subGrade.GrID, subGrade.SubId, subGrade.userTeacher);
             var users = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            //ViewBag.Department = (from H in _db.HODs
-            //                      join D in _db.Departments on H.DepID equals D.DepID
-            //                      join U in _db.Users on H.userHoDId equals U.Id
-            //                      from S in _db.Subjects
-            //                      join d in _db.Departments on S.DepID equals d.DepID
-            //                      join A in _db.SubsToGrade on S.SubID equals A.SubGrID
-            //                      from SG in _db.SubsToGrade
-            //                      join G in _db.Grades on SG.GrID equals G.GrID
-            //                      from R in _db.Roles
-            //                      join UR in _db.UserRoles on R.Id equals UR.RoleId
-            //                      where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
-            //                      select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
+           
             if (subGrade.SubGrID > 0)
             {
                 OkResult result = Ok();
@@ -255,10 +241,7 @@ namespace tobedeleted.Controllers
                                   where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
                                   select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
             ViewBag.Departments = _db.Departments.OrderBy(x => x.DepDesc).ToList();
-            //ViewBag.Subject = (from S in _db.Subjects
-            //                   join D in _db.Departments on S.DepID equals D.DepID
-            //                   where S.DepID == D.DepID
-            //                   select new SubDep { Subject=S, Deptment = D}).ToList();
+            
             return View();
         }
         [HttpPost]
@@ -384,7 +367,6 @@ namespace tobedeleted.Controllers
                     return View(oDepartment);
                 }
             }
-            //obj.SubImage = this.GetImage(Convert.ToBase64String(obj.SubImage));
             if (ModelState.IsValid)//Checks to see if all the required fields have been met.
             {
                 _db.Departments.Add(oDepartment);
@@ -505,19 +487,6 @@ namespace tobedeleted.Controllers
         }
         public IActionResult UpdateDepartment(int? id)
         {
-            var users = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            ViewBag.Department = (from H in _db.HODs
-                                  join D in _db.Departments on H.DepID equals D.DepID
-                                  join U in _db.Users on H.userHoDId equals U.Id
-                                  from S in _db.Subjects
-                                  join d in _db.Departments on S.DepID equals d.DepID
-                                  join A in _db.SubsToGrade on S.SubID equals A.SubGrID
-                                  from SG in _db.SubsToGrade
-                                  join G in _db.Grades on SG.GrID equals G.GrID
-                                  from R in _db.Roles
-                                  join UR in _db.UserRoles on R.Id equals UR.RoleId
-                                  where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
-                                  select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
             if (id == null || id == 0)
             {
                 return NotFound();
@@ -537,19 +506,6 @@ namespace tobedeleted.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult UpdateDepartment(UploadContent fileObj, Department obj)
         {
-            var users = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            ViewBag.Department = (from H in _db.HODs
-                                  join D in _db.Departments on H.DepID equals D.DepID
-                                  join U in _db.Users on H.userHoDId equals U.Id
-                                  from S in _db.Subjects
-                                  join d in _db.Departments on S.DepID equals d.DepID
-                                  join A in _db.SubsToGrade on S.SubID equals A.SubGrID
-                                  from SG in _db.SubsToGrade
-                                  join G in _db.Grades on SG.GrID equals G.GrID
-                                  from R in _db.Roles
-                                  join UR in _db.UserRoles on R.Id equals UR.RoleId
-                                  where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
-                                  select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
             obj = JsonConvert.DeserializeObject<Department>(fileObj.Department);
             if (fileObj.file.Length > 0)
             {
@@ -703,9 +659,15 @@ namespace tobedeleted.Controllers
             {
                 _db.Add(timeTable);
                 await _db.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Dashboard));
             }
             return View(timeTable);
+        }
+        // GET: TimeTables
+        public async Task<IActionResult> Index()
+        {
+
+            return View();
         }
     }
 }
