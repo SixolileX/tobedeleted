@@ -495,39 +495,6 @@ namespace tobedeleted.Migrations
                     b.ToTable("Learner");
                 });
 
-            modelBuilder.Entity("tobedeleted.Models.Marks", b =>
-                {
-                    b.Property<int>("MarksId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AssignmentID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SubID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Term1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Term2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Term3")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Term4")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("learnerId")
-                        .HasColumnType("int");
-
-                    b.HasKey("MarksId");
-
-                    b.ToTable("Marks");
-                });
-
             modelBuilder.Entity("tobedeleted.Models.MeetingScheduler", b =>
                 {
                     b.Property<int>("MeetingID")

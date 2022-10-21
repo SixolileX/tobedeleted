@@ -45,20 +45,16 @@ namespace tobedeleted.Data
 
         public DbSet<tobedeleted.Models.AssignLearnerToParent> AssignLearnerToParent { get; set; }
 
-       
+
         public DbSet<tobedeleted.Models.studentMeeting> studentMeetings { get; set; }
 
         public DbSet<tobedeleted.Models.Announcements> Announcements { get; set; }
 
         public DbSet<tobedeleted.Models.MeetingUser> MeetingUser { get; set; }
 
-<<<<<<< HEAD
         public DbSet<tobedeleted.Models.Marks> Marks { get; set; }
 
-
-=======
         public DbSet<tobedeleted.Models.EnrollStudent> EnrollStudents { get; set; }
-        public DbSet<FileOnDatabaseModel> FilesOnDatabase { get; set; }
->>>>>>> dd77cdffe2a051b717d3bc8bb3dfa06f31f461d5
+        public DbSet<FileOnDatabaseModel> FilesOnDatabase { get; set; } 
     }
 }
