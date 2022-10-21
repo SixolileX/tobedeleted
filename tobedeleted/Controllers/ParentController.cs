@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,8 @@ namespace tobedeleted.Controllers
     [Authorize(Roles ="Parent")]
     public class ParentController : Controller
     {
+        ApplicationDbContext applicationDbContext;
+
         private readonly ApplicationDbContext _db;
 
         private readonly RoleManager<IdentityRole> _roleManager;
@@ -23,6 +26,7 @@ namespace tobedeleted.Controllers
         IAssignPTL assignPTL;
         public ParentController(ApplicationDbContext db, RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager)
         {
+            applicationDbContext = new ApplicationDbContext();
             _db = db;
             this._roleManager = roleManager;
             this._userManager = userManager;
@@ -69,10 +73,31 @@ namespace tobedeleted.Controllers
 
 
         }
-
-        public IActionResult AcademicProgress()
+        [HttpGet]
+        public IActionResult AcademicProgress(string searching)
         {
-            return View();
+
+            //ViewBag.Mark = (from M in _db.Marks
+            //                join S in _db.Subjects on M.SubID equals S.SubID
+            //                //join U in _db.Users on M.learnerId equals U.Id
+            //                where M.SubID == S.SubID /*&& M.learnerId == U.Id*/
+            //                select new AssignMarks { marks = M, subject = S }).ToList();
+            //IEnumerable<Marks> objList = _db.Marks;
+
+            //ViewBag.Mark = (from M in _db.Marks
+            //                join S in _db.Subjects on M.SubID equals S.SubID
+            //                //from Su in _db.Subjects
+            //                //join L in _db.Learner on Su.learnerId equals L.learnerId
+            //                from Us in _db.Users
+            //                join L in _db.Learner on Us.Id equals L.userLearnerId
+
+            //                where M.SubID == S.SubID && L.learnerId==M.learnerId
+            //                select new AssignMarks { marks = M, subject = S, learner = L}).ToList();
+           
+            IEnumerable<StuMark> objList = _db.StuMarks;
+            return View(_db.StuMarks.Where(x => x.LearnerIdUser.Contains(searching) || searching == null).ToList());
+
+       
         }
         public IActionResult ActivityLog()
         {

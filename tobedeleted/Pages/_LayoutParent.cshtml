@@ -41,12 +41,17 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Parent" asp-action="AssignParentToLearner">Report</a>
                         </li>
+                        
                     </ul>
                 </div>
-                <form class="d-flex">
+                @using (Html.BeginForm("AcademicProgress","Parent",FormMethod.Get))
+            {
+                @Html.TextBox("searching")<input type="submit" value="Search"/>
+            }
+                @*<form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
+                </form>*@
             </div>
 
             <partial name="_LoginPartial" />

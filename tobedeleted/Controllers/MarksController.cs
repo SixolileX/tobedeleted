@@ -22,11 +22,23 @@ namespace tobedeleted.Controllers
         // GET: Marks
         public async Task<IActionResult> Index()
         {
-          
-              
+            ViewBag.Users = (from Ur in _context.UserRoles
+                             join U in _context.Users on Ur.UserId equals U.Id
+                             join R in _context.Roles on Ur.RoleId equals R.Id
+                             where Ur.UserId == U.Id && Ur.RoleId == R.Id && R.Name == "Learner"
+                             select new ApplicationUser { Id = U.Id, firstName = U.firstName, lastName = U.lastName }).ToList();
 
+            ViewBag.Mark = (from M in _context.Marks
+                            join S in _context.Subjects on M.SubID equals S.SubID
+                            //from Su in _db.Subjects
+                            //join L in _db.Learner on Su.learnerId equals L.learnerId
+                            from Us in _context.Users
+                            join L in _context.Learner on Us.Id equals L.userLearnerId
 
-            return View(await _context.Marks.ToListAsync());
+                            where M.SubID == S.SubID && L.learnerId == M.learnerId
+                            select new AssignMarks { marks = M, subject = S, learner = L }).ToList();
+
+            return View(await _context.StuMarks.ToListAsync());
 
         }
 
@@ -51,6 +63,23 @@ namespace tobedeleted.Controllers
         // GET: Marks/Create
         public IActionResult Create()
         {
+            ViewBag.Users = (from Ur in _context.UserRoles
+                             join U in _context.Users on Ur.UserId equals U.Id
+                             join R in _context.Roles on Ur.RoleId equals R.Id
+                             where Ur.UserId == U.Id && Ur.RoleId == R.Id && R.Name == "Learner"
+                             select new ApplicationUser { Id = U.Id, firstName = U.firstName, lastName = U.lastName }).ToList();
+
+            ViewBag.Mark = (from M in _context.Marks
+                            join S in _context.Subjects on M.SubID equals S.SubID
+                            //from Su in _db.Subjects
+                            //join L in _db.Learner on Su.learnerId equals L.learnerId
+                            from Us in _context.Users
+                            join L in _context.Learner on Us.Id equals L.userLearnerId
+
+                            where M.SubID == S.SubID && L.learnerId == M.learnerId
+                            select new AssignMarks { marks = M, subject = S, learner = L }).ToList();
+
+
             return View();
         }
 
@@ -59,15 +88,16 @@ namespace tobedeleted.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MarksId,learnerId,AssignmentID,SubID,Term1,Term2,Term3,Term4")] Marks marks)
+        public async Task<IActionResult> Create(StuMark stuMark)
         {
+           
             if (ModelState.IsValid)
             {
-                _context.Add(marks);
+                _context.Add(stuMark);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(marks);
+            return View(stuMark);
         }
 
         // GET: Marks/Edit/5

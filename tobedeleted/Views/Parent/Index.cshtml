@@ -6,14 +6,17 @@
     ViewData["Title"] = "Index";
     Layout = "~/Pages/_LayoutParent.cshtml";
     @model IEnumerable<tobedeleted.Models.MeetingScheduler>
+ 
 }
 <br />
 <br />
 <br />
 <br />
 <div class="text-center">
-    <h1 class="display-7">  Welcome back @UserManager.GetUserAsync(User).Result.firstName   @UserManager.GetUserAsync(User).Result.lastName!</h1>
+    <h3 class="display-7">  Welcome back @UserManager.GetUserAsync(User).Result.firstName   @UserManager.GetUserAsync(User).Result.lastName!</h3>
     <hr />
+
+    <p>Parent</p>
 </div>
 <style>
     table {

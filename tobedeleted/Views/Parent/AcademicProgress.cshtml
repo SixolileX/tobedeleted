@@ -1,11 +1,17 @@
-﻿
+﻿@model IEnumerable<tobedeleted.Models.StuMark>
 @{
     ViewData["Title"] = "AcademicProgress";
     Layout = "~/Pages/_LayoutParent.cshtml";
-}
 
+
+}
+<br />
+<br />
+<br />
 <div class="text-center">
-    <h1 class="display-7">Academic Progress</h1>
+    <h3 class="display-7">Academic Progress</h3>
+    <p>Sixolile Sobetwa</p>
+    <p>Learner</p>
     <hr />
 </div>
 
@@ -15,9 +21,8 @@
             <hr>
             <style>
                 table {
-                    width:stretch;
-                    position:center;
-
+                    width: stretch;
+                    position: center;
                 }
 
                 table, th, td {
@@ -48,50 +53,74 @@
 
 
 
-            <table class="names">
-                <tr>
-                    <th>Subject</th>
-                    <th>Term 1</th>
-                    <th>Term 2</th>
-                    <th>Term 3</th>
-                    <th>Term 4</th>
-                </tr>
-                <tr>
-                    <td>Accounting</td>
-                    <td>34</td>
-                    <td>50</td>
-                    <td>74</td>
-                    <td>80</td>
-                </tr>
-                <tr>
-                    <td>Mathematics</td>
-                    <td>50</td>
-                    <td>53</td>
-                    <td>78</td>
-                    <td>65</td>
-                </tr>
-                <tr>
-                    <td>Economics</td>
-                    <td>34</td>
-                    <td>50</td>
-                    <td>74</td>
-                    <td>80</td>
-                </tr>
-                <tr>
-                    <td>Business Studies</td>
-                    <td>50</td>
-                    <td>53</td>
-                    <td>78</td>
-                    <td>65</td>
-                </tr>
-            </table>
+
+            <br />
+            <br />
         </div>
-    </div>
-    <br />
-    <br />
-</div>
-<a href="/images/Report.pdf" download="file">
-    <b> download </b>
-</a>
-<button onclick="window.print()">Print this page</button>
-<br />
+
+        <br />
+        <br />
+        <br />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LearnerIdUser)
+                    </th>
+                   
+                    <th>
+                        @Html.DisplayNameFor(model => model.SubjectName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Term1)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Term2)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Term3)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Term4)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LearnerIdUser)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SubjectName)
+                        </td>
+                      
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Term1)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Term2)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Term3)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Term4)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+        <br />
+
+        <a href="/images/Report.pdf" download="file">
+            <b> download </b>
+        </a>
+        <br />
+        <br />
+            <button onclick="window.print()">Print this page</button>
+      

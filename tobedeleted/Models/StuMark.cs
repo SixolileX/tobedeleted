@@ -1,16 +1,17 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace tobedeleted.Models
 {
-    public class Marks
+    public class StuMark
     {
         [Key]
-        public int MarksId { get; set; }
-        public int learnerId { get; set; }
-        public int AssignmentID { get;set;}
-        [DisplayName("Subject name")]
-        public int SubID { get; set; }
+        public int MarkId { get; set; }
+        public string LearnerIdUser { get; set; }
+        public string SubjectName { get; set; }
         public string Term1 { get; set; }
         public string Term2 { get; set; }
         public string Term3 { get; set; }

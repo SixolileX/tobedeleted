@@ -10,8 +10,8 @@ using tobedeleted.Data;
 namespace tobedeleted.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221021012407_marks")]
-    partial class marks
+    [Migration("20221021064829_exam")]
+    partial class exam
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -382,19 +382,78 @@ namespace tobedeleted.Migrations
                     b.Property<byte[]>("DepPhoto")
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<int?>("HODsHoDId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("HoDId")
-                        .HasColumnType("int");
-
                     b.HasKey("DepID");
 
-                    b.HasIndex("HODsHoDId");
-
-                    b.HasIndex("HoDId");
-
                     b.ToTable("Departments");
+                });
+
+            modelBuilder.Entity("tobedeleted.Models.EnrollStudent", b =>
+                {
+                    b.Property<int>("EnrollID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("EnrollDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("StudentID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SubjectID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("EnrollID");
+
+                    b.ToTable("EnrollStudents");
+                });
+
+            modelBuilder.Entity("tobedeleted.Models.Exams", b =>
+                {
+                    b.Property<int>("ExamId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ExamName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ExamId");
+
+                    b.ToTable("Exams");
+                });
+
+            modelBuilder.Entity("tobedeleted.Models.FileOnDatabaseModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<byte[]>("Data")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Extension")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FileType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UploadedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FilesOnDatabase");
                 });
 
             modelBuilder.Entity("tobedeleted.Models.Grade", b =>
@@ -411,25 +470,6 @@ namespace tobedeleted.Migrations
                     b.HasKey("GrID");
 
                     b.ToTable("Grades");
-                });
-
-            modelBuilder.Entity("tobedeleted.Models.HOD", b =>
-                {
-                    b.Property<int>("HoDId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("DepID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("userHoDId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("HoDId");
-
-                    b.ToTable("HOD");
                 });
 
             modelBuilder.Entity("tobedeleted.Models.HODs", b =>
@@ -581,12 +621,6 @@ namespace tobedeleted.Migrations
                     b.Property<int?>("DepartmentDepID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("HODsHoDId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("HoDId")
-                        .HasColumnType("int");
-
                     b.Property<string>("SubCode")
                         .HasColumnType("nvarchar(max)");
 
@@ -603,10 +637,6 @@ namespace tobedeleted.Migrations
                     b.HasKey("SubID");
 
                     b.HasIndex("DepartmentDepID");
-
-                    b.HasIndex("HODsHoDId");
-
-                    b.HasIndex("HoDId");
 
                     b.ToTable("Subjects");
                 });
@@ -731,48 +761,15 @@ namespace tobedeleted.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("tobedeleted.Models.Department", b =>
-                {
-                    b.HasOne("tobedeleted.Models.HODs", null)
-                        .WithMany("Departments")
-                        .HasForeignKey("HODsHoDId");
-
-                    b.HasOne("tobedeleted.Models.HOD", null)
-                        .WithMany("Departments")
-                        .HasForeignKey("HoDId");
-                });
-
             modelBuilder.Entity("tobedeleted.Models.Subject", b =>
                 {
                     b.HasOne("tobedeleted.Models.Department", null)
                         .WithMany("Subjects")
                         .HasForeignKey("DepartmentDepID");
-
-                    b.HasOne("tobedeleted.Models.HODs", null)
-                        .WithMany("Subjects")
-                        .HasForeignKey("HODsHoDId");
-
-                    b.HasOne("tobedeleted.Models.HOD", null)
-                        .WithMany("Subjects")
-                        .HasForeignKey("HoDId");
                 });
 
             modelBuilder.Entity("tobedeleted.Models.Department", b =>
                 {
-                    b.Navigation("Subjects");
-                });
-
-            modelBuilder.Entity("tobedeleted.Models.HOD", b =>
-                {
-                    b.Navigation("Departments");
-
-                    b.Navigation("Subjects");
-                });
-
-            modelBuilder.Entity("tobedeleted.Models.HODs", b =>
-                {
-                    b.Navigation("Departments");
-
                     b.Navigation("Subjects");
                 });
 #pragma warning restore 612, 618

@@ -55,6 +55,10 @@ namespace tobedeleted.Data
         public DbSet<tobedeleted.Models.Marks> Marks { get; set; }
 
         public DbSet<tobedeleted.Models.EnrollStudent> EnrollStudents { get; set; }
-        public DbSet<FileOnDatabaseModel> FilesOnDatabase { get; set; } 
+        public DbSet<FileOnDatabaseModel> FilesOnDatabase { get; set; }
+
+        public DbSet<Exams> Exams { get; set; }
+
+        public DbSet<StuMark> StuMarks { get; set; }
     }
 }

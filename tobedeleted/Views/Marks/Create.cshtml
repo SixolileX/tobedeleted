@@ -1,4 +1,4 @@
-﻿@model tobedeleted.Models.Marks
+﻿@model tobedeleted.Models.StuMark
 
 @{
     ViewData["Title"] = "Create";
@@ -8,57 +8,121 @@
 <h1>Create</h1>
 
 <h4>Marks</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+               
+                <div class="form-group">
+                    <label asp-for="LearnerIdUser" class="control-label"></label>
+                    <input asp-for="LearnerIdUser" class="form-control" />
+                    <span asp-validation-for="LearnerIdUser" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SubjectName" class="control-label"></label>
+                    <input asp-for="SubjectName" class="form-control" />
+                    <span asp-validation-for="SubjectName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Term1" class="control-label"></label>
+                    <input asp-for="Term1" class="form-control" />
+                    <span asp-validation-for="Term1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Term2" class="control-label"></label>
+                    <input asp-for="Term2" class="form-control" />
+                    <span asp-validation-for="Term2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Term3" class="control-label"></label>
+                    <input asp-for="Term3" class="form-control" />
+                    <span asp-validation-for="Term3" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Term4" class="control-label"></label>
+                    <input asp-for="Term4" class="form-control" />
+                    <span asp-validation-for="Term4" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+
+
+@*<h4>Marks</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="learnerId" class="control-label"></label>
-                <input asp-for="learnerId" class="form-control" />
-                <span asp-validation-for="learnerId" class="text-danger"></span>
+                @foreach (ApplicationUser U in ViewBag.Users)
+                {
+                    <label asp-for="LearnerIdUser" class="control-label"></label>
+                    <Input asp-for="LearnerIdUser" value="@U.firstName">@U.firstName
+                    <span asp-validation-for="LearnerIdUser" class="text-danger"></span>
+
+                }
             </div>
             <div class="form-group">
-                <label asp-for="AssignmentID" class="control-label"></label>
-                <input asp-for="AssignmentID" class="form-control" />
-                <span asp-validation-for="AssignmentID" class="text-danger"></span>
+                @foreach (AssignMarks M in ViewBag.Mark)
+                {
+                    <label asp-for="SubjectName" class="control-label"></label>
+                    <Input asp-for="SubjectName" value="@M.subject.SubDesc">@M.subject.SubDesc
+                    <span asp-validation-for="SubjectName" class="text-danger"></span>
+                }
             </div>
             <div class="form-group">
-                <label asp-for="SubID" class="control-label"></label>
-                <input asp-for="SubID" class="form-control" />
-                <span asp-validation-for="SubID" class="text-danger"></span>
+                @foreach (AssignMarks M in ViewBag.Mark)
+                {
+                    <label asp-for="Term1" class="control-label"></label>
+                    <Input asp-for="Term1" value="@M.marks.Term1">@M.marks.Term1
+                    <span asp-validation-for="Term1" class="text-danger"></span>
+                }
             </div>
             <div class="form-group">
-                <label asp-for="Term1" class="control-label"></label>
-                <input asp-for="Term1" class="form-control" />
-                <span asp-validation-for="Term1" class="text-danger"></span>
+                @foreach (AssignMarks M in ViewBag.Mark)
+                {
+
+
+                    <label asp-for="Term2" class="control-label"></label>
+                    <Input asp-for="Term2" value="@M.marks.Term2">@M.marks.Term2
+                    <span asp-validation-for="Term2" class="text-danger"></span>
+                }
             </div>
             <div class="form-group">
-                <label asp-for="Term2" class="control-label"></label>
-                <input asp-for="Term2" class="form-control" />
-                <span asp-validation-for="Term2" class="text-danger"></span>
+                @foreach (AssignMarks M in ViewBag.Mark)
+                {
+                    <label asp-for="Term3" class="control-label"></label>
+                    <Input asp-for="Term3" value="@M.marks.Term3">@M.marks.Term3
+                    <span asp-validation-for="Term3" class="text-danger"></span>
+                }
             </div>
             <div class="form-group">
-                <label asp-for="Term3" class="control-label"></label>
-                <input asp-for="Term3" class="form-control" />
-                <span asp-validation-for="Term3" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Term4" class="control-label"></label>
-                <input asp-for="Term4" class="form-control" />
-                <span asp-validation-for="Term4" class="text-danger"></span>
-            </div>
+                @foreach (AssignMarks M in ViewBag.Mark)
+                {
+                    <label asp-for="Term4" class="control-label"></label>
+                    <Input asp-for="Term4" value="@M.marks.Term4">@M.marks.Term4
+                    <span asp-validation-for="Term4" class="text-danger"></span>
+
+                }
+                </div>
+            
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
-    </div>
-</div>
+        </div>
+    </div>*@
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+            @section Scripts {
+                @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+            }
