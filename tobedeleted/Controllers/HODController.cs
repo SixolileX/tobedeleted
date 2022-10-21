@@ -676,6 +676,7 @@ namespace tobedeleted.Controllers
             var deps = _db.Departments.Distinct().ToList();
             var subs = _db.Subjects.Distinct().ToList();
             var gr = _db.Grades.Distinct().ToList();
+            var a= _db.Assignment.Distinct().ToList();
             ViewBag.Department = (from H in _db.HODs
                                   join D in _db.Departments on H.DepID equals D.DepID
                                   join U in _db.Users on H.userHoDId equals U.Id
@@ -691,6 +692,7 @@ namespace tobedeleted.Controllers
             ViewBag.Departments = new SelectList(deps, "DepID", "DepDesc").Distinct().ToList();
             ViewBag.Subjects = new SelectList(subs, "SubID", "SubDesc").Distinct().ToList();
             ViewBag.Grades=new SelectList(gr, "GrID", "GrDesc").Distinct().ToList();
+            ViewBag.Assignment = new SelectList(a, "AssignmentID", "AssignmentTitle").Distinct().ToList();
             return View();
         }
         [HttpPost]

@@ -22,26 +22,32 @@
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Exam" class="control-label">Exam Number:</label>
-                <input asp-for="Exam" class="form-control" />
+                <label asp-for="Exam" class="control-label">Assignment :</label>
+                <select id="txtDep" asp-for="Exam" asp-items="@ViewBag.Assignment" class="form-control">
+                    <option selected disabled>--select Assignmtent--</option>
+                </select>
                 <span asp-validation-for="Exam" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DepID" class="control-label">Department: </label>
-                <input asp-for="DepID" class="form-control" />
-                <span asp-validation-for="DepID" class="text-danger">Select Department name.</span>
+                <select id="txtDep" asp-for="DepID" asp-items="@ViewBag.Departments" class="form-control" >
+                    <option selected disabled>--select Department--</option>
+                </select>
+                <span asp-validation-for="DepID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Subject" class="control-label">Subject: </label>
-                <input asp-for="Subject" class="form-control" />
-                <span asp-validation-for="Subject" class="text-danger">Select Subject name.</span>
+                <select id="txtDep" asp-for="Subject" asp-items="@ViewBag.Subjects" class="form-control">
+                    <option selected disabled>--select Subject--</option>
+                </select>
+                <span asp-validation-for="Subject" class="text-danger" ></span>
             </div>
             <div class="form-group">
                 <label asp-for="GradeID" class="control-label">Grade: </label>
-                <input type="radio" asp-for="GradeID" asp-items="@ViewBag.Grades class="custom-radio">
-                    @*<option selected disabled>--select Department--</option>
-                </select>*@
-                <span asp-validation-for="GradeID" class="text-danger">Select Grade</span>
+                <select id="txtDep" asp-for="GradeID" asp-items="@ViewBag.Grades" class="form-control">
+                    <option selected disabled>--select Grade--</option>
+                </select>
+                <span asp-validation-for="GradeID" class="text-danger" ></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
