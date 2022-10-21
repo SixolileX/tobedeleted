@@ -1,0 +1,61 @@
+﻿@model tobedeleted.Models.Marks
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/_LayoutTeacher.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Marks</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.learnerId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.learnerId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AssignmentID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AssignmentID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SubID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SubID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Term1)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Term1)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Term2)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Term2)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Term3)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Term3)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Term4)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Term4)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.MarksId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

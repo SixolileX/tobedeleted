@@ -53,6 +53,8 @@ namespace tobedeleted.Data
 
         public DbSet<tobedeleted.Models.MeetingUser> MeetingUser { get; set; }
 
+        public DbSet<tobedeleted.Models.Marks> Marks { get; set; }
+
 
     }
 }
