@@ -29,7 +29,7 @@
                 <div class="dropdown col-6">
                     <select id="txtDep" asp-for="DepID" class="form-control">
 
-                        @foreach (Department D in ViewBag.Department)
+                        @foreach (Department D in ViewBag.Departments)
                         {
                             <option value="@D.DepID">@D.DepDesc</option>
                         }

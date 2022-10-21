@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using tobedeleted.Data;
 
 namespace tobedeleted.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221020213843_StudentEnroll")]
+    partial class StudentEnroll
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -489,39 +491,6 @@ namespace tobedeleted.Migrations
                     b.HasKey("learnerId");
 
                     b.ToTable("Learner");
-                });
-
-            modelBuilder.Entity("tobedeleted.Models.Marks", b =>
-                {
-                    b.Property<int>("MarksId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AssignmentID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SubID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Term1")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Term2")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Term3")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Term4")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("learnerId")
-                        .HasColumnType("int");
-
-                    b.HasKey("MarksId");
-
-                    b.ToTable("Marks");
                 });
 
             modelBuilder.Entity("tobedeleted.Models.MeetingScheduler", b =>

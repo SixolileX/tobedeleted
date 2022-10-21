@@ -1,0 +1,65 @@
+﻿@model tobedeleted.Models.TimeTable
+
+@{
+    ViewData["Title"] = "TimeTable";
+    Layout = "~/Pages/_LayoutHOD.cshtml";
+}
+
+<h4 class="justify-content-center">TimeTable</h4>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <form asp-action="TimeTable">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ExamDate" class="control-label"></label>
+                <input asp-for="ExamDate" class="form-control" />
+                <span asp-validation-for="ExamDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Exam" class="control-label">Assignment :</label>
+                <select id="txtDep" asp-for="Exam" asp-items="@ViewBag.Assignment" class="form-control">
+                    <option selected disabled>--select Assignmtent--</option>
+                </select>
+                <span asp-validation-for="Exam" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DepID" class="control-label">Department: </label>
+                <select id="txtDep" asp-for="DepID" asp-items="@ViewBag.Departments" class="form-control" >
+                    <option selected disabled>--select Department--</option>
+                </select>
+                <span asp-validation-for="DepID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subject" class="control-label">Subject: </label>
+                <select id="txtDep" asp-for="Subject" asp-items="@ViewBag.Subjects" class="form-control">
+                    <option selected disabled>--select Subject--</option>
+                </select>
+                <span asp-validation-for="Subject" class="text-danger" ></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GradeID" class="control-label">Grade: </label>
+                <select id="txtDep" asp-for="GradeID" asp-items="@ViewBag.Grades" class="form-control">
+                    <option selected disabled>--select Grade--</option>
+                </select>
+                <span asp-validation-for="GradeID" class="text-danger" ></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Dashboard">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

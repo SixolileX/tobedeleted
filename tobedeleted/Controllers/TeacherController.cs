@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -202,6 +203,65 @@ namespace tobedeleted.Controllers
             _db.SaveChanges();
 
             return RedirectToAction(nameof(ViewAnnouncements));
+        }
+
+        public async Task<IActionResult> UploadFile()
+        {
+            var fileuploadViewModel = await LoadAllFiles();
+            ViewBag.Message = TempData["Message"];
+            return View(fileuploadViewModel);
+        }
+
+        public async Task<IActionResult> UploadToDatabase(List<IFormFile> files, string description)
+        {
+            foreach (var file in files)
+            {
+                var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+                var extension = Path.GetExtension(file.FileName);
+                var fileModel = new FileOnDatabaseModel
+                {
+                    CreatedOn = DateTime.UtcNow,
+                    FileType = file.ContentType,
+                    Extension = extension,
+                    Name = fileName,
+                    Description = description
+                };
+                using (var dataStream = new MemoryStream())
+                {
+                    await file.CopyToAsync(dataStream);
+                    fileModel.Data = dataStream.ToArray();
+                }
+                _db.FilesOnDatabase.Add(fileModel);
+                _db.SaveChanges();
+            }
+            TempData["Message"] = "File successfully uploaded to Database";
+            return RedirectToAction("Index");
+        }
+
+        private async Task<FileUploadViewModel> LoadAllFiles()
+        {
+            var viewModel = new FileUploadViewModel();
+            viewModel.FilesOnDatabase = await _db.FilesOnDatabase.ToListAsync();
+            
+            return viewModel;
+        }
+
+        public async Task<IActionResult> DownloadFileFromDatabase(int id)
+        {
+
+            var file = await _db.FilesOnDatabase.Where(x => x.Id == id).FirstOrDefaultAsync();
+            if (file == null) return null;
+            return File(file.Data, file.FileType, file.Name + file.Extension);
+        }
+
+        public async Task<IActionResult> DeleteFileFromDatabase(int id)
+        {
+
+            var file = await _db.FilesOnDatabase.Where(x => x.Id == id).FirstOrDefaultAsync();
+            _db.FilesOnDatabase.Remove(file);
+            _db.SaveChanges();
+            TempData["Message"] = $"Removed {file.Name + file.Extension} successfully from Database.";
+            return RedirectToAction("Index");
         }
 
         public IActionResult ViewAssessments()

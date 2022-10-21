@@ -16,7 +16,7 @@ namespace tobedeleted.Models
         public string SubjectID { get; set; }
         public string StudentID { get; set; }
 
-        List<SelectList> Subjects { get; set; }
+     
 
 
 
