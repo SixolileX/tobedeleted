@@ -61,13 +61,15 @@
         <br />
         <br />
         <br />
+        
+
         <table class="table">
             <thead>
                 <tr>
                     <th>
                         @Html.DisplayNameFor(model => model.LearnerIdUser)
                     </th>
-                   
+
                     <th>
                         @Html.DisplayNameFor(model => model.SubjectName)
                     </th>
@@ -97,7 +99,7 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.SubjectName)
                         </td>
-                      
+
                         <td>
                             @Html.DisplayFor(modelItem => item.Term1)
                         </td>
@@ -122,5 +124,4 @@
         </a>
         <br />
         <br />
-            <button onclick="window.print()">Print this page</button>
-      
+        <button onclick="window.print()">Print this page</button>

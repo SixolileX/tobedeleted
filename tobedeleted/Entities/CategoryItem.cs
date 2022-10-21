@@ -21,7 +21,7 @@ namespace tobedeleted.Entities
         public int MediaTypeId { get; set; }
 
         [NotMapped]
-        public virtual ICollection<SelectListItem> Mediatypes{ get; set; }
+        public virtual ICollection<SelectListItem> MediaTypes { get; set; }
 
         public DateTime DateTimeItemReleased { get; set; }
        

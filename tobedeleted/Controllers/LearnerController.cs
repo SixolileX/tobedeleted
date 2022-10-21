@@ -64,6 +64,9 @@ namespace Inn_TuneProject.Controllers
             return View();
 
         }
+        [TempData]
+        public string StatusMessage { get; set; }
+
         [HttpPost]
         public IActionResult EnrollInSubject(EnrollStudent enroll,int ID)
         {
@@ -81,8 +84,8 @@ namespace Inn_TuneProject.Controllers
 
             _db.SaveChanges();
 
+            StatusMessage = "Your profile has been updated";
 
-           
             //learners.SubjectName = user;
             //learners.UserlearnerId = user;
 
