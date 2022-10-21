@@ -662,7 +662,7 @@ namespace tobedeleted.Controllers
                 return RedirectToAction(nameof(Dashboard));
             }
             return View(timeTable);
-        //}
+        }
         //// GET: TimeTables
         //public async Task<IActionResult> Index()
         //{
