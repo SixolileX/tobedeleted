@@ -152,7 +152,7 @@ namespace tobedeleted.Controllers
                                   join G in _db.Grades on SG.GrID equals G.GrID
                                   from R in _db.Roles
                                   join UR in _db.UserRoles on R.Id equals UR.RoleId
-                                  where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
+                                  where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == users
                                   select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
             ViewBag.Users = (from Ur in _db.UserRoles
                              join U in _db.Users on Ur.UserId equals U.Id

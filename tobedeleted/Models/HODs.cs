@@ -17,9 +17,9 @@ namespace tobedeleted.Models
         //[Required]
         //public string RoleName { get; set; }
         //[Required]
-        //public string UserId { get; set; }
-        public List<Subject> Subjects { get; set; }
-        public List<Department> Departments { get; set; }
+        ////public string UserId { get; set; }
+        //public List<Subject> Subjects { get; set; }
+        //public List<Department> Departments { get; set; }
 
         //[Required]
         //public UploadStaff Content { get; set; }

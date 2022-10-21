@@ -1,4 +1,4 @@
-﻿using tobedeleted.Migrations;
+﻿//using tobedeleted.Migrations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,6 +12,6 @@ namespace tobedeleted.Models
         public int mysubId { get; set; }
         public EnrollStudent EnrollStu { get; set; }
         public Subject SubjectM { get; set; }
-        public EnrollSubjects EnrollS { get; set; }
+        
     }
 }

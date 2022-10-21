@@ -24,7 +24,6 @@ namespace tobedeleted.Data
 
         public DbSet<tobedeleted.Models.AssignSubjectGrade> SubsToGrade { get; set; }
 
-        public DbSet<tobedeleted.Models.HOD> HOD { get; set; }
         public DbSet<tobedeleted.Models.HODs> HODs { get; set; }
 
         public DbSet<tobedeleted.Models.Grade> Grades { get; set; }

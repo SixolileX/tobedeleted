@@ -3,10 +3,25 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace tobedeleted.Migrations
 {
-    public partial class tables : Migration
+    public partial class addTablesToDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Announcements",
+                columns: table => new
+                {
+                    AnnounceID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AnnouncementName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AnnouncementDescr = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AnnounceDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Announcements", x => x.AnnounceID);
+                });
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -26,6 +41,14 @@ namespace tobedeleted.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    firstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    lastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Gender = table.Column<bool>(type: "bit", nullable: false),
+                    Addressline1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Addressline2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    contactNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProfilePicture = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -47,15 +70,29 @@ namespace tobedeleted.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AssignLearnerToParent",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    userParent = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    userLearnerId = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AssignLearnerToParent", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Assignment",
                 columns: table => new
                 {
                     AssignmentID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AssignmentTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AssignmentType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AssignmentInstructions = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AssignmentDueDate = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    AssignmentTitle = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AssignmentType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AssignmentInstructions = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AssignmentDueDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -91,6 +128,54 @@ namespace tobedeleted.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Departments",
+                columns: table => new
+                {
+                    DepID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DepDesc = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DepPhoto = table.Column<byte[]>(type: "varbinary(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Departments", x => x.DepID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EnrollStudents",
+                columns: table => new
+                {
+                    EnrollID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    EnrollDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    SubjectID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StudentID = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EnrollStudents", x => x.EnrollID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FilesOnDatabase",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Data = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FileType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Extension = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UploadedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FilesOnDatabase", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Grades",
                 columns: table => new
                 {
@@ -104,13 +189,58 @@ namespace tobedeleted.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "HODs",
+                columns: table => new
+                {
+                    HoDId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    userHoDId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DepID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HODs", x => x.HoDId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Learner",
+                columns: table => new
+                {
+                    learnerId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    userLearnerId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GradeId = table.Column<int>(type: "int", nullable: false),
+                    Parentid = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Learner", x => x.learnerId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "learners",
+                columns: table => new
+                {
+                    LeanerId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserlearnerId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SubjectName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_learners", x => x.LeanerId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "MeetingScheduler",
                 columns: table => new
                 {
                     MeetingID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Desc = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    SetDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    MeetingDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Desc = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    userID = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -118,17 +248,78 @@ namespace tobedeleted.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SubDep",
+                name: "MeetingUser",
                 columns: table => new
                 {
-                    SubDepID = table.Column<int>(type: "int", nullable: false)
+                    id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DepDesc = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SubDesc = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    userParent = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    userTeacher = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SubDep", x => x.SubDepID);
+                    table.PrimaryKey("PK_MeetingUser", x => x.id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Parent",
+                columns: table => new
+                {
+                    Parentid = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    userParentId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    userLearnerId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Parent", x => x.Parentid);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "studentMeetings",
+                columns: table => new
+                {
+                    LearnerMeetingID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    setdate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Meetingdesc = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_studentMeetings", x => x.LearnerMeetingID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SubsToGrade",
+                columns: table => new
+                {
+                    SubGrID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    GrID = table.Column<int>(type: "int", nullable: false),
+                    SubId = table.Column<int>(type: "int", nullable: false),
+                    userTeacher = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SubsToGrade", x => x.SubGrID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TimeTables",
+                columns: table => new
+                {
+                    TtID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ExamDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Exam = table.Column<int>(type: "int", nullable: false),
+                    DepID = table.Column<int>(type: "int", nullable: false),
+                    Subject = table.Column<int>(type: "int", nullable: false),
+                    GradeID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TimeTables", x => x.TtID);
                 });
 
             migrationBuilder.CreateTable(
@@ -238,27 +429,6 @@ namespace tobedeleted.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Departments",
-                columns: table => new
-                {
-                    DepID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    DepDesc = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DepPhoto = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
-                    HoDId = table.Column<int>(type: "int", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Departments", x => x.DepID);
-                    table.ForeignKey(
-                        name: "FK_Departments_HOD_HoDId",
-                        column: x => x.HoDId,
-                        principalTable: "HOD",
-                        principalColumn: "HoDId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Subjects",
                 columns: table => new
                 {
@@ -268,8 +438,8 @@ namespace tobedeleted.Migrations
                     DepID = table.Column<int>(type: "int", nullable: false),
                     SubImage = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     SubCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DepartmentDepID = table.Column<int>(type: "int", nullable: true),
-                    HoDId = table.Column<int>(type: "int", nullable: true)
+                    learnerId = table.Column<int>(type: "int", nullable: false),
+                    DepartmentDepID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -279,12 +449,6 @@ namespace tobedeleted.Migrations
                         column: x => x.DepartmentDepID,
                         principalTable: "Departments",
                         principalColumn: "DepID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Subjects_HOD_HoDId",
-                        column: x => x.HoDId,
-                        principalTable: "HOD",
-                        principalColumn: "HoDId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -328,23 +492,16 @@ namespace tobedeleted.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Departments_HoDId",
-                table: "Departments",
-                column: "HoDId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Subjects_DepartmentDepID",
                 table: "Subjects",
                 column: "DepartmentDepID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Subjects_HoDId",
-                table: "Subjects",
-                column: "HoDId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Announcements");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -361,6 +518,9 @@ namespace tobedeleted.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "AssignLearnerToParent");
+
+            migrationBuilder.DropTable(
                 name: "Assignment");
 
             migrationBuilder.DropTable(
@@ -370,16 +530,43 @@ namespace tobedeleted.Migrations
                 name: "Attendance");
 
             migrationBuilder.DropTable(
+                name: "EnrollStudents");
+
+            migrationBuilder.DropTable(
+                name: "FilesOnDatabase");
+
+            migrationBuilder.DropTable(
                 name: "Grades");
+
+            migrationBuilder.DropTable(
+                name: "HODs");
+
+            migrationBuilder.DropTable(
+                name: "Learner");
+
+            migrationBuilder.DropTable(
+                name: "learners");
 
             migrationBuilder.DropTable(
                 name: "MeetingScheduler");
 
             migrationBuilder.DropTable(
-                name: "SubDep");
+                name: "MeetingUser");
+
+            migrationBuilder.DropTable(
+                name: "Parent");
+
+            migrationBuilder.DropTable(
+                name: "studentMeetings");
 
             migrationBuilder.DropTable(
                 name: "Subjects");
+
+            migrationBuilder.DropTable(
+                name: "SubsToGrade");
+
+            migrationBuilder.DropTable(
+                name: "TimeTables");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -389,9 +576,6 @@ namespace tobedeleted.Migrations
 
             migrationBuilder.DropTable(
                 name: "Departments");
-
-            migrationBuilder.DropTable(
-                name: "HOD");
         }
     }
 }
