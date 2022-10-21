@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using tobedeleted.Entities;
 using tobedeleted.Models;
 
 namespace tobedeleted.Data
@@ -55,6 +56,12 @@ namespace tobedeleted.Data
         public DbSet<tobedeleted.Models.Marks> Marks { get; set; }
 
         public DbSet<tobedeleted.Models.EnrollStudent> EnrollStudents { get; set; }
-        public DbSet<FileOnDatabaseModel> FilesOnDatabase { get; set; } 
+        public DbSet<FileOnDatabaseModel> FilesOnDatabase { get; set; }
+        public DbSet<Category> Category { get; set; }
+        public DbSet<CategoryItem> CategoryItem { get; set; }
+        public DbSet<MediaType> MediaType { get; set; }
+        public DbSet<UserCategory> UserCategory { get; set; }
+        public DbSet<Content> Content { get; set; }
     }
+
 }
