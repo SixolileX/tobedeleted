@@ -11,6 +11,7 @@ namespace tobedeleted.Hubs
         public async Task SendMessage(string username, string message)
         {
             await Clients.All.SendAsync("ReceiveMessage", username, message);
+            
         }
     }
 }
