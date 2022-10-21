@@ -87,7 +87,7 @@ namespace Inn_TuneProject.Controllers
             //learners.UserlearnerId = user;
 
 
-            return RedirectToAction(nameof(popUpEnroll));
+            return RedirectToAction(nameof(EnrollInSubject));
 
         }
 
@@ -185,6 +185,12 @@ namespace Inn_TuneProject.Controllers
 
             return View();
         }
+        public ActionResult Maths()
+        {
+
+
+            return View();
+        }
         public IActionResult Meetting()
         {
 
@@ -217,23 +223,7 @@ namespace Inn_TuneProject.Controllers
 
 
         }
-        [HttpGet]
-        public ActionResult popUpEnroll()
-        {
-            
-            return View();
-
-
-        }
-        [HttpPost]
-        public ActionResult popUpEnroll(Subject subject)
-        {
-            TempData["SucessMessage"] = "you have Sucessfully enrolled on " + subject.SubDesc;
-
-            return View(nameof(EnrollInSubject));
-
-
-        }
+        
 
 
     }
