@@ -46,20 +46,20 @@ namespace Inn_TuneProject.Controllers
 
 
 
-            //var users = _userManager.Users.ToList();
-            //var roles = _roleManager.Roles.ToList();
-            //var ur = _db.UserRoles.ToList();
-            //var Sub = _db.Subjects.ToList();
+            var users = _userManager.Users.ToList();
+            var roles = _roleManager.Roles.ToList();
+            var ur = _db.UserRoles.ToList();
+            var Sub = _db.Subjects.ToList();
 
 
 
 
 
-            //ViewBag.users = (from Ur in _db.UserRoles
-            //                 join U in _db.Users on Ur.UserId equals U.Id
-            //                 join R in _db.Roles on Ur.RoleId equals R.Id
-            //                 where Ur.UserId == U.Id && Ur.RoleId == R.Id && R.Name == "Learner"
-            //                 select new ApplicationUser { Id = U.Id, firstName = U.firstName, lastName = U.lastName }).ToList();
+            ViewBag.users = (from Ur in _db.UserRoles
+                             join U in _db.Users on Ur.UserId equals U.Id
+                             join R in _db.Roles on Ur.RoleId equals R.Id
+                             where Ur.UserId == U.Id && Ur.RoleId == R.Id && R.Name == "Learner"
+                             select new ApplicationUser { Id = U.Id, firstName = U.firstName, lastName = U.lastName }).ToList();
 
             return View();
 
@@ -73,7 +73,7 @@ namespace Inn_TuneProject.Controllers
 
 
             enroll.EnrollDate = DateTime.Today;
-            enroll.SubjectID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            enroll.SubjectID = ID;
             enroll.StudentID = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
 
