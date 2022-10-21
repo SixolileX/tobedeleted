@@ -57,10 +57,7 @@ namespace tobedeleted.Data
 
         public DbSet<tobedeleted.Models.EnrollStudent> EnrollStudents { get; set; }
         public DbSet<FileOnDatabaseModel> FilesOnDatabase { get; set; }
-<<<<<<< HEAD
 
-=======
->>>>>>> 7a87f0e78c174a56064298213ad2655e1d864a08
 
         public DbSet<Exams> Exams { get; set; }
 

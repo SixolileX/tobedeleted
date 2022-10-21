@@ -89,7 +89,7 @@ namespace tobedeleted.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email,  };
+                var user = new ApplicationUser { firstName=Input.Name, lastName=Input.Surname, UserName = Input.Email, Email = Input.Email,  };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
