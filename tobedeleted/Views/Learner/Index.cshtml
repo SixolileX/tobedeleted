@@ -1,0 +1,77 @@
+﻿@model tobedeleted.Models.Calculator
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/_LayoutLearner.cshtml";
+}
+
+<h1>Marks calculator</h1>
+
+<div class="row">
+
+    @using (Html.BeginForm("/Index", "student", FormMethod.Post))
+    {
+
+        <div class="form-group">
+
+            <label for="marks1">
+                Marks 1
+            </label>
+            <input type="text" class="text-wrap" id="marks1" name="marks1" value="@Model.Term1" />
+
+        </div>
+        <div class="form-group">
+
+            <label for="marks2">
+                Marks 2
+            </label>
+            <input type="text" class="form-control" id="marks2" name="marks2" value="@Model.Term2" />
+
+        </div>
+        <div class="form-group">
+
+            <label for="marks3">
+                Marks 3
+            </label>
+            <input type="text" class="form-control" id="marks3" name="marks3" value="@Model.Term3" />
+
+        </div>
+        <div class="form-group">
+
+            <label for="marks4">
+                Marks 4
+            </label>
+            <input type="text" class="form-control" id="marks4" name="marks4" value="@Model.Term4" />
+
+        </div>
+        <div class="form-group">
+
+            <label for="total">
+                total
+            </label>
+            <input type="text" class="form-control" id="tot" name="tot" value="@Model.Total" disa />
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="Average">
+                Average
+            </label>
+            <input type="text" class="form-control" id="Avg" name="Avg" value="@Model.avg" disabled />
+
+        </div>
+
+        <div class="form-group">
+
+            <label for="Average">
+                Total Grade
+            </label>
+            <input type="text" class="form-control" id="grade" name="grade" value="@Model.Grade" disabled />
+
+        </div>
+        <button type="submit" class="btn btn-info" id="add" value="add"> Submit</button>
+
+
+    }
+
+</div>

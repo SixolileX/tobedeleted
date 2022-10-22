@@ -1,4 +1,8 @@
-﻿@model Subject
+﻿@model IEnumerable<tobedeleted.Models.StuMark>
+@using Microsoft.AspNetCore.Identity
+@using tobedeleted.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 @{
     ViewData["Title"] = "progress Report";
     Layout = "~/Pages/_LayoutLearner.cshtml";
@@ -18,7 +22,7 @@
 
 
 <form class="d-print-table-row">
-    <button class="alert-primary img-fluid">Print</button>
+    <button class="alert-primary img-fluid" onclick="window.print()">Print</button>
     <div id="parentdiv">
         <div class="container">
             <div class="main-body">
@@ -35,7 +39,7 @@
                                     <div class="mt-3">
                                         <h4>Sixolile</h4>
                                         <p class="text-secondary mb-1">2022/10/21</p>
-                                        <input asp-for="SubDesc" class="form-control" disabled />
+                                        <input @UserManager.GetUserAsync(User).Result.firstName class="form-control" disabled />
                                         <p class="text-muted font-size-sm">Grade 12</p>
                                         <button class="btn btn-primary"></button>
                                         <button class="btn btn-outline-primary">Go to Profile</button>

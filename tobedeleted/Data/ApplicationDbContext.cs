@@ -70,7 +70,8 @@ namespace tobedeleted.Data
         public DbSet<UserCategory> UserCategory { get; set; }
         public DbSet<Content> Content { get; set; }
         public DbSet<TimetableDisplay> TimetableDisplay { get; set; }
-        
+        public DbSet<Calculator> Calculators { get; set; }
+
 
     }
 
