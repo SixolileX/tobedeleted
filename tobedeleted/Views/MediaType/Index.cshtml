@@ -1,4 +1,4 @@
-﻿@model IEnumerable<tobedeleted.Entities.Category>
+﻿@model IEnumerable<tobedeleted.Entities.MediaType>
 
 @{
     ViewData["Title"] = "Index";
@@ -18,9 +18,6 @@
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.ThumbnailmagePath)
             </th>
             <th></th>
@@ -33,16 +30,12 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.ThumbnailmagePath)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
-                <a asp-controller="CategoryItem" asp-action="index" asp-route-categoryid="@item.Id">Update items</a>
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }
