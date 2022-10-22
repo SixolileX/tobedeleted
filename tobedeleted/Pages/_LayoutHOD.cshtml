@@ -44,13 +44,8 @@
                                             {
                                                 <li class="nav-item dropdown">
 
-                                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" asp-controller="HOD" asp-action="CareerStream" style="font-size: 15px" data-bs-placement="left" title="@m.Department.DepDesc">@m.Subject.SubDesc </a>
-                                                    <ul class="dropdown-menu-left" aria-labelledby="navbarDropdown">
-                                                        <li class="dropdown-item" data-bs-placement="left">
-                                                            <a class="dropdown-item" data-bs-toggle="tooltip" data-bs-placement="left" asp-controller="HOD" asp-action="CareerStream" asp-route-Id="@m.Department.Subjects" title="@m.user"> @m.Grade.GrDesc</a>
-                                                        </li>
-                                                    </ul>
-
+                                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" asp-controller="HOD" asp-action="Dashboard" style="font-size: 15px" data-bs-placement="left" title="@m.Department.DepDesc">@m.Subject.SubDesc @m.Grade.GrDesc</a>
+                                                    
                                                 </li>
 
                                             }
@@ -73,7 +68,7 @@
                                         <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Department">Enrol Department</a></li>
                                         <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Subject">Enrol Subject</a></li>
                                         <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Meeting">Schedule Meetings</a></li>
-                                        <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Create">Create TimeTable</a></li>
+                                        <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="TimeTable">Create TimeTable</a></li>
                                         <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Reporting">Departmental Report</a></li>
                                         <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="AddHODToSpecificDep">Assign HODs To Departments</a></li>
                                         <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="AssignSubGr">Assign Subjects To Grades</a></li>
@@ -90,10 +85,10 @@
                         <partial name="_LoginPartial" />
 
                     </div>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+                    @using (Html.BeginForm("Grade", "HOD", FormMethod.Get))
+                    {
+                        @Html.TextBox("searching")<input type="submit" value="Search" />
+                    }
                 </nav>
             </div>
             @*<nav class="navbar navbar-expand-lg navbar-light bg-light">*@
