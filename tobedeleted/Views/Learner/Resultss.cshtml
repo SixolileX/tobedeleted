@@ -1,4 +1,9 @@
-﻿
+﻿@model IEnumerable<tobedeleted.Models.StuMark>
+@using Microsoft.AspNetCore.Identity
+@using tobedeleted.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
 @{
     ViewData["Title"] = "Results";
     Layout = "~/Pages/_LayoutLearner.cshtml";
@@ -30,10 +35,10 @@
             </div>
             <div id="collapseOne" class="collapse " data-bs-parent="#accordion">
                 <div class="card-body">
-                    <a>TM1:  52</a>
-                    <a>TM2:  59</a>
-                    <a>TM3:  50</a>
-                    <a>TM4:  80</a>
+                    @foreach (var model in Model)
+                    {
+                        <a>TM:   @Html.DisplayFor(modelItem => model.Term1)</a>
+                    }
                 </div>
             </div>
         </div>
@@ -46,10 +51,10 @@
             </div>
             <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
                 <div class="card-body">
-                    <a>TM1:  78 </a>
-                    <a>TM2:  45</a>
-                    <a>TM3:  11</a>
-                    <a>TM4:  55</a>
+                    @foreach (var model in Model)
+                    {
+                        <a>TM:   @Html.DisplayFor(modelItem => model.Term2)</a>
+                    }
                 </div>
             </div>
         </div>
@@ -62,10 +67,10 @@
             </div>
             <div id="collapseThree" class="collapse" data-bs-parent="#accordion">
                 <div class="card-body">
-                    <a>TM1:  84</a>
-                    <a>TM2:  59</a>
-                    <a>TM3:  11</a>
-                    <a>TM4:  88</a>
+                    @foreach (var model in Model)
+                    {
+                        <a>TM:   @Html.DisplayFor(modelItem => model.Term3)</a>
+                    }
                 </div>
             </div>
 
@@ -79,10 +84,10 @@
             </div>
             <div id="collapseFour" class="collapse" data-bs-parent="#accordion">
                 <div class="card-body">
-                    <a>TM1:  54</a>
-                    <a>TM2:  78</a>
-                    <a>TM3:  89</a>
-                    <a>TM4:  16</a>
+                    @foreach (var model in Model)
+                    {
+                        <a>TM:   @Html.DisplayFor(modelItem => model.Term4)</a>
+                    }
                 </div>
             </div>
 
@@ -95,10 +100,10 @@
             </div>
             <div id="collapseFive" class="collapse" data-bs-parent="#accordion">
                 <div class="card-body">
-                    <a>TM1:  15</a>
-                    <a>TM2:  88</a>
-                    <a>TM3:  98</a>
-                    <a>TM4:  23</a>
+                    @foreach (var model in Model)
+                    {
+                        <a>Not Available</a>
+                    }
                 </div>
             </div>
         </div>
