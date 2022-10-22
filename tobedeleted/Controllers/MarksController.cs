@@ -80,6 +80,18 @@ namespace tobedeleted.Controllers
                             select new AssignMarks { marks = M, subject = S, learner = L }).ToList();
 
 
+
+            ViewBag.Assign = (from S in _context.StuMarks
+                              join L in _context.Users on S.LearnerIdUser equals L.Id
+                              from A in _context.AssignLearnerToParent
+                              join l  in _context.Users on A.userLearnerId equals l.Id
+                              join P in _context.Users on A.userParent equals P.Id
+
+                              where S.LearnerIdUser == L.Id && A.userParent==l.Id
+                              select new StuMark());
+
+
+
             return View();
         }
 

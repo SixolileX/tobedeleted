@@ -77,10 +77,16 @@ namespace tobedeleted.Controllers
         [HttpGet]
         public IActionResult AcademicProgress(string searching)
         {
+            ViewBag.Assign = (from S in _db.StuMarks
+                              join L in _db.Users on S.LearnerIdUser equals L.Id
+                              from A in _db.AssignLearnerToParent
+                              join l in _db.Users on A.userLearnerId equals l.Id
+                              join P in _db.Users on A.userParent equals P.Id
 
+                              where S.LearnerIdUser == L.Id && A.userParent == l.Id
+                              select new StuMark());
 
-           
-            IEnumerable<StuMark> objList = _db.StuMarks;
+            IEnumerable < StuMark > objList = _db.StuMarks;
             return View(_db.StuMarks.Where(x => x.LearnerIdUser.Contains(searching) || searching == null).ToList());
 
        

@@ -24,6 +24,10 @@ namespace tobedeleted.Controllers
         public async Task<IActionResult> Index(int categoryId)
         {
             List<CategoryItem> list = await (from catItem in _context.CategoryItem
+                                             join contentItem in _context.Content
+                                             on catItem.Id equals contentItem.CategoryItem.Id
+                                             into xz
+                                             from subContent in xz.DefaultIfEmpty()
                                              where catItem.CategoryId == categoryId
                                              select new CategoryItem
                                              {
@@ -32,11 +36,13 @@ namespace tobedeleted.Controllers
                                                  Description = catItem.Description,
                                                  DateTimeItemReleased = catItem.DateTimeItemReleased,
                                                  MediaTypeId = catItem.MediaTypeId,
-                                                 CategoryId = categoryId
+                                                 CategoryId = categoryId,
+                                                 ContentId = (subContent != null) ? subContent.Id : 0
+
                                              }).ToListAsync();
 
 
-
+            ViewBag.CategoryId = categoryId;
             return View(await _context.CategoryItem.ToListAsync());
         }
 
@@ -84,7 +90,7 @@ namespace tobedeleted.Controllers
             {
                 _context.Add(categoryItem);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index),new { categoryItem.CategoryId} );
             }
             return View(categoryItem);
         }
@@ -97,11 +103,17 @@ namespace tobedeleted.Controllers
                 return NotFound();
             }
 
+            List<MediaType> mediaTypes = await _context.MediaType.ToListAsync();
+
             var categoryItem = await _context.CategoryItem.FindAsync(id);
+
             if (categoryItem == null)
             {
                 return NotFound();
             }
+
+            categoryItem.MediaTypes = mediaTypes.ConvertToSelectList(categoryItem.MediaTypeId);
+
             return View(categoryItem);
         }
 
@@ -135,7 +147,7 @@ namespace tobedeleted.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), new { categoryId = categoryItem.CategoryId});
             }
             return View(categoryItem);
         }
@@ -166,7 +178,7 @@ namespace tobedeleted.Controllers
             var categoryItem = await _context.CategoryItem.FindAsync(id);
             _context.CategoryItem.Remove(categoryItem);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index), new { categoryId = categoryItem.CategoryId});
         }
 
         private bool CategoryItemExists(int id)
