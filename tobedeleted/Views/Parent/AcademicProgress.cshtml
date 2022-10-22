@@ -92,27 +92,27 @@
                 </thead>
                 <tbody>
 
-                    @foreach (var item in Model)
+                    @foreach (StuMark S in ViewBag.Assign)
                     {
                         <tr>
                             <td>
-                                @Html.DisplayFor(modelItem => item.LearnerIdUser)
+                                @Html.DisplayFor(modelItem => S.LearnerIdUser)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.SubjectName)
+                                @Html.DisplayFor(modelItem => S.SubjectName)
                             </td>
 
                             <td>
-                                @Html.DisplayFor(modelItem => item.Term1)
+                                @Html.DisplayFor(modelItem => S.Term1)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Term2)
+                                @Html.DisplayFor(modelItem => S.Term2)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Term3)
+                                @Html.DisplayFor(modelItem => S.Term3)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Term4)
+                                @Html.DisplayFor(modelItem => S.Term4)
                             </td>
                         </tr>
                     }
