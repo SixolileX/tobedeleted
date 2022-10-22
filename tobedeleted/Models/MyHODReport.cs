@@ -18,5 +18,6 @@ namespace tobedeleted.Models
         public Marks Marks { get; set; }
         public Subject Subject { get; set; }
         public Grade Grade { get; set; }
+        public MeetingScheduler scheduler { get; set; }
     }
 }
