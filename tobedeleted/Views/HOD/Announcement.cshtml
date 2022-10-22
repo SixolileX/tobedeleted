@@ -1,0 +1,50 @@
+﻿@model IEnumerable<tobedeleted.Models.Announcements>
+
+@{
+    ViewData["Title"] = "Announcement";
+    Layout = "~/Pages/_LayoutHOD.cshtml";
+}
+<br />
+<br />
+<br />
+<div class="text-center">
+    <h3>View School Announcements</h3>
+</div>
+<hr />
+<br />
+<br />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnouncementName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnouncementDescr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnnounceDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnnouncementName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnnouncementDescr)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnnounceDate)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -47,6 +47,7 @@ namespace tobedeleted.Data
         public DbSet<tobedeleted.Models.AssignLearnerToParent> AssignLearnerToParent { get; set; }
 
 
+        public DbSet<tobedeleted.Models.UserActivity> UserActivities { get; set; }
         public DbSet<tobedeleted.Models.studentMeeting> studentMeetings { get; set; }
 
         public DbSet<tobedeleted.Models.Announcements> Announcements { get; set; }

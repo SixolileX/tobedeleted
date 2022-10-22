@@ -58,7 +58,9 @@ namespace tobedeleted
                 .AddDefaultUI()
                 .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddControllersWithViews();
+            services.AddControllersWithViews(options=> {
+                options.Filters.Add(typeof(UserActivityLogFilter));
+            });
             services.AddRazorPages();
         }
 
