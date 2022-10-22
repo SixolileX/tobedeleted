@@ -19,5 +19,6 @@ namespace tobedeleted.Models
         public Subject Subject { get; set; }
         public Grade Grade { get; set; }
         public MeetingScheduler scheduler { get; set; }
+        public TimeTable TimeTable { get; set; }
     }
 }
