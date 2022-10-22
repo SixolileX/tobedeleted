@@ -26,21 +26,16 @@
             <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="TDash">Dashboard</a>
         </li>*@
                             <li class="nav-item dropdown show">
-                                <a class="btn dropdown-toggle nav-link text-dark" href="#" data-toggle="dropdown">Content</a>
+                                <a class="btn dropdown-toggle nav-link text-dark" href="#" data-toggle="dropdown">Assigned Subject</a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" asp-area="" asp-controller="Category" asp-action="Index">Categories</a>
-                                    <a class="dropdown-item">Users to Categories</a>
-                                    <a class="dropdown-item">Media Types</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item">Assessments</a>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Teacher" asp-action="Assessments">Mathematics</a>
+                                  
                                 </div>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="Meetings">Meetings</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="Meetings">Reports</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="Reports">Reports</a>
-                            </li>
+
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="ViewAnnouncements">Announcements</a>
                             </li>

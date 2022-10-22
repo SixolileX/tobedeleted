@@ -6,9 +6,13 @@
     ViewData["Title"] = "Real-Time Binding";
 }
 
+<br />
+<br />
+<br />
+
 <h1>Edit</h1>
 
-<h4>CategoryItem</h4>
+<h4>Edit Topics</h4>
 <hr />
 <div class="row">
     <div class="col-md-6">
@@ -27,13 +31,13 @@
                 <textarea asp-for="Description" rows="2" class="form-control"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
-   
+
             <div class="form-group">
                 <label asp-for="MediaTypeId" class="control-label"></label>
                 <select asp-for="MediaTypeId" class="form-control" asp-items="@Model.MediaTypes">
                     <option value="">--Please select a MediaType--</option>
                 </select>
-                     
+
                 <span asp-validation-for="MediaTypeId" class="text-danger"></span>
             </div>
             <div class="form-group">

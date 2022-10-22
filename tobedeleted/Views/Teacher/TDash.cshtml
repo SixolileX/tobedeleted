@@ -4,6 +4,11 @@
     //ViewData["Title"] = "ViewAnnouncements";
 }
 
+<br />
+<br />
+<br />
+<br />
+
 <div class="row py-lg-5">
     <div class="col-lg-6 col-md-8 mx-auto">
         <h3 class="fw-light" style="text-align:center;">Latest news and announcements</h3>
@@ -19,133 +24,51 @@
         <br>
     </div>
 
+    <h3>You are viewing teacher's home page</h3>
 
     @*<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.AnnouncementName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AnnouncementDescr)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AnnounceDate)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AnnouncementName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AnnouncementDescr)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AnnounceDate)
-                </td>
-                <td>
-                    <a asp-action="EditAnnouncements" asp-route-id="@item.AnnounceID">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.AnnounceID">Details</a> |
-                    <a asp-action="DeleteAnnouncements" asp-route-id="@item.AnnounceID">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>*@
-
-
-
-
-
-
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-sm-8">
-                <style>
-                    table {
-                        width: 100%;
-                    }
-
-                    table, th, td {
-                        border: 1px solid black;
-                        border-collapse: collapse;
-                    }
-
-                    th, td {
-                        padding: 5px;
-                        text-align: center;
-                    }
-
-                    table.names tr:nth-child(even) {
-                        background-color: #eee;
-                    }
-
-                    table.names tr:nth-child(odd) {
-                        background-color: #fff;
-                    }
-
-                    table.names th {
-                        background-color: black;
-                        color: white
-                    }
-                </style>
-
-                <h3 style="text-align:center;">These are the upcoming events! </h3>
-                <br />
-                <table class="names">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AnnouncementName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AnnouncementDescr)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AnnounceDate)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
                     <tr>
-                        <th>Name</th>
-                        <th>Subject</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Status</th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AnnouncementName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AnnouncementDescr)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AnnounceDate)
+                        </td>
+                        <td>
+                            <a asp-action="EditAnnouncements" asp-route-id="@item.AnnounceID">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.AnnounceID">Details</a> |
+                            <a asp-action="DeleteAnnouncements" asp-route-id="@item.AnnounceID">Delete</a>
+                        </td>
                     </tr>
-                    <tr>
-                        <td>Grade 11 class</td>
-                        <td>Accounting</td>
-                        <td>29/08/2022</td>
-                        <td>09:00 am</td>
-                        <td>Active</td>
-                    </tr>
-                    <tr>
-                        <td>Grade 10 class</td>
-                        <td>Mathematics</td>
-                        <td>31/08/2022</td>
-                        <td>11:15 am</td>
-                        <td>Active</td>
-                    </tr>
-                    <tr>
-                        <td>Grade 10 class</td>
-                        <td>Mathematics</td>
-                        <td>05/09/2022</td>
-                        <td>08:00 am</td>
-                        <td>Active</td>
-                    </tr>
-                    <tr>
-                        <td>Grade 11 class</td>
-                        <td>Accounting</td>
-                        <td>07/09/2022</td>
-                        <td>10:00 am</td>
-                        <td>Active</td>
-                    </tr>
-                    <tr>
-                        <td>Grade 10 class</td>
-                        <td>Mathematics</td>
-                        <td>12/09/2022</td>
-                        <td>11:30 am</td>
-                        <td>Active</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
+                }
+            </tbody>
+        </table>*@
+
+
+
+
     <br />
-    <img src="~/css/Images/online-teacher.jpg"  class="card-img-top" height="700" alt="...">
+    <img src="~/css/Images/online-teacher.jpg" class="card-img-top" height="700" alt="...">
 </div>
 
 
