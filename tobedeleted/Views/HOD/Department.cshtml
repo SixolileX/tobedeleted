@@ -48,6 +48,7 @@
                         <tr>
                             <th>
                                 Department ID
+
                             </th>
                             <th>
                                 Department Name
@@ -57,19 +58,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var item in ViewBag.Department)
+                        @foreach (Department d in ViewBag.Departments)
                         {
                         <tr>
                             <td>
-                                @item.DepID
+                                 @d.DepID
                             </td>
                             <td>
-                                @item.DepDesc
+                                 @d.DepDesc
                             </td>
                             <td>
-                                <a asp-action="UpdateDepartment" asp-route-id="@item.DepID">Edit</a> |
-                                <a asp-action="Details" asp-route-id="@item.DepID">Details</a> |
-                                <a asp-action="Delete" asp-route-id="@item.DepID">Delete</a>
+                                    <a asp-action="UpdateDepartment" asp-route-id="@d.DepID">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@d.DepID">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@d.DepID">Delete</a>
                             </td>
                         </tr>
                         }
