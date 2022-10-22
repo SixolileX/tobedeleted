@@ -19,6 +19,7 @@ using Microsoft.EntityFrameworkCore;
 namespace tobedeleted.Controllers
 {
     [Authorize(Roles = "HOD")]
+    
     public class HODController : Controller
     {
         private readonly IWebHostEnvironment _webHostEnv;
@@ -61,7 +62,11 @@ namespace tobedeleted.Controllers
 
             return View();
         }
+        [HttpPost]
+        public IActionResult New()
+        {
 
+        }
         
         public IActionResult Grade()
         {
