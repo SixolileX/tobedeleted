@@ -10,10 +10,11 @@
 <br />
 <br />
 
-<h1>Index</h1>
+<h3>Create content for this topic</h3>
+<hr/>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-sm btn-outline-primary">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -45,9 +46,12 @@
                 </td>
                 <td>
                     <a asp-controller="Content" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-controller="Content" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+<div>
+    <a asp-controller="CategoryItem" asp-action="Index" >Back to List</a>
+</div>

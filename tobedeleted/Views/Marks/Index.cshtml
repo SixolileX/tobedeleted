@@ -5,10 +5,14 @@
     Layout = "~/Pages/_LayoutTeacher.cshtml";
 }
 
+<br/>
+<br />
+<br/>
+
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-sm btn-outline-primary">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -70,3 +74,6 @@
 }
     </tbody>
 </table>
+<div>
+    <a asp-controller="Teacher" asp-action="Assessments" a>Back to List</a>
+</div>

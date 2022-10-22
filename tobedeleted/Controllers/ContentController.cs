@@ -107,7 +107,33 @@ namespace tobedeleted.Controllers
             return View(content);
         }
 
-    
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var content = await _context.Content
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (content == null)
+            {
+                return NotFound();
+            }
+
+            return View(content);
+        }
+
+        // POST: Category/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var content = await _context.Content.FindAsync(id);
+            _context.Content.Remove(content);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
 
         private bool ContentExists(int id)
         {
