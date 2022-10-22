@@ -14,6 +14,7 @@ using tobedeleted.IService;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
 namespace tobedeleted.Controllers
 {
@@ -155,9 +156,9 @@ namespace tobedeleted.Controllers
                              join U in _db.Users on Ur.UserId equals U.Id
                              join R in _db.Roles on Ur.RoleId equals R.Id
                              where Ur.UserId == U.Id && Ur.RoleId == R.Id && R.Name == "Teacher"
-                             select new ApplicationUser { Id = U.Id, firstName = U.firstName, lastName = U.lastName }).ToList();
-            ViewBag.Grades = new SelectList(grade, "GrID", "GrDesc").Distinct();
-            ViewBag.Subjects = new SelectList(subs, "SubID", "SubDesc").Distinct();
+                             select new ApplicationUser { Id = U.Id, firstName = U.firstName, lastName = U.lastName }).Distinct().ToList();
+            ViewBag.Grades = new SelectList(grade, "GrID", "GrDesc").Distinct().ToList();
+            ViewBag.Subjects = new SelectList(subs, "SubID", "SubDesc").Distinct().ToList();
             return View();
         }
         [HttpPost]
@@ -240,7 +241,7 @@ namespace tobedeleted.Controllers
                                   join UR in _db.UserRoles on R.Id equals UR.RoleId
                                   where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
                                   select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
-            ViewBag.Departments = _db.Departments.OrderBy(x => x.DepDesc).ToList();
+            ViewBag.Departments = _db.Departments.OrderBy(x => x.DepDesc).Distinct().ToList();
             
             return View();
         }
@@ -454,7 +455,7 @@ namespace tobedeleted.Controllers
                                   join UR in _db.UserRoles on R.Id equals UR.RoleId
                                   where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
                                   select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
-            IEnumerable<Department> objList = _db.Departments;//Coming from our database
+            IEnumerable<Department> objList = _db.Departments.Distinct().ToList();//Coming from our database
             return View(objList);
 
         }
@@ -566,6 +567,10 @@ namespace tobedeleted.Controllers
 
         public IActionResult Reporting()
         {
+            var deps = _db.Departments.Distinct().ToList();
+            var subs = _db.Subjects.Distinct().ToList();
+            var gr = _db.Grades.Distinct().ToList();
+            var a = _db.Assignment.Distinct().ToList();
             var users = User.FindFirstValue(ClaimTypes.NameIdentifier);
             ViewBag.Department = (from H in _db.HODs
                                   join D in _db.Departments on H.DepID equals D.DepID
@@ -579,6 +584,25 @@ namespace tobedeleted.Controllers
                                   join UR in _db.UserRoles on R.Id equals UR.RoleId
                                   where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
                                   select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
+            ViewBag.Report = (from H in _db.HODs
+                              join D in _db.Departments on H.DepID equals D.DepID
+                              join U in _db.Users on H.userHoDId equals U.Id
+                              from S in _db.Subjects
+                              join d in _db.Departments on S.DepID equals d.DepID
+                              join z in _db.SubsToGrade on S.SubID equals z.SubGrID
+                              from SG in _db.SubsToGrade
+                              join G in _db.Grades on SG.GrID equals G.GrID
+                              from M in _db.Marks
+                              join s in _db.Subjects on M.SubID equals s.SubID
+                              join A in _db.Assignment on M.AssignmentID equals A.AssignmentID
+                              from m in _db.MeetingScheduler
+                              join u in _db.Users on m.userID equals u.Id
+                              from R in _db.Roles
+                              join UR in _db.UserRoles on R.Id equals UR.RoleId
+                              where D.DepID == H.DepID && S.DepID == H.DepID
+                                    && SG.SubId == S.SubID && s.SubID == S.SubID && S.SubID == M.SubID && SG.GrID == G.GrID
+                                    && H.userHoDId == U.Id && UR.UserId == U.Id && A.AssignmentID == M.AssignmentID
+                              select new MyHODReport { Department = D, Subject = S, HODs = H, User = U, Grade = G, AssignSubjectGrade = SG, }).Distinct().ToList();
             return View();
         }
         
@@ -600,7 +624,7 @@ namespace tobedeleted.Controllers
                                   join G in _db.Grades on SG.GrID equals G.GrID
                                   from R in _db.Roles
                                   join UR in _db.UserRoles on R.Id equals UR.RoleId
-                                  where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
+                                  where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == U.Id && UR.UserId == U.Id
                                   select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
             ViewBag.Departments = new SelectList(deps, "DepID", "DepDesc").Distinct();
            
@@ -663,11 +687,20 @@ namespace tobedeleted.Controllers
             }
             return View(timeTable);
         }
-        //// GET: TimeTables
-        //public async Task<IActionResult> Index()
-        //{
+        public async Task<IActionResult> DetailsAsync(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
 
-        //    return View();
-        //}
+            var timeTable = await _db.TimeTables.FirstOrDefaultAsync(m => m.TtID == id);
+            if (timeTable == null)
+            {
+                return NotFound();
+            }
+
+            return View(timeTable);
+        }
     }
 }

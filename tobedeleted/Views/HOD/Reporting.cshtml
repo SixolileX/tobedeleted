@@ -1,0 +1,98 @@
+﻿@model tobedeleted.Models.Department
+@using Microsoft.AspNetCore.Identity
+@using tobedeleted.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    ViewData["Title"] = "Reporting";
+    Layout = "~/Pages/_LayoutHOD.cshtml";
+}
+
+<div class="container mt-2">
+    <div class="row col-12">
+        <br />
+    </div>
+    <div class="row col-12 float-right justify-content-between">
+        <div class="col-6">
+            <img src="~/css/Images/lol.png" width="120" height="60" class="align-content-md-start" />
+            <label asp- asp-items="@ViewBag.Department"></label>
+        </div>
+        <div class="col-6">
+            <label><b>Full Name: </b><span class="d-none d-lg-inline">@UserManager.GetUserAsync(User).Result.firstName   @UserManager.GetUserAsync(User).Result.lastName</span></label><br />
+            <label><b>Email: </b><span class="d-none d-lg-inline">@UserManager.GetUserAsync(User).Result.Email </span></label><br />
+            <label><b>Date: </b><span class="d-none d-lg-inline">@DateTime.Now</span></label>
+        </div>
+
+    </div>
+    <div class="col-md-5 pt-1" id="yui_3_17_2_1_1666366546526_633">
+
+
+
+        <div class="progress bg-white border">
+            <div class="progress-bar bar" role="progressbar" aria-valuenow="94" style="width: 94%" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <div class="small" id="yui_3_17_2_1_1666366546526_632">
+            <span class="sr-only">Course progress:</span>
+            <strong>94</strong>% complete
+        </div>
+    </div>
+    <div class="row col-12">
+        <table class="table mt-2 table-borderless">
+            <thead>
+                <tr>
+                    <th>
+                        Department
+                    </th>
+
+                    <th>
+                        Subject
+                    </th>
+                    <th>
+                        Grade
+                    </th>
+                    <th>
+                        Meeting Date
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (MyHODReport my in ViewBag.Report)
+                {
+                    <tr class="table-borderless">
+                        <td>
+                            @Html.DisplayFor(modelItem => my.Department.DepDesc)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => my.Subject.SubDesc)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => my.Grade.GrDesc)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => my.scheduler.MeetingDate)
+                        </td>
+                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <br />
+    <br />
+    <button onclick="window.print()">Print this page</button>
+</div>
+@section scripts{
+
+    <script>
+        $("printPDF").click(function () {
+            var element = document.getElementById('parentdiv');
+            html2pdf().from(element).set({
+                margin: [30, 10, 5, 10],
+                pagebreak: { avoid: 'tr' },
+                jsPDF: { orientation: 'landscape', unit: 'pt', format: 'letter', compressPDF: true }
+            }).save()
+        })
+    </script>}

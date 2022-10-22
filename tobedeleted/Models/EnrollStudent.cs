@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -18,9 +19,9 @@ namespace tobedeleted.Models
         public int SubjectID { get; set; }
         [Required]
         public string StudentID { get; set; }
+       
 
-     
-
+       
 
 
     }

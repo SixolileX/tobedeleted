@@ -58,6 +58,7 @@ namespace tobedeleted.Data
         public DbSet<tobedeleted.Models.EnrollStudent> EnrollStudents { get; set; }
         public DbSet<FileOnDatabaseModel> FilesOnDatabase { get; set; }
 
+
         public DbSet<Exams> Exams { get; set; }
 
         public DbSet<StuMark> StuMarks { get; set; }
@@ -67,6 +68,8 @@ namespace tobedeleted.Data
         public DbSet<MediaType> MediaType { get; set; }
         public DbSet<UserCategory> UserCategory { get; set; }
         public DbSet<Content> Content { get; set; }
+        public DbSet<TimetableDisplay> TimetableDisplay { get; set; }
+        
 
     }
 
