@@ -1,127 +1,129 @@
 ﻿@model IEnumerable<tobedeleted.Models.StuMark>
-@{
-    ViewData["Title"] = "AcademicProgress";
-    Layout = "~/Pages/_LayoutParent.cshtml";
+@using Microsoft.AspNetCore.Identity
+@using tobedeleted.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+    @{
+        ViewData["Title"] = "AcademicProgress";
+        Layout = "~/Pages/_LayoutParent.cshtml";
 
 
-}
-<br />
-<br />
-<br />
-<div class="text-center">
-    <h3 class="display-7">Academic Progress</h3>
-    <p>Sixolile Sobetwa</p>
-    <p>Learner</p>
-    <hr />
-</div>
+    }
+    <br />
+    <br />
+    <br />
+    <div class="text-center">
+        <h3 class="display-7">Academic Progress</h3>
+        <p>Learner</p>
+        <hr />
+    </div>
 
-<div class="container mt-5">
-    <div class="row">
-        <div class="col-sm-8">
-            <hr>
-            <style>
-                table {
-                    width: stretch;
-                    position: center;
-                }
+    <div class="col-6">
+        <label><b>Full Name: </b><span class="d-none d-lg-inline">@UserManager.GetUserAsync(User).Result.firstName   @UserManager.GetUserAsync(User).Result.lastName</span></label><br />
+        <label><b>Email: </b><span class="d-none d-lg-inline">@UserManager.GetUserAsync(User).Result.Email </span></label><br />
+        <label><b>Date: </b><span class="d-none d-lg-inline">@DateTime.Now</span></label><br />
+        <label><b>Address: </b><span class="d-none d-lg-inline">@UserManager.GetUserAsync(User).Result.Addressline1, @UserManager.GetUserAsync(User).Result.Addressline2</span></label><br />
+        <label><b>Contact No: </b><span class="d-none d-lg-inline">@UserManager.GetUserAsync(User).Result.PhoneNumber</span></label>
+    </div>
 
-                table, th, td {
-                    border: 1px solid black;
-                    border-collapse: collapse;
-                }
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-sm-8">
+                <hr>
+                <style>
+                    table {
+                        width: stretch;
+                        position: center;
+                    }
 
-                th, td {
-                    padding: 5px;
-                    text-align: center;
-                }
+                    table, th, td {
+                        border: 1px solid black;
+                        border-collapse: collapse;
+                    }
 
-                table.names tr:nth-child(even) {
-                    background-color: #eee;
-                }
+                    th, td {
+                        padding: 5px;
+                        text-align: center;
+                    }
 
-                table.names tr:nth-child(odd) {
-                    background-color: #fff;
-                }
+                    table.names tr:nth-child(even) {
+                        background-color: #eee;
+                    }
 
-                table.names th {
-                    background-color: black;
-                    color: white
-                }
-            </style>
+                    table.names tr:nth-child(odd) {
+                        background-color: #fff;
+                    }
 
+                    table.names th {
+                        background-color: black;
+                        color: white
+                    }
+                </style>
 
-
-
-
+            </div>
 
             <br />
             <br />
-        </div>
 
-        <br />
-        <br />
-        <br />
-        
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.LearnerIdUser)
-                    </th>
-
-                    <th>
-                        @Html.DisplayNameFor(model => model.SubjectName)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Term1)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Term2)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Term3)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Term4)
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-
-                @foreach (var item in Model)
-                {
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.LearnerIdUser)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.SubjectName)
-                        </td>
+                        <th>
+                            @Html.DisplayNameFor(model => model.LearnerIdUser)
+                        </th>
 
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Term1)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Term2)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Term3)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Term4)
-                        </td>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SubjectName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Term1)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Term2)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Term3)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Term4)
+                        </th>
                     </tr>
-                }
-            </tbody>
-        </table>
-        <br />
-        <br />
+                </thead>
+                <tbody>
 
-        <a href="/images/Report.pdf" download="file">
-            <b> download </b>
-        </a>
-        <br />
-        <br />
-        <button onclick="window.print()">Print this page</button>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LearnerIdUser)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SubjectName)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Term1)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Term2)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Term3)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Term4)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+       </div>
+ </div>
+            <br />
+            <br />
+
+            
+            <br />
+            <br />
+            <button onclick="window.print()">Print this page</button>

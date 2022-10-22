@@ -22,7 +22,7 @@ namespace tobedeleted.Controllers
         // GET: TimeTables
         public async Task<IActionResult> Index()
         {
-            return View(await _context.TimeTables.ToListAsync());
+            return View(await _context.TimetableDisplay.ToListAsync());
         }
 
         // GET: TimeTables/Details/5
@@ -33,7 +33,7 @@ namespace tobedeleted.Controllers
                 return NotFound();
             }
 
-            var timeTable = await _context.TimeTables
+            var timeTable = await _context.TimetableDisplay
                 .FirstOrDefaultAsync(m => m.TtID == id);
             if (timeTable == null)
             {
@@ -55,7 +55,7 @@ namespace tobedeleted.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TtID,ExamDate,Date,Exam,DepID,Subject,GradeID")] TimeTable timeTable)
+        public async Task<IActionResult> Create([Bind("TtID,ExamDate,Date,Exam,DepID,Subject,GradeID")] TimetableDisplay timeTable)
         {
             if (ModelState.IsValid)
             {

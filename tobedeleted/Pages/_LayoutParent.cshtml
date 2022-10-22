@@ -30,7 +30,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Parent" asp-action="Meeting">Meeting</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Parent" asp-action="ActivityLog">Activity Log</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Parent" asp-action="ActivityLog">Announcements</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Parent" asp-action="AcademicProgress">Academic progress</a>
@@ -39,9 +39,12 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Parent" asp-action="Report">Report</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Parent" asp-action="AssignParentToLearner">Report</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Parent" asp-action="AssignParentToLearner">Select Student</a>
                         </li>
-                        
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Parent" asp-action="TimeTable">Timetable</a>
+                        </li>
+
                     </ul>
                 </div>
                 @using (Html.BeginForm("AcademicProgress","Parent",FormMethod.Get))
