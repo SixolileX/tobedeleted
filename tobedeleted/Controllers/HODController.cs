@@ -62,11 +62,11 @@ namespace tobedeleted.Controllers
 
             return View();
         }
-        [HttpPost]
-        public IActionResult New()
-        {
+        //[HttpPost]
+        //public IActionResult New()
+        //{
 
-        }
+        //}
         
         public IActionResult Grade()
         {
