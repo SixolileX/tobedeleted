@@ -27,6 +27,7 @@
 	<ItemGroup>
 		<Folder Include="File\" />
 		<Folder Include="script\" />
+		<Folder Include="Views\CalController1\" />
 		<Folder Include="wwwroot\lib\bootstrap\" />
 		<Folder Include="wwwroot\lib\bootstrap\dist\css\" />
 		<Folder Include="wwwroot\lib\bootstrap\dist\js\" />
