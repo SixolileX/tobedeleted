@@ -84,9 +84,9 @@ namespace tobedeleted.Controllers
                               join P in _db.Users on A.userParent equals P.Id
 
                               where S.LearnerIdUser == L.Id && A.userParent == l.Id
-                              select new StuMark());
+                              select new StuMark { });
 
-            IEnumerable < StuMark > objList = _db.StuMarks;
+            IEnumerable<StuMark> objList = _db.StuMarks;
             return View(_db.StuMarks.Where(x => x.LearnerIdUser.Contains(searching) || searching == null).ToList());
 
        
