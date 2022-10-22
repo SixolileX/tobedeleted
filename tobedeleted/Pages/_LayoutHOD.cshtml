@@ -31,7 +31,39 @@
                                 <li class="nav-item">
                                     <a class="nav-link active" aria-current="page" asp-area="" asp-controller="HOD" asp-action="Dashboard">Home</a>
                                 </li>
-                               
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        My Department
+                                        @*<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>*@
+                                    </a>
+
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        @try
+                                        {
+                                            @foreach (HodDisplay m in ViewBag.Department)
+                                            {
+                                                <li class="nav-item dropdown">
+
+                                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" asp-controller="HOD" asp-action="CareerStream" style="font-size: 15px" data-bs-placement="left" title="@m.Department.DepDesc">@m.Subject.SubDesc </a>
+                                                    <ul class="dropdown-menu-left" aria-labelledby="navbarDropdown">
+                                                        <li class="dropdown-item" data-bs-placement="left">
+                                                            <a class="dropdown-item" data-bs-toggle="tooltip" data-bs-placement="left" asp-controller="HOD" asp-action="CareerStream" asp-route-Id="@m.Department.Subjects" title="@m.user"> @m.Grade.GrDesc</a>
+                                                        </li>
+                                                    </ul>
+
+                                                </li>
+
+                                            }
+                                        }
+                                        catch
+                                        {
+                                            <li>
+                                                <a>No Department Assigned</a>
+                                            </li>
+
+                                        }
+                                    </ul>
+                                </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" asp-area="" asp-controller="HOD" asp-action="Dashboard" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Dashboard
@@ -41,7 +73,7 @@
                                         <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Department">Enrol Department</a></li>
                                         <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Subject">Enrol Subject</a></li>
                                         <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Meeting">Schedule Meetings</a></li>
-                                        <li><a class="dropdown-item" asp-area="" asp-controller="TimeTable" asp-action="TimeTable">Create TimeTable</a></li>
+                                        <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Create">Create TimeTable</a></li>
                                         <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Reporting">Departmental Report</a></li>
                                         <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="AddHODToSpecificDep">Assign HODs To Departments</a></li>
                                         <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="AssignSubGr">Assign Subjects To Grades</a></li>
@@ -64,7 +96,50 @@
                     </form>
                 </nav>
             </div>
-            
+            @*<nav class="navbar navbar-expand-lg navbar-light bg-light">*@
+            <!--<div class="container-fluid">
+
+                <img src="~/css/Images/lol.png" width="120" height="60" class="align-content-md-start" />
+                <a class="navbar-brand" asp-area="" asp-controller="HOD" asp-action="DashBoard">InnTune</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" asp-area="" asp-controller="HOD" asp-action="Dashboard">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" asp-area="" asp-controller="HOD" asp-action="Dashboard" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Dashboard
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+            @*<li><a >Departement</a></li>*@
+            @*<li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="EnrolStaff">Enrol Staff</a></li>*@
+            <!--<li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Grade">Enrol Grade</a></li>
+            <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="EnrolDepartment">Enrol Department</a></li>
+            <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Subject">Enrol Subject</a></li>
+            <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Meeting">Schedule Meetings</a></li>
+            <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Profile">Profile</a></li>
+            <li><a class="dropdown-item" asp-area="" asp-controller="HOD" asp-action="Reporting">Departmental Report</a></li>
+            <li><hr class="dropdown-divider"></li>-->
+            @*<li><a class="dropdown-item" href="#">Something else here</a></li>*@
+            <!--</ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="HOD" asp-action="CareerStream">Career Streams</a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>-->
+            @*</nav>*@
 
         </header>
 
