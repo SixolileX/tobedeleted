@@ -1,4 +1,4 @@
-﻿
+﻿@model Subject
 @{
     ViewData["Title"] = "progress Report";
     Layout = "~/Pages/_LayoutLearner.cshtml";
@@ -35,7 +35,7 @@
                                     <div class="mt-3">
                                         <h4>Sixolile</h4>
                                         <p class="text-secondary mb-1">2022/10/21</p>
-                                        <p class="text-secondary mb-1">Learner</p>
+                                        <input asp-for="SubDesc" class="form-control" disabled />
                                         <p class="text-muted font-size-sm">Grade 12</p>
                                         <button class="btn btn-primary"></button>
                                         <button class="btn btn-outline-primary">Go to Profile</button>
@@ -45,6 +45,7 @@
                         </div>
 
                     </div>
+
                     <div class="col-md-8">
                         <div class="card mb-3">
                             <div class="card-body">

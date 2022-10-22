@@ -51,16 +51,7 @@
                         Grade
                     </th>
                     <th>
-                        Term 1
-                    </th>
-                    <th>
-                        Term 2
-                    </th>
-                    <th>
-                        Term 3
-                    </th>
-                    <th>
-                        Term 4
+                        Meeting Date
                     </th>
                     <th></th>
                 </tr>
@@ -81,17 +72,9 @@
                             @Html.DisplayFor(modelItem => my.Grade.GrDesc)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => my.Marks.Term1)
+                            @Html.DisplayFor(modelItem => my.scheduler.MeetingDate)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => my.Marks.Term2)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => my.Marks.Term3)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => my.Marks.Term4)
-                        </td>
+                        
                     </tr>
                 }
             </tbody>

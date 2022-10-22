@@ -37,7 +37,7 @@ namespace Inn_TuneProject.Controllers
 
         }
         [HttpGet]
-        public IActionResult EnrollInSubjectAsync()
+        public IActionResult EnrollInSubject()
         {
 
             List<Subject> assigns = new List<Subject>();
@@ -64,16 +64,12 @@ namespace Inn_TuneProject.Controllers
             return View();
 
         }
-        [TempData]
-        public string StatusMessage { get; set; }
 
+        [TempData]
+        public string ResponseMessage { get; set; }
         [HttpPost]
         public IActionResult EnrollInSubject(EnrollStudent enroll,int ID)
         {
-
-
-
-
 
             enroll.EnrollDate = DateTime.Today;
             enroll.SubjectID = ID;
@@ -84,7 +80,7 @@ namespace Inn_TuneProject.Controllers
 
             _db.SaveChanges();
 
-            StatusMessage = "Your profile has been updated";
+            ResponseMessage = "You Have sucess susscesfully Enrolled for" + enroll.SubjectID;
 
             //learners.SubjectName = user;
             //learners.UserlearnerId = user;
