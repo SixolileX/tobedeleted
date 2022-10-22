@@ -65,60 +65,59 @@
             <br />
             <br />
 
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.LearnerIdUser)
-                        </th>
-
-                        <th>
-                            @Html.DisplayNameFor(model => model.SubjectName)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Term1)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Term2)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Term3)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Term4)
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    @foreach (StuMark S in ViewBag.Assign)
-                    {
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => S.LearnerIdUser)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => S.SubjectName)
-                            </td>
+                            <th>
+                                @Html.DisplayNameFor(model => model.LearnerIdUser)
+                            </th>
 
-                            <td>
-                                @Html.DisplayFor(modelItem => S.Term1)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => S.Term2)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => S.Term3)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => S.Term4)
-                            </td>
+                            <th>
+                                @Html.DisplayNameFor(model => model.SubjectName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Term1)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Term2)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Term3)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Term4)
+                            </th>
                         </tr>
-                    }
-                </tbody>
-            </table>
-       </div>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var model in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => model.LearnerIdUser)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => model.SubjectName)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => model.Term1)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => model.Term2)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => model.Term3)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => model.Term4)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+        </div>
  </div>
             <br />
             <br />

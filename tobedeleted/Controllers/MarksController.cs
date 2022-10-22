@@ -88,7 +88,7 @@ namespace tobedeleted.Controllers
                               join P in _context.Users on A.userParent equals P.Id
 
                               where S.LearnerIdUser == L.Id && A.userParent==l.Id
-                              select new StuMark());
+                              select new StuMark {});
 
 
 
