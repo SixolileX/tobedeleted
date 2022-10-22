@@ -44,13 +44,8 @@
                                             {
                                                 <li class="nav-item dropdown">
 
-                                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" asp-controller="HOD" asp-action="CareerStream" style="font-size: 15px" data-bs-placement="left" title="@m.Department.DepDesc">@m.Subject.SubDesc </a>
-                                                    <ul class="dropdown-menu-left" aria-labelledby="navbarDropdown">
-                                                        <li class="dropdown-item" data-bs-placement="left">
-                                                            <a class="dropdown-item" data-bs-toggle="tooltip" data-bs-placement="left" asp-controller="HOD" asp-action="CareerStream" asp-route-Id="@m.Department.Subjects" title="@m.user"> @m.Grade.GrDesc</a>
-                                                        </li>
-                                                    </ul>
-
+                                                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" asp-controller="HOD" asp-action="Dashboard" style="font-size: 15px" data-bs-placement="left" title="@m.Department.DepDesc">@m.Subject.SubDesc @m.Grade.GrDesc</a>
+                                                    
                                                 </li>
 
                                             }
