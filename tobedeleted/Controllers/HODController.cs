@@ -221,6 +221,19 @@ namespace tobedeleted.Controllers
                                    join R in _db.Roles on Ur.RoleId equals R.Id
                                    where R.Id == Ur.RoleId && U.Id == Ur.UserId && UA.UserName == U.UserName && H.DepID == D.DepID && R.Name=="Teacher"
                                    select new HODactivityLog { Department = D, ApplicationUser = U }).Distinct().ToList();
+            var users = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ViewBag.Department = (from H in _db.HODs
+                                  join D in _db.Departments on H.DepID equals D.DepID
+                                  join U in _db.Users on H.userHoDId equals U.Id
+                                  from S in _db.Subjects
+                                  join d in _db.Departments on S.DepID equals d.DepID
+                                  join A in _db.SubsToGrade on S.SubID equals A.SubGrID
+                                  from SG in _db.SubsToGrade
+                                  join G in _db.Grades on SG.GrID equals G.GrID
+                                  from R in _db.Roles
+                                  join UR in _db.UserRoles on R.Id equals UR.RoleId
+                                  where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
+                                  select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList(); 
             return View();
         }
 
