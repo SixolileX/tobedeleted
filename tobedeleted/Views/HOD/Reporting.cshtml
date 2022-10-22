@@ -51,7 +51,7 @@
                         Grade
                     </th>
                     <th>
-                        Meeting Date
+                        Assignment Date
                     </th>
                     <th></th>
                 </tr>
@@ -72,7 +72,7 @@
                             @Html.DisplayFor(modelItem => my.Grade.GrDesc)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => my)
+                            @Html.DisplayFor(modelItem => my.TimeTable.Date)
                         </td>
                         
                     </tr>
@@ -82,7 +82,7 @@
     </div>
     <br />
     <br />
-    <button onclick="window.print()">Print this page</button>
+    <button id="btnSave" onclick="window.print()">Print this page</button>
 </div>
 @section scripts{
 

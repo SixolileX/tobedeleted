@@ -195,13 +195,34 @@ namespace tobedeleted.Controllers
             }
             else
             {
-                Ok("Failed!"); 
+                Ok("Failed!");
                 return RedirectToAction(nameof(AssignSubGr));
             }
             
 
         }
-        
+        public IActionResult ActivityLog()
+        {
+            ViewBag.HAttendance = (from UA in _db.UserActivities
+                                  join U in _db.Users on UA.UserName equals U.UserName
+                                  from H in _db.HODs
+                                  join D in _db.Departments on H.DepID equals D.DepID
+                                  from Ur in _db.UserRoles
+                                  join u in _db.Users on Ur.UserId equals u.Id
+                                  join R in _db.Roles on Ur.RoleId equals R.Id
+                                  where R.Id == Ur.RoleId && U.Id==Ur.UserId && UA.UserName==U.UserName && H.DepID==D.DepID && R.Name=="HOD"
+                                   select new HODactivityLog { Department=D, ApplicationUser=U}).Distinct().ToList();
+            ViewBag.TAttendance = (from UA in _db.UserActivities
+                                   join U in _db.Users on UA.UserName equals U.UserName
+                                   from H in _db.HODs
+                                   join D in _db.Departments on H.DepID equals D.DepID
+                                   from Ur in _db.UserRoles
+                                   join u in _db.Users on Ur.UserId equals u.Id
+                                   join R in _db.Roles on Ur.RoleId equals R.Id
+                                   where R.Id == Ur.RoleId && U.Id == Ur.UserId && UA.UserName == U.UserName && H.DepID == D.DepID && R.Name=="Teacher"
+                                   select new HODactivityLog { Department = D, ApplicationUser = U }).Distinct().ToList();
+            return View();
+        }
         public IActionResult GetAssignedSubGr()
         {
             var grade = _db.Grades.Distinct().ToList();
@@ -249,18 +270,7 @@ namespace tobedeleted.Controllers
         public IActionResult Subject()
         {
             var users = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            ViewBag.Department = (from H in _db.HODs
-                                  join D in _db.Departments on H.DepID equals D.DepID
-                                  join U in _db.Users on H.userHoDId equals U.Id
-                                  from S in _db.Subjects
-                                  join d in _db.Departments on S.DepID equals d.DepID
-                                  join A in _db.SubsToGrade on S.SubID equals A.SubGrID
-                                  from SG in _db.SubsToGrade
-                                  join G in _db.Grades on SG.GrID equals G.GrID
-                                  from R in _db.Roles
-                                  join UR in _db.UserRoles on R.Id equals UR.RoleId
-                                  where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
-                                  select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
+            var subject = _db.Subjects.Distinct().ToList();
             ViewBag.Departments = _db.Departments.OrderBy(x => x.DepDesc).Distinct().ToList();
             
             return View();
@@ -270,7 +280,6 @@ namespace tobedeleted.Controllers
         {
 
             Subject oSubject = JsonConvert.DeserializeObject<Subject>(fileObj.Subject);
-            ViewBag.Subjects = oSubject;
             if (fileObj.file.Length > 0)
             {
 
@@ -294,18 +303,8 @@ namespace tobedeleted.Controllers
         public JsonResult GetSavedSubject()
         {
             var users = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            ViewBag.Department = (from H in _db.HODs
-                                  join D in _db.Departments on H.DepID equals D.DepID
-                                  join U in _db.Users on H.userHoDId equals U.Id
-                                  from S in _db.Subjects
-                                  join d in _db.Departments on S.DepID equals d.DepID
-                                  join A in _db.SubsToGrade on S.SubID equals A.SubGrID
-                                  from SG in _db.SubsToGrade
-                                  join G in _db.Grades on SG.GrID equals G.GrID
-                                  from R in _db.Roles
-                                  join UR in _db.UserRoles on R.Id equals UR.RoleId
-                                  where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
-                                  select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
+            ViewBag.Subject = from S in _db.Subjects
+                              join D in _db.Departments on S.DepID equals D.DepID;
             var sub = _subjectService.GetSavedSubject();
             sub.SubImage = this.GetImage(Convert.ToBase64String(sub.SubImage));
             return Json(sub);
@@ -353,19 +352,7 @@ namespace tobedeleted.Controllers
         {
             var grade = _db.Grades.Distinct().ToList();
             var users = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            ViewBag.Department = (from H in _db.HODs
-                                  join D in _db.Departments on H.DepID equals D.DepID
-                                  join U in _db.Users on H.userHoDId equals U.Id
-                                  from S in _db.Subjects
-                                  join d in _db.Departments on S.DepID equals d.DepID
-                                  join A in _db.SubsToGrade on S.SubID equals A.SubGrID
-                                  from SG in _db.SubsToGrade
-                                  join G in _db.Grades on SG.GrID equals G.GrID
-                                  from R in _db.Roles
-                                  join UR in _db.UserRoles on R.Id equals UR.RoleId
-                                  where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
-                                  select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList(); ;
-            ViewBag.Departments = _db.Departments.Distinct();
+            ViewBag.Departments = _db.Departments.Distinct().ToList();
             return View();
         }
         [HttpPost]
@@ -401,18 +388,18 @@ namespace tobedeleted.Controllers
         public string SaveFile(UploadContent fileObj)
         {
             var users = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            ViewBag.Department = (from H in _db.HODs
-                                  join D in _db.Departments on H.DepID equals D.DepID
-                                  join U in _db.Users on H.userHoDId equals U.Id
-                                  from S in _db.Subjects
-                                  join d in _db.Departments on S.DepID equals d.DepID
-                                  join A in _db.SubsToGrade on S.SubID equals A.SubGrID
-                                  from SG in _db.SubsToGrade
-                                  join G in _db.Grades on SG.GrID equals G.GrID
-                                  from R in _db.Roles
-                                  join UR in _db.UserRoles on R.Id equals UR.RoleId
-                                  where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
-                                  select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
+            //ViewBag.Department = (from H in _db.HODs
+            //                      join D in _db.Departments on H.DepID equals D.DepID
+            //                      join U in _db.Users on H.userHoDId equals U.Id
+            //                      from S in _db.Subjects
+            //                      join d in _db.Departments on S.DepID equals d.DepID
+            //                      join A in _db.SubsToGrade on S.SubID equals A.SubGrID
+            //                      from SG in _db.SubsToGrade
+            //                      join G in _db.Grades on SG.GrID equals G.GrID
+            //                      from R in _db.Roles
+            //                      join UR in _db.UserRoles on R.Id equals UR.RoleId
+            //                      where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
+            //                      select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
             Department oDepartment = JsonConvert.DeserializeObject<Department>(fileObj.Department);
             ViewBag.Departments = oDepartment;
             if (fileObj.file.Length > 0)
@@ -443,18 +430,19 @@ namespace tobedeleted.Controllers
         public JsonResult GetSavedDepartment()
         {
             var users = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            ViewBag.Department = (from H in _db.HODs
-                                  join D in _db.Departments on H.DepID equals D.DepID
-                                  join U in _db.Users on H.userHoDId equals U.Id
-                                  from S in _db.Subjects
-                                  join d in _db.Departments on S.DepID equals d.DepID
-                                  join A in _db.SubsToGrade on S.SubID equals A.SubGrID
-                                  from SG in _db.SubsToGrade
-                                  join G in _db.Grades on SG.GrID equals G.GrID
-                                  from R in _db.Roles
-                                  join UR in _db.UserRoles on R.Id equals UR.RoleId
-                                  where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
-                                  select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
+            //ViewBag.Department = (from H in _db.HODs
+            //                      join D in _db.Departments on H.DepID equals D.DepID
+            //                      join U in _db.Users on H.userHoDId equals U.Id
+            //                      from S in _db.Subjects
+            //                      join d in _db.Departments on S.DepID equals d.DepID
+            //                      join A in _db.SubsToGrade on S.SubID equals A.SubGrID
+            //                      from SG in _db.SubsToGrade
+            //                      join G in _db.Grades on SG.GrID equals G.GrID
+            //                      from R in _db.Roles
+            //                      join UR in _db.UserRoles on R.Id equals UR.RoleId
+            //                      where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
+            //                      select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
+            ViewBag.Departments = _db.Departments.Distinct().ToList();
             var dep = _departmentService.SavedDepartment;
             dep.DepPhoto = this.GetImage(Convert.ToBase64String(dep.DepPhoto));
             return Json(dep);
