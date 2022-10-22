@@ -178,11 +178,12 @@ namespace Inn_TuneProject.Controllers
 
             return View();
         }
-        public ActionResult Resultss()
+        public ActionResult Resultss(string searching)
         {
+            IEnumerable<StuMark> objList = _db.StuMarks;
+            return View(_db.StuMarks.Where(x => x.LearnerIdUser.Contains(searching) || searching == null).ToList());
 
-
-            return View();
+            
         }
         public ActionResult Maths()
         {
