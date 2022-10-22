@@ -6,7 +6,7 @@
     ViewData["Title"] = "Index";
     Layout = "~/Pages/_LayoutParent.cshtml";
     @model IEnumerable<tobedeleted.Models.MeetingScheduler>
- 
+
 }
 <br />
 <br />
@@ -44,93 +44,97 @@
         background-color: black;
         color: white
     }
+
+    }
+
 </style>
 
-
-
-        <div class="col-lg-8">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">Timeline</h4>
-                </div><!--end card-header-->
-                <div class="card-body">
-                    <div class="main-timeline mt-3">
-                        <div class="timeline">
-                           
-                                <p class="description">
-                                   
-                                    @if (Model.Count() > 0)
-                                    {
-                                        <table class="table table-bordered table-striped" style="width:100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>
-                                                        Meeting description
-                                                    </th>
-                                                    <th>
-                                                        Date
-                                                    </th>
-                                                </tr>
-                                            </thead>
-
-                                            <tbody>
-
-                                                @foreach (var meeting in Model)
-                                                {
-                                                <tr>
-                                                    <td w-auto>@meeting.Desc</td>
-                                                    <td w-auto>@meeting.MeetingDate</td>
-                                                    <td w-auto>@meeting.userID</td>
-                                                    <td w-auto>
-                                                        @*<div class="w-100 btn-group" role="group">
-                <a asp-controller="Parent" asp-action="Update" asp-route-ID="@meeting.MeetingID" class="btn btn-primary w-auto mx-1">Update</a>
-                <a asp-controller="Parent" asp-action="Delete" asp-route-ID="@meeting.MeetingID" class="btn btn-danger mx-1 w-auto">Delete</a>
-            </di*@>
-                                                    </td>
-
-                                                </tr>
-                                                }
-                                            </tbody>
-                                        </table>
-                                      
-                                    }
-                                    else
-                                    {
-                                    <p>No Appointments yet!!</p>
-                                }
-                                </div>
-                               
-                            </div>
-                        </div>
-
-                     
-
-                    </div>
-                </div>  <!--end card-body-->
-
-            <br />
-        
+<img src="~/css/Images/unhappy-mom-talking-angry-principal-director-son-isolated-flat-vector-illustration-cartoon-parent-sitting-room-202763961.jpg" class="card-img-top" height="400" alt="...">
 <br />
+<br />
+<div class="col-lg-8">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">Timeline</h4>
+        </div><!--end card-header-->
+        <div class="card-body">
+            <div class="main-timeline mt-3">
+                <div class="timeline">
+
+                    <p class="description">
+
+                        @if (Model.Count() > 0)
+                        {
+                            <table class="table table-bordered table-striped" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Meeting description
+                                        </th>
+                                        <th>
+                                            Date
+                                        </th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    @foreach (var meeting in Model)
+                                    {
+                                        <tr>
+                                            <td w-auto>@meeting.Desc</td>
+                                            <td w-auto>@meeting.MeetingDate</td>
+                                            <td w-auto>@meeting.userID</td>
+                                            <td w-auto>
+                                                @*<div class="w-100 btn-group" role="group">
+                                                        <a asp-controller="Parent" asp-action="Update" asp-route-ID="@meeting.MeetingID" class="btn btn-primary w-auto mx-1">Update</a>
+                                                        <a asp-controller="Parent" asp-action="Delete" asp-route-ID="@meeting.MeetingID" class="btn btn-danger mx-1 w-auto">Delete</a>
+                                                    </di*@>
+                                            </td>
+
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        }
+                        else
+                        {
+                        <p>No Appointments yet!!</p>
+                    }
+                    </div>
+
+                </div>
+            </div>
 
 
 
-<body>
-    <div class="wrapper">
-        <div class="center-line">
-            <a href="#" class="scroll-icon"><i class="fas fa-caret-up"></i></a>
+        </div>
+    </div>  <!--end card-body-->
+
+    <br />
+
+    <br />
+
+
+
+    <body>
+        <div class="wrapper">
+            <div class="center-line">
+                <a href="#" class="scroll-icon"><i class="fas fa-caret-up"></i></a>
+            </div>
+
+            <div class="row row-1">
+
+            </div>
+
+            <div class="row row-1">
+
+            </div>
+            <div class="row row-2">
+
+            </div>
+
         </div>
 
-        <div class="row row-1">
-        
-        </div>
-
-        <div class="row row-1">
-           
-        </div>
-        <div class="row row-2">
-          
-        </div>
-
-    </div>
-
-</body>
+    </body>
