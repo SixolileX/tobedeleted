@@ -12,13 +12,17 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Security.Claims;
-using Microsoft.AspNetCore.SignalR;
+
 
 
 namespace Inn_TuneProject.Controllers
 {
+    [Authorize(Roles ="Learner")]
+
     public class LearnerController : Controller
     {
+       
+
 
         IAddLearnerTosub _IaddLearnerTosub;
         private readonly ApplicationDbContext _db;
@@ -40,8 +44,8 @@ namespace Inn_TuneProject.Controllers
         public IActionResult EnrollInSubject()
         {
 
-            List<Subject> assigns = new List<Subject>();
-            assigns = _db.Subjects.ToList();
+            List<AssignSubject> assigns = new List<AssignSubject>();
+            assigns = _db.AssignSubject.ToList();
             ViewBag.listofSubjects = assigns;
 
 
@@ -70,6 +74,7 @@ namespace Inn_TuneProject.Controllers
         [HttpPost]
         public IActionResult EnrollInSubject(EnrollStudent enroll,int ID)
         {
+
 
             enroll.EnrollDate = DateTime.Today;
             enroll.SubjectID = ID;
@@ -191,6 +196,12 @@ namespace Inn_TuneProject.Controllers
 
             return View();
         }
+        public IActionResult Physics()
+        {
+
+
+            return View();
+        }
         public IActionResult Meetting()
         {
 
@@ -223,14 +234,15 @@ namespace Inn_TuneProject.Controllers
 
 
         }
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult Index(Calculator e)
+        public IActionResult Index(Calculator e,string seaching)
         {
-
+            IEnumerable<Calculator> objList = _db.Calculators;
 
             e.Total = e.Term1 + e.Term2 + e.Term3 + e.Term4;
             e.avg = e.Total / 4;

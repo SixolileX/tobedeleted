@@ -9,7 +9,18 @@ namespace tobedeleted.Models
     public class Exams
     {
         [Key]
-        public int ExamId { get; set; }
-        public string ExamName { get; set; }
+        public int calId { get; set; }
+        [Required]
+        public int Term1 { get; set; }
+        [Required]
+        public int Term2 { get; set; }
+        [Required]
+        public int Term3 { get; set; }
+        [Required]
+        public int Term4 { get; set; }
+        [Required]
+        public int Total { get; set; }
+        public double avg { get; set; }
+        public string Grade { get; set; }
     }
 }
