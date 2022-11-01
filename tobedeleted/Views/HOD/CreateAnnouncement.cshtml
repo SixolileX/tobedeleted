@@ -1,0 +1,44 @@
+﻿@model tobedeleted.Models.Announcements
+
+@{
+    ViewData["Title"] = "CreateAnnouncement";
+    Layout = "~/Pages/_LayoutHOD.cshtml";
+}
+
+<h1>CreateAnnouncement</h1>
+
+<h4>Announcements</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateAnnouncement">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AnnouncementName" class="control-label"></label>
+                <input asp-for="AnnouncementName" class="form-control" />
+                <span asp-validation-for="AnnouncementName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnnouncementDescr" class="control-label"></label>
+                <input asp-for="AnnouncementDescr" class="form-control" />
+                <span asp-validation-for="AnnouncementDescr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnnounceDate" class="control-label"></label>
+                <input asp-for="AnnounceDate" class="form-control" />
+                <span asp-validation-for="AnnounceDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Announcement">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

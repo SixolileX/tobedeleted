@@ -45,7 +45,7 @@
                                                 <li class="nav-item dropdown">
 
                                                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" asp-controller="HOD" asp-action="Dashboard" style="font-size: 15px" data-bs-placement="left" title="@m.Department.DepDesc">@m.Subject.SubDesc @m.Grade.GrDesc</a>
-                                                    
+
                                                 </li>
 
                                             }
@@ -75,6 +75,9 @@
                                         <li><hr class="dropdown-divider"></li>
                                         @*<li><a class="dropdown-item" href="#">Something else here</a></li>*@
                                     </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="HOD" asp-action="CreateAnnouncement">Create Accouncements</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" asp-area="" asp-controller="HOD" asp-action="ActivityLog">Activity Log</a>
