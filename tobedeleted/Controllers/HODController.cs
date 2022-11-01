@@ -83,7 +83,7 @@ namespace tobedeleted.Controllers
             return View();
         }
         
-        public IActionResult Grade(string searching)
+        public IActionResult Grade()
         {
             
             var users = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -99,7 +99,7 @@ namespace tobedeleted.Controllers
                                   join UR in _db.UserRoles on R.Id equals UR.RoleId
                                   where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
                                   select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
-            return View(_db.Grades.Where(x => x.GrDesc.Contains(searching) || searching == null).ToList());
+            return View();
         }
         public IActionResult GetGrade()
         {
@@ -124,7 +124,19 @@ namespace tobedeleted.Controllers
         public IActionResult Grade(Grade obj)
         {
             var users = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            
+            ViewBag.Department = (from H in _db.HODs
+                                  join D in _db.Departments on H.DepID equals D.DepID
+                                  join U in _db.Users on H.userHoDId equals U.Id
+                                  from S in _db.Subjects
+                                  join d in _db.Departments on S.DepID equals d.DepID
+                                  join A in _db.SubsToGrade on S.SubID equals A.SubGrID
+                                  from SG in _db.SubsToGrade
+                                  join G in _db.Grades on SG.GrID equals G.GrID
+                                  from R in _db.Roles
+                                  join UR in _db.UserRoles on R.Id equals UR.RoleId
+                                  where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
+                                  select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
+
             if (ModelState.IsValid)//Checks to see if all the required fields have been met.
             {
                 _db.Grades.Add(obj);
@@ -137,6 +149,19 @@ namespace tobedeleted.Controllers
         public IActionResult UpdateGrade(int? id)
         {
             var users = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ViewBag.Department = (from H in _db.HODs
+                                  join D in _db.Departments on H.DepID equals D.DepID
+                                  join U in _db.Users on H.userHoDId equals U.Id
+                                  from S in _db.Subjects
+                                  join d in _db.Departments on S.DepID equals d.DepID
+                                  join A in _db.SubsToGrade on S.SubID equals A.SubGrID
+                                  from SG in _db.SubsToGrade
+                                  join G in _db.Grades on SG.GrID equals G.GrID
+                                  from R in _db.Roles
+                                  join UR in _db.UserRoles on R.Id equals UR.RoleId
+                                  where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
+                                  select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
+            
             
             if (id == null || id == 0)
             {
@@ -545,7 +570,20 @@ namespace tobedeleted.Controllers
             }
             public IActionResult UpdateDepartment(int? id)
             {
-                if (id == null || id == 0)
+            var users = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ViewBag.Department = (from H in _db.HODs
+                                  join D in _db.Departments on H.DepID equals D.DepID
+                                  join U in _db.Users on H.userHoDId equals U.Id
+                                  from S in _db.Subjects
+                                  join d in _db.Departments on S.DepID equals d.DepID
+                                  join A in _db.SubsToGrade on S.SubID equals A.SubGrID
+                                  from SG in _db.SubsToGrade
+                                  join G in _db.Grades on SG.GrID equals G.GrID
+                                  from R in _db.Roles
+                                  join UR in _db.UserRoles on R.Id equals UR.RoleId
+                                  where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == users
+                                  select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
+            if (id == null || id == 0)
                 {
                     return NotFound();
                 }
@@ -564,7 +602,20 @@ namespace tobedeleted.Controllers
             [ValidateAntiForgeryToken]
             public IActionResult UpdateDepartment(UploadContent fileObj, Department obj)
             {
-                obj = JsonConvert.DeserializeObject<Department>(fileObj.Department);
+            var users = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            ViewBag.Department = (from H in _db.HODs
+                                  join D in _db.Departments on H.DepID equals D.DepID
+                                  join U in _db.Users on H.userHoDId equals U.Id
+                                  from S in _db.Subjects
+                                  join d in _db.Departments on S.DepID equals d.DepID
+                                  join A in _db.SubsToGrade on S.SubID equals A.SubGrID
+                                  from SG in _db.SubsToGrade
+                                  join G in _db.Grades on SG.GrID equals G.GrID
+                                  from R in _db.Roles
+                                  join UR in _db.UserRoles on R.Id equals UR.RoleId
+                                  where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == users
+                                  select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
+            obj = JsonConvert.DeserializeObject<Department>(fileObj.Department);
                 if (fileObj.file.Length > 0)
                 {
 
@@ -656,7 +707,7 @@ namespace tobedeleted.Controllers
                                     && SG.SubId == S.SubID && s.SubID == S.SubID && S.SubID == M.SubID && SG.GrID == G.GrID
                                     && H.userHoDId == U.Id && UR.UserId == U.Id && A.AssignmentID == M.AssignmentID
                               select new MyHODReport { Department = D, Subject = S, HODs = H, User = U, Grade = G, AssignSubjectGrade = SG, }).Distinct().ToList();
-            return View();
+                return View();
             }
 
             [HttpGet]
@@ -730,24 +781,75 @@ namespace tobedeleted.Controllers
         }// GET: TimeTables
         public async Task<IActionResult> GetTimeTable()
         {
+            var users = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var deps = _db.Departments.Distinct().ToList();
+            var subs = _db.Subjects.Distinct().ToList();
+            var gr = _db.Grades.Distinct().ToList();
+            var a = _db.Assignment.Distinct().ToList();
+            ViewBag.Department = (from H in _db.HODs
+                                  join D in _db.Departments on H.DepID equals D.DepID
+                                  join U in _db.Users on H.userHoDId equals U.Id
+                                  from S in _db.Subjects
+                                  join d in _db.Departments on S.DepID equals d.DepID
+                                  join A in _db.SubsToGrade on S.SubID equals A.SubGrID
+                                  from SG in _db.SubsToGrade
+                                  join G in _db.Grades on SG.GrID equals G.GrID
+                                  from R in _db.Roles
+                                  join UR in _db.UserRoles on R.Id equals UR.RoleId
+                                  where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
+                                  select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
             return View(await _db.TimetableDisplay.ToListAsync());
         }
 
-        [HttpPost]
+            [HttpPost]
             [ValidateAntiForgeryToken]
             public async Task<IActionResult> TimeTable([Bind("TtID,ExamDate,Date,Exam,DepID,Subject,GradeID")] TimeTable timeTable)
             {
-                if (ModelState.IsValid)
-                {
+                 var users = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                 var deps = _db.Departments.Distinct().ToList();
+                 var subs = _db.Subjects.Distinct().ToList();
+                 var gr = _db.Grades.Distinct().ToList();
+                 var a = _db.Assignment.Distinct().ToList();
+                 ViewBag.Department = (from H in _db.HODs
+                                  join D in _db.Departments on H.DepID equals D.DepID
+                                  join U in _db.Users on H.userHoDId equals U.Id
+                                  from S in _db.Subjects
+                                  join d in _db.Departments on S.DepID equals d.DepID
+                                  join A in _db.SubsToGrade on S.SubID equals A.SubGrID
+                                  from SG in _db.SubsToGrade
+                                  join G in _db.Grades on SG.GrID equals G.GrID
+                                  from R in _db.Roles
+                                  join UR in _db.UserRoles on R.Id equals UR.RoleId
+                                  where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
+                                  select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
+                 if (ModelState.IsValid)
+                 {
                     _db.Add(timeTable);
                     await _db.SaveChangesAsync();
                     return RedirectToAction(nameof(Dashboard));
-                }
-                return View(timeTable);
+                 }
+                 return View(timeTable);
             }
         // GET: TimeTables/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            var users = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var deps = _db.Departments.Distinct().ToList();
+            var subs = _db.Subjects.Distinct().ToList();
+            var gr = _db.Grades.Distinct().ToList();
+            var a = _db.Assignment.Distinct().ToList();
+            ViewBag.Department = (from H in _db.HODs
+                                  join D in _db.Departments on H.DepID equals D.DepID
+                                  join U in _db.Users on H.userHoDId equals U.Id
+                                  from S in _db.Subjects
+                                  join d in _db.Departments on S.DepID equals d.DepID
+                                  join A in _db.SubsToGrade on S.SubID equals A.SubGrID
+                                  from SG in _db.SubsToGrade
+                                  join G in _db.Grades on SG.GrID equals G.GrID
+                                  from R in _db.Roles
+                                  join UR in _db.UserRoles on R.Id equals UR.RoleId
+                                  where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
+                                  select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
             if (id == null)
             {
                 return NotFound();
@@ -768,6 +870,23 @@ namespace tobedeleted.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("TtID,ExamDate,Date,Exam,DepID,Subject,GradeID")] TimeTable timeTable)
         {
+            var users = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var deps = _db.Departments.Distinct().ToList();
+            var subs = _db.Subjects.Distinct().ToList();
+            var gr = _db.Grades.Distinct().ToList();
+            var a = _db.Assignment.Distinct().ToList();
+            ViewBag.Department = (from H in _db.HODs
+                                  join D in _db.Departments on H.DepID equals D.DepID
+                                  join U in _db.Users on H.userHoDId equals U.Id
+                                  from S in _db.Subjects
+                                  join d in _db.Departments on S.DepID equals d.DepID
+                                  join A in _db.SubsToGrade on S.SubID equals A.SubGrID
+                                  from SG in _db.SubsToGrade
+                                  join G in _db.Grades on SG.GrID equals G.GrID
+                                  from R in _db.Roles
+                                  join UR in _db.UserRoles on R.Id equals UR.RoleId
+                                  where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
+                                  select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
             if (id != timeTable.TtID)
             {
                 return NotFound();
@@ -799,6 +918,23 @@ namespace tobedeleted.Controllers
         // GET: TimeTables/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            var users = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var deps = _db.Departments.Distinct().ToList();
+            var subs = _db.Subjects.Distinct().ToList();
+            var gr = _db.Grades.Distinct().ToList();
+            var a = _db.Assignment.Distinct().ToList();
+            ViewBag.Department = (from H in _db.HODs
+                                  join D in _db.Departments on H.DepID equals D.DepID
+                                  join U in _db.Users on H.userHoDId equals U.Id
+                                  from S in _db.Subjects
+                                  join d in _db.Departments on S.DepID equals d.DepID
+                                  join A in _db.SubsToGrade on S.SubID equals A.SubGrID
+                                  from SG in _db.SubsToGrade
+                                  join G in _db.Grades on SG.GrID equals G.GrID
+                                  from R in _db.Roles
+                                  join UR in _db.UserRoles on R.Id equals UR.RoleId
+                                  where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
+                                  select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
             if (id == null)
             {
                 return NotFound();
@@ -819,6 +955,23 @@ namespace tobedeleted.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            var users = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var deps = _db.Departments.Distinct().ToList();
+            var subs = _db.Subjects.Distinct().ToList();
+            var gr = _db.Grades.Distinct().ToList();
+            var a = _db.Assignment.Distinct().ToList();
+            ViewBag.Department = (from H in _db.HODs
+                                  join D in _db.Departments on H.DepID equals D.DepID
+                                  join U in _db.Users on H.userHoDId equals U.Id
+                                  from S in _db.Subjects
+                                  join d in _db.Departments on S.DepID equals d.DepID
+                                  join A in _db.SubsToGrade on S.SubID equals A.SubGrID
+                                  from SG in _db.SubsToGrade
+                                  join G in _db.Grades on SG.GrID equals G.GrID
+                                  from R in _db.Roles
+                                  join UR in _db.UserRoles on R.Id equals UR.RoleId
+                                  where d.DepID == H.DepID && S.DepID == H.DepID && SG.SubId == S.SubID && SG.GrID == G.GrID && H.userHoDId == users && UR.UserId == U.Id
+                                  select new HodDisplay { Department = D, Subject = S, HOD = H, user = U, Grade = G, AssignSubjectGrade = SG }).Distinct().ToList();
             var timeTable = await _db.TimeTables.FindAsync(id);
             _db.TimeTables.Remove(timeTable);
             await _db.SaveChangesAsync();
