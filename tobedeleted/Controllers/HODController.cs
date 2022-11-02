@@ -713,6 +713,7 @@ namespace tobedeleted.Controllers
                               where D.DepID == H.DepID && S.DepID == H.DepID
                                     && SG.SubId == S.SubID && s.SubID == S.SubID && SG.GrID == G.GrID
                                     && H.userHoDId == U.Id && UR.UserId == U.Id && T.DepID==S.DepID && H.DepID==T.DepID 
+                                    && H.userHoDId==users
                                   select new MyHODReport { Department = D, Subject = S, HODs = H, User = U, Grade = G, AssignSubjectGrade = SG, TimeTable=T  }).Distinct().ToList();
             return View();
             }
