@@ -711,10 +711,10 @@ namespace tobedeleted.Controllers
                               from Z in _db.SubsToGrade
                               join t in _db.TimeTables on Z.SubId equals t.Subject
                               where D.DepID == H.DepID && S.DepID == H.DepID
-                                    && SG.SubId == S.SubID && SG.GrID == G.GrID
-                                    && H.userHoDId == users && UR.UserId == U.Id && m.userID==u.Id && T.DepID==d.DepID && T.DepID==S.DepID && Z.SubId==T.Subject && Z.GrID==T.GradeID
-                              select new MyHODReport { Department = D, Subject = S, User = U, Grade = G, TimeTable=T}).Distinct().ToList();
-                return View();
+                                    //&& SG.SubId == S.SubID && s.SubID == S.SubID && S.SubID == M.SubID && SG.GrID == G.GrID
+                                    //&& H.userHoDId == U.Id && UR.UserId == U.Id && A.AssignmentID == M.AssignmentID
+                              select new MyHODReport { Department = D, Subject = S, HODs = H, User = U, Grade = G, AssignSubjectGrade = SG, }).Distinct().ToList();
+            return View();
             }
 
             [HttpGet]
