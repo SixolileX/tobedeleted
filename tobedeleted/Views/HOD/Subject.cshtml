@@ -80,7 +80,7 @@
         formData.append("Subject", JSON.stringify(oSubject));
         $.ajax({
             type: "POST",
-            url: "/HOD/SaveSubFile",
+            url: "~/Controllers/HOD/SaveSubFile",
             data: formData,
             processData: false,
             contentType: false,
